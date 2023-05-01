@@ -1,17 +1,13 @@
 import React from 'react'
-import Alert from 'react-bootstrap/Alert';
+import Header from './Header'
+import Footer from './Footer'
 
 const Layout = ({children}) => {
   return (
     <div>
-      header
-      <Alert key={'dark'} variant={'dark'}>
-          This is a {'dark'} alert with{' '}
-          <Alert.Link href="#">an example link</Alert.Link>. Give it a click if
-          you like.
-        </Alert>
+      <Header />
       {children}
-      Footer
+      <Footer />
     </div>
   )
 }
