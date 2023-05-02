@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Container } from 'react-bootstrap'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import {
   About,
   HeroSection,
@@ -7,7 +8,8 @@ import {
   WhyChoose,
   RecentCampaigns,
   UpcomingEvents,
-  DonationProcess
+  DonationProcess,
+  AboutDoctor
 } from '@/components/Home';
 
 export default function Home() {
@@ -25,6 +27,7 @@ export default function Home() {
           <Statistics />
           <About />
           <WhyChoose />
+          <AboutDoctor />
           <RecentCampaigns />
           <UpcomingEvents />
           <DonationProcess />
@@ -32,4 +35,15 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common'
+      ])),
+      // Will be passed to the page component as props
+    },
+  }
 }

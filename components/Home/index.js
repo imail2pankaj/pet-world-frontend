@@ -5,3 +5,4 @@ export { default as WhyChoose } from './WhyChoose';
 export { default as RecentCampaigns } from './RecentCampaigns';
 export { default as UpcomingEvents } from './UpcomingEvents';
 export { default as DonationProcess } from './DonationProcess';
+export { default as AboutDoctor } from './AboutDoctor';

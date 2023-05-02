@@ -3,9 +3,10 @@ import Layout from '@/components/Layout/Layout'
 import { AuthProvider } from '@/context/AuthContext'
 import '@/styles/globals.css'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Dropdown, SSRProvider } from 'react-bootstrap';
+import { Container, SSRProvider } from 'react-bootstrap';
+import { appWithTranslation } from 'next-i18next'
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <SSRProvider>
       <ThemeProvider>
@@ -20,3 +21,5 @@ export default function App({ Component, pageProps }) {
     </SSRProvider>
   )
 }
+
+export default appWithTranslation(App);
