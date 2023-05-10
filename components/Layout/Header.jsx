@@ -24,7 +24,7 @@ const Header = () => {
           <Nav.Link href="/">{t("Contact Us")}</Nav.Link>
         </Nav>
         <Nav>
-          <Nav className='nav-link btn' href="/login">{t("My Account")}</Nav>
+          <Nav.Link className='nav-link btn' href="/login">{t("My Account")}</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

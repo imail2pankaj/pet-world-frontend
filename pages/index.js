@@ -4,9 +4,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import {  
   HeroSection,
   Statistics,
-  About,
-  WhyChoose,
+  About,  
   AboutDoctor,
+  WhyChoose,
   RecentCampaigns,
   UpcomingEvents,
   DonationProcess,  
@@ -23,12 +23,12 @@ export default function Home() {
       </Head>
       <main>        
           <HeroSection />
-          <Container>
+          <Container fluid="xxl">
             <Statistics />
             <About />
-            <WhyChoose />
-            <AboutDoctor />
+            <AboutDoctor />                       
           </Container>
+          <WhyChoose /> 
           <RecentCampaigns />
           <UpcomingEvents />
           <DonationProcess />        
