@@ -33,7 +33,7 @@ const Register = () => {
               </div>
             </Form>
             <Form.Group className="mb-4" controlId="formBasicCheckbox">                        
-              You agree with the <Link href={`/#`}><b>Terms & Conditions</b></Link> and <Link href={`/#`}><b>Data policy</b></Link>.
+              You agree with the <Link className='tc' href={`/#`}><b>Terms & Conditions</b></Link> and <Link className='tc' href={`/#`}><b>Data policy</b></Link>.
             </Form.Group>
             <div className="already mt-3">                      
             Already registered?{" "} <Link href={`/login`}><b>Login</b></Link>
