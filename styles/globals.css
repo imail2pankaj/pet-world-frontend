@@ -186,6 +186,7 @@ a, button{
   position: relative;
   margin-bottom: 150px;
 }
+.home-header img{ max-width: 100%; width: 100%;}
 .home-header .caption{
   width: 460px;
   position: absolute;
@@ -197,6 +198,7 @@ a, button{
 }
 .home-header .caption img{
   max-width: 100%;
+  width: auto;
 }
 .home-header .caption h1{
   font-size: 30px;
@@ -223,9 +225,7 @@ a, button{
 .container-xxl{
   max-width: 1400px;
 }
-img{
-  max-width: 100%;
-}
+
 h2.title{
   padding: 0;
   margin: 0 0 20px 0;
@@ -383,7 +383,8 @@ h2.title span{
 
 /*** Inner pages ***/
 .inner-main{ width: 100%;}
-.inner-main .header{ width: 100%; height: 250px; position: relative; display: block; background-color: #EDEDED; text-align: center;}
+.inner-main .header{ width: 100%; position: relative; display: block; background-color: #EDEDED; text-align: center;}
+.inner-main .header img{ max-width: 100%; width: 100%;}
 .inner-main .header h3{ position: absolute; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
   font-size: 40px; letter-spacing: 0.02em; text-transform: uppercase; color: #000000; font-weight: 700; text-shadow: 0px 0px 20px #FFFFFF;}
 .inner-main .why-choose-us{ margin-bottom: 50px;}
