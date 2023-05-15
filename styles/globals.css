@@ -353,7 +353,7 @@ h2.title span{
 .donation-process .pic{margin: 100px 0 0 0;}
 
 /*** Footer ***/
-.footer-main{height: 750px; background-image: url('../public/footer-bg.jpg'); background-repeat: no-repeat; background-position: center top;}
+.footer-main{height: 750px; background-image: url('../public/footer-bg.jpg'); background-repeat: repeat-x; background-position: center top;}
 .footer-main .top-row{ padding: 210px 0;}
 .footer-main .col:first-child{ text-align: center !important; padding-right: 5%;}
 .footer-main .col-md-4{text-align: center; padding-right: 10%;}
