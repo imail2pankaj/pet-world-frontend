@@ -99,168 +99,38 @@ a, button{
   transition: 0.3s;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
 /*** Navigation ****/
-.main-nav{
-  width: 100%;  
-  
-  z-index: 10;
-  padding: 14px 2%;
-}
+.main-nav{width: 100%; z-index: 10; padding: 14px 2%;}
 
-.main-nav .navbar-brand{
-   width: 180px;
-}
-.main-nav .navbar-brand img{
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-.main-nav .nav-link{
-  color: #232323;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin: 0 15px;
-  padding: 0 !important;  
-}
-.main-nav .nav-link:hover, .main-nav .nav-link.act{
-  color: #9E0C0F;  
-  position: relative;
-}
-.main-nav .nav-link.act::after{
-  content: "";
-  width: 100%;
-  height: 5px;
-  background: #9E0C0F;
-  border-radius: 2px;
-  position: absolute;
-  left: 0;
-  bottom: -12px;
-  border-radius: 3px;
-}
-.main-nav .nav-link.btn{
-  width: 200px;  
-  font-size: 15px;
-  color: #232323;
-  background-color: #EDEDED;
-  padding: 0px 0px;
-  line-height: 50px;
-  text-transform:uppercase;
-  display: block;
-  text-align: center;
-}
-.main-nav .nav-link.btn:hover{
-  color: #ffffff;
-  background-color: #9E0C0F;
-}
+.main-nav .navbar-brand{ width: 180px;}
+.main-nav .navbar-brand img{ max-width: 100%; height: auto; display: block;}
+.main-nav .nav-link{ color: #232323; font-size: 16px; font-weight: 600; letter-spacing: 1px; margin: 0 15px; padding: 0 !important;}
+.main-nav .nav-link:hover, .main-nav .nav-link.act{ color: #9E0C0F; position: relative;}
+.main-nav .nav-link.act::after{content: ""; width: 100%; height: 5px; background: #9E0C0F; border-radius: 2px; position: absolute; left: 0; bottom: -12px; border-radius: 3px;}
+.main-nav .nav-link.btn{ width: 200px; font-size: 15px; color: #232323; background-color: #EDEDED; padding: 0px 0px; line-height: 50px; text-transform:uppercase; display: block; text-align: center;}
+.main-nav .nav-link.btn:hover{ color: #ffffff; background-color: #9E0C0F;}
 
 /*** Header ***/
-.button-1{ 
-  width: 250px;
-  display: inline-block;
-  background-color: #9E0C0F;
-  filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5));
-  line-height: 58px;
-  border-radius: 10px;
-  color: white;
-  font-weight: 600;
-  font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  transition: 0.3s;
-  text-align: center;
-}
-.button-1:hover{
- background-color: #7EB65C;
- color: white;
- filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));
- }
-.home-header{
-  position: relative;
-  margin-bottom: 150px;
-}
+.button-1{width: 250px; display: inline-block; background-color: #9E0C0F; filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5)); line-height: 58px; border-radius: 10px; color: white; font-weight: 600; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center;}
+.button-1:hover{background-color: #7EB65C; color: white; filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));}
+
+.home-header{ position: relative; margin-bottom: 150px;}
 .home-header img{ max-width: 100%; width: 100%;}
-.home-header .caption{
-  width: 460px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-.home-header .caption img{
-  max-width: 100%;
-  width: auto;
-}
-.home-header .caption h1{
-  font-size: 30px;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  color: #9E0C0F;
-  font-weight: 700;
-}
-.home-header .caption h4{
-  font-size: 18px;
-  letter-spacing: 0.01em;  
-  color: #232323; 
-  font-weight: 600; 
-}
-.home-header .caption .button-1{
-  text-align: left;
-  width: 300px;
-}
-.home-header .caption .button-1 img{
-  margin: 5px 38px 5px 15px;
-   float: left;
-}
+.home-header .caption{ width: 460px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); text-align: center;}
+.home-header .caption img{ max-width: 100%; width: auto;}
+.home-header .caption h1{ font-size: 30px; letter-spacing: 0.01em; text-transform: uppercase; color: #9E0C0F; font-weight: 700;}
+.home-header .caption h4{ font-size: 18px; letter-spacing: 0.01em; color: #232323; font-weight: 600;}
+.home-header .caption .button-1{text-align: left; width: 300px;}
+.home-header .caption .button-1 img{margin: 5px 38px 5px 15px; float: left;}
 
-.container-xxl{
-  max-width: 1400px;
-}
+.container-xxl{ max-width: 1400px;}
 
-h2.title{
-  padding: 0;
-  margin: 0 0 20px 0;
-  font-size: 40px;
-  color: #232323;
-  font-weight: 700;
-  line-height: 30px;
-}
-h2.title span{
-  display: block;
-  font-size: 20px;
-  color: #9E0C0F;
-  text-transform: uppercase;
-  font-weight: 600;
-}
+h2.title{padding: 0; margin: 0 0 20px 0; font-size: 40px; color: #232323; font-weight: 700; line-height: 30px;}
+h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: uppercase; font-weight: 600;}
 
-/*** Statistic ***/
-  .statistic-main{
-    height: 210px;
-    position: relative;
-    background-color: #FF7F18;    
-    padding: 20px 0;
-    border-radius: 15px;
-    background-repeat: no-repeat;
-    background-position:0 6px;
-    margin-bottom: 150px;
-    text-align: end;
-  }
-  .statistic-main .pic{
-    width: auto;
-    float: left;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }  
+/*** 4 ***/
+  .statistic-main{ height: 210px; position: relative; background-color: #FF7F18; padding: 20px 0; border-radius: 15px; background-repeat: no-repeat; background-position:0 6px; background-size: auto 100%; margin-bottom: 150px; text-align: end;}
+  .statistic-main .pic{width: auto; float: left; position: absolute; left: 0; bottom: 0;}  
   .statistic-main ul{ width: 90%; height: 90%; display:inline-block; list-style: none; margin: 35px 0 0 0; padding: 0; z-index: 1; background-repeat: no-repeat; background-position: right 95px;}
   .statistic-main ul li{ width: 19%; position: relative; display: inline-block; text-align: center; font-size: 20px; color: black; font-weight: 700; text-transform: uppercase;}
   .statistic-main ul li .divider{ width: 28px; height: 118px; position: absolute; right: -15px; top: -12px; background-repeat: no-repeat;}
@@ -268,14 +138,17 @@ h2.title span{
 
 
   /*** About us  ***/
-  .about-main{ background-color: #EDEDED; padding: 50px 0 0px 50px; font-size: 20px; color: #232323; margin-bottom: 150px;}
+  .about-main{ background-color: #EDEDED; position: relative; padding: 70px 0 50px 70px; font-size: 20px; color: #232323; margin-bottom: 150px;}
+  .about-main .about-pic{width: 54%; position: absolute; bottom: 0; right: 0;}
+  .about-main .about-pic img{width:100%; display: block;}
+  .about-main .about-detail{width: 45%; display: inline-block;}
   .about-main .bullet-point{ display: block; font-size: 22px; font-weight: 600; padding:10px 0;}
-  .about-main .bullet-point img{ margin:0 8px 0 0;}
-  .about-main img{ max-width: 100%; margin-top: 50px;}
+  .about-main .bullet-point img{ margin:0 8px 0 0;}  
   .about-main .button-1{margin: 30px 0;}  
 
   /*** About doctors  ***/
   .about-doctor-main{ position: relative; font-size: 20px; color: #232323; margin-bottom: 150px;}
+  .about-doctor-main .doctor-pic img{ max-width: 100%; display: block;}
   .about-doctor-main .row{ position: relative; z-index: 1;}
   .about-doctor-main .doc-content{ padding-top: 50px;}
   .about-doctor-main .doc-content .button-1{margin: 20px 0;}
@@ -284,18 +157,18 @@ h2.title span{
 
   /*** Why choose us  ***/
   .why-choose-us{ background: rgba(237, 237, 237, 0.8); padding: 150px 0 100px 0; font-size: 20px; color: #232323; margin-bottom: 150px; text-align: center;}
-  .why-choose-us .col-sm-4{ text-align: center; padding: 40px 20px !important;}
+  .why-choose-us .col-sm-6{ text-align: center; padding: 40px 20px !important;}
   .why-choose-us .icon { margin-bottom: 30px;}
-  .why-choose-us .col-sm-4 h3{ font-size: 24px; color: #232323; font-weight: 700;}
-  .why-choose-us .col-sm-4 p{ font-size: 18px; color: #232323;}
+  .why-choose-us .col-sm-6 h3{ font-size: 24px; color: #232323; font-weight: 700;}
+  .why-choose-us .col-sm-6 p{ font-size: 18px; color: #232323;}
 
   /*** Recent Campaigns ***/
   .recent-campaigns{margin-bottom: 150px; position: relative;}
   .recent-campaigns .graphic-1{position: absolute; left: 3%; top: 45%; z-index: 0;}
-  .recent-campaigns .graphic-2{position: absolute; right:0%; top: 60%; z-index: 0;}
+  .recent-campaigns .graphic-2{position: absolute; right:0%; top: 50%; z-index: 0;}
 
   .recent-campaigns .owl-carousel{ padding: 15px 0;}
-  .recent-campaigns .card{ border-radius:20px; padding: 10px;}
+  .recent-campaigns .card{ border-radius:20px; padding: 10px; background-color: rgba(255, 255, 255, 0.8);}
   .recent-campaigns .card .card-img-top{ border-radius:20px;}  
   .recent-campaigns .card-title{ font-size: 22px; font-weight: 700; color: #232323;}
   .recent-campaigns .card-text{ font-size: 16px; color: #232323;}
@@ -321,7 +194,7 @@ h2.title span{
  .upcoming-events .graphic-2{position: absolute; right:5%; bottom: 10%; z-index: 0;}
 
  .upcoming-events .owl-carousel{ padding: 15px 0;}
- .event-card .card{ border-radius:20px; padding: 10px;}
+ .event-card .card{ border-radius:20px; padding: 10px; background-color: rgba(255, 255, 255, 0.8);}
  .event-card .card .attendees{ width: auto; position: absolute; top: 20px; right: 20px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;}
  .event-card .card .attendees span{font-weight: 600; font-size: 14px; line-height: 22px; letter-spacing: 0.02em; color: #9E0C0F;}
  .event-card .card .card-img-top{ border-radius:20px;} 
@@ -329,7 +202,7 @@ h2.title span{
  .event-card .card .card-title{ font-size: 22px; font-weight: 700; color: #232323;}
  .event-card .card .card-text{ font-size: 16px; line-height: 22px; color: #232323; min-height: 90px;}
  .event-card .card .date-address{ width: 100%; display: block; font-size: 14px; line-height: 16px;}
- .event-card .card .date-address img{ width:auto; display: inline-block; margin-right: 2px;}
+ .event-card .card .date-address img{ width:auto; display: inline-block; margin-right: 2px; margin-top: -2px;}
  .event-card .card .date-address .address{ width: 50%; float: left; color: #232323;}
  .event-card .card .date-address .date{ text-align: right;}
    
@@ -351,23 +224,23 @@ h2.title span{
 .donation-process .step p{ font-size: 18px; line-height: 26px; color: #232323; padding-left: 70px;}
 .donation-process .button-1{margin: 30px 0 0 0;}
 .donation-process .pic{margin: 100px 0 0 0;}
+.donation-process .pic img{ max-width: 100%;}
 
 /*** Footer ***/
 .footer-main{height: 750px; background-image: url('../public/footer-bg.jpg'); background-repeat: repeat-x; background-position: center top;}
 .footer-main .top-row{ padding: 210px 0;}
-.footer-main .col:first-child{ text-align: center !important; padding-right: 5%;}
-.footer-main .col-md-4{text-align: center; padding-right: 10%;}
-.footer-main .col:first-child img{ display: inline-block; }
+.footer-main .col-lg-4{text-align: center; padding-right: 10%;}
 .footer-main .col h4{ font-size: 25px; font-weight: 700; margin-bottom: 30px;}
 .footer-main .col a{ font-size: 17px; font-weight: 600; display: inline-block; margin: 7px 0;}
 .footer-main .col a:hover{ color: #9E0C0F;}
 .footer-main .play-store-btn{ width: 100%; height: 65px; display: block; margin-bottom: 30px; background: #FFFFFF; border: 1px solid #232323; border-radius: 50px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));}
 .footer-main .play-store-btn a{ display: block; padding: 5px 0 0 20px;}
-.footer-main select{ line-height: 50px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 30px; background-image: url('../public/drop-arow.png'); background-repeat: no-repeat; background-position: 92% center; padding: 0 20px; font-weight: 700; margin-top: 30px;}
+.footer-main select{ line-height: 50px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 30px; background-image: url('../public/drop-arow.png'); background-repeat: no-repeat; background-position: 92% center; padding: 0 20px; font-weight: 600; margin-top: 30px;}
 .footer-main select:focus{ box-shadow: none;}
 .footer-main .copyright{ width: auto; font-size: 18px; color: #232323; font-weight: 600; display: inline-block;}
 .footer-main .social{ width: auto; float: right; text-align: right; font-size: 18px; color: #232323; font-weight: 600; }
 .footer-main .social a{ margin-left: 10px;}
+.footer-main .social a img{ width: 40px;}
 
 
 /*** Login & Register page ***/
@@ -394,10 +267,13 @@ h2.title span{
 .pagination .page-item .page-link span{ color: #9E0C0F; font-weight: 600;  font-size: 24px; line-height: 44px;}
 .pagination .page-item.active .page-link{background-color: #9E0C0F; color: white; border: 1px solid #9E0C0F;}
 
+.statistic-main{ margin: 150px 0 100px 0;}
+
 
 /*** About Doctors page ***/
 .doctors-main {margin: 150px 0;}
 .doctors-main .process-main{ width: 100%; display: flex; margin-bottom: 150px;}
+.doctors-main .process-main .pic img{max-width: 100%; display: block;}
 .doctors-main .detail{ padding:0 0 0 5%;}
 .doctors-main p{ font-size: 18px; line-height: 26px; color: #232323;}
 .doctors-main .step{font-size: 20px; color: #232323;}
@@ -433,11 +309,12 @@ h2.title span{
 .doctors-main .doctor-list .item{ position: relative;}
 .doctors-main .doctor-list .approved-doc{ width: 40px; height: 40px; position:absolute; right: 3%; top: 3%; z-index: 5;}
 .doctors-main .doctor-list .approved-doc .icon{width: 40px; height: 40px; position: absolute; right: 10px; top: 10px; z-index: 1;}
+.doctors-main .doctor-list .approved-doc .icon img{ max-width: 100%;}
 .doctors-main .doctor-list .approved-doc .doctor-detail{ width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; background: rgba(0, 0, 0, 0.9); border-radius: 20px; z-index: 0; color: white; padding: 60px 20px 0; opacity: 0; visibility: hidden;}
 .doctors-main .doctor-list .approved-doc:hover{width: 94%; height: 94%; position:absolute; left: 3%; top: 3%;}
 .doctors-main .doctor-list .approved-doc:hover .doctor-detail{ opacity: 1; transition: 0.3s; visibility: visible;}
 .doctors-main .doctor-list .approved-doc .doctor-detail h4{ font-size: 18px; font-weight: 600;}
-.doctors-main .doctor-list .approved-doc .doctor-detail .bullet-point{ display: block; font-size: 14px; font-weight: 500; padding:5px 0; position: relative; padding-left: 25px; letter-spacing: 1px;}
+.doctors-main .doctor-list .approved-doc .doctor-detail .bullet-point{ display: block; font-size: 14px; font-weight: 500; padding:5px 0; position: relative; padding-left: 25px; letter-spacing: 1px; line-height: normal;}
 .doctors-main .doctor-list .approved-doc .doctor-detail .bullet-point img{ margin:2px 0px 0 0; position: absolute; left: 0;}
 
 .doctors-profile{ width: 100%; display: block;}
@@ -459,13 +336,13 @@ h2.title span{
 .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point{ display: block; font-size: 14px; font-weight: 500; padding:5px 0; position: relative; padding-left: 25px; letter-spacing: 1px;}
 .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img{ width: 20px; height: auto; margin:2px 0px 0 0; position: absolute; left: 0;}
 
-.doctors-profile .profile-section .prifiel-details{ width: 550px; display: inline-block;}
-.doctors-profile .profile-section .prifiel-details .bullet-point{ display: block; font-size: 16px; font-weight: 600; padding:5px 0;}
-.doctors-profile .profile-section .prifiel-details .bullet-point img{ width: 25px; height: 25px; margin:0 8px 0 0;}
-.doctors-profile .profile-section .prifiel-details .score{ width:100%; display:block; background: rgba(126, 182, 92, 0.6); padding: 10px 20px; border-radius: 10px; margin: 20px 0;}
-.doctors-profile .profile-section .prifiel-details .score p{ width: auto; display: inline-block; margin:0; line-height: 36px;  font-size: 22px; }
-.doctors-profile .profile-section .prifiel-details .score p.secound{ color: #9E0C0F; font-size: 22px; font-weight: 700; padding-left: 20px; }
-.doctors-profile .profile-section .prifiel-details .button-1{ width: 110px; height: 40px; border-radius: 6px; font-size: 14px; line-height: 40px;}
+.doctors-profile .profile-section .profile-details{ width: 550px; display: inline-block;}
+.doctors-profile .profile-section .profile-details .bullet-point{ display: block; font-size: 16px; font-weight: 600; padding:5px 0;}
+.doctors-profile .profile-section .profile-details .bullet-point img{ width: 25px; height: 25px; margin:0 8px 0 0;}
+.doctors-profile .profile-section .profile-details .score{ width:100%; display:block; background: rgba(126, 182, 92, 0.6); padding: 10px 20px; border-radius: 10px; margin: 20px 0;}
+.doctors-profile .profile-section .profile-details .score p{ width: auto; display: inline-block; margin:0; line-height: 36px;  font-size: 22px; }
+.doctors-profile .profile-section .profile-details .score p.secound{ color: #9E0C0F; font-size: 22px; font-weight: 700; padding-left: 20px; }
+.doctors-profile .profile-section .profile-details .button-1{ width: 110px; height: 40px; border-radius: 6px; font-size: 14px; line-height: 40px;}
 
 .doctors-profile .profile-section .addres-phone{ width: auto; display: block; margin-top: 50px;}
 .doctors-profile .profile-section .addres-phone .email{ width: 350px; height: 110px; display: inline-block; border: 1px solid #7EB65C; background-color: white; border-radius: 10px; padding: 30px; margin: 0 15px;}
@@ -513,40 +390,544 @@ h2.title span{
 .event-popup .date-address .button .button-1{ width: 170px; height: 44px; font-size: 16px; line-height: 42px; margin: 0; border-radius: 7px;}
 
 
+/*** Campaigns page ***/
+.campaigns-detail{ width: 100%; display: block; padding: 100px 0 0;}
+.campaigns-detail .title{ width: 100%; display: block; margin-bottom: 30px;}
+.campaigns-detail .title h2{ width: 50%; display: inline-block; font-size: 40px; font-weight: 700;}
+.campaigns-detail .title .total-collection{ min-width:500px; float: right; font-size: 33px; color: #232323; font-weight: 500; line-height: 56px;}
+.campaigns-detail .title .total-collection span{ color: #7EB65C; font-weight: 700;}
+.campaigns-detail .title .total-collection .progress{height: 7px; }
+.campaigns-detail .title .total-collection .progress .progress-bar{ background-color:#7EB65C;}
 
-@media only screen and (max-width: 600px) {
-  .main-nav {
-    padding-left: 5%;
-    padding-right: 5%;
+.campaigns-detail .gallery .video {width: 100%; position: relative; display: block; border-radius: 20px; overflow: hidden;}
+.campaigns-detail .gallery .video img{width: 100%;}
+.campaigns-detail .gallery .video .play-button{ width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: rgba(0, 0, 0, 0.5);}
+.campaigns-detail .gallery .video .play-button img{ width: auto; position: relative;  top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.campaigns-detail .gallery .img-gallery{ width: 105%; text-align: right; float: right; margin-right: -6%;}
+.campaigns-detail .gallery .img-gallery .thumb{ width: 45%; position: relative; float: left; padding:0; margin:0 4.5% 5% 0;  border-radius: 20px; overflow: hidden;}
+.campaigns-detail .gallery .img-gallery img{ width: 100%; display: block;}
+.campaigns-detail .gallery .img-gallery .thumb:last-child .overlay{ width:100%; height: 100%; position: absolute; left: 0; top: 0; padding-top: 25%; background: rgba(0, 0, 0, 0.5); text-align: center; vertical-align: middle; font-size: 30px; font-weight: 700; color: #ffffff;}
+
+.campaigns-detail .donorlist-disc{ margin: 100px 0 100px;}
+.campaigns-detail .donorlist-disc .donorlist{ width: 50%; float: left; padding: 0;}
+.campaigns-detail .donorlist-disc .donorlist .buttons{ width: 100%; display: block;}
+.campaigns-detail .donorlist-disc .donorlist .buttons a{width:45%; display: inline-block; border-radius: 10px; text-align: center; background: #7EB65C; font-size: 22px; color: #fff; font-weight: 600; line-height: 60px; text-transform: uppercase;}
+.campaigns-detail .donorlist-disc .donorlist .buttons a.share-btn{background: #0096EB; margin-left: 8%;}
+.campaigns-detail .donorlist-disc .donorlist .buttons a:hover{ background-color: #9E0C0F;}
+
+.campaigns-detail .donorlist-disc ul{ width: 98%; display: block; list-style: none; padding: 0;}
+.campaigns-detail .donorlist-disc ul li{ padding:15px; border-top: 1px solid #DBDBDB;}
+.campaigns-detail .donorlist-disc .score{ display: block; padding: 20px 40px 20px 20px;}
+.campaigns-detail .donorlist-disc .score .donors{ width: auto; text-align: center; display: inline-block;  font-size: 22px; color: #232323; font-weight: 600; text-transform: uppercase;}
+.campaigns-detail .donorlist-disc .score .donors span{ display: block; color: #9E0C0F; font-size: 28px; font-weight: 700;}
+.campaigns-detail .donorlist-disc .score .subscrib{ float: right;}
+
+.campaigns-detail .donorlist-disc ul li .thumb{ width: 70px; height: 70px; display: inline-block; border-radius: 50%; overflow: hidden; margin-right: 20px; vertical-align:top;}
+.campaigns-detail .donorlist-disc ul li .thumb img{ width: 100%; display: block;}
+.campaigns-detail .donorlist-disc ul li .donor-name{ width: auto; font-size: 18px; display: inline-block; line-height: 22px; margin-top: 10px;  color: #232323;}
+.campaigns-detail .donorlist-disc ul li .donor-name span{font-size: 22px; font-weight: 700; display: block;}
+.campaigns-detail .donorlist-disc ul li .time{ width: auto; float:right; font-size: 14px; color: #232323; display: inline-block; margin-top: 20px;}
+.campaigns-detail .donorlist-disc ul li.center{ text-align: center;}
+.campaigns-detail .donorlist-disc ul li .more-list{ width: 80px; display: inline-block; position: relative; font-size: 14px; color: #232323; font-weight: 600; background-color: #EDEDED; border-radius: 5px; line-height: 34px; }
+.campaigns-detail .donorlist-disc ul li .more-list::after{ content: ""; width: 100%; height: 11px; position: absolute; left: 0; bottom: -5px; background-image: url('../public/more-arw.png'); background-repeat: no-repeat; background-position: center;}
+.campaigns-detail .donorlist-disc ul li .more-list:hover{ background-color: #9E0C0F; color: white;}
+
+.campaigns-detail .donorlist-disc .description{ width: 50%; float: left; padding: 0 0 0 3%;}
+.campaigns-detail .donorlist-disc .description h3{ font-size: 26px; font-weight: 700;}
+.campaigns-detail .donorlist-disc .description p{ font-size: 18px; color: #232323; line-height: 26px;}
+
+.campaign-info{ width: 100%; display: block; background-color: #EDEDED; padding: 100px 0;}
+.campaign-info h3{ font-size: 26px; font-weight: 700; margin-bottom: 10px;}
+.campaign-info ul{ width: 100%; display: block; list-style: none; padding: 0;}
+.campaign-info ul li{ width: 100%; padding:30px 0; display: block; font-size: 15px; color: #232323; }
+.campaign-info ul li .info-title{ width: 200px; float: left; font-weight: 700;}
+.campaign-info ul li .info-title img{ margin-right: 5px;}
+.campaign-info ul li .info-details {width: auto; float: left; font-weight: 500;}
+
+.campaigns-detail .comments-main{ width: 100%; display: block; margin: 100px 0;}
+.campaigns-detail .comments-main h3{ font-size: 26px; font-weight: 700; margin-bottom: 20px;}
+.campaigns-detail .comments-main .comment-box{ width: 80%; position: relative; background: #DDF3FF; border: 1px solid #72C7F5; border-radius: 15px; padding: 20px 85px; margin: 0 0 20px 0;}
+.campaigns-detail .comments-main .comment-box .thumb{ width: 40px; height: 40px; position: absolute; left: 30px; top: 20px; border-radius: 50%; overflow: hidden;}
+.campaigns-detail .comments-main .comment-box .thumb img{ width: 100%; display: block;}
+.campaigns-detail .comments-main .comment-box h4{ font-size: 18px; color: #232323; font-weight: 700; padding: 8px 0;}
+.campaigns-detail .comments-main .comment-box p{ font-size: 15px; color: #232323;}
+.campaigns-detail .comments-main .comment-box .donate-time{ width: auto; height: 100%; position: absolute; right: 20px; top: 0px; font-size: 15px; color:rgba(35, 35, 35, 0.8); text-align: right; line-height: 20px; padding: 20px 0 0 10px;}
+.campaigns-detail .comments-main .comment-box .donate-time span{ display: block; font-size: 22px; color: #232323; font-weight: 700;}
+.campaigns-detail .comments-main .comment-box .donate-time .time{ width: 100%; position: absolute; right: 0; bottom: 20px; font-size: 15px; color:rgba(35, 35, 35, 0.8); }
+
+.campaigns-detail .comments-main .more{ width: 80%; display: block; text-align: center;}
+.campaigns-detail .comments-main .more-list{ width: 80px; display: inline-block; position: relative; font-size: 14px; color: #232323; font-weight: 600; background-color: #EDEDED; border-radius: 5px; line-height: 34px; }
+.campaigns-detail .comments-main .more-list::after{ content: ""; width: 100%; height: 11px; position: absolute; left: 0; bottom: -5px; background-image: url('../public/more-arw.png'); background-repeat: no-repeat; background-position: center;}
+.campaigns-detail .comments-main .more-list:hover{ background-color: #9E0C0F; color: white;}
+.campaigns-detail .why-choose-us{ margin-bottom: 50px;}
+
+
+/*** FAQ page ***/
+.faq-main{ width: 100%; display: block; padding: 150px 0 0;}
+.faq-main .graphic-1{ position: absolute; right: 0; top: 70%; z-index: 0;}
+.faq-main .question-ans{ width: 80%; display: block; padding-bottom: 100px;}
+.faq-main .question-ans .accordion-item{background: #FFFFFF; border: 1px solid #DBDBDB; border-radius: 30px; margin-bottom: 20px;}
+.faq-main .question-ans .accordion-item .accordion-button{background-color: transparent; box-shadow: none; font-size: 20px; color: #7EB65C; font-weight: 600;}
+.faq-main .question-ans .accordion-item .accordion-button.collapsed{color: #232323; }
+.faq-main .question-ans .accordion-item .accordion-button::before {content: "Q."; font-size: 24px; color: #9E0C0F; font-weight: 700; margin-right: 10px;}
+.faq-main .question-ans .accordion-item .accordion-button::after{ width: 40px; height: 40px; border-radius: 20px; background-color: #7EB65C; background-image: url('../public/minus.jpg'); background-position: center;}
+.faq-main .question-ans .accordion-item .accordion-button.collapsed::after{ background-image: url('../public/plus.png'); background-size: auto;}
+.faq-main .question-ans .accordion-item .accordion-body{ padding: 0 55px 15px; font-size: 16px; color: rgba(0, 0, 0, 0.8); line-height: 24px;}
+
+.faq-main .why-choose-us{ margin-bottom: 50px; position: relative; z-index: 1;}
+
+
+/*** Launch a Campaign page ***/
+.launch-campaign-main{ width: 100%; display: block; padding: 100px 0 0;}
+.launch-campaign-main h2{ width: 100%; display: block; font-size: 36px; font-weight: 700; text-align: center; padding: 0 20%;}
+.launch-campaign-main .steps{ width: 100%; display: block; padding: 50px 5%;}
+.launch-campaign-main .steps .step{ width: 100%; position: relative; padding:0px;}
+.launch-campaign-main .steps .step .step-arrow{ width: auto; position: relative; left: -40px; bottom: 20px; }
+.launch-campaign-main .steps .step .step-detail{ width: 55%; display: inline-block; padding:5% 5% 0 2%;}
+.launch-campaign-main .steps .step .step-detail .step-no{ font-size: 26px; font-weight: 600;}
+.launch-campaign-main .steps .step .step-detail .step-no span{ color: #7EB65C; font-size: 40px; font-weight: 700;}
+.launch-campaign-main .steps .step .step-detail h4{ font-size: 24px; font-weight: 700; color: #232323;}
+.launch-campaign-main .steps .step .step-detail p{ font-size: 18px; font-weight: 400; color: #232323;}
+.launch-campaign-main .steps .step .step-picture { width: 42%; display: inline-block; text-align: center; vertical-align:top;  text-align: left;}
+.launch-campaign-main .steps .step .step-picture .picture{ width: 450px; height: 450px; position: relative; display: inline-block;}
+.launch-campaign-main .steps .step .step-picture .picture img{border-radius: 50%; }
+.launch-campaign-main .steps .step .step-picture .picture::before{ content: ""; width: 88%; height: 88%; position: absolute; left: 6%; top: 6%; z-index: 1; border-radius: 50%; border: 3px solid #FFFFFF; filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));} 
+.launch-campaign-main .steps .step .step-picture .picture::after{content: ""; width: 80px; height: 92px; position: absolute; left: 5%; top: 5%; z-index: 1; background-image: url('../public/r-icon.png'); }
+.launch-campaign-main .steps .step:nth-child(2) .step-arrow{ left: auto; right: -40px; bottom: 20px; transform: scaleX(-1); }
+.launch-campaign-main .steps .step:nth-child(1) .step-picture, .launch-campaign-main .steps .step:nth-child(3) .step-picture{ float: right;}
+.launch-campaign-main .steps .step:nth-child(1) .step-picture .picture::after, .launch-campaign-main .steps .step:nth-child(3) .step-picture .picture::after{right: 5%; left: auto;}
+.launch-campaign-main .launch-campaign-btn{ width: 100%; display: block; text-align: center; padding: 0px 0 100px;}
+.launch-campaign-main .launch-campaign-btn .button-1{ width: 300px;}
+
+
+/*** About us page ***/
+.about-us-main{ width: 100%; display: block;}
+.about-us-main .about-details{ width: 100%; display: inline-block;}
+.about-us-main .about-details .about-img{ float: right; margin-left: 50px; position: relative;}
+.about-us-main .about-details .about-img::after{ content: ""; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-image: url('../public/logo-en.png'); background-repeat: no-repeat; background-position: center; background-size: 54%;}
+.about-us-main .about-details p{ font-size: 18px; color: #232323;}
+.about-us-main .about-details .bullet-point{ display: block; font-size: 22px; font-weight: 600; padding:0; color: #232323; margin-bottom: 20px;}
+.about-us-main .about-details .bullet-point img{ width: 30px; height: 30px; margin:0 8px 0 0;}
+
+.about-us-main .team-main{ width: 100%; display: block; margin:0 0 100px 0; text-align: center;}
+.about-us-main .team-main h2{ width: auto; position: relative; display: inline-block; margin-top: 100px;}
+.about-us-main .team-main h2::after{ content: ""; width: 100px; height: 6px; position: absolute; bottom: -25px; left:50%; margin-left: -50px; right: auto; border-radius: 4px; background-color: #7EB65C;}
+.about-us-main .team-main .team-members-main{ width:100%; display: block; margin-top: 20px;}
+.about-us-main .team-main .team-member{ width: 656px; display: inline-block; text-align: left; position: relative; margin: 30px 15px;}
+.about-us-main .team-main .team-member .thumb{width: auto; display: inline-block; position: relative; z-index: 1;}
+.about-us-main .team-main .team-member .member-details{ width:90%; min-height: 220px; vertical-align: top; position: absolute; left: 10%; top: 12%; display: inline-block; background-color: #EDEDED; padding: 30px 30px 30px 200px; border-radius: 20px;}
+.about-us-main .team-main .team-member .member-details h4{ font-size: 20px; color: #232323; font-weight: 700; line-height: 20px;}
+.about-us-main .team-main .team-member .member-details .designation{ font-size: 16px; color: #9E0C0F; line-height: 16px;}
+.about-us-main .team-main .team-member .member-details p{ font-size: 15px; color: #232323; margin: 15px 0; line-height: 18px;}
+.about-us-main .team-main .team-member .member-details .social{ width: 100%; display: block;}
+.about-us-main .team-main .team-member .member-details .social a{ margin-right: 10px;}
+.about-us-main .team-main .team-member .member-details .social a:hover{ opacity: 0.5;}
+
+
+
+/*** Contact us page ***/
+.contactus-main{width: 100%; display: block; margin: 100px 0;}
+.contactus-main h2{ width: 100%; display: block; font-size: 36px; font-weight: 700; text-align: center; padding: 0 20%;}
+.contactus-main h2 span{ display: block;}
+.contactus-main p{ text-align: center; font-size: 18px; color: #232323;}
+
+.contactus-main .form-map{width: 100%; display: block; margin: 50px 0;}
+.contactus-main .form-map .form{ width: 58%; display: inline-block;}
+.contactus-main .form-map .form input{ height: 70px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px;}
+.contactus-main .form-map .form textarea{ background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; resize: none;  font-size: 16px; padding: 15px 25px;}
+.contactus-main .form-map .form .btn-primary{ width: 300px; display: inline-block; background-color: #9E0C0F; filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5)); line-height: 58px; border-radius: 10px; color: white; font-weight: 600; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center; border: none;}
+.contactus-main .form-map .form .btn-primary:hover{background-color: #7EB65C; color: white; filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));}
+
+.contactus-main .form-map .map{ width: 38%; float: right; background: #FFFFFF; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25); border-radius: 20px; margin-top: 40px;}
+.contactus-main .form-map .map iframe{ width: 100%; height: 480px; float: left; border: 10px solid #ffffff; border-radius: 20px;}
+
+.contactus-main .addres-phone{ width: auto; display: block; margin-top: 100px; text-align: center;}
+.contactus-main .addres-phone .email{ width: 430px; height: 110px; display: inline-block; border: 2px solid #7EB65C; background-color: white; border-radius: 10px; padding: 28px; margin: 0 10px; text-align: left;}
+.contactus-main .addres-phone .email img{ float: left; margin:4px 10px 0 0;}
+.contactus-main .addres-phone .email h3{ font-size: 22px; color: #232323; line-height: 22px; font-weight: 700; margin: 4px 0 0 0;}
+.contactus-main .addres-phone .phone{border: 2px solid #FF7F18;}
+.contactus-main .addres-phone .address{border: 2px solid #FD1D1D;}
+
+.contactus-main .foundation{ width: 500px; display: inline-block; margin: 50px 0; text-align: center;}
+.contactus-main .foundation h5{ font-size: 22px; font-weight: 700; text-transform: uppercase; margin: 15px 0;}
+.contactus-main .foundation span{ display: block;}
+
+.contactus-main .social{ width: auto; float: right; text-align: center; font-size: 18px; color: #232323; font-weight: 600; margin-bottom: 50px;}
+.contactus-main .social h4{ font-size: 36px; font-weight: 700; margin-bottom: 20px;}
+.contactus-main .social a{ margin: 0 10px;}
+.contactus-main .social a img{width: 65px;}
+
+@media only screen and (max-width: 1600px) {
+  .doctors-profile .profile-section .graphic-1{width: 20%; bottom: 10%;}
+  .doctors-profile .profile-section .graphic-1 img{max-width: 100%;}
+  .doctors-profile .profile-section .graphic-2{right: 5%;}
+}
+
+@media only screen and (max-width: 1500px) {
+  .container-xxl{ max-width: 1300px;}
+  .about-main{padding: 50px 0 50px 50px;}
+  .about-main .about-detail{width: 48%;}
+  .about-main .about-pic{width: 52%;}  
+
+  .recent-campaigns .graphic-1 {left: 1%;}
+  .recent-campaigns .graphic-1 img, .recent-campaigns .graphic-2 img{ width: 70%;}
+  .recent-campaigns .graphic-2{ right: 0; text-align: right;}
+
+  .upcoming-events .graphic-1{ top: 10%; left: -1%;}
+  .upcoming-events .graphic-1 img{ width: 50%;}
+  .upcoming-events .graphic-2{  right: 0;}
+  .upcoming-events .graphic-2 img{ width: 80%;}
+
+  .doctors-profile .profile-section .graphic-1{width: 15%; bottom: 20%;}
+  .doctors-profile .profile-section .graphic-1 img{max-width: 100%;}
+  .doctors-profile .profile-section .graphic-2{right: 5%;}
+  .doctors-profile .profile-section .graphic-2 img{width: 100px;}
+}
+
+@media only screen and (max-width: 1400px) {
+  .container-xxl{ max-width: 1200px;}
+  .button-1{width: 200px; font-size: 20px;}
+   h2.title{ font-size: 35px;}
+
+  .main-nav .nav-link{font-size: 15px; margin: 0 12px;}
+
+  .home-header{margin-bottom: 120px;}
+  .home-header .caption .button-1{ width: 250px;}
+  .home-header .caption .button-1 img{ margin: 5px 25px 5px 10px;}
+  .home-header .caption{width: 370px;}
+  .home-header .caption h1{font-size: 25px;}
+  .home-header .caption img{ max-width: 90%;}
+  .home-header .caption h4{ font-size: 16px;}
+
+  .statistic-main{height: 175px; margin: 100px 0 100px 0;}
+  .statistic-main .pic img{ width: 200px; height: auto;}
+  .statistic-main ul{margin: 25px 0 0 0; background-position: right 70px}
+  .statistic-main ul li{ font-size: 18px;}
+  .statistic-main ul li span{ font-size: 34px;}
+
+  .about-main{font-size: 17px; margin-bottom: 100px;}
+  .about-main .bullet-point{font-size: 20px; padding: 8px 0;}
+
+  .about-doctor-main{font-size: 17px; margin-bottom: 100px;}
+  .about-doctor-main .graphic-1{ left: -10%; top: 30%;}
+  .about-doctor-main .graphic-1 img{  width: 70%;}
+
+  .why-choose-us{font-size: 18px; margin-bottom: 100px; padding: 100px 0 50px 0;}
+  .why-choose-us .icon{margin-bottom: 20px;}
+  .why-choose-us .icon img{ height: 70px;}
+  .why-choose-us .col-sm-6 h3{ font-size: 22px;}
+  .why-choose-us .col-sm-6 p{font-size: 16px;}
+
+  .recent-campaigns{margin-bottom: 100px;}
+  .recent-campaigns .card, .event-card .card{padding: 8px;}
+  .recent-campaigns .card-body, .event-card .card .card-body{ padding:1rem 0.6rem;}
+  .recent-campaigns .card-title, .event-card .card .card-title{font-size: 20px;}
+  .recent-campaigns .card-text, .event-card .card .card-text{font-size: 15px; min-height: 80px;}
+  .recent-campaigns .total-collection{font-size: 16px;}
+  .recent-campaigns .owl-nav button, .upcoming-events .owl-nav button{width: 40px; height: 40px;}
+  .recent-campaigns .owl-nav button span, .upcoming-events .owl-nav button span{font-size: 40px; line-height: 30px; height: 40px;}
+
+  .upcoming-events{margin-bottom: 100px; padding: 100px 0;}
+  .event-card .card .date-address{font-size: 13px; line-height: 14px;}
+  
+  .donation-process{margin-bottom: 100px; }
+  .donation-process .step .title{font-size: 22px;}
+  .donation-process .step .title span{width: 64px; font-size: 36px;}
+  .donation-process .step p{font-size: 16px; line-height: 24px; padding-left: 64px;}
+
+  .footer-main{height: 510px; background-size: 100% auto;}
+  .footer-main .top-row{padding: 120px 0 80px 0;}
+  .footer-main .col h4{font-size: 22px; margin-bottom: 25px;}
+  .footer-main .col a{font-size: 15px;}  
+
+  .doctors-main{ margin: 100px 0;}
+  .doctors-main .step .title{font-size: 22px;}
+  .doctors-main .step .title span{width: 64px; font-size: 36px;}
+  .doctors-main .step p { font-size: 16px; line-height: 24px; padding-left: 64px;}
+
+  .doctors-main .doctor-list .card{padding: 8px;}
+  .doctors-main .doctor-list .card-body{ padding:1rem 0.6rem;}
+  .doctors-main .doctor-list .card-title{font-size: 20px;}
+  .doctors-main .doctor-list .card .card-text{font-size: 15px;}
+  .doctors-main .doctor-list .approved-doc{right: 2.5%; top: 2.5%;}
+  .doctors-main .doctor-list .approved-doc:hover{width: 95%; height: 95%; left: 2.5%; top: 2.5%;}
+
+  .doctors-profile .profile-section .profile-pic{margin-right: 3%;}
+  
+}
+
+@media only screen and (max-width: 1300px) {
+  .container-xxl{ max-width: 1140px;}
+
+  .main-nav .navbar-brand{width: 160px; margin-right: 1.5rem !important;}
+  .main-nav .nav-link.btn{width: 170px; font-size: 14px;}
+
+
+  .inner-main .header h3{font-size: 30px;}
+  .doctors-main p{font-size: 17px; line-height: 24px;}
+
+  .doctors-main .doctor-list .approved-doc .doctor-detail h4{ font-size: 16px;}
+  .doctors-main .doctor-list .approved-doc .doctor-detail .bullet-point{ font-size: 13px; padding: 5px 0 4px 25px;}
+
+  .doctors-profile .profile-section .graphic-1 { width: 14%; bottom: 30%; }
+  .doctors-profile .profile-section .profile-pic{width: 420px; max-height: 420px;}
+  .doctors-profile .profile-section .addres-phone .email{width: 320px; height: 100px; padding: 25px; margin: 0 10px;}
+  
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .navbar-expand-lg .navbar-collapse{display: block !important;}
+
+  .navbar-expand-lg{justify-content: space-between;}
+  .navbar-expand-lg .navbar-toggler{  display: block; float: right;}
+  .navbar-expand-lg .navbar-collapse{ display: none !important; right: -100%;}
+  .navbar-expand-lg .navbar-collapse.show{ display: block !important; right: 3%;}
+  .main-nav { padding-left: 3%; padding-right: 3%;}
+  .navbar-toggler:focus{ box-shadow:none}
+  .navbar-collapse{ width: 300px; position: absolute; top: 69px; right: 0; z-index: 10; background-color: rgba(255, 255, 255, 0.95); padding:30px 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25); border-radius:0px;}
+  .navbar-expand-lg .navbar-nav{  flex-direction: column;}
+  .main-nav .nav-link{font-size: 16px; font-weight: 600; margin: 3px 20px; padding: 7px 0 !important; display: block;}
+  .main-nav .nav-link.act::after{width: 80%; height: 4px; bottom: 0px;}
+  .main-nav .nav-link.btn{font-size: 15px; color: white; background-color: #9E0C0F; padding: 0px 0px; line-height: 30px;}
+
+  .container-xxl{ max-width: 1000px;}
+  .home-header {margin-bottom: 80px;}
+  .home-header .caption h1 {font-size: 23px;}
+  .home-header .caption img { max-width: 80%;}
+  .home-header .caption .button-1 img{width: 38px; margin: 8px 25px 5px 10px;}
+
+  .statistic-main{height: 150px; margin: 60px 0;}
+  .statistic-main .pic img{ width: 160px; height: auto;}
+  .statistic-main ul{margin: 18px 0 0 0; background-position: right 50px}
+  .statistic-main ul li{ font-size: 16px;}
+  .statistic-main ul li span{ font-size: 30px;}
+  .statistic-main ul li .divider{width: 20px; height: 88px; background-size: 20px auto; right: -9px; top: -6px;}
+
+  .about-main{ padding: 50px 50px 200px 50px; margin-bottom: 70px;}
+  .about-doctor-main .graphic-1 {left: -7%; top: 25%;}
+  .about-doctor-main .graphic-1 img{ width: 50%;}
+  .about-doctor-main .graphic-2 img{ width: 70%;}
+  .about-main .about-detail{width: 100%;}
+  .about-main .about-pic{ width: 50%;}
+
+  .why-choose-us .col-sm-6{padding: 20px 15px !important;}
+
+  .footer-main{background-size: 100% 100%;}
+  .footer-main .col-lg-4 {padding-right: 5%;}  
+
+
+  .login-main{ padding: 5% 10%;; max-width: 700px;}
+  .login-main .form-control{height: 60px;}
+  .login-main Form .button-1{line-height: 50px;}
+  .login-main .already{line-height: 60px;}
+
+  .doctors-main .process-main{ margin-bottom: 100px;}
+
+  .doctors-profile .profile-section .graphic-1 { width: 14%; bottom: 30%; }
+  .doctors-profile .profile-section .profile-pic{width: 380px; max-height: 380px;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .icon{ width: 50px; height: 50px;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail{padding: 80px 50px 50px 50px;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail h4{ font-size: 17px;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point{ font-size: 13px; padding: 3px 0 3px 25px;}
+  .doctors-profile .profile-section .profile-details{width: 440px;}
+  .doctors-profile .profile-section .profile-details .score p{line-height: 32px; font-size: 18px;}
+  .doctors-profile .profile-section .profile-details .score p.secound{font-size: 18px;}
+  .doctors-profile .profile-section .addres-phone .email{width: 300px; height: 92px; padding: 20px; margin: 0 10px;}
+  .doctors-profile .profile-section .addres-phone .email img{ height: 38px; margin-top: 7px;}
+  
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .container-xxl{ max-width:90%;}
+  h2.title { font-size: 30px; line-height: 26px;}
+  h2.title span{font-size: 16px;}
+  .button-1{width: 170px; line-height: 50px; border-radius: 5px; font-size: 18px;}
+
+  .home-header{ margin-bottom: 60px;}
+  .home-header .caption{ width: 400px;}
+  .home-header .caption img{ width: 200px;}
+  .home-header .caption h1 { font-size: 20px; margin-bottom: 5px !important;}
+  .home-header .caption h4{font-size: 15px; margin: 15px 0 !important; }
+  .home-header .caption .button-1{width: 200px;}
+  .home-header .caption .button-1 img{margin: 4px 15px 5px 10px;}
+
+  .statistic-main{height: 120px; margin-bottom: 50px;}
+  .statistic-main .pic img{ width: 130px;}
+  .statistic-main ul{margin: 13px 0 0 0; background-position: right 40px; background-size: 40px;}
+  .statistic-main ul li{ font-size: 14px;}
+  .statistic-main ul li span{ font-size: 24px;}
+  .statistic-main ul li .divider{width: 18px; height: 88px; background-size: 100% auto;}
+
+  .about-main{ font-size: 16px; padding: 40px 40px 150px 40px;}
+  .about-main .bullet-point { font-size: 18px; padding: 5px 0;}
+  .about-main .bullet-point img{ width: 26px; margin: 0 5px 0 0;}
+
+  .about-doctor-main{font-size: 16px; text-align: center; margin-bottom: 70px;}
+  .about-doctor-main .graphic-1 {left: -7%; top: 25%; width: 300px;}
+  .about-doctor-main .graphic-1 img {width: 70%;}
+  .about-doctor-main .doctor-pic img{ width: 70%; display: inline-block;}
+
+  .why-choose-us{font-size: 16px; margin-bottom: 70px;}
+  .why-choose-us .col-sm-6 h3 { font-size: 20px;}
+  .why-choose-us .col-sm-6 p {font-size: 15px;}
+  .why-choose-us .icon img {height: 50px;}
+
+  .recent-campaigns .owl-carousel{padding: 5px 0;}
+  .recent-campaigns .owl-dots{margin-top: 15px;}
+  .recent-campaigns .owl-dots .owl-dot{width: 12px; height: 12px;}  
+
+  .upcoming-events{margin-bottom: 70px; padding: 70px 0;}
+  .upcoming-events .owl-carousel{padding: 5px 0;}
+  .upcoming-events .owl-dots{margin-top: 15px;}
+  .upcoming-events .owl-dots .owl-dot{width: 12px; height: 12px;}
+
+  .donation-process .step p{font-size: 15px;  line-height: 22px;}
+  .donation-process .pic{ margin:0; text-align: center;}
+  .donation-process .pic img{ max-width: 80%;}
+  .donation-process .step .title { font-size: 20px;}
+  .donation-process .step .title span{width: 54px; font-size: 32px;}
+  .donation-process .step p{padding-left: 54px;}
+
+  .footer-main .container-xxl{ max-width: 94%;}
+  .footer-main .top-row{padding: 90px 0 70px 0;}
+  .footer-main .col-lg-4 {padding-right: 0%; text-align: left; margin-bottom: 30px;}
+  .footer-main .col-lg-4 img{ float: left;}
+  .footer-main select{ width: 250px; display: inline-block; margin-top: -5px; margin-left: 20px;}
+  .footer-main .col h4{font-size: 20px; margin-bottom: 15px;}
+  .footer-main .col a{margin: 5px 0;}
+  .footer-main .play-store-btn{margin-bottom: 20px;}
+
+
+
+  .inner-main .header img{max-width: 150%; width: 150%;}
+
+  .login-main{margin: 70px 0;}
+
+  .doctors-main { margin: 70px 0;}
+  .doctors-main .process-main{ display: block; margin-bottom: 70px;}
+  .doctors-main .process-main .pic{ width: 100%; margin:0; text-align: center;}
+  .doctors-main .process-main .pic img{ max-width: 80%;}
+  .doctors-main .detail{padding: 40px 0 0 0;}
+  .doctors-main .step .title { font-size: 20px;}
+  .doctors-main .step .title span{width: 54px; font-size: 32px;}
+  .doctors-main .step p{padding-left: 54px; font-size: 15px;  line-height: 22px;}
+
+  .doctors-main .filter-main form{width: 300px;}
+
+}
+
+
+@media only screen and (max-width: 767px) {   
+  .container-xxl { max-width: 98%;}
+  .button-1 {line-height: 44px; font-size: 16px;}
+  h2.title {font-size: 24px; line-height: 20px; margin-bottom: 15px;}
+  h2.title span { font-size: 14px;}
+
+  .main-nav .navbar-brand{width: 130px;}
+  .navbar-collapse{ width: 100%; left: 0; top: 67px; right: auto;}
+  .main-nav .nav-link{font-size: 14px; margin: 3px 15px;}
+  .main-nav .nav-link.act::after{width: 40px; height: 3px;}
+  .main-nav .nav-link.btn{font-size: 14px;}
+
+  .home-header .caption .button-1 img{width: 32px;}
+  .home-header .caption{font-size: 15px;}
+
+  .statistic-main{height: 150px; padding-bottom: 0; padding-top: 15px; margin-top: 50px; background-size: 150% auto; background-position: left bottom;}
+  .statistic-main .pic img {width: 100px;}
+  .statistic-main ul{ margin: 0 10px 0 0; height: 100%; background-position: 80px 90px;}
+  .statistic-main ul li{ width: 28%; font-size: 12px; margin-bottom: 10px;}
+  .statistic-main ul li span {font-size: 20px;}
+
+  .about-main{ font-size: 15px;}
+  .about-main .bullet-point { font-size: 16px; padding: 5px 0 5px 30px; position: relative; line-height: normal;}
+  .about-main .bullet-point img{ width: 22px; margin: 0 4px 0 0; position: absolute; left: 0; top: 8px;}
+
+  .about-doctor-main{ font-size: 15px; margin-bottom: 40px;}
+
+  .why-choose-us { font-size: 15px; margin-bottom: 50px; padding: 50px 0 30px 0;}
+  .why-choose-us .col-sm-6 { padding: 10px 15px !important;}
+
+  .recent-campaigns{ padding: 0 15px;}
+  .recent-campaigns .graphic-1{top: -5%; left: 40%;}
+  .recent-campaigns .graphic-1 img, .recent-campaigns .graphic-2 img{width: 40%;}
+  .recent-campaigns .graphic-2{top: 90%;}
+
+  .recent-campaigns .owl-nav, .upcoming-events .owl-nav{ top: -40px;}
+  .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next, .owl-carousel button.owl-dot{width: 32px; height: 32px;}
+  .recent-campaigns .owl-nav button span, .upcoming-events .owl-nav button span{font-size: 30px; line-height: 22px; height: 30px;}
+
+  .upcoming-events{ padding: 60px 15px; margin-bottom: 50px;}
+  .upcoming-events .graphic-1{top: -12%;}
+  .upcoming-events .graphic-2{ width: 70px; bottom: 5%; right: 2%;}
+  .upcoming-events .graphic-2 img { width: 100%;}
+  
+  .donation-process { margin-bottom: 50px;}
+  .donation-process .step .title {font-size: 17px;}
+  .donation-process .step .title span{width: 50px; font-size: 28px; top: 0px;}
+  .donation-process .step p { padding-left: 50px; font-size: 14px; line-height: 20px;}
+
+  .footer-main .copyright{ font-size: 14px;}
+  .footer-main .social{ font-size: 16px;}
+  .footer-main .social a{ margin-left: 7px;}
+  .footer-main .social a img { width: 32px;}
+
+
+  .inner-main .header h3{ font-size: 20px;}
+  .inner-main .header img {max-width: 200%; width: 200%;}
+
+  .login-main{width: 100%; margin: 50px 0; padding: 10% 7%; font-size: 15px; border-radius: 10px;}
+  .login-main .form-control{border-radius: 5px; height: 54px; font-size: 14px; padding: 0 15px;}
+  .login-main .already {line-height: 50px; border-radius: 5px;}
+  .login-main Form .button-1{width: 160px;}
+
+  .doctors-main .process-main{margin-bottom: 50px;}
+  .doctors-main .step .title {font-size: 17px;}
+  .doctors-main .step .title span{width: 50px; font-size: 28px; top: 0px;}
+  .doctors-main .step  p { padding-left: 50px; font-size: 14px; line-height: 20px;}
+  .doctors-main .next-process{font-size: 15px; margin: 20px 0 0 0;}
+  .doctors-main .next-process img{ width: 12px; margin: 5px 10px 0px;}
+
+  .doctors-main .filter-main{padding-bottom: 20px;}
+  .doctors-main .filter-main .search-field .form-control{ line-height: 50px; padding: 0px 10px 0px 40px; background-size: 18px; font-size: 0.9rem;}
+  .doctors-main .filter-main .filter{margin-top: 10px;}
+  .doctors-main .filter-main .filter .dropdown-toggle{ padding: 5px 0;}
+
+  .pagination .page-item .page-link{width: 40px; height: 40px; line-height: 38px; font-size: 13px;}
+  .pagination .page-item .page-link span{font-size: 20px; line-height: 34px;}
+  
+}
+
+@media only screen and (max-width: 500px) {   
+  .home-header {margin-bottom: 0px;}
+  .home-header .caption{ width: 350px; position: relative; transform: translate(-50%, 0); margin-top: -18%;}
+  .home-header .caption h1{font-size: 15px;}
+  .home-header .caption h4{margin: 30px 0 15px 0 !important;}
+  .home-header .caption img{width: 150px;}
+
+  .about-main{padding: 20px 20px 0px 20px;}
+  .about-main .about-pic{ width: 100%; position: relative; right: -20px;}
+
+  .about-doctor-main .graphic-1 { left: -10%; top: 10%; width: 180px;}
+  .about-doctor-main .graphic-2{ right: -8%;}
+  .about-doctor-main .graphic-2 img{ width: 50%;}
+  .about-doctor-main .doc-content { padding-top: 20px;}
+
+  .footer-main{height: 450px; background-size: auto 100%;}
+  .footer-main .top-row { padding: 75px 0 10px 0;}
+  .footer-main .col-lg-4 img{width: 120px;}  
+  .footer-main select{width: 190px; margin-left: 15px; height: 44px; line-height: 44px; font-size: 0.8rem; margin-top: -10px;}
+  .footer-main .col h4 {font-size: 18px; margin-bottom: 10px;}
+  .footer-main .col a{font-size: 14px;}
+  .footer-main .col:last-child{ width: 100%; margin-top: 50px; flex: auto; text-align: center;}
+  .footer-main .play-store-btn{width: 48%; height: 50px; display: inline-block; margin-right: 2%; text-align: left;}
+  .footer-main .play-store-btn a {display: block; padding: 3px 0 0 15px;}
+  .footer-main .play-store-btn img{ height: 32px;}
+  .footer-main .copyright,.footer-main .social { width: 100%; text-align: center; margin: 10px 0;}
+
+  .doctors-main .filter-main form {
+    width: 250px;
   }
-  .navbar-toggler:focus{
-    box-shadow:none
-  }
-  .navbar-collapse{
-    width: 100%;
-   position: absolute;
-   top: 62px;    
-   left: 0;
-   z-index: 10;
-   background-color: rgba(255, 255, 255, 0.8);
-   padding: 15px;
-  }
-  .main-nav .nav-link{
-    font-size: 14px;
-    font-weight: 600;    
-    margin: 3px 15px;
-    padding: 7px 0 !important;  
-  }
-  .main-nav .nav-link.act::after{    
-    width: 50%;
-    height: 3px;    
-    bottom: 0px;    
-  }
-  .main-nav .nav-link.btn{    
-    font-size: 14px; 
-    color: white;   
-    background-color: #9E0C0F;
-    padding: 0px 0px;
-    line-height: 30px;    
-  }
+  
 }

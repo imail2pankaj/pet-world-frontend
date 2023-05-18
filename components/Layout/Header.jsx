@@ -21,7 +21,7 @@ const Header = () => {
           <Nav.Link href="/campaigns">{t("Campaigns")}</Nav.Link>
           <Nav.Link href="/events">{t("Events")}</Nav.Link>
           <Nav.Link href="/about-us">{t("About Us")}</Nav.Link>
-          <Nav.Link href="/">{t("Contact Us")}</Nav.Link>
+          <Nav.Link href="/contact-us">{t("Contact Us")}</Nav.Link>
         </Nav>
         <Nav>
           <Nav.Link className='nav-link btn' href="/login">{t("My Account")}</Nav.Link>

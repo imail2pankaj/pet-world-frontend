@@ -13,7 +13,7 @@ const Footer = () => {
     <div className='footer-main'>
       <Containerer fluid="xxl">  
       <Row className='top-row'>
-          <Col md={4} className="justify-content-md-center">
+          <Col md={12} lg={4} className="justify-content-md-center">
           <img src={`/logo-en.png`} width={180} alt={"Logo"} />
           <LanguageOption />
           </Col> 

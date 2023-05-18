@@ -8,7 +8,10 @@ const DonationProcess = () => {
     <div className='donation-process'> 
     <Containerer fluid="xxl">        
         <Row>
-          <Col sm={6}>
+          <Col lg={{ order: 'last' }} className='pic'>
+            <img src={`/donation-process-pic.png`} alt={"About Pic"} />
+          </Col>
+          <Col sm={12} lg={6}>
             <h2 className='title'>
               <span>Easy</span>
               Donation Process
@@ -37,10 +40,7 @@ const DonationProcess = () => {
               <a className='button-1' href='#!' role='button'>
                 Read More
               </a>
-          </Col>
-          <Col className='pic'>
-            <img src={`/donation-process-pic.png`} alt={"About Pic"} />
-          </Col>
+          </Col>          
         </Row>
         </Containerer>
     </div>

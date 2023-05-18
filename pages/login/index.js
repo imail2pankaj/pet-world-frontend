@@ -8,7 +8,7 @@ const Login = () => {
     <Containerer fluid="xxl">      
     <div className='login-main'>
       <h2>Login to <b>PetWorld</b></h2>
-        <div className="mb-3 mt-md-4 lg-3">
+        <div className="mb-3 mt-4 lg-3">
           <div className="mb-3">
             <Form>
               <Form.Group className="mb-4" controlId="formBasicEmail">  

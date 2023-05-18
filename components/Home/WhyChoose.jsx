@@ -12,7 +12,7 @@ const WhyChoose = () => {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br/> tempor incididunt ut labore</p>
       </Row>
       <Row>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon1.svg`} alt={"Icon"} />
         </div>
@@ -23,7 +23,7 @@ const WhyChoose = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon2.svg`} alt={"Icon"} />
         </div>
@@ -34,7 +34,7 @@ const WhyChoose = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon3.svg`} alt={"Icon"} />
         </div>
@@ -45,7 +45,7 @@ const WhyChoose = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon4.svg`} alt={"Icon"} />
         </div>
@@ -56,7 +56,7 @@ const WhyChoose = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon5.svg`} alt={"Icon"} />
         </div>
@@ -67,7 +67,7 @@ const WhyChoose = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon6.svg`} alt={"Icon"} />
         </div>

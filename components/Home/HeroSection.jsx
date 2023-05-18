@@ -13,6 +13,7 @@ const HeroSection = () => {
               <a className='button-1' href='#!' role='button'>
               <img src={`/subscribe-icon.png`} alt={"Subscribe"} /> Subscribe
               </a>
+              <p className='mt-3'>Help an animal friend</p>
             </div>
           </div>
         </div>      

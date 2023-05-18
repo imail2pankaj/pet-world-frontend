@@ -24,11 +24,15 @@ const Responsive = {
   },
   768: {
     items: 2,
-    margin: 20
+    margin: 19
   },
   1024: {
+    items: 3,
+    margin: 29
+  },
+  1280: {
     items: 4,
-    margin: 30
+    margin: 29
   }
 }
 
@@ -84,7 +88,7 @@ const UpcomingEvents = () => {
               </div>
             </OwlCarousel>
           </Row>
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-center">
             <a className='button-1' href='#!' role='button'>View all</a>
           </Row>
       </Containerer>

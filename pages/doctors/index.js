@@ -18,10 +18,10 @@ const Doctors = () => {
     <div className='doctors-main'>
         <Row>
           <div className='process-main'>
-            <Col sm className='pic'>
+            <Col sm={12} lg={6} className='pic'>
               <img src={`/donation-pic.jpg`} alt={"Doctor"} />
             </Col>
-            <Col sm className='detail'>
+            <Col sm={12} lg={6} className='detail'>
               <h2 className='title'>
                 <span>Easy Appointment</span>
                 Process for doctors
@@ -56,7 +56,7 @@ const Doctors = () => {
                   </p>
                 </div>              
             </Col>  
-            <Col sm className='detail' style={{'display' : 'none'}}>
+            <Col sm={12} lg={6} className='detail' style={{'display' : 'none'}}>
               <h2 className='title'>
                 <span>Easy Campaign</span>
                 Process for doctors
@@ -119,7 +119,7 @@ const Doctors = () => {
         </Row>    
 
         <div className='doctor-list'>
-        <Row xs={1} md={2} lg={4}>
+        <Row xs={1} md={2} lg={3} xxl={4}>
           <Col>
             <DoctorCard/> 
           </Col>
@@ -195,7 +195,7 @@ const Doctors = () => {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br/> tempor incididunt ut labore</p>
       </Row>
       <Row>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon1.svg`} alt={"Icon"} />
         </div>
@@ -206,7 +206,7 @@ const Doctors = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon2.svg`} alt={"Icon"} />
         </div>
@@ -217,7 +217,7 @@ const Doctors = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon3.svg`} alt={"Icon"} />
         </div>
@@ -228,7 +228,7 @@ const Doctors = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon4.svg`} alt={"Icon"} />
         </div>
@@ -239,7 +239,7 @@ const Doctors = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon5.svg`} alt={"Icon"} />
         </div>
@@ -250,7 +250,7 @@ const Doctors = () => {
           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
         </p>
         </Col>
-        <Col sm={4}>
+        <Col sm={6} lg={4}>
         <div className='icon'>
           <img src={`/icon6.svg`} alt={"Icon"} />
         </div>
