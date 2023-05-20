@@ -29,6 +29,7 @@ const Login = () => {
   const {
     control,
     setError,
+    reset,
     handleSubmit,
     formState: { errors }
   } = useForm({
@@ -40,20 +41,23 @@ const Login = () => {
   const onSubmit = data => {
     const { email, password } = data
     setServerResponse("");
-    auth.login({ email, password }, (responseType, response) => {
-      if (responseType === 'error') {
-        if (response?.response?.data?.error) {
-          toast.error(response?.response?.data?.error)
-          setServerResponse({
-            variant: "danger",
-            message: response?.response?.data?.error
-          })
-        } else {
-          setError('email', {
-            type: 'manual',
-            message: 'Email or Password is invalid'
-          })
-        }
+    auth.login({ email, password }, (response) => {
+      if (response?.response?.data?.error) {
+        toast.error(response?.response?.data?.error)
+        setServerResponse({
+          variant: "danger",
+          message: response?.response?.data?.error
+        })
+      } else {
+        setServerResponse({
+          variant: "success",
+          message: "You have successfully logged in"
+        })
+        reset();
+        // setError('email', {
+        //   type: 'manual',
+        //   message: 'Email or Password is invalid'
+        // })
       }
     })
   }
@@ -65,7 +69,7 @@ const Login = () => {
           <h2>Login to <b>PetWorld</b></h2>
           <div className="mb-3 mt-4 lg-3">
             <div className="mb-3">
-              {serverResponse && <Alert variant='danger'>{serverResponse.message}</Alert>}
+              {serverResponse && <Alert variant={serverResponse.variant}>{serverResponse.message}</Alert>}
               <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-4" controlId="formBasicEmail">
                   <Controller

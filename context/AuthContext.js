@@ -2,6 +2,8 @@ import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 
+const storageTokenKeyName = 'accessToken';
+
 const defaultProvider = {
   user: null,
   loading: true,
@@ -21,19 +23,69 @@ const AuthProvider = ({ children }) => {
   const router = useRouter()
 
   const handleLogin = (params, errorCallback) => {
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, params).then(async response => {
+      window.localStorage.setItem(storageTokenKeyName, response.data.authorization.accessToken);
+      const returnUrl = router.query.returnUrl
+      setUser({ ...response.data.user })
+      window.localStorage.setItem('userData', JSON.stringify(response.data.user))
+      const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/account/profile'
+      if (errorCallback) errorCallback("success", err)
+      router.replace(redirectURL)
+    }).catch(err => {
+      if (errorCallback) errorCallback("error", err)
+    })
+  }
 
+  const handleRegister = (params, errorCallback) => {
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, params).then(async response => {
+      if (errorCallback) errorCallback(response.data)
+    }).catch(err => {
+      if (errorCallback) errorCallback(err)
+    })
   }
 
   const handleLogout = () => {
-
+    setUser(null)
+    window.localStorage.removeItem('userData')
+    window.localStorage.removeItem(storageTokenKeyName)
+    router.push('/login')
   }
 
+  const handleForgetPassword = (params, errorCallback) => {
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/forget-password`, params)
+      .then(async response => {
+        if (errorCallback) errorCallback(response)
+      }).catch(err => {
+        if (errorCallback) errorCallback(err)
+      })
+  }
+
+  const validateResetPasswordToken = (params, errorCallback) => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/validate-reset-password?token=${params}`).then(async response => {
+      if (errorCallback) errorCallback(response)
+    }).catch(err => {
+      if (errorCallback) errorCallback(err)
+    })
+  }
+
+
+  const handleResetPassword = (params, errorCallback) => {
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`, params).then(async response => {
+      if (errorCallback) errorCallback(response)
+    }).catch(err => {
+      if (errorCallback) errorCallback(err)
+    })
+  }
   const values = {
     user,
     loading,
     setUser,
     setLoading,
     login: handleLogin,
+    register: handleRegister,
+    validateResetPasswordToken,
+    forgetPassword: handleForgetPassword,
+    resetPassword: handleResetPassword,
     logout: handleLogout
   }
 
