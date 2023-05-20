@@ -8,7 +8,7 @@ const AboutDoctor = () => {
     <div className='graphic-1'><img src={`/doctor-icon.png`} alt={""} /></div>     
     <div className='graphic-2'><img src={`/paw-2.png`} alt={""} /></div>     
       <Row>
-          <Col sm={12} lg={7}className='doctor-pic'>
+          <Col sm={12} lg={6}className='doctor-pic'>
             <img src={`/about-doctor-pic.png`} alt={"About Pic"} />
           </Col>
           <Col className='doc-content'>

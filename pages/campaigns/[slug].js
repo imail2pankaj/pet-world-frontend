@@ -23,7 +23,7 @@ const CampaignDetails = () => {
                </div>              
               </Row>          
               <Row className='gallery'>
-              <Col xs={1} lg={6}>
+              <Col sm={6} lg={6}>
                 <div className='video'>
                   <img src={`/video-img.jpg`} alt={"Video"} />
                   <a className='play-button' href='#'>
@@ -31,7 +31,7 @@ const CampaignDetails = () => {
                   </a>
                 </div>
               </Col>  
-              <Col xs={1} lg={6}>
+              <Col sm={6} lg={6}>
                 <div className='img-gallery'>
                   <div className='thumb'><img src={`/pic-1.jpg`} alt={""} /></div>
                   <div className='thumb'><img src={`/pic-2.jpg`} alt={""} /></div>

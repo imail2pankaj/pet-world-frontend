@@ -6,7 +6,7 @@ import React from 'react'
 
 const CampaignCard = ({ campaign }) => {
   return (
-    <div>
+    <div className='card-main'>
      <Link href='#!'>
         <Card>
           <Card.Img variant="top" src="/pic-1.jpg" />

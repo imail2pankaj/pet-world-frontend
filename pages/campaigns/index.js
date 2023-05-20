@@ -72,7 +72,7 @@ const Campaigns = () => {
                     </Row>
 
                     <div className='doctor-list'>
-                        <Row xs={1} md={2} lg={4}>
+                       <Row xs={1} md={2} lg={3} xxl={4}>
                             <Col>
                                 <CampaignCard />
                             </Col>

@@ -104,63 +104,69 @@ a, button{
 
 .main-nav .navbar-brand{ width: 180px;}
 .main-nav .navbar-brand img{ max-width: 100%; height: auto; display: block;}
-.main-nav .nav-link{ color: #232323; font-size: 16px; font-weight: 600; letter-spacing: 1px; margin: 0 15px; padding: 0 !important;}
+.main-nav .nav-link{ color: #232323; font-size: 15px; font-weight: 500; letter-spacing: 1px; margin: 0 15px; padding: 0 !important;}
 .main-nav .nav-link:hover, .main-nav .nav-link.act{ color: #9E0C0F; position: relative;}
 .main-nav .nav-link.act::after{content: ""; width: 100%; height: 5px; background: #9E0C0F; border-radius: 2px; position: absolute; left: 0; bottom: -12px; border-radius: 3px;}
-.main-nav .nav-link.btn{ width: 200px; font-size: 15px; color: #232323; background-color: #EDEDED; padding: 0px 0px; line-height: 50px; text-transform:uppercase; display: block; text-align: center;}
+.main-nav .nav-link.btn{ width: 170px; font-size: 14px; color: #232323; background-color: #EDEDED; padding: 0px 0px; line-height: 44px; text-transform:uppercase; display: block; text-align: center; margin: 0; }
 .main-nav .nav-link.btn:hover{ color: #ffffff; background-color: #9E0C0F;}
 
 /*** Header ***/
-.button-1{width: 250px; display: inline-block; background-color: #9E0C0F; filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5)); line-height: 58px; border-radius: 10px; color: white; font-weight: 600; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center;}
+.button-1{width: 180px; display: inline-block; background-color: #9E0C0F; filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5)); line-height: 54px; border-radius: 10px; color: white; font-weight: 600; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center;}
 .button-1:hover{background-color: #7EB65C; color: white; filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));}
 
 .home-header{ position: relative; margin-bottom: 150px;}
 .home-header img{ max-width: 100%; width: 100%;}
-.home-header .caption{ width: 460px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); text-align: center;}
-.home-header .caption img{ max-width: 100%; width: auto;}
-.home-header .caption h1{ font-size: 30px; letter-spacing: 0.01em; text-transform: uppercase; color: #9E0C0F; font-weight: 700;}
-.home-header .caption h4{ font-size: 18px; letter-spacing: 0.01em; color: #232323; font-weight: 600;}
-.home-header .caption .button-1{text-align: left; width: 300px;}
-.home-header .caption .button-1 img{margin: 5px 38px 5px 15px; float: left;}
+.home-header .caption{ width: 360px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); text-align: center;}
+.home-header .caption img{ max-width: 80%; width: auto;}
+.home-header .caption h1{ font-size: 26px; letter-spacing: 0.01em; text-transform: uppercase; color: #9E0C0F; font-weight: 700;}
+.home-header .caption h4{ font-size: 16px; letter-spacing: 0.01em; color: #000000; font-weight: 500; margin: 20px 0;}
+.home-header .caption .button-1{text-align: left; width: 250px;}
+.home-header .caption .button-1 img{margin: 3px 24px 3px 10px; float: left;}
 
-.container-xxl{ max-width: 1400px;}
+.container-xxl{ max-width: 1200px;}
 
-h2.title{padding: 0; margin: 0 0 20px 0; font-size: 40px; color: #232323; font-weight: 700; line-height: 30px;}
-h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: uppercase; font-weight: 600;}
+h2.title{padding: 0; margin: 0 0 20px 0; font-size: 34px; color: #232323; font-weight: 700; line-height: 28px;}
+h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: uppercase; font-weight: 600;}
 
 /*** 4 ***/
-  .statistic-main{ height: 210px; position: relative; background-color: #FF7F18; padding: 20px 0; border-radius: 15px; background-repeat: no-repeat; background-position:0 6px; background-size: auto 100%; margin-bottom: 150px; text-align: end;}
-  .statistic-main .pic{width: auto; float: left; position: absolute; left: 0; bottom: 0;}  
-  .statistic-main ul{ width: 90%; height: 90%; display:inline-block; list-style: none; margin: 35px 0 0 0; padding: 0; z-index: 1; background-repeat: no-repeat; background-position: right 95px;}
-  .statistic-main ul li{ width: 19%; position: relative; display: inline-block; text-align: center; font-size: 20px; color: black; font-weight: 700; text-transform: uppercase;}
+  .statistic-main{ height: 160px; position: relative; background-color: #FF7F18; padding: 20px 0; border-radius: 15px; background-repeat: no-repeat; background-position:0; background-size: 100%; text-align: end;}
+  .statistic-main .pic{width:180px; float: left; position: absolute; left: 0; bottom: 0;}  
+  .statistic-main .pic img{ width: 100%;}
+  .statistic-main ul{ width: 90%; height: 100%; display:inline-block; list-style: none; margin: 20px 0 0 0; padding: 0; z-index: 1; background-repeat: no-repeat; background-position: right 70px;}
+  .statistic-main ul li{ width: 19%; position: relative; display: inline-block; text-align: center; font-size: 18px; color: black; font-weight: 700; text-transform: uppercase;}
   .statistic-main ul li .divider{ width: 28px; height: 118px; position: absolute; right: -15px; top: -12px; background-repeat: no-repeat;}
-  .statistic-main ul li span{ width: 100%; display: block; text-align: center; color: white; font-size: 40px; text-transform: lowercase;}
+  .statistic-main ul li span{ width: 100%; display: block; text-align: center; color: white; font-size: 32px; text-transform: lowercase;}
 
 
   /*** About us  ***/
-  .about-main{ background-color: #EDEDED; position: relative; padding: 70px 0 50px 70px; font-size: 20px; color: #232323; margin-bottom: 150px;}
-  .about-main .about-pic{width: 54%; position: absolute; bottom: 0; right: 0;}
+  .about-main{ background-color: #EDEDED; position: relative; padding: 50px 0 30px 50px; font-size: 18px; color: #232323; margin-bottom: 100px;}
+  .about-main .about-pic{width: 50%; position: absolute; bottom: 0; right: 0;}
   .about-main .about-pic img{width:100%; display: block;}
-  .about-main .about-detail{width: 45%; display: inline-block;}
-  .about-main .bullet-point{ display: block; font-size: 22px; font-weight: 600; padding:10px 0;}
+  .about-main .about-detail{width: 55%; display: inline-block;}
+  .about-main .bullet-point{ display: block; font-size: 19px; font-weight: 600; padding:10px 0;}
   .about-main .bullet-point img{ margin:0 8px 0 0;}  
   .about-main .button-1{margin: 30px 0;}  
 
   /*** About doctors  ***/
-  .about-doctor-main{ position: relative; font-size: 20px; color: #232323; margin-bottom: 150px;}
+  .about-doctor-main{ position: relative; font-size: 18px; color: #232323; margin-bottom: 150px;}
+  .about-doctor-main .graphic-1{position: absolute; left: -12%; top: 35%; z-index: 0;}
+  .about-doctor-main .graphic-1 img{ width: 300px;}
+  .about-doctor-main .graphic-2{position: absolute; right:-5%; top: 0; z-index: 0;}
+  .about-doctor-main .graphic-2 img{ width: 100px;}
+
   .about-doctor-main .doctor-pic img{ max-width: 100%; display: block;}
   .about-doctor-main .row{ position: relative; z-index: 1;}
   .about-doctor-main .doc-content{ padding-top: 50px;}
   .about-doctor-main .doc-content .button-1{margin: 20px 0;}
-  .about-doctor-main .graphic-1{position: absolute; left: -20%; top: 5%; z-index: 0;}
-  .about-doctor-main .graphic-2{position: absolute; right:-5%; top: 0; z-index: 0;}
+  
 
   /*** Why choose us  ***/
-  .why-choose-us{ background: rgba(237, 237, 237, 0.8); padding: 150px 0 100px 0; font-size: 20px; color: #232323; margin-bottom: 150px; text-align: center;}
+  .why-choose-us{ background: rgba(237, 237, 237, 0.8); padding: 120px 0 80px 0; font-size: 18px; color: #232323; margin-bottom: 150px; text-align: center;}
   .why-choose-us .col-sm-6{ text-align: center; padding: 40px 20px !important;}
-  .why-choose-us .icon { margin-bottom: 30px;}
-  .why-choose-us .col-sm-6 h3{ font-size: 24px; color: #232323; font-weight: 700;}
-  .why-choose-us .col-sm-6 p{ font-size: 18px; color: #232323;}
+  .why-choose-us .icon { margin-bottom: 20px;}
+  .why-choose-us .icon img{ height: 60px;}
+  .why-choose-us .col-sm-6 h3{ font-size: 22px; color: #232323; font-weight: 700;}
+  .why-choose-us .col-sm-6 p{ font-size: 16px; color: #232323;}
 
   /*** Recent Campaigns ***/
   .recent-campaigns{margin-bottom: 150px; position: relative;}
@@ -168,48 +174,48 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .recent-campaigns .graphic-2{position: absolute; right:0%; top: 50%; z-index: 0;}
 
   .recent-campaigns .owl-carousel{ padding: 15px 0;}
-  .recent-campaigns .card{ border-radius:20px; padding: 10px; background-color: rgba(255, 255, 255, 0.8);}
-  .recent-campaigns .card .card-img-top{ border-radius:20px;}  
-  .recent-campaigns .card-title{ font-size: 22px; font-weight: 700; color: #232323;}
-  .recent-campaigns .card-text{ font-size: 16px; color: #232323;}
-  .recent-campaigns .total-collection{ font-size: 18px; color: #232323; font-weight: 500; line-height: 36px;}
+  .recent-campaigns .card{ border-radius:15px; padding: 10px; background-color: rgba(255, 255, 255, 0.8);}
+  .recent-campaigns .card .card-img-top{ border-radius:15px;}  
+  .recent-campaigns .card-title{ font-size: 20px; font-weight: 700; color: #232323;}
+  .recent-campaigns .card-text{ font-size: 15px; color: #232323;}
+  .recent-campaigns .total-collection{ font-size: 16px; color: #232323; font-weight: 500; line-height: 36px;}
   .recent-campaigns .total-collection span{ color: #7EB65C; font-weight: 700;}
-  .recent-campaigns .total-collection .progress{height: 7px; }
+  .recent-campaigns .total-collection .progress{height: 6px; }
   .recent-campaigns .total-collection .progress .progress-bar{ background-color:#7EB65C;}
   
   .recent-campaigns .owl-nav{ width: auto; position: absolute; right: 0; top: -50px;}
-  .recent-campaigns .owl-nav button{ width: 46px; height: 46px; border-radius: 5px; background-color: #DADADA !important; margin-left: 10px;}
+  .recent-campaigns .owl-nav button{ width: 40px; height: 40px; border-radius: 5px; background-color: #DADADA !important; margin-left: 10px;}
   .recent-campaigns .owl-nav button:hover{background-color: #7EB65C !important;}
-  .recent-campaigns .owl-nav button span{font-size: 50px; color: #232323; line-height: 36px; height: 46px; display: block;}
+  .recent-campaigns .owl-nav button span{font-size: 40px; color: #232323; line-height: 30px; height: 40px; display: block;}
   .recent-campaigns .owl-dots{ text-align: center; margin-top: 30px;}
-  .recent-campaigns .owl-dots .owl-dot{ width: 15px; height: 15px; display: inline-block; background-color: #D9D9D9; border-radius: 10px; margin: 0 4px;}
+  .recent-campaigns .owl-dots .owl-dot{ width: 12px; height: 12px; display: inline-block; background-color: #D9D9D9; border-radius: 10px; margin: 0 4px;}
   .recent-campaigns .owl-dots .owl-dot.active{ background-color: #9E0C0F;}
 
   .recent-campaigns .button-1{margin: 30px 0 0 0;}
  
   
  /*** Upcoming Events ***/
- .upcoming-events{margin-bottom: 150px; position: relative; background: rgba(237, 237, 237, 0.8); padding: 150px 0;}
+ .upcoming-events{margin-bottom: 150px; position: relative; background: rgba(237, 237, 237, 0.8); padding: 100px 0;}
  .upcoming-events .graphic-1{position: absolute; left: 0%; top: 0%; z-index: 0;}
  .upcoming-events .graphic-2{position: absolute; right:5%; bottom: 10%; z-index: 0;}
 
  .upcoming-events .owl-carousel{ padding: 15px 0;}
- .event-card .card{ border-radius:20px; padding: 10px; background-color: rgba(255, 255, 255, 0.8);}
+ .event-card .card{ border-radius:15px; padding: 10px; background-color: rgba(255, 255, 255, 0.8);}
  .event-card .card .attendees{ width: auto; position: absolute; top: 20px; right: 20px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;}
  .event-card .card .attendees span{font-weight: 600; font-size: 14px; line-height: 22px; letter-spacing: 0.02em; color: #9E0C0F;}
- .event-card .card .card-img-top{ border-radius:20px;} 
+ .event-card .card .card-img-top{ border-radius:15px;} 
  .event-card .card .card-body{ padding: 1rem 0.7rem 0.5rem 0.7rem;} 
- .event-card .card .card-title{ font-size: 22px; font-weight: 700; color: #232323;}
- .event-card .card .card-text{ font-size: 16px; line-height: 22px; color: #232323; min-height: 90px;}
+ .event-card .card .card-title{ font-size: 20px; font-weight: 700; color: #232323;}
+ .event-card .card .card-text{ font-size: 15px; line-height: 22px; color: #232323; min-height: 80px;}
  .event-card .card .date-address{ width: 100%; display: block; font-size: 14px; line-height: 16px;}
- .event-card .card .date-address img{ width:auto; display: inline-block; margin-right: 2px; margin-top: -2px;}
+ .event-card .card .date-address img{ width:auto; display: inline-block; margin-right: 0px; margin-top: -3px;}
  .event-card .card .date-address .address{ width: 50%; float: left; color: #232323;}
  .event-card .card .date-address .date{ text-align: right;}
    
  .upcoming-events .owl-nav{ width: auto; position: absolute; right: 0; top: -50px;}
- .upcoming-events .owl-nav button{ width: 46px; height: 46px; border-radius: 5px; background-color: #DADADA !important; margin-left: 10px;}
+ .upcoming-events .owl-nav button{ width: 40px; height: 40px; border-radius: 5px; background-color: #DADADA !important; margin-left: 10px;}
  .upcoming-events .owl-nav button:hover{background-color: #7EB65C !important;}
- .upcoming-events .owl-nav button span{font-size: 50px; color: #232323; line-height: 36px; height: 46px; display: block;}
+ .upcoming-events .owl-nav button span{font-size: 40px; color: #232323; line-height: 30px; height: 40px; display: block;}
  .upcoming-events .owl-dots{ text-align: center; margin-top: 30px;}
  .upcoming-events .owl-dots .owl-dot{ width: 15px; height: 15px; display: inline-block; background-color: #D9D9D9; border-radius: 10px; margin: 0 4px;}
  .upcoming-events .owl-dots .owl-dot.active{ background-color: #9E0C0F;}
@@ -219,28 +225,29 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 /*** Donation Process ***/
 .donation-process{margin-bottom: 150px;}
 .donation-process .step{font-size: 20px; color: #232323;}
-.donation-process .step .title{ font-size: 24px; color: #000000; font-weight: 700;}
-.donation-process .step .title span{ width: 70px; display: inline-block; font-size: 40px; position: relative; top: 5px;}
-.donation-process .step p{ font-size: 18px; line-height: 26px; color: #232323; padding-left: 70px;}
+.donation-process .step .title{ font-size: 20px; color: #000000; font-weight: 700; margin-bottom: 5px;}
+.donation-process .step .title span{ width: 70px; display: inline-block; font-size: 36px; position: relative; top: 5px;}
+.donation-process .step p{ font-size: 16px; line-height: 26px; color: #232323; padding-left: 70px;}
 .donation-process .button-1{margin: 30px 0 0 0;}
 .donation-process .pic{margin: 100px 0 0 0;}
 .donation-process .pic img{ max-width: 100%;}
 
 /*** Footer ***/
-.footer-main{height: 750px; background-image: url('../public/footer-bg.jpg'); background-repeat: repeat-x; background-position: center top;}
-.footer-main .top-row{ padding: 210px 0;}
+.footer-main{height: 550px; background-image: url('../public/footer-bg.jpg'); background-repeat: repeat-x; background-position: center top; background-size: auto 100%;}
+.footer-main .top-row{ padding: 130px 0;}
 .footer-main .col-lg-4{text-align: center; padding-right: 10%;}
-.footer-main .col h4{ font-size: 25px; font-weight: 700; margin-bottom: 30px;}
-.footer-main .col a{ font-size: 17px; font-weight: 600; display: inline-block; margin: 7px 0;}
+.footer-main .col h4{ font-size: 20px; font-weight: 700; margin-bottom: 20px;}
+.footer-main .col a{ font-size: 15px; font-weight: 600; display: inline-block; margin: 7px 0;}
 .footer-main .col a:hover{ color: #9E0C0F;}
-.footer-main .play-store-btn{ width: 100%; height: 65px; display: block; margin-bottom: 30px; background: #FFFFFF; border: 1px solid #232323; border-radius: 50px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));}
+.footer-main .play-store-btn{ width: 100%; height: 60px; display: block; margin-bottom: 20px; background: #FFFFFF; border: 1px solid #232323; border-radius: 50px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));}
 .footer-main .play-store-btn a{ display: block; padding: 5px 0 0 20px;}
+.footer-main .play-store-btn a img{ height: 35px;}
 .footer-main select{ line-height: 50px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 30px; background-image: url('../public/drop-arow.png'); background-repeat: no-repeat; background-position: 92% center; padding: 0 20px; font-weight: 600; margin-top: 30px;}
 .footer-main select:focus{ box-shadow: none;}
-.footer-main .copyright{ width: auto; font-size: 18px; color: #232323; font-weight: 600; display: inline-block;}
-.footer-main .social{ width: auto; float: right; text-align: right; font-size: 18px; color: #232323; font-weight: 600; }
-.footer-main .social a{ margin-left: 10px;}
-.footer-main .social a img{ width: 40px;}
+.footer-main .copyright{ width: auto; font-size: 16px; color: #232323; font-weight: 600; display: inline-block;}
+.footer-main .social{ width: auto; float: right; text-align: right; font-size: 16px; color: #232323; font-weight: 600; }
+.footer-main .social a{ margin-left: 8px;}
+.footer-main .social a img{ width: 36px;}
 
 
 /*** Login & Register page ***/
@@ -271,7 +278,7 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 
 
 /*** About Doctors page ***/
-.doctors-main {margin: 150px 0;}
+.doctors-main {margin: 100px 0;}
 .doctors-main .process-main{ width: 100%; display: flex; margin-bottom: 150px;}
 .doctors-main .process-main .pic img{max-width: 100%; display: block;}
 .doctors-main .detail{ padding:0 0 0 5%;}
@@ -299,9 +306,7 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 .doctors-main .doctor-list .card .card-img-top{ border-radius:20px;}  
 .doctors-main .doctor-list .card-title{ font-size: 22px; font-weight: 700; color: #232323;}
 .doctors-main .doctor-list .card-text{ font-size: 16px; color: #232323;}
-.doctors-main .doctor-list .total-collection{ font-size: 18px; color: #232323; font-weight: 500; line-height: 36px;}
-.doctors-main .doctor-list .total-collection span{ color: #7EB65C; font-weight: 700;}
-.doctors-main .doctor-list .total-collection{ width: 300px; font-size: 18px; color: #232323; font-weight: 500; line-height: 36px;}
+.doctors-main .doctor-list .total-collection{ width: 100%; font-size: 18px; color: #232323; font-weight: 500; line-height: 36px;}
 .doctors-main .doctor-list .total-collection span{ color: #7EB65C; font-weight: 700;}
 .doctors-main .doctor-list .total-collection .progress{height: 7px; }
 .doctors-main .doctor-list .total-collection .progress .progress-bar{ background-color:#7EB65C;}
@@ -353,6 +358,7 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 
 .doctor-campaigns{ max-width: 1000px; margin: 100px 0; position: relative; top: 0; left: 50%; -ms-transform: translate(-50%, 0%); transform: translate(-50%, 0%);}
 .doctor-campaigns h2.title{ margin-bottom: 40px;}
+.doctor-campaigns .card-main{padding: 0;}
 .doctor-campaigns .card{ border-radius:20px; padding: 10px; display: block; margin-bottom:30px;}
 .doctor-campaigns .card .card-img-top{ width: 306px; margin-right: 10px; border-radius:20px; display: inline-block; vertical-align: top;} 
 .doctor-campaigns .card .card-body{ width: 650px; display: inline-block;}
@@ -374,7 +380,7 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 .events-main .filter-main .search-field.date-pick .form-control{ width:200px; margin-left: 20px; background-image: url('../public/calendar-icon.png');}
 
 .modal-backdrop{--bs-backdrop-opacity: 0.9;}
-.event-popup { padding-right: 0 !important;}
+.event-popup { padding-right: 0 !important; max-width: 800px !important;}
 .event-popup .modal-content{ border-radius: 30px;}
 .event-popup .modal-body{ padding: 20px 20px 10px;}
 .event-popup .modal-body .thumb{ width: 100%; height: 400px; border-radius: 30px; overflow: hidden; margin-bottom: 20px;}
@@ -440,9 +446,9 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 .campaign-info h3{ font-size: 26px; font-weight: 700; margin-bottom: 10px;}
 .campaign-info ul{ width: 100%; display: block; list-style: none; padding: 0;}
 .campaign-info ul li{ width: 100%; padding:30px 0; display: block; font-size: 15px; color: #232323; }
-.campaign-info ul li .info-title{ width: 200px; float: left; font-weight: 700;}
+.campaign-info ul li .info-title{ width: 25%; max-width: 220px; float: left; font-weight: 700;}
 .campaign-info ul li .info-title img{ margin-right: 5px;}
-.campaign-info ul li .info-details {width: auto; float: left; font-weight: 500;}
+.campaign-info ul li .info-details {width:75%; float: left; font-weight: 500;}
 
 .campaigns-detail .comments-main{ width: 100%; display: block; margin: 100px 0;}
 .campaigns-detail .comments-main h3{ font-size: 26px; font-weight: 700; margin-bottom: 20px;}
@@ -464,7 +470,8 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 
 /*** FAQ page ***/
 .faq-main{ width: 100%; display: block; padding: 150px 0 0;}
-.faq-main .graphic-1{ position: absolute; right: 0; top: 70%; z-index: 0;}
+.faq-main .graphic-1{ width: 20%; position: absolute; right: 0; top: 70%; z-index: 0; text-align: right;}
+.faq-main .graphic-1 img{ max-width: 100%;}
 .faq-main .question-ans{ width: 80%; display: block; padding-bottom: 100px;}
 .faq-main .question-ans .accordion-item{background: #FFFFFF; border: 1px solid #DBDBDB; border-radius: 30px; margin-bottom: 20px;}
 .faq-main .question-ans .accordion-item .accordion-button{background-color: transparent; box-shadow: none; font-size: 20px; color: #7EB65C; font-weight: 600;}
@@ -483,18 +490,18 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 .launch-campaign-main .steps{ width: 100%; display: block; padding: 50px 5%;}
 .launch-campaign-main .steps .step{ width: 100%; position: relative; padding:0px;}
 .launch-campaign-main .steps .step .step-arrow{ width: auto; position: relative; left: -40px; bottom: 20px; }
-.launch-campaign-main .steps .step .step-detail{ width: 55%; display: inline-block; padding:5% 5% 0 2%;}
+.launch-campaign-main .steps .step .step-detail{ width: 55%; display: inline-block; padding:5% 3% 0 6%;}
 .launch-campaign-main .steps .step .step-detail .step-no{ font-size: 26px; font-weight: 600;}
 .launch-campaign-main .steps .step .step-detail .step-no span{ color: #7EB65C; font-size: 40px; font-weight: 700;}
 .launch-campaign-main .steps .step .step-detail h4{ font-size: 24px; font-weight: 700; color: #232323;}
 .launch-campaign-main .steps .step .step-detail p{ font-size: 18px; font-weight: 400; color: #232323;}
-.launch-campaign-main .steps .step .step-picture { width: 42%; display: inline-block; text-align: center; vertical-align:top;  text-align: left;}
+.launch-campaign-main .steps .step .step-picture { width: 42%; display: inline-block; text-align: center; vertical-align:top;  text-align:  right;}
 .launch-campaign-main .steps .step .step-picture .picture{ width: 450px; height: 450px; position: relative; display: inline-block;}
-.launch-campaign-main .steps .step .step-picture .picture img{border-radius: 50%; }
+.launch-campaign-main .steps .step .step-picture .picture img{border-radius: 50%; width: 100%; }
 .launch-campaign-main .steps .step .step-picture .picture::before{ content: ""; width: 88%; height: 88%; position: absolute; left: 6%; top: 6%; z-index: 1; border-radius: 50%; border: 3px solid #FFFFFF; filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));} 
 .launch-campaign-main .steps .step .step-picture .picture::after{content: ""; width: 80px; height: 92px; position: absolute; left: 5%; top: 5%; z-index: 1; background-image: url('../public/r-icon.png'); }
 .launch-campaign-main .steps .step:nth-child(2) .step-arrow{ left: auto; right: -40px; bottom: 20px; transform: scaleX(-1); }
-.launch-campaign-main .steps .step:nth-child(1) .step-picture, .launch-campaign-main .steps .step:nth-child(3) .step-picture{ float: right;}
+.launch-campaign-main .steps .step:nth-child(1) .step-picture, .launch-campaign-main .steps .step:nth-child(3) .step-picture{ float: right; text-align: left;}
 .launch-campaign-main .steps .step:nth-child(1) .step-picture .picture::after, .launch-campaign-main .steps .step:nth-child(3) .step-picture .picture::after{right: 5%; left: auto;}
 .launch-campaign-main .launch-campaign-btn{ width: 100%; display: block; text-align: center; padding: 0px 0 100px;}
 .launch-campaign-main .launch-campaign-btn .button-1{ width: 300px;}
@@ -506,16 +513,17 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 .about-us-main .about-details .about-img{ float: right; margin-left: 50px; position: relative;}
 .about-us-main .about-details .about-img::after{ content: ""; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-image: url('../public/logo-en.png'); background-repeat: no-repeat; background-position: center; background-size: 54%;}
 .about-us-main .about-details p{ font-size: 18px; color: #232323;}
-.about-us-main .about-details .bullet-point{ display: block; font-size: 22px; font-weight: 600; padding:0; color: #232323; margin-bottom: 20px;}
-.about-us-main .about-details .bullet-point img{ width: 30px; height: 30px; margin:0 8px 0 0;}
+.about-us-main .about-details .bullet-point{ width: 100%; position: relative; display: block; font-size: 22px; font-weight: 600; line-height: normal; padding:0 0 0 40px; color: #232323; margin-bottom: 20px;}
+.about-us-main .about-details .bullet-point img{ width: 30px; height: 30px; position: absolute; margin:0; left: 0;}
 
 .about-us-main .team-main{ width: 100%; display: block; margin:0 0 100px 0; text-align: center;}
 .about-us-main .team-main h2{ width: auto; position: relative; display: inline-block; margin-top: 100px;}
 .about-us-main .team-main h2::after{ content: ""; width: 100px; height: 6px; position: absolute; bottom: -25px; left:50%; margin-left: -50px; right: auto; border-radius: 4px; background-color: #7EB65C;}
 .about-us-main .team-main .team-members-main{ width:100%; display: block; margin-top: 20px;}
-.about-us-main .team-main .team-member{ width: 656px; display: inline-block; text-align: left; position: relative; margin: 30px 15px;}
-.about-us-main .team-main .team-member .thumb{width: auto; display: inline-block; position: relative; z-index: 1;}
-.about-us-main .team-main .team-member .member-details{ width:90%; min-height: 220px; vertical-align: top; position: absolute; left: 10%; top: 12%; display: inline-block; background-color: #EDEDED; padding: 30px 30px 30px 200px; border-radius: 20px;}
+.about-us-main .team-main .team-member{ width: 47%; display: inline-block; text-align: left; position: relative; margin: 30px 1.5%;}
+.about-us-main .team-main .team-member .thumb{width:38%; display: inline-block; position: relative; z-index: 1;}
+.about-us-main .team-main .team-member .thumb img{ width: 100%;}
+.about-us-main .team-main .team-member .member-details{ width:90%; min-height: 220px; vertical-align: top; position: absolute; left: 10%; top: 12%; display: inline-block; background-color: #EDEDED; padding: 30px 30px 30px 31%; border-radius: 20px;}
 .about-us-main .team-main .team-member .member-details h4{ font-size: 20px; color: #232323; font-weight: 700; line-height: 20px;}
 .about-us-main .team-main .team-member .member-details .designation{ font-size: 16px; color: #9E0C0F; line-height: 16px;}
 .about-us-main .team-main .team-member .member-details p{ font-size: 15px; color: #232323; margin: 15px 0; line-height: 18px;}
@@ -533,22 +541,22 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 
 .contactus-main .form-map{width: 100%; display: block; margin: 50px 0;}
 .contactus-main .form-map .form{ width: 58%; display: inline-block;}
-.contactus-main .form-map .form input{ height: 70px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px;}
+.contactus-main .form-map .form input{ height: 70px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px; margin-bottom: 30px;}
 .contactus-main .form-map .form textarea{ background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; resize: none;  font-size: 16px; padding: 15px 25px;}
-.contactus-main .form-map .form .btn-primary{ width: 300px; display: inline-block; background-color: #9E0C0F; filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5)); line-height: 58px; border-radius: 10px; color: white; font-weight: 600; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center; border: none;}
+.contactus-main .form-map .form .btn-primary{ width: 300px; display: inline-block; background-color: #9E0C0F; filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5)); line-height: 58px; border-radius: 10px; color: white; font-weight: 600; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center; border: none; margin-top: 10px;}
 .contactus-main .form-map .form .btn-primary:hover{background-color: #7EB65C; color: white; filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));}
 
 .contactus-main .form-map .map{ width: 38%; float: right; background: #FFFFFF; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25); border-radius: 20px; margin-top: 40px;}
 .contactus-main .form-map .map iframe{ width: 100%; height: 480px; float: left; border: 10px solid #ffffff; border-radius: 20px;}
 
 .contactus-main .addres-phone{ width: auto; display: block; margin-top: 100px; text-align: center;}
-.contactus-main .addres-phone .email{ width: 430px; height: 110px; display: inline-block; border: 2px solid #7EB65C; background-color: white; border-radius: 10px; padding: 28px; margin: 0 10px; text-align: left;}
+.contactus-main .addres-phone .email{ width: 32%; height: 110px; display: inline-block; border: 2px solid #7EB65C; background-color: white; border-radius: 10px; padding: 28px; margin: 0 0.6%; text-align: left; vertical-align: top;}
 .contactus-main .addres-phone .email img{ float: left; margin:4px 10px 0 0;}
-.contactus-main .addres-phone .email h3{ font-size: 22px; color: #232323; line-height: 22px; font-weight: 700; margin: 4px 0 0 0;}
+.contactus-main .addres-phone .email h3{ font-size: 21px; color: #232323; line-height: 22px; font-weight: 700; margin: 4px 0 0 0;}
 .contactus-main .addres-phone .phone{border: 2px solid #FF7F18;}
 .contactus-main .addres-phone .address{border: 2px solid #FD1D1D;}
 
-.contactus-main .foundation{ width: 500px; display: inline-block; margin: 50px 0; text-align: center;}
+.contactus-main .foundation{ max-width: 500px; display: inline-block; margin: 50px 0; text-align: center;}
 .contactus-main .foundation h5{ font-size: 22px; font-weight: 700; text-transform: uppercase; margin: 15px 0;}
 .contactus-main .foundation span{ display: block;}
 
@@ -563,8 +571,7 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .doctors-profile .profile-section .graphic-2{right: 5%;}
 }
 
-@media only screen and (max-width: 1500px) {
-  .container-xxl{ max-width: 1300px;}
+@media only screen and (max-width: 1500px) {  
   .about-main{padding: 50px 0 50px 50px;}
   .about-main .about-detail{width: 48%;}
   .about-main .about-pic{width: 52%;}  
@@ -582,35 +589,43 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .doctors-profile .profile-section .graphic-1 img{max-width: 100%;}
   .doctors-profile .profile-section .graphic-2{right: 5%;}
   .doctors-profile .profile-section .graphic-2 img{width: 100px;}
+
+  .about-us-main .team-main .team-member .member-details{min-height: 200px; padding: 20px 20px 20px 31%; }
+
+  .launch-campaign-main h2{padding: 0 14%;}  
+  .launch-campaign-main .steps .step .step-detail{padding: 3% 2% 0 6%;}
+  .launch-campaign-main .steps .step .step-picture .picture {width:400px; height: 400px;}
+  
 }
 
 @media only screen and (max-width: 1400px) {
-  .container-xxl{ max-width: 1200px;}
-  .button-1{width: 200px; font-size: 20px;}
-   h2.title{ font-size: 35px;}
+  
+  .button-1{width: 160px; font-size: 16px;}
+   h2.title{ font-size: 30px; line-height: 24px;}
+   h2.title span{font-size: 16px;}
 
   .main-nav .nav-link{font-size: 15px; margin: 0 12px;}
 
-  .home-header{margin-bottom: 120px;}
+  .home-header{margin-bottom: 100px;}
   .home-header .caption .button-1{ width: 250px;}
   .home-header .caption .button-1 img{ margin: 5px 25px 5px 10px;}
-  .home-header .caption{width: 370px;}
-  .home-header .caption h1{font-size: 25px;}
-  .home-header .caption img{ max-width: 90%;}
-  .home-header .caption h4{ font-size: 16px;}
+  .home-header .caption{width: 300px;}
+  .home-header .caption h1{font-size: 20px;}
+  .home-header .caption img{ max-width: 70%;}
+  .home-header .caption h4{ font-size: 15px;}
 
-  .statistic-main{height: 175px; margin: 100px 0 100px 0;}
-  .statistic-main .pic img{ width: 200px; height: auto;}
-  .statistic-main ul{margin: 25px 0 0 0; background-position: right 70px}
-  .statistic-main ul li{ font-size: 18px;}
-  .statistic-main ul li span{ font-size: 34px;}
+  .statistic-main{height: 150px; margin: 80px 0;}
+  .statistic-main .pic{ width: 160px;}
+  .statistic-main ul{margin: 15px 0 0 0; background-position: right 70px}
+  .statistic-main ul li{ font-size: 16px;}
+  .statistic-main ul li span{ font-size: 30px;}
 
-  .about-main{font-size: 17px; margin-bottom: 100px;}
-  .about-main .bullet-point{font-size: 20px; padding: 8px 0;}
+  .about-main{font-size: 16px; margin-bottom: 100px;}
+  .about-main .bullet-point{font-size: 17px; padding: 8px 0;}
 
-  .about-doctor-main{font-size: 17px; margin-bottom: 100px;}
-  .about-doctor-main .graphic-1{ left: -10%; top: 30%;}
-  .about-doctor-main .graphic-1 img{  width: 70%;}
+  .about-doctor-main{font-size: 16px; margin-bottom: 100px;}
+  .about-doctor-main .graphic-1{ left: -8%; top: 55%;}
+  .about-doctor-main .graphic-1 img{  width: 200px;}
 
   .why-choose-us{font-size: 18px; margin-bottom: 100px; padding: 100px 0 50px 0;}
   .why-choose-us .icon{margin-bottom: 20px;}
@@ -635,7 +650,7 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .donation-process .step .title span{width: 64px; font-size: 36px;}
   .donation-process .step p{font-size: 16px; line-height: 24px; padding-left: 64px;}
 
-  .footer-main{height: 510px; background-size: 100% auto;}
+  .footer-main{height: 500px;}
   .footer-main .top-row{padding: 120px 0 80px 0;}
   .footer-main .col h4{font-size: 22px; margin-bottom: 25px;}
   .footer-main .col a{font-size: 15px;}  
@@ -653,7 +668,40 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .doctors-main .doctor-list .approved-doc:hover{width: 95%; height: 95%; left: 2.5%; top: 2.5%;}
 
   .doctors-profile .profile-section .profile-pic{margin-right: 3%;}
-  
+
+  .doctors-main .doctor-list .total-collection{font-size: 16px;}
+
+  .campaigns-detail .title{margin-bottom: 20px;}
+  .campaigns-detail .title h2{font-size: 32px;}
+  .campaigns-detail .title .total-collection{min-width: 400px; font-size: 25px; line-height: 50px;}
+
+  .campaigns-detail .donorlist-disc{margin: 70px 0;}
+  .campaigns-detail .donorlist-disc .description h3{ font-size: 24px;}
+  .campaigns-detail .donorlist-disc .description p{font-size: 16px; line-height: 24px;}
+
+  .event-popup { max-width: 700px !important;}
+  .event-popup .modal-body {padding: 15px 15px 10px;}
+  .event-popup .modal-body .thumb{height: 300px;}
+  .event-popup .modal-body h4 {font-size: 24px;}
+  .event-popup .modal-body p { font-size: 15px;}
+
+  .event-popup .date-address .address{min-width: 120px; max-width: 225px;}
+  .event-popup .date-address .button .button-1{width: 160px;}
+
+  .about-us-main .team-main .team-member .member-details{min-height: 190px;}  
+
+  .contactus-main h2{font-size: 34px;}
+  .contactus-main p{font-size: 16px;}
+  .contactus-main .addres-phone .email h3{ font-size: 19px; line-height: 22px;}
+  .contactus-main .addres-phone .email span{ font-size: 15px;}
+  .contactus-main .social{margin-bottom: 0px;}
+
+  .faq-main{padding: 100px 0 0;}
+  .faq-main .question-ans .accordion-item .accordion-button{font-size: 18px; padding: 10px 10px 10px 20px;}
+  .faq-main .question-ans .accordion-item .accordion-button::before{font-size: 22px;}
+  .faq-main .question-ans .accordion-item .accordion-body{font-size: 15px;}
+
+  .launch-campaign-main .steps .step .step-picture .picture img{width:100%;}
 }
 
 @media only screen and (max-width: 1300px) {
@@ -672,7 +720,38 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .doctors-profile .profile-section .graphic-1 { width: 14%; bottom: 30%; }
   .doctors-profile .profile-section .profile-pic{width: 420px; max-height: 420px;}
   .doctors-profile .profile-section .addres-phone .email{width: 320px; height: 100px; padding: 25px; margin: 0 10px;}
-  
+
+
+  .about-us-main .about-details p{ font-size: 16px;}
+  .about-us-main .about-details .about-img{ width: 50%; margin-left: 0px;} 
+  .about-us-main .about-details .about-img img{ width: 100%;}
+  .about-us-main .about-details .bullet-point{font-size: 19px;}
+  .about-us-main .team-main .team-member .member-details { width: 80%; top: 5%; left: 20%; padding: 20px 20px 20px 21%;}
+
+
+  .contactus-main {margin: 70px 0;}
+  .contactus-main h2 { font-size: 30px;}
+  .contactus-main .form-map .form input{height: 60px; padding: 0 15px;}
+  .contactus-main .form-map .form textarea{ padding: 10px 15px;}
+  .contactus-main .form-map .form .btn-primary{width: 250px; font-size: 20px; line-height: 50px;}
+
+  .contactus-main .social a img{ width: 55px;}
+
+
+  .launch-campaign-main{padding: 70px 0 0;}
+  .launch-campaign-main h2 {padding: 0 10%; font-size: 34px;}
+
+  .launch-campaign-main .steps .step .step-detail .step-no{font-size: 20px;}
+  .launch-campaign-main .steps .step .step-detail .step-no span{font-size: 34px;}
+  .launch-campaign-main .steps .step .step-detail h4{font-size: 22px;}
+  .launch-campaign-main .steps .step .step-detail p{ font-size: 16px;}
+  .launch-campaign-main .steps .step .step-picture .picture::after{width: 60px; height: 69px; background-size: 100% 100%;}  
+
+  .launch-campaign-main .steps .step .step-arrow{ width: 220px;}
+  .launch-campaign-main .steps .step .step-arrow img{ width:100%;}
+  .launch-campaign-main .steps .step .step-arrow{ left: -5%;}
+  .launch-campaign-main .steps .step:nth-child(2) .step-arrow{right: -55%;}
+  .launch-campaign-main .steps .step .step-picture .picture { width: 370px; height: 370px;}
 }
 
 
@@ -680,10 +759,13 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .navbar-expand-lg .navbar-collapse{display: block !important;}
 
   .navbar-expand-lg{justify-content: space-between;}
-  .navbar-expand-lg .navbar-toggler{  display: block; float: right;}
+  .navbar-expand-lg .navbar-toggler{ width: 30px; display: block; float: right; border: none; padding: 0; margin-top: -2px;}
+  .navbar-expand-lg .navbar-toggler .navbar-toggler-icon{ background: none; width: 100%; height: 4px; position: relative; background-color: #232323; border-radius: 2px;}
+  .navbar-expand-lg .navbar-toggler .navbar-toggler-icon::before{ content: "";  width: 100%; height: 4px; position: absolute; top: -10px; left: 0; background-color: #232323; border-radius: 2px;}
+  .navbar-expand-lg .navbar-toggler .navbar-toggler-icon::after{ content: "";  width: 100%; height: 4px; position: absolute; top: 10px; left: 0; background-color: #232323; border-radius: 2px;}
   .navbar-expand-lg .navbar-collapse{ display: none !important; right: -100%;}
   .navbar-expand-lg .navbar-collapse.show{ display: block !important; right: 3%;}
-  .main-nav { padding-left: 3%; padding-right: 3%;}
+  .main-nav { padding-left: 5%; padding-right: 5%;}
   .navbar-toggler:focus{ box-shadow:none}
   .navbar-collapse{ width: 300px; position: absolute; top: 69px; right: 0; z-index: 10; background-color: rgba(255, 255, 255, 0.95); padding:30px 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25); border-radius:0px;}
   .navbar-expand-lg .navbar-nav{  flex-direction: column;}
@@ -692,12 +774,12 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .main-nav .nav-link.btn{font-size: 15px; color: white; background-color: #9E0C0F; padding: 0px 0px; line-height: 30px;}
 
   .container-xxl{ max-width: 1000px;}
-  .home-header {margin-bottom: 80px;}
-  .home-header .caption h1 {font-size: 23px;}
+  .home-header {margin-bottom: 80px;}  
   .home-header .caption img { max-width: 80%;}
+  .home-header .caption h4{margin: 15px 0;}
   .home-header .caption .button-1 img{width: 38px; margin: 8px 25px 5px 10px;}
 
-  .statistic-main{height: 150px; margin: 60px 0;}
+  .statistic-main{height: 140px; margin: 60px 0;}
   .statistic-main .pic img{ width: 160px; height: auto;}
   .statistic-main ul{margin: 18px 0 0 0; background-position: right 50px}
   .statistic-main ul li{ font-size: 16px;}
@@ -722,10 +804,11 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .login-main Form .button-1{line-height: 50px;}
   .login-main .already{line-height: 60px;}
 
+  .doctors-main{margin: 70px 0;}
   .doctors-main .process-main{ margin-bottom: 100px;}
 
   .doctors-profile .profile-section .graphic-1 { width: 14%; bottom: 30%; }
-  .doctors-profile .profile-section .profile-pic{width: 380px; max-height: 380px;}
+  .doctors-profile .profile-section .profile-pic{width: 380px; max-height: 378px;}
   .doctors-profile .profile-section .profile-pic .approved-doc .icon{ width: 50px; height: 50px;}
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail{padding: 80px 50px 50px 50px;}
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail h4{ font-size: 17px;}
@@ -736,38 +819,66 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .doctors-profile .profile-section .addres-phone .email{width: 300px; height: 92px; padding: 20px; margin: 0 10px;}
   .doctors-profile .profile-section .addres-phone .email img{ height: 38px; margin-top: 7px;}
   
+  .doctor-campaigns .card .card-body{width: 635px;}
+ 
+  .campaigns-detail .gallery .video{ border-radius: 15px;}  
+  .campaigns-detail .gallery .img-gallery .thumb{border-radius: 15px;}
 
+  .campaigns-detail .title .total-collection{min-width: 350px; font-size: 22px; line-height: 48px;}
+  .campaigns-detail .donorlist-disc .donorlist .buttons a{font-size: 20px; line-height: 52px; border-radius: 5px;}
+
+  .campaigns-detail .donorlist-disc .score .donors{font-size: 20px;}
+  .campaigns-detail .donorlist-disc .score .donors span{font-size: 24px;}
+  .campaigns-detail .donorlist-disc ul li .thumb{width: 60px; height: 60px;}
+  .campaigns-detail .donorlist-disc ul li .donor-name{font-size: 16px;}
+  .campaigns-detail .donorlist-disc ul li .donor-name span{font-size: 20px;}
+  .campaigns-detail .donorlist-disc .description h3{font-size: 22px;}
+  .campaigns-detail .donorlist-disc .description p{font-size: 15px; line-height: 22px;}
+
+  .campaign-info{padding: 70px 0;}
+  .campaign-info h3{font-size: 22px;}
+
+  .campaigns-detail .comments-main h3{font-size: 22px;}
+  .campaigns-detail .comments-main .comment-box h4{font-size: 17px; padding: 5px 0;}
+  .campaigns-detail .comments-main .comment-box p{font-size: 14px;}
+  .campaigns-detail .comments-main .comment-box .donate-time span{ font-size: 20px;}
+
+  .event-popup .modal-body .thumb{height: 250px;}
+
+  .faq-main .question-ans .accordion-item .accordion-button::after{width: 34px; height: 34px;}
 }
 
 @media only screen and (max-width: 1000px) {
   .container-xxl{ max-width:90%;}
-  h2.title { font-size: 30px; line-height: 26px;}
-  h2.title span{font-size: 16px;}
-  .button-1{width: 170px; line-height: 50px; border-radius: 5px; font-size: 18px;}
+  h2.title { font-size: 28px; line-height: 22px;}
+  h2.title span{font-size: 15px;}
+  .button-1{line-height: 46px; border-radius: 5px;}
 
   .home-header{ margin-bottom: 60px;}
   .home-header .caption{ width: 400px;}
-  .home-header .caption img{ width: 200px;}
-  .home-header .caption h1 { font-size: 20px; margin-bottom: 5px !important;}
+  .home-header .caption img{ width: 180px;}
+  .home-header .caption h1 { font-size: 17px; margin-bottom: 5px !important;}
   .home-header .caption h4{font-size: 15px; margin: 15px 0 !important; }
   .home-header .caption .button-1{width: 200px;}
-  .home-header .caption .button-1 img{margin: 4px 15px 5px 10px;}
+  .home-header .caption .button-1 img{margin: 4px 15px 5px 8px;}
 
-  .statistic-main{height: 120px; margin-bottom: 50px;}
-  .statistic-main .pic img{ width: 130px;}
-  .statistic-main ul{margin: 13px 0 0 0; background-position: right 40px; background-size: 40px;}
+  .statistic-main{height: 100px; margin-bottom: 50px; border-radius: 10px;}
+  .statistic-main .pic { width: 100px; }
+  .statistic-main .pic img{ width: 110px;}
+  .statistic-main ul{margin: 5px 0 0 0; background-position: right 36px; background-size: 30px;}
   .statistic-main ul li{ font-size: 14px;}
   .statistic-main ul li span{ font-size: 24px;}
   .statistic-main ul li .divider{width: 18px; height: 88px; background-size: 100% auto;}
 
   .about-main{ font-size: 16px; padding: 40px 40px 150px 40px;}
-  .about-main .bullet-point { font-size: 18px; padding: 5px 0;}
+  .about-main .bullet-point {padding: 5px 0;}
   .about-main .bullet-point img{ width: 26px; margin: 0 5px 0 0;}
 
-  .about-doctor-main{font-size: 16px; text-align: center; margin-bottom: 70px;}
-  .about-doctor-main .graphic-1 {left: -7%; top: 25%; width: 300px;}
-  .about-doctor-main .graphic-1 img {width: 70%;}
-  .about-doctor-main .doctor-pic img{ width: 70%; display: inline-block;}
+  .about-doctor-main{text-align: center; margin-bottom: 70px;}
+  .about-doctor-main .graphic-1 {left: 0%; top: 25%; width: 300px;}
+  .about-doctor-main .graphic-1 img {width: 50%;}
+  .about-doctor-main .doctor-pic img{ width: 60%; display: inline-block;}
+  .about-doctor-main .graphic-2{ right: 5%;}
 
   .why-choose-us{font-size: 16px; margin-bottom: 70px;}
   .why-choose-us .col-sm-6 h3 { font-size: 20px;}
@@ -785,7 +896,7 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 
   .donation-process .step p{font-size: 15px;  line-height: 22px;}
   .donation-process .pic{ margin:0; text-align: center;}
-  .donation-process .pic img{ max-width: 80%;}
+  .donation-process .pic img{ max-width: 60%;}
   .donation-process .step .title { font-size: 20px;}
   .donation-process .step .title span{width: 54px; font-size: 32px;}
   .donation-process .step p{padding-left: 54px;}
@@ -798,8 +909,6 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .footer-main .col h4{font-size: 20px; margin-bottom: 15px;}
   .footer-main .col a{margin: 5px 0;}
   .footer-main .play-store-btn{margin-bottom: 20px;}
-
-
 
   .inner-main .header img{max-width: 150%; width: 150%;}
 
@@ -816,20 +925,88 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 
   .doctors-main .filter-main form{width: 300px;}
 
-}
 
+  .doctors-profile .profile-section .graphic-1 { width: 28%; bottom: 55%;}
+  .doctors-profile .profile-section .profile-pic{width: 400px; max-height: 400px;}  
+  .doctors-profile .profile-section .profile-pic::before{height: 90%;}
+  .doctors-profile .profile-section .profile-pic .approved-doc:hover{height: 100%; top: 0;}
+
+  .doctors-profile .profile-section .profile-details { width:80%; }
+  .doctors-profile .profile-section .profile-pic .approved-doc{top: 0;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail{padding: 100px 50px 50px 50px;}
+
+  .doctors-profile .profile-section .addres-phone{ text-align: center;}
+  .doctors-profile .profile-section .addres-phone .email{ width: 70%; position: relative; margin: 10px 0; padding: 10px 20px 10px 82px; height: 70px; text-align: left;}
+  .doctors-profile .profile-section .addres-phone .email img{position: absolute; left: 20px;}
+
+  .doctor-campaigns .card .card-img-top{width: 40%;}
+  .doctor-campaigns .card .card-body { width: 58%; padding: 5px;}
+
+  .campaigns-detail{padding: 70px 0 0;}
+  .campaigns-detail .gallery .img-gallery{  margin-right: -5%;}
+  .campaigns-detail .gallery .img-gallery .thumb:last-child .overlay{font-size: 22px; padding-top: 22%;}
+  .campaigns-detail .donorlist-disc{margin:40px 0 70px 0;}
+  .campaigns-detail .donorlist-disc .donorlist .buttons a{width: 47%; font-size: 18px;}
+  .campaigns-detail .donorlist-disc .donorlist .buttons a.share-btn{margin-left: 3%;}
+  .campaigns-detail .comments-main .comment-box{width: 100%;}
+
+  .events-main .filter-main form{ width:70%;}
+  .events-main .filter-main .search-field .form-control{ width:55%;}
+  .events-main .filter-main .search-field.date-pick .form-control{width:40%; margin-left: 5%;}
+
+  .event-popup .modal-body .thumb{height: 350px;}
+
+  .about-us-main .team-main .team-member{width: 100%; margin: 15px 0%;}
+  .about-us-main .team-main .team-member .thumb{width: 200px;}
+  .about-us-main .team-main .team-member .member-details { width: 90%; top: 10%; left: 10%; padding: 20px 20px 20px 150px;}
+
+  
+  .about-us-main .team-main{margin: 0 0 70px 0;}
+  .about-us-main .team-main h2{margin-top: 70px;}
+  
+  .about-us-main .team-main .team-members-main{ margin-bottom: 0;}
+  .about-us-main .team-main .team-member .member-details h4{font-size: 18px;}
+  .about-us-main .team-main .team-member .member-details .designation{ font-size: 14px;}
+  .about-us-main .team-main .team-member .member-details p{ font-size: 14px; line-height: normal;}
+
+
+  .contactus-main .form-map .form{width: 100%;}
+  .contactus-main .form-map .map{width: 100%;}
+  .contactus-main .addres-phone .email{width: 100%; height: auto; margin: 10px 0; padding: 15px;}
+  .contactus-main .form-map .map{ margin: 50px 0;}
+  .contactus-main .form-map .map iframe{height: 280px;}
+
+  .faq-main{padding: 70px 0 0;}
+  .faq-main .question-ans .accordion-item .accordion-button{font-size: 16px;}
+  .faq-main .question-ans .accordion-item .accordion-button::before {font-size: 20px;}
+
+  .launch-campaign-main h2 { padding: 0; font-size: 28px;}
+  .launch-campaign-main .steps{padding: 30px 0%;}
+  .launch-campaign-main .steps .step .step-detail{padding:0 0 0 2%;}
+  .launch-campaign-main .steps .step .step-detail h4{font-size: 20px;}
+
+  .launch-campaign-main .steps .step .step-picture .picture { width: 280px; height: 280px;}
+  .launch-campaign-main .steps .step .step-arrow { width: 200px;}
+  .launch-campaign-main .steps .step .step-arrow { left: -8%;}
+  .launch-campaign-main .steps .step:nth-child(2) .step-arrow { right: -60%;}
+
+  .launch-campaign-main .launch-campaign-btn .button-1 {width: 250px;}
+}
 
 @media only screen and (max-width: 767px) {   
   .container-xxl { max-width: 98%;}
-  .button-1 {line-height: 44px; font-size: 16px;}
+  .button-1 {line-height: 50px; font-size: 16px;}
   h2.title {font-size: 24px; line-height: 20px; margin-bottom: 15px;}
   h2.title span { font-size: 14px;}
 
   .main-nav .navbar-brand{width: 130px;}
-  .navbar-collapse{ width: 100%; left: 0; top: 67px; right: auto;}
-  .main-nav .nav-link{font-size: 14px; margin: 3px 15px;}
+  .navbar-collapse{ width: 100%; left: 0; top: 63px; right: auto;}
+  .main-nav .nav-link{margin: 3px 15px;}
   .main-nav .nav-link.act::after{width: 40px; height: 3px;}
   .main-nav .nav-link.btn{font-size: 14px;}
+  .navbar-expand-lg .navbar-toggler{width: 25px;}
+  .navbar-expand-lg .navbar-toggler .navbar-toggler-icon::before{top: -8px;}
+  .navbar-expand-lg .navbar-toggler .navbar-toggler-icon::after{top: 8px;}
 
   .home-header .caption .button-1 img{width: 32px;}
   .home-header .caption{font-size: 15px;}
@@ -849,10 +1026,13 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .why-choose-us { font-size: 15px; margin-bottom: 50px; padding: 50px 0 30px 0;}
   .why-choose-us .col-sm-6 { padding: 10px 15px !important;}
 
-  .recent-campaigns{ padding: 0 15px;}
+  .recent-campaigns{ padding: 0 15px;}  
   .recent-campaigns .graphic-1{top: -5%; left: 40%;}
   .recent-campaigns .graphic-1 img, .recent-campaigns .graphic-2 img{width: 40%;}
   .recent-campaigns .graphic-2{top: 90%;}
+
+  .recent-campaigns .card, .event-card .card{ border-radius: 10px;}
+  .recent-campaigns .card .card-img-top, .event-card .card .card-img-top { border-radius: 10px;}
 
   .recent-campaigns .owl-nav, .upcoming-events .owl-nav{ top: -40px;}
   .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next, .owl-carousel button.owl-dot{width: 32px; height: 32px;}
@@ -873,15 +1053,17 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .footer-main .social a{ margin-left: 7px;}
   .footer-main .social a img { width: 32px;}
 
-
-  .inner-main .header h3{ font-size: 20px;}
-  .inner-main .header img {max-width: 200%; width: 200%;}
-
+  .inner-main .header h3{ width: 100%; font-size: 20px;}
+  .inner-main .header img {max-width: 150%; width: 150%; left: 0%; position: relative;}
+  
   .login-main{width: 100%; margin: 50px 0; padding: 10% 7%; font-size: 15px; border-radius: 10px;}
   .login-main .form-control{border-radius: 5px; height: 54px; font-size: 14px; padding: 0 15px;}
   .login-main .already {line-height: 50px; border-radius: 5px;}
   .login-main Form .button-1{width: 160px;}
-
+  
+  .doctors-main .doctor-list .card{margin: 10px 0; border-radius: 10px;}
+  .doctors-main .doctor-list .card .card-img-top { border-radius: 10px;}
+  .doctors-main .doctor-list .card .card-text{line-height: 20px;}
   .doctors-main .process-main{margin-bottom: 50px;}
   .doctors-main .step .title {font-size: 17px;}
   .doctors-main .step .title span{width: 50px; font-size: 28px; top: 0px;}
@@ -896,7 +1078,102 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
 
   .pagination .page-item .page-link{width: 40px; height: 40px; line-height: 38px; font-size: 13px;}
   .pagination .page-item .page-link span{font-size: 20px; line-height: 34px;}
+
   
+  .campaigns-detail { padding: 40px 0 0;}
+  .campaigns-detail .title h2{width: 100%; font-size: 24px;}
+  .campaigns-detail .title .total-collection{min-width: 100%; font-size: 20px; line-height: 40px;}
+  
+  .campaigns-detail .gallery .video {border-radius: 10px; margin-bottom: 15px;}
+  .campaigns-detail .gallery .video .play-button img{ width: 50px;}
+  
+  .campaigns-detail .gallery .img-gallery .thumb{width: 45.5%; margin: 0 4% 4% 0; border-radius: 10px;}  
+
+  .campaigns-detail .donorlist-disc { margin: 30px 0 50px 0;}
+  .campaigns-detail .donorlist-disc .donorlist{ width: 100%;}
+  .campaigns-detail .donorlist-disc .donorlist .buttons a { width: 47%; font-size: 16px; line-height: 46px}
+  .campaigns-detail .donorlist-disc .donorlist .buttons a.share-btn { margin-left: 6%;}
+  .campaigns-detail .donorlist-disc .score {padding: 20px 20px 20px 20px;}
+  .campaigns-detail .donorlist-disc .score .donors { font-size: 16px; }
+  .campaigns-detail .donorlist-disc .score .donors span {  font-size: 24px;}
+  .campaigns-detail .donorlist-disc ul li{ padding: 10px 50px 10px 60px; position: relative;}
+  .campaigns-detail .donorlist-disc ul li .thumb{ width: 50px; height: 50px; position: absolute; left: 0; margin-right: 0px;}
+  .campaigns-detail .donorlist-disc ul li .donor-name { font-size: 14px; line-height:18px;}
+  .campaigns-detail .donorlist-disc ul li .time{ font-size: 12px; position: absolute; right:0;}
+  .campaigns-detail .donorlist-disc ul li .donor-name span {font-size: 20px; margin-top: 5px;}
+
+  .campaigns-detail .donorlist-disc .description{ width: 100%; margin-top: 30px; padding: 0;}
+  .campaigns-detail .donorlist-disc .description h3 { font-size: 20px;}
+
+  .campaign-info {padding: 40px 0;}
+  .campaign-info h3 {font-size: 20px;}
+  .campaign-info ul{ margin: 0;}
+  .campaign-info ul li {padding: 10px 10px;}
+  .campaign-info ul li .info-title{ width: 100%; max-width: 100%; float: none;}
+  .campaign-info ul li .info-title img{ width: 17px;}
+  .campaign-info ul li .info-details{ width: 100%; padding-left: 26px; float: none; font-size: 14px; line-height: normal;}
+
+  .campaigns-detail .comments-main{margin: 50px 0;}
+  .campaigns-detail .comments-main h3 {font-size: 20px;}
+  .campaigns-detail .comments-main .comment-box{padding: 10px 10px 10px 65px; border-radius: 10px; margin: 0 0 10px 0;}
+  .campaigns-detail .comments-main .comment-box p { font-size: 13px;}
+  .campaigns-detail .comments-main .comment-box .thumb{left: 10px; top: 10px;}
+  .campaigns-detail .comments-main .comment-box .donate-time{position: relative; height: auto; left: 0; right: auto; text-align: left; padding: 0px;}
+  .campaigns-detail .comments-main .comment-box .donate-time .time{ width: auto; bottom: 0;}
+  .campaigns-detail .comments-main .more{ width: 100%;}
+
+  .event-popup { max-width: 500px !important;}
+  .event-popup .modal-content{border-radius: 15px;}
+  .event-popup .modal-body{padding: 10px;}
+  .event-popup .modal-body .thumb {height: 200px; border-radius: 15px;}
+  .event-popup .modal-body button{width: 30px; height: 30px; right: 5px; top: 5px;}
+  .event-popup .modal-body button img{ width: 100%;}
+  .event-popup .modal-body h4 {font-size: 22px;}
+  .event-popup .modal-body p {font-size: 14px;}
+  .event-popup .modal-footer{padding: 5px 15px;}
+  .event-popup .date-address .address { min-width: inherit; max-width: inherit; width: 50%; min-height: 36px; float: none; display: inline-block; vertical-align: top;}
+  .event-popup .date-address .button .button-1 { width: 130px; height: 36px; font-size: 14px; line-height: 35px; border-radius: 5px;}
+
+  .about-us-main .about-details p {font-size: 14px;}
+  .about-us-main .about-details .bullet-point{font-size: 16px;}
+  .about-us-main .about-details .about-img{ width: 80%; margin: 0 10%;}
+  .about-us-main .about-details .bullet-point {padding: 0 0 0 32px; font-size: 16px; margin-bottom: 15px;}
+  .about-us-main .about-details .bullet-point img{width: 24px; height: 24px;}
+
+  .about-us-main .team-main h2{margin-top: 40px;}
+  .about-us-main .team-main .team-member .member-details h4{font-size: 16px; margin-bottom: 5px;}
+  .about-us-main .team-main .team-member .thumb{width: 90px; position: absolute; margin: 4px 0 0 10px;}
+  .about-us-main .team-main .team-member .member-details{ width: 100%; min-height: inherit; position: relative; left: 0; padding: 15px 15px 15px 110px; border-radius:50px 10px 10px 10px;}
+  .about-us-main .team-main .team-member .member-details p{ margin: 10px 0; font-size: 13px; line-height:18px;}
+
+  .contactus-main { margin: 50px 0;}
+  .contactus-main h2 { font-size: 24px; padding: 0 0%;}
+  .contactus-main p { font-size: 14px;}
+  .contactus-main .form-map .form input { height: 50px; border-radius: 8px; font-size: 14px; margin-bottom: 15px;}
+  .contactus-main .form-map .form textarea{border-radius: 8px; font-size: 14px; }
+  .contactus-main .form-map .form .btn-primary { width: 200px; font-size: 15px; line-height: 38px; border-radius: 5px; margin-top: 0;}
+  .contactus-main .addres-phone .email img{ width: 40px;}
+
+  .contactus-main .foundation{margin: 30px 0;}
+  .contactus-main .foundation img{ width: 50px;} 
+  .contactus-main .foundation h5{font-size: 18px; margin: 10px 0;}
+  .contactus-main .social h4{font-size: 22px; margin-bottom: 15px;}
+  .contactus-main .social a{ margin: 0 5px;}
+  .contactus-main .social a img { width: 30px;}
+
+  .faq-main .graphic-1{ display: none;}
+  .faq-main .question-ans{width: 100%; padding-bottom: 50px;}
+  .faq-main .question-ans .accordion-item{margin-bottom: 14px;}
+  .faq-main .question-ans .accordion-item .accordion-button{font-size: 15px; padding: 8px 8px 8px 15px;}
+  .faq-main .question-ans .accordion-item .accordion-button::before{ margin-right: 5px;}
+  .faq-main .question-ans .accordion-item .accordion-button::after { width: 26px; height: 26px; background-size: 12px;}
+  .faq-main .question-ans .accordion-item .accordion-button.collapsed::after{ background-size: 11px;}
+  .faq-main .question-ans .accordion-item .accordion-body{font-size: 14px; padding: 0 42px 15px; line-height:22px;}
+
+  .launch-campaign-main .steps .step .step-detail .step-no { font-size: 16px;}
+  .launch-campaign-main .steps .step .step-detail .step-no span { font-size: 30px;}
+  .launch-campaign-main .steps .step .step-detail h4 { font-size: 18px;}
+  .launch-campaign-main .steps .step .step-detail p { font-size: 14px;}
 }
 
 @media only screen and (max-width: 500px) {   
@@ -923,11 +1200,69 @@ h2.title span{ display: block; font-size: 20px; color: #9E0C0F; text-transform: 
   .footer-main .col:last-child{ width: 100%; margin-top: 50px; flex: auto; text-align: center;}
   .footer-main .play-store-btn{width: 48%; height: 50px; display: inline-block; margin-right: 2%; text-align: left;}
   .footer-main .play-store-btn a {display: block; padding: 3px 0 0 15px;}
-  .footer-main .play-store-btn img{ height: 32px;}
+  .footer-main .play-store-btn a img{ height: 32px;}
   .footer-main .copyright,.footer-main .social { width: 100%; text-align: center; margin: 10px 0;}
 
-  .doctors-main .filter-main form {
-    width: 250px;
-  }
+  .why-choose-us .icon{margin-bottom: 10px; margin-top: 10px;}
+
+  .inner-main .header img { max-width: 220%; width: 220%; left: -23%; position: relative;}
+
+  .doctors-main .filter-main form { width: 250px;}
   
+  .doctors-profile .profile-section{padding: 30px 0;}
+  .doctors-profile .profile-section .graphic-1 {bottom: auto;}
+  .doctors-profile .profile-section .graphic-2 {top: 25%;}
+  .doctors-profile .profile-section .graphic-2 img { width: 60px;}
+  .doctors-profile .profile-section .profile-pic{ width: 300px; max-height: 300px;}
+  .doctors-profile .profile-section .profile-pic::before { width: 84%; height: 91%; left: 7.5%; top: 4.5%; border: 3px solid #FFF;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .icon { width: 40px; height: 40px; top: 10px;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail { padding: 50px 30px 40px 30px;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail h4 { font-size: 15px; margin-left: 10px;}  
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point { font-size: 12px; padding: 3px 0 3px 20px; letter-spacing: normal; line-height: 12px; margin: 5px 0;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img { width: 15px; margin: 2px 0px 0 0; left: 0;}
+
+  .doctors-profile .profile-section .profile-details {width: 96%;}
+  .doctors-profile .profile-section .profile-details p{ font-size: 15px;}
+  .doctors-profile .profile-section .profile-details .bullet-point {font-size: 15px;}
+  .doctors-profile .profile-section .profile-details .bullet-point img {width: 20px; height: 20px; margin: -2px 2px 0 0;}
+
+  .doctors-profile .profile-section .profile-details .score{padding: 10px 15px;}
+  .doctors-profile .profile-section .profile-details .score p { line-height: 30px; font-size: 15px;}
+  .doctors-profile .profile-section .profile-details .score p.secound { font-size: 16px; padding-left: 15px;}
+  .doctors-profile .profile-section .profile-details .button-1 { width: 90px; height: 34px; border-radius: 4px; font-size: 13px; line-height: 34px;}
+
+  .doctors-profile .profile-section .addres-phone{margin-top: 30px;}
+  .doctors-profile .profile-section .addres-phone .email{ width: 96%; height: auto; min-height: 64px; font-size: 14px; padding: 7px 15px 7px 65px; margin: 7px 0;}
+  .doctors-profile .profile-section .addres-phone .email img { height: 30px; margin-top: 10px; left: 15px;}
+  .doctors-profile .profile-section .addres-phone .email h3{font-size: 17px;}
+
+  .doctor-campaigns{margin: 50px 0 60px; padding: 0 4%;}
+  .doctor-campaigns h2.title{margin-bottom: 20px;}
+  .doctor-campaigns .card .card-img-top { width: 100%;}
+  .doctor-campaigns .card .card-body{width: 100%; padding: 1rem 0.6rem;}
+  .doctor-campaigns .card-title{ font-size: 20px;}
+  .doctor-campaigns .card-text{ font-size: 15px;}
+  .doctor-campaigns .total-collection{ font-size: 16px;}
+
+  .events-main .filter-main form{ width:100%;}
+  .events-main .filter-main .search-field .form-control{ width:55%;}
+  .events-main .filter-main .search-field.date-pick .form-control{width:40%;}
+  
+  .recent-campaigns .card-text, .event-card .card .card-text{min-height:inherit;}
+  .doctors-main .doctor-list .card-body{padding: 1rem 0.6rem 0.5rem;}
+  .recent-campaigns .card-body, .event-card .card .card-body{padding: 1rem 0.6rem 0.5rem;}
+ 
+  .launch-campaign-main { padding: 50px 0 0;}
+  .launch-campaign-main h2 {font-size: 20px;}
+  .launch-campaign-main .steps {padding: 20px 0%;}
+  .launch-campaign-main .steps .step .step-picture .picture { width: 220px; height: 220px;}  
+  .launch-campaign-main .steps .step .step-picture{ width: 100%; text-align: center;}
+  .launch-campaign-main .steps .step .step-picture .picture::after { width: 40px; height: 45px;}
+  .launch-campaign-main .steps .step:nth-child(1) .step-picture, .launch-campaign-main .steps .step:nth-child(3) .step-picture{ width: 100%; float: left; text-align: center;}
+  .launch-campaign-main .steps .step .step-detail {padding: 0 0 0 5%; width: 100%;}
+  
+  .launch-campaign-main .steps .step .step-arrow { width: 190px; left: -5%;}
+  .launch-campaign-main .steps .step:nth-child(2) .step-arrow { right: auto; transform: scaleX(1);}
+
+  .launch-campaign-main .launch-campaign-btn{padding: 0px 0 50px;}
 }

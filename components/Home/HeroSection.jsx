@@ -9,7 +9,7 @@ const HeroSection = () => {
             <div className='text-black'>
               <h1 className='mb-3'>Foundation</h1>
               <img src={`/logo-en.png`} alt={"Logo"} />
-              <h4 className='my-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</h4>
+              <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</h4>
               <a className='button-1' href='#!' role='button'>
               <img src={`/subscribe-icon.png`} alt={"Subscribe"} /> Subscribe
               </a>

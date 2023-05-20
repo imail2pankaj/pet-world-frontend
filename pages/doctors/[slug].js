@@ -96,7 +96,7 @@ const DoctorsProfile = () => {
             <CampaignCard/>
             <CampaignCard/>
           </Row>
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-center">
             <a className='button-1' href='#!' role='button'>See more</a>
           </Row>
         </div>

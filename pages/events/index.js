@@ -43,7 +43,7 @@ const Events = () => {
         </Row>    
 
         <div className='doctor-list'>
-        <Row xs={1} md={2} lg={4}>
+        <Row xs={1} md={2} lg={3} xxl={4}>
           <Col>
             <EventCard handelmodel={setModalShow}/> 
           </Col>
@@ -203,7 +203,7 @@ const Events = () => {
 
 function MyVerticallyCenteredModal(props) {
   return (
-    <Modal {...props} size="lg"  aria-labelledby="contained-modal-title-vcenter" centered className='event-popup'>        
+    <Modal {...props} dialogClassName="event-popup" aria-labelledby="contained-modal-title-vcenter" centered>        
       <Modal.Body>
       <Button onClick={props.onHide}><img src={`/close.png`} alt={""} /></Button>
         <div className='thumb'>
