@@ -28,11 +28,11 @@ const DoctorCard = () => {
             </span>
           </div>
       </div>
-      <Link href='#!'>
+      <Link href='/doctors/doctor'>
         <Card>          
-          <Card.Img variant="top" src="/pic-1.jpg" />
+          <Card.Img variant="top" src="/pic-9.jpg" />
           <Card.Body>
-            <Card.Title>Sed ut perspiciatis</Card.Title>
+            <Card.Title>Doctor's Name</Card.Title>
             <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>                          
           </Card.Body>
         </Card>

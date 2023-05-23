@@ -78,7 +78,7 @@ const AboutUs = () => {
                   <div className='member-details'>
                     <h4>Team member’s name</h4>
                     <div className='designation'>Founders</div>
-                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ever.</p>
                     <div className='social'><a href='#'><img src={`/fb-icon2.png`} alt={"Facebbok"} /></a> <a href='#'><img src={`/tw-icon2.png`} alt={"Twitter"} /></a> <a href='#'><img src={`/in-icon2.png`} alt={"linkedin"} /></a> <a href='#'><img src={`/insta-icon2.png`} alt={"instagram"} /></a></div>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const AboutUs = () => {
                   <div className='member-details'>
                     <h4>Team member’s name</h4>
                     <div className='designation'>Founders</div>
-                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ever.</p>
                     <div className='social'><a href='#'><img src={`/fb-icon2.png`} alt={"Facebbok"} /></a> <a href='#'><img src={`/tw-icon2.png`} alt={"Twitter"} /></a> <a href='#'><img src={`/in-icon2.png`} alt={"linkedin"} /></a> <a href='#'><img src={`/insta-icon2.png`} alt={"instagram"} /></a></div>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const AboutUs = () => {
                   <div className='member-details'>
                     <h4>Team member’s name</h4>
                     <div className='designation'>Founders</div>
-                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ever.</p>
                     <div className='social'><a href='#'><img src={`/fb-icon2.png`} alt={"Facebbok"} /></a> <a href='#'><img src={`/tw-icon2.png`} alt={"Twitter"} /></a> <a href='#'><img src={`/in-icon2.png`} alt={"linkedin"} /></a> <a href='#'><img src={`/insta-icon2.png`} alt={"instagram"} /></a></div>
                   </div>
                 </div>
@@ -119,7 +119,7 @@ const AboutUs = () => {
                   <div className='member-details'>
                     <h4>Team member’s name</h4>
                     <div className='designation'>Employee</div>
-                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ever.</p>
                     <div className='social'><a href='#'><img src={`/fb-icon2.png`} alt={"Facebbok"} /></a> <a href='#'><img src={`/tw-icon2.png`} alt={"Twitter"} /></a> <a href='#'><img src={`/in-icon2.png`} alt={"linkedin"} /></a> <a href='#'><img src={`/insta-icon2.png`} alt={"instagram"} /></a></div>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ const AboutUs = () => {
                   <div className='member-details'>
                     <h4>Team member’s name</h4>
                     <div className='designation'>Employee</div>
-                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ever.</p>
                     <div className='social'><a href='#'><img src={`/fb-icon2.png`} alt={"Facebbok"} /></a> <a href='#'><img src={`/tw-icon2.png`} alt={"Twitter"} /></a> <a href='#'><img src={`/in-icon2.png`} alt={"linkedin"} /></a> <a href='#'><img src={`/insta-icon2.png`} alt={"instagram"} /></a></div>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ const AboutUs = () => {
                   <div className='member-details'>
                     <h4>Team member’s name</h4>
                     <div className='designation'>Employee</div>
-                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ever.</p>
                     <div className='social'><a href='#'><img src={`/fb-icon2.png`} alt={"Facebbok"} /></a> <a href='#'><img src={`/tw-icon2.png`} alt={"Twitter"} /></a> <a href='#'><img src={`/in-icon2.png`} alt={"linkedin"} /></a> <a href='#'><img src={`/insta-icon2.png`} alt={"instagram"} /></a></div>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ const AboutUs = () => {
                   <div className='member-details'>
                     <h4>Team member’s name</h4>
                     <div className='designation'>Employee</div>
-                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                    <p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ever.</p>
                     <div className='social'><a href='#'><img src={`/fb-icon2.png`} alt={"Facebbok"} /></a> <a href='#'><img src={`/tw-icon2.png`} alt={"Twitter"} /></a> <a href='#'><img src={`/in-icon2.png`} alt={"linkedin"} /></a> <a href='#'><img src={`/insta-icon2.png`} alt={"instagram"} /></a></div>
                   </div>
                 </div>                

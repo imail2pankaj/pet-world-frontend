@@ -101,7 +101,7 @@ const Login = () => {
                   />
                   <ValidationError errors={errors.password} />
                 </Form.Group>
-                <div className="mb-5">
+                <div className="mb-4">
                   <Button className='button-1' variant="primary" type="submit">
                     Login
                   </Button>

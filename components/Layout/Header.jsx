@@ -27,16 +27,31 @@ const Header = () => {
     setActive(router.asPath);
   }, [router])
 
+  useEffect(() => {
+    window.addEventListener('scroll', isSticky);
+    return () => {
+      window.removeEventListener('scroll', isSticky);
+    };
+  });
+
+
+  // Method that will fix header after a specific scrollable //
+  const isSticky = (e) => {
+    const header = document.querySelector('.main-nav');
+    const scrollTop = window.scrollY;
+    scrollTop >= 150 ? header.classList.add('is-sticky') : header.classList.remove('is-sticky');
+  };
+
   return (
     <Navbar bg="light" variant="light" expand="lg" className='main-nav py-2.5'>
-      <Navbar.Brand className='me-5' href="#home"><img src={`/logo-en.png`} alt={"Logo"} /></Navbar.Brand>
+      <Navbar.Brand className='me-5'><Link href={"/"}><img src={`/logo-en.png`} alt={"Logo"} /></Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           {links.map(link => <Link key={link.path} className={`nav-link ${active === link.path ? 'act' : ''}`} href={link.path}>{t(link.name)}</Link>)}
         </Nav>
         <Nav>
-          <Link className='nav-link btn' href="/login">{t("My Account")}</Link>
+          <Link className='nav-link btn' href="/auth/login">{t("My Account")}</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
