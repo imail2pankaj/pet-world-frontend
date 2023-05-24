@@ -11,7 +11,7 @@ import { WhyVetChoosePetWorld, DoctorCard, PageHeader } from '@/components/Commo
 const Doctors = () => {
   return (
     <div className='inner-main'>
-      <PageHeader src={`/inner-bg1.jpg`} title={"About Doctors"} />
+      <PageHeader banner={`/inner-bg1.jpg`} title={"About Doctors"} />
       <Container fluid="xxl">
         <div className='doctors-main'>
           <Row>
