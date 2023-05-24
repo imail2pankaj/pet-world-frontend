@@ -22,6 +22,42 @@ const AuthProvider = ({ children }) => {
   // ** Hooks
   const router = useRouter()
 
+  useEffect(() => {
+    const initAuth = async () => {
+      const storedToken = window.localStorage.getItem(storageTokenKeyName)
+      if (storedToken) {
+        setLoading(true)
+
+        axios.get(`${process.env.NEXT_PUBLIC_API_URL}/admin/me`, {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+            "Content-Type": "application/json",
+          }
+        }).then(async response => {
+            setLoading(false)
+            setUser({ ...response.data.user })
+        }).catch(() => {
+            localStorage.removeItem('userData')
+            localStorage.removeItem('refreshToken')
+            localStorage.removeItem('accessToken')
+            setUser(null)
+            setLoading(false)
+
+            // if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
+
+            router.replace('/login')
+
+            // }
+          })
+
+      } else {
+        setLoading(false)
+      }
+    }
+    initAuth()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const handleLogin = (params, errorCallback) => {
     axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, params).then(async response => {
       window.localStorage.setItem(storageTokenKeyName, response.data.authorization.accessToken);
@@ -77,6 +113,7 @@ const AuthProvider = ({ children }) => {
     })
   }
   const values = {
+    isAuthenticated: !!user, 
     user,
     loading,
     setUser,

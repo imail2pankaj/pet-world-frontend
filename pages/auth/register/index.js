@@ -9,6 +9,7 @@ import ValidationError from '@/components/Common/ValidationError';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
+import PrimarySubmit from '@/components/Common/PrimarySubmit';
 
 const schema = yup.object().shape({
   user_type_id: yup.string().required(),
@@ -36,6 +37,7 @@ const Register = () => {
 
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     control,
@@ -51,6 +53,7 @@ const Register = () => {
   })
 
   const onSubmit = data => {
+    setIsLoading(true);
     setServerResponse("");
     auth.register(data, (err) => {
       if (err?.response?.data?.errors) {
@@ -74,6 +77,7 @@ const Register = () => {
           message: err?.message
         })
       }
+      setIsLoading(false);
     })
   }
 
@@ -167,7 +171,6 @@ const Register = () => {
                     rules={{ required: true }}
                     render={({ field: { value, onChange, onBlur } }) => (
                       <Form.Control
-                        autoFocus
                         label='Password'
                         placeholder="Enter Password"
                         type='password'
@@ -186,7 +189,6 @@ const Register = () => {
                     rules={{ required: true }}
                     render={({ field: { value, onChange, onBlur } }) => (
                       <Form.Control
-                        autoFocus
                         label='Confirm Password'
                         placeholder="Enter Confirm Password"
                         type='password'
@@ -199,16 +201,14 @@ const Register = () => {
                   <ValidationError errors={errors.password_confirmation} />
                 </Form.Group>
                 <div className="mb-5">
-                  <Button className='button-1' variant="primary" type="submit">
-                    Sign up
-                  </Button>
+                  <PrimarySubmit isLoading={isLoading} text='Sign Up' />
                 </div>
               </Form>
               <Form.Group className="mb-4" controlId="formBasicCheckbox">
                 You agree with the <Link className='tc' href={`/pages/terms`}><b>Terms & Conditions</b></Link> and <Link className='tc' href={`/pages/privacy`}><b>Data policy</b></Link>.
               </Form.Group>
               <div className="already mt-3">
-                Already registered?{" "} <Link href={`/login`}><b>Login</b></Link>
+                Already registered?{" "} <Link href={`/auth/login`}><b>Login</b></Link>
               </div>
             </div>
           </div>

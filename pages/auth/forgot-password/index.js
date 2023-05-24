@@ -9,6 +9,7 @@ import ValidationError from '@/components/Common/ValidationError';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
+import PrimarySubmit from '@/components/Common/PrimarySubmit';
 
 
 const schema = yup.object().shape({
@@ -23,6 +24,7 @@ const ForgotPassword = () => {
 
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     control,
@@ -38,6 +40,7 @@ const ForgotPassword = () => {
 
   const onSubmit = data => {
     const { email } = data
+    setIsLoading(true);
     setServerResponse("");
     auth.forgetPassword({ email }, (resp) => {
       if (resp?.response?.data?.error) {
@@ -53,6 +56,7 @@ const ForgotPassword = () => {
         })
         reset();
       }
+      setIsLoading(false);
     })
   }
   return (
@@ -83,13 +87,11 @@ const ForgotPassword = () => {
                   <ValidationError errors={errors.email} />
                 </Form.Group>
                 <div className="mb-5">
-                  <Button className='button-1' variant="primary" type="submit">
-                    Submit
-                  </Button>
+                  <PrimarySubmit isLoading={isLoading} text='Submit' />
                 </div>
               </Form>
               <div className="already mt-3">
-                Already registered? {" "} <Link href={`/login`}><b>Login</b></Link>
+                Already registered? {" "} <Link href={`/auth/login`}><b>Login</b></Link>
               </div>
             </div>
           </div>

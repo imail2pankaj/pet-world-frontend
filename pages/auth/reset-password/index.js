@@ -10,6 +10,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
+import PrimarySubmit from '@/components/Common/PrimarySubmit';
 
 
 const schema = yup.object().shape({
@@ -29,6 +30,7 @@ const ResetPassword = () => {
 
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const [tokenValid, setTokenValid] = useState({
     status: "",
@@ -67,9 +69,10 @@ const ResetPassword = () => {
 
   const onSubmit = data => {
     const { password, confirm_password } = data
+    setIsLoading(true);
     setServerResponse("");
-    console.log(userId, password, confirm_password);
     auth.resetPassword({ userId, password, confirm_password }, (resp) => {
+      setIsLoading(false);
       if (resp?.response?.data?.error) {
         toast.error(resp?.response?.data?.error)
         setServerResponse({
@@ -133,13 +136,11 @@ const ResetPassword = () => {
                   <ValidationError errors={errors.confirm_password} />
                 </Form.Group>
                 <div className="mb-5">
-                  <Button className='button-1' variant="primary" type="submit">
-                    Submit
-                  </Button>
+                  <PrimarySubmit isLoading={isLoading} text='Submit' />
                 </div>
               </Form>)}
               <div className="already mt-3">
-                Already registered? {" "} <Link href={`/login`}><b>Login</b></Link>
+                Already registered? {" "} <Link href={`/auth/login`}><b>Login</b></Link>
               </div>
             </div>
           </div>

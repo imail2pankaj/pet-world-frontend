@@ -9,6 +9,8 @@ import ValidationError from '@/components/Common/ValidationError';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
+import PrimarySubmit from '@/components/Common/PrimarySubmit';
+import { useRouter } from 'next/router';
 
 
 const schema = yup.object().shape({
@@ -25,6 +27,8 @@ const Login = () => {
 
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter();
 
   const {
     control,
@@ -40,8 +44,10 @@ const Login = () => {
 
   const onSubmit = data => {
     const { email, password } = data
+    setIsLoading(true);
     setServerResponse("");
     auth.login({ email, password }, (response) => {
+      setIsLoading(false);
       if (response?.response?.data?.error) {
         toast.error(response?.response?.data?.error)
         setServerResponse({
@@ -49,15 +55,12 @@ const Login = () => {
           message: response?.response?.data?.error
         })
       } else {
+        router.push('/accounts/profile')
         setServerResponse({
           variant: "success",
           message: "You have successfully logged in"
         })
         reset();
-        // setError('email', {
-        //   type: 'manual',
-        //   message: 'Email or Password is invalid'
-        // })
       }
     })
   }
@@ -106,16 +109,14 @@ const Login = () => {
                   <ValidationError errors={errors.password} />
                 </Form.Group>
                 <div className="mb-5">
-                  <Button className='button-1' variant="primary" type="submit">
-                    Login
-                  </Button>
+                  <PrimarySubmit isLoading={isLoading} text='Login' />
                 </div>
               </Form>
               <Form.Group className="mb-4" controlId="formBasicCheckbox">
                 <Link href={`/auth/forgot-password`}><b>Forgotten password?</b></Link>
               </Form.Group>
               <div className="already mt-3">
-                Not registered?{" "} <Link href={`/register`}><b>Sign up</b></Link>
+                Not registered?{" "} <Link href={`/auth/register`}><b>Sign up</b></Link>
               </div>
             </div>
           </div>
@@ -124,5 +125,6 @@ const Login = () => {
     </>
   )
 }
-
+Login.getLayout = page => {page}
+Login.guestGuard = true
 export default Login

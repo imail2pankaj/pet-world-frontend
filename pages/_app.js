@@ -1,4 +1,4 @@
-import { SSRProvider } from 'react-bootstrap';
+import { SSRProvider, Spinner } from 'react-bootstrap';
 import { appWithTranslation } from 'next-i18next'
 import { Toaster } from 'react-hot-toast'
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
@@ -12,6 +12,18 @@ import { Provider } from 'react-redux'
 import "bootstrap/dist/css/bootstrap.min.css";
 import '@/styles/globals.css'
 import { DefaultSeo } from 'next-seo';
+import GuestGuard from '@/components/auth/GuestGuard';
+import AuthGuard from '@/components/auth/AuthGuard';
+
+const Guard = ({ children, authGuard, guestGuard }) => {
+  if (guestGuard) {
+    return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>
+  } else if (!guestGuard && !authGuard) {
+    return <>{children}</>
+  } else {
+    return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>
+  }
+}
 
 function App({ Component, pageProps }) {
   return (
@@ -19,21 +31,22 @@ function App({ Component, pageProps }) {
       <Provider store={store}>
         <ThemeProvider>
           <AuthProvider>
-
-            <Layout>
-              <DefaultSeo
-                title={undefined}
-                titleTemplate="%s | Pet World"
-                defaultTitle="Pet World"
-                description="The Pet World"
-                openGraph={{
-                  type: 'website',
-                  site_name: 'Pet World'
-                }}
-              />
-              <Component {...pageProps} />
-            </Layout>
-            <Toaster position={'top-right'} toastOptions={{ className: 'react-hot-toast' }} />
+            <DefaultSeo
+              title={undefined}
+              titleTemplate="%s | Pet World"
+              defaultTitle="Pet World"
+              description="The Pet World"
+              openGraph={{
+                type: 'website',
+                site_name: 'Pet World'
+              }}
+            />
+            <Guard authGuard={Component.authGuard ?? true} guestGuard={Component.guestGuard ?? false}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </Guard>
+              <Toaster position={'top-right'} toastOptions={{ className: 'react-hot-toast' }} />
           </AuthProvider>
         </ThemeProvider>
       </Provider>
