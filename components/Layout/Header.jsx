@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Navbar from 'react-bootstrap/Navbar';
-import { Nav } from 'react-bootstrap';
+import { Dropdown, Nav } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -28,6 +28,20 @@ const Header = () => {
   useEffect(() => {
     setActive(router.asPath);
   }, [router])
+
+  useEffect(() => {
+    window.addEventListener('scroll', isSticky);
+    return () => {
+      window.removeEventListener('scroll', isSticky);
+    };
+  });
+
+  // Method that will fix header after a specific scrollable //
+  const isSticky = (e) => {
+    const header = document.querySelector('.main-nav');
+    const scrollTop = window.scrollY;
+    scrollTop >= 150 ? header.classList.add('is-sticky') : header.classList.remove('is-sticky');
+  };
 
   return (
     <Navbar bg="light" variant="light" expand="lg" className='main-nav py-2.5'>

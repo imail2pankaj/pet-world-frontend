@@ -21,7 +21,7 @@ const Footer = () => {
           </Col>
           <Col>
             <h4>About</h4>
-            {isAuthenticated && (<><Link href={'/auth/login'} >{t('Login')}</Link><br /><Link href={'/auth/register'} >{t('Register')}</Link><br /></>)}
+            {!isAuthenticated ? (<><Link href={'/auth/login'} >{t('Login')}</Link><br /><Link href={'/auth/register'} >{t('Register')}</Link><br /></>) : <><Link href={'/accounts/profile'} >{t('My Account')}</Link><br /></>}
             <Link href={'/launch-a-campaign'} >{t('Launch a Campaign')}</Link><br />
             <Link href={'/jobs'} >{t('Jobs')}</Link><br />
             <Link href={'/contact-us'} >{t('Contact Us')}</Link>
