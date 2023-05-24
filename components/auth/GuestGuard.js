@@ -16,7 +16,7 @@ const GuestGuard = props => {
       return
     }
 
-    if (auth.user && window.localStorage.getItem('userData')) {
+    if (window.localStorage.getItem('userData')) {
       router.replace('/')
     }
 

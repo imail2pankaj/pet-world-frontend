@@ -65,10 +65,10 @@ const AuthProvider = ({ children }) => {
       setUser({ ...response.data.user })
       window.localStorage.setItem('userData', JSON.stringify(response.data.user))
       const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/account/profile'
-      if (errorCallback) errorCallback("success", err)
-      router.replace(redirectURL)
+      if (errorCallback) errorCallback(response)
+      // router.replace(redirectURL)
     }).catch(err => {
-      if (errorCallback) errorCallback("error", err)
+      if (errorCallback) errorCallback(err)
     })
   }
 

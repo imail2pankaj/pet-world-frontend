@@ -55,7 +55,9 @@ const Login = () => {
           message: response?.response?.data?.error
         })
       } else {
-        router.push('/accounts/profile')
+        const returnUrl = router.query.returnUrl
+        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/account/profile'
+        router.replace(redirectURL)
         setServerResponse({
           variant: "success",
           message: "You have successfully logged in"

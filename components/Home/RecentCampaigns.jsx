@@ -51,7 +51,7 @@ const RecentCampaigns = () => {
         </Row>
         <Row>
           <OwlCarousel responsive={Responsive} nav={true} dots={true} >
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(item => <div className="item">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(item => <div key={item} className="item">
               <CampaignCard />
             </div>)}
           </OwlCarousel>
