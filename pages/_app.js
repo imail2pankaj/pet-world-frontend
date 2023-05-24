@@ -14,14 +14,15 @@ import '@/styles/globals.css'
 import { DefaultSeo } from 'next-seo';
 import GuestGuard from '@/components/auth/GuestGuard';
 import AuthGuard from '@/components/auth/AuthGuard';
+import Loader from '@/components/Common/Loader';
 
 const Guard = ({ children, authGuard, guestGuard }) => {
   if (guestGuard) {
-    return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>
+    return <GuestGuard fallback={<Loader />}>{children}</GuestGuard>
   } else if (!guestGuard && !authGuard) {
     return <>{children}</>
   } else {
-    return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>
+    return <AuthGuard fallback={<Loader />}>{children}</AuthGuard>
   }
 }
 

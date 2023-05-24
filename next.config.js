@@ -3,7 +3,7 @@ const { i18n } = require('./next-i18next.config')
 const webpack = require("webpack");
 const nextConfig = {
   images: {
-    domains: ['localhost:3000','pet.scenicitsolutions.com']
+    domains: ['localhost','pet.scenicitsolutions.com']
   },
   reactStrictMode: true,
   i18n,

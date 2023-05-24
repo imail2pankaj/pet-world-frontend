@@ -49,7 +49,7 @@ const ContactUs = () => {
                 </Form>
                 </div>
                 <div className='map'>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.317654606427!2d23.294809676622027!3d42.71816691240152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa9007a52e1a85%3A0x1331859da2e56ad3!2sA1!5e0!3m2!1sen!2sin!4v1684236110016!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.317654606427!2d23.294809676622027!3d42.71816691240152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa9007a52e1a85%3A0x1331859da2e56ad3!2sA1!5e0!3m2!1sen!2sin!4v1684236110016!5m2!1sen!2sin" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         

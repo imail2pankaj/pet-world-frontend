@@ -11,16 +11,24 @@ const AuthGuard = props => {
   const { children, fallback } = props
   const auth = useAuth()
   const router = useRouter()
+
   useEffect(
     () => {
       if (!router.isReady) {
         return
       }
+
       if (auth.user !== null && window.localStorage.getItem('userData')) {
         if (router.asPath === '/auth/login' || router.asPath === '/auth/register') {
           router.replace({
-            pathname: '/',
-            // query: { returnUrl: router.asPath }
+            pathname: '/'
+          })
+        }
+      } else if (auth.user === null && !window.localStorage.getItem('userData')) {
+        if (router.asPath.search("accounts") >= 0) {
+          router.replace({
+            pathname: '/auth/login',
+            query: { returnUrl: router.asPath }
           })
         }
       }
@@ -28,7 +36,7 @@ const AuthGuard = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [router.route]
   )
-  // console.log(auth.loading, auth.user);
+
   // if (auth.loading || auth.user === null) {
   //   return fallback
   // }
