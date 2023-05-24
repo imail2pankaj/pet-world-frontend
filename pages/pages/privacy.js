@@ -1,8 +1,12 @@
+import { WhyVetChoosePetWorld } from '@/components/Common'
 import React from 'react'
 
 const Privacy = () => {
   return (
-    <div>Privacy</div>
+    <div>
+      Privacy
+      <WhyVetChoosePetWorld />
+    </div>
   )
 }
 

@@ -218,4 +218,6 @@ const Register = () => {
   )
 }
 
+Register.getLayout = page => {page}
+Register.guestGuard = true
 export default Register

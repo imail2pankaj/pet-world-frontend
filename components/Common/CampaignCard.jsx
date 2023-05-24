@@ -14,19 +14,19 @@ const CampaignCard = ({ campaign }) => {
           <div className='aproved-by'> 
             <span>Voted by :</span>
               <div className='doctor'>
-                <Link href='#!'>
+                <Link href='/doctors/doctor'>
                   <img src={`/donor-pic.jpg`} alt={""} />
                 </Link>
                 <div className='do-name'>Doctor's name</div>
               </div>
               <div className='doctor'>
-                <Link href='#!'>
+                <Link href='/doctors/doctor'>
                   <img src={`/donor-pic.jpg`} alt={""} />
                 </Link>
                 <div className='do-name'>Doctor's name</div>
               </div>
               <div className='doctor'>
-                <Link href='#!'>
+                <Link href='/doctors/doctor'>
                   <img src={`/donor-pic.jpg`} alt={""} />
                 </Link>
                 <div className='do-name'>Doctor's name</div>

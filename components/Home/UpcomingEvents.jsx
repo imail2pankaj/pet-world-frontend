@@ -1,5 +1,5 @@
-import React from 'react'
-import Containerer from 'react-bootstrap/Container';
+import React, { useState } from 'react'
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 
@@ -11,7 +11,8 @@ if (typeof window !== "undefined") {
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import dynamic from "next/dynamic";
-import EventCard from '../Common/EventCard';
+import Link from 'next/link';
+import { EventCard, EventModal } from '../Common';
 
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
@@ -37,63 +38,33 @@ const Responsive = {
 }
 
 const UpcomingEvents = () => {
+  const [modalShow, setModalShow] = useState(false);
   return (
     <div className='upcoming-events'>
-    <div className='graphic-1'><img src={`/arrow.png`} alt={""} /></div>     
-    <div className='graphic-2'><img src={`/paw-2.png`} alt={""} /></div>    
-      <Containerer fluid="xxl"> 
-          <Row>
-            <h2 className='title'>
-                <span>Upcoming</span>
-                Events
-            </h2>
-          </Row>
-          <Row>
-            <OwlCarousel responsive={Responsive} nav={true} dots={true}>
-              <div className="item">
-                <EventCard/>
+      <EventModal show={modalShow} onHide={() => setModalShow(false)} />
+      <div className='graphic-1'><img src={`/arrow.png`} alt={""} /></div>
+      <div className='graphic-2'><img src={`/paw-2.png`} alt={""} /></div>
+      <Container fluid="xxl">
+        <Row>
+          <h2 className='title'>
+            <span>Upcoming</span>
+            Events
+          </h2>
+        </Row>
+        <Row>
+          <OwlCarousel responsive={Responsive} nav={true} dots={true}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(item =>
+              <div className="item" key={item}>
+                <EventCard handelmodel={setModalShow} />
               </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-              <div className="item">
-                <EventCard/>
-              </div>
-            </OwlCarousel>
-          </Row>
-          <Row className="justify-content-center">
-            <a className='button-1' href='#!' role='button'>View all</a>
-          </Row>
-      </Containerer>
-      </div>
+            )}
+          </OwlCarousel>
+        </Row>
+        <Row className="justify-content-center">
+          <Link className='button-1' href='/events' role='button'>View all</Link>
+        </Row>
+      </Container>
+    </div>
   )
 }
-
 export default UpcomingEvents

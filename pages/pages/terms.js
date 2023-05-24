@@ -1,8 +1,12 @@
+import { WhyVetChoosePetWorld } from '@/components/Common'
 import React from 'react'
 
 const Terms = () => {
   return (
-    <div>Terms</div>
+    <div>
+      Terms
+      <WhyVetChoosePetWorld />
+    </div>
   )
 }
 

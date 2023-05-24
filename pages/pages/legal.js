@@ -1,8 +1,12 @@
+import { WhyVetChoosePetWorld } from '@/components/Common'
 import React from 'react'
 
 const Legal = () => {
   return (
-    <div>Legal</div>
+    <div>
+      Legal
+      <WhyVetChoosePetWorld />
+    </div>
   )
 }
 
