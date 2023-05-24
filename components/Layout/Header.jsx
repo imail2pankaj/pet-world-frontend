@@ -25,9 +25,15 @@ const Header = () => {
 
   const [active, setActive] = useState('/')
 
+  const [logoClass, setLogoClass] = useState('')
+  
   useEffect(() => {
+    if(router.asPath === '/') {
+      setLogoClass("home-logo");
+    }
     setActive(router.asPath);
   }, [router])
+  
 
   useEffect(() => {
     window.addEventListener('scroll', isSticky);
@@ -45,7 +51,7 @@ const Header = () => {
 
   return (
     <Navbar bg="light" variant="light" expand="lg" className='main-nav py-2.5'>
-      <Navbar.Brand className='me-5'><Link href={'/'}><img src={`/logo-en.png`} alt={"Logo"} /></Link></Navbar.Brand>
+      <Navbar.Brand className={`me-5 ${logoClass}`}><Link href={'/'}><img src={`/logo-en.png`} alt={"Logo"} /></Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">

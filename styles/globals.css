@@ -102,7 +102,8 @@ a, button{
 
 /*** Navigation ****/
 .main-nav{width: 100%; z-index: 10; padding: 14px 2%; transition: 0.3s;}
-.main-nav .navbar-brand{ width: 180px; display: none;}
+.main-nav .navbar-brand{ width: 180px;}
+.main-nav .navbar-brand.home-logo{ display: none;}
 .main-nav .navbar-brand img{ max-width: 100%; height: auto; display: block;}
 .main-nav .nav-link{ color: #232323; font-size: 15px; font-weight: 500; letter-spacing: 1px; margin: 0 15px; padding: 0 !important;}
 .main-nav .nav-link:hover, .main-nav .nav-link.act{ color: #9E0C0F; position: relative;}
@@ -111,7 +112,7 @@ a, button{
 .main-nav .nav-link.btn:hover{ color: #ffffff; background-color: #9E0C0F;}
 
 .is-sticky { position: fixed; top: 0; left: 0; z-index: 999; box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%); animation: sticky-top 0.5s;}
-.is-sticky .navbar-brand{ display: inline-block;}
+.is-sticky .navbar-brand.home-logo{ display: inline-block;}
 @keyframes sticky-top { from {top: -50px;} to {top: 0px;} }
 
 /*** Header ***/
@@ -786,8 +787,9 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
 
 @media only screen and (max-width: 1200px) {
-  .navbar-expand-lg .navbar-collapse{display: block !important;}
+  .main-nav .navbar-brand.home-logo{ display: inline-block;}
 
+  .navbar-expand-lg .navbar-collapse{display: block !important;}
   .navbar-expand-lg{justify-content: space-between;}
   .navbar-expand-lg .navbar-toggler{ width: 30px; display: block; float: right; border: none; padding: 0; margin-top: -2px;}
   .navbar-expand-lg .navbar-toggler .navbar-toggler-icon{ background: none; width: 100%; height: 4px; position: relative; background-color: #232323; border-radius: 2px;}
