@@ -19,9 +19,9 @@ const LanguageOption = () => {
           {t(changeTo, { changeTo }).toUpperCase()}
         </button>        
       </Link> */}
-      <Form.Select defaultValue="English">            
-            <option>English</option>
-            <option>Bulgarian</option>
+      <Form.Select defaultValue="English">
+        <option>English</option>
+        <option>Bulgarian</option>
       </Form.Select>
     </div>
   )

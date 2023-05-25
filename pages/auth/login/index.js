@@ -56,7 +56,7 @@ const Login = () => {
         })
       } else {
         const returnUrl = router.query.returnUrl
-        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/account/profile'
+        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/accounts/profile'
         router.replace(redirectURL)
         setServerResponse({
           variant: "success",

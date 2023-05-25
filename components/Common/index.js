@@ -4,3 +4,5 @@ export { default as DoctorCard } from './DoctorCard';
 export { default as WhyVetChoosePetWorld } from './WhyVetChoosePetWorld';
 export { default as EventCard } from './EventCard';
 export { default as EventModal } from './EventModal';
+export { default as ValidationError } from './ValidationError';
+export { default as PrimarySubmit } from './PrimarySubmit';

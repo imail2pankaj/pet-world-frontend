@@ -41,13 +41,13 @@ const Footer = () => {
           </Col>
         </Row>
 
-        <div className='copyright'>© PetWorld. 2023</div>
+        <div className='copyright'>© PetWorld. {(new Date()).getFullYear()}</div>
         <div className='social'>
           Follow us:
-          <Link href={'/#'}><img src={`/fb-icon.png`} alt={"Facebook"} /></Link>
-          <Link href={'/#'}><img src={`/tw-icon.png`} alt={"Twitter"} /></Link>
-          <Link href={'/#'}><img src={`/in-icon.png`} alt={"linkedin"} /></Link>
-          <Link href={'/#'}><img src={`/insta-icon.png`} alt={"Instagram"} /></Link>
+          <Link href={'/'}><img src={`/fb-icon.png`} alt={"Facebook"} /></Link>
+          <Link href={'/'}><img src={`/tw-icon.png`} alt={"Twitter"} /></Link>
+          <Link href={'/'}><img src={`/in-icon.png`} alt={"linkedin"} /></Link>
+          <Link href={'/'}><img src={`/insta-icon.png`} alt={"Instagram"} /></Link>
         </div>
 
       </Container>

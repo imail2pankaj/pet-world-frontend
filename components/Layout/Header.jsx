@@ -74,7 +74,7 @@ const Header = () => {
           {isAuthenticated ?
             <Dropdown>
               <Dropdown.Toggle className='nav-link btn' variant='outlined' id="dropdown-basic">
-                <Image width={25} height={25} src={user?.profile_image ? `${process.env.NEXT_PUBLIC_API_PUBLIC_URL}storage/users/${user?.profile_image}` : defaultAvatar} className='me-2 rounded-circle' alt='Avatar' />
+                <Image width={25} height={25} src={user?.profile_image ? `${user?.profile_image}` : defaultAvatar} className='me-2 rounded-circle' alt='Avatar' />
                 {t("My Account")}
               </Dropdown.Toggle>
 

@@ -3,7 +3,8 @@ import React from 'react'
 
 const Cookies = () => {
   return (
-    <div>
+    <div className='inner-main'>
+      <PageHeader banner={"/aboutus-bg.jpg"} title={'Cookies'} />
       Cookies
       <WhyVetChoosePetWorld />
     </div>
