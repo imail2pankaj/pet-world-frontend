@@ -1,4 +1,4 @@
-import { WhyVetChoosePetWorld } from '@/components/Common'
+import { PageHeader, WhyVetChoosePetWorld } from '@/components/Common'
 import React from 'react'
 
 const Cookies = () => {
