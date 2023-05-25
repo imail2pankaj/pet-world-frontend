@@ -28,15 +28,15 @@ const DoctorCard = () => {
             </span>
           </div>
       </div>
-      <Link href='/doctors/doctor'>
+      
         <Card>          
-          <Card.Img variant="top" src="/pic-9.jpg" />
+        <Link href='/doctors/doctor'><Card.Img variant="top" src="/pic-9.jpg" /></Link>
           <Card.Body>
-            <Card.Title>Doctor's Name</Card.Title>
+          <Link href='/doctors/doctor'><Card.Title>Doctor's Name</Card.Title></Link>
             <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>                          
           </Card.Body>
         </Card>
-      </Link>
+      
     </div>
   )
 }
