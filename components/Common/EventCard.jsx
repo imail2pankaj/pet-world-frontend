@@ -8,7 +8,7 @@ const EventCard = (props) => {
     <div className='event-card' style={{ cursor: "pointer" }}>
       <Card onClick={() => props.handelmodel(true)}>
         <div className='attendees'><span>55</span> Attendees</div>
-        <Card.Img variant="top" src="/pic-8.jpg" />
+        <div className='thumb'><Card.Img variant="top" src="/donation-pic.jpg" /></div>
         <Card.Body>
           <Card.Title>Sed ut perspiciatis</Card.Title>
           <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>

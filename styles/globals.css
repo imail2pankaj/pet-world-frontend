@@ -217,7 +217,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
  .upcoming-events .owl-carousel{ padding: 15px 0;}
  .event-card .card{ border-radius:15px; padding: 7px; background-color: rgba(255, 255, 255, 0.8);}
- .event-card .card .attendees{ width: auto; position: absolute; top: 20px; right: 20px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;}
+ .event-card .card .attendees{ width: auto; position: absolute; top: 17px; right: 17px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;}
  .event-card .card .attendees span{font-weight: 600; font-size: 14px; line-height: 22px; letter-spacing: 0.02em; color: #9E0C0F;}
  .event-card .card .card-img-top{ border-radius:15px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);} 
  .event-card .card .card-body{padding: 10px;} 
@@ -322,7 +322,8 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
 .doctors-main .doctor-list{ width: 100%; display: block; margin: 15px 0;}
 .doctors-main .doctor-list .card{ border-radius:20px; padding: 7px; margin: 15px 0;}
-.doctors-main .doctor-list .card .card-img-top{ border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
+.doctors-main .doctor-list .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
+.doctors-main .doctor-list .card .card-img-top{ width: 100%; height: auto; display: block;}
 .doctors-main .doctor-list .card .card-body{padding: 10px;}
 .doctors-main .doctor-list .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
 .doctors-main .doctor-list .card-text{ font-size: 15px; color: #232323; min-height: 90px;}
@@ -641,7 +642,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   
 }
 
-@media only screen and (max-width: 1400px) {  
+@media only screen and (max-width: 1399px) {  
   
    h2.title{ font-size: 30px; line-height: 24px;}
    h2.title span{font-size: 16px;}
@@ -699,6 +700,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .doctors-main{ margin: 100px 0;}  
   .doctors-main .filter-main form{width: 300px;}
   .doctors-main .doctor-list .card{padding: 8px;}
+  .doctors-main .doctor-list .card .thumb{ height: 220px;}
   .doctors-main .doctor-list .card-body{ padding:1rem 0.6rem;}  
   .doctors-main .doctor-list .approved-doc{right: 2.5%; top: 2.5%;}
   .doctors-main .doctor-list .approved-doc:hover{width: 95%; height: 95%; left: 2.5%; top: 2.5%;}
@@ -752,14 +754,14 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
   .main-nav .navbar-brand{width: 160px; margin-right: 1.5rem !important;}
   .main-nav .nav-link.btn{width: 170px; font-size: 14px;}
-
-
+ 
   .inner-main .header h3{font-size: 30px;}  
   .doctors-main .step .title{font-size: 20px; margin-bottom: 0;}
   .doctors-main .step .title span{width: 60px; font-size: 34px;}
   .doctors-main .step p{ font-size: 15px; padding-left: 60px;}
   .doctors-main .doctor-list .approved-doc .doctor-detail h4{ font-size: 16px;}
   .doctors-main .doctor-list .approved-doc .doctor-detail .bullet-point{ font-size: 13px; padding: 5px 0 4px 25px;}
+  .doctors-main .doctor-list .card .thumb{ height: 200px;}
 
   .doctors-profile .profile-section .graphic-1 { width: 14%; bottom: 30%; }
   .doctors-profile .profile-section .profile-pic{width: 380px; max-height: 380px;}
@@ -851,6 +853,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
   .doctors-main{margin: 70px 0;}
   .doctors-main .process-main{ margin-bottom: 100px;}
+  .doctors-main .doctor-list .card .thumb{ height: 190px;}
 
   .doctors-profile .profile-section .graphic-1 { width: 14%; bottom: 30%; }
   .doctors-profile .profile-section .profile-pic{width: 380px; max-height: 378px;}
@@ -976,8 +979,9 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .doctors-main .step .title span{width: 54px; font-size: 32px;}
   .doctors-main .step p{padding-left: 54px;}
 
-  .doctors-main .filter-main form{width: 300px;}
+  .doctors-main .doctor-list .card .thumb{ height: 210px;}
 
+  .doctors-main .filter-main form{width: 300px;}
 
   .doctors-profile .profile-section .graphic-1 { width: 28%; bottom: 55%;}
   .doctors-profile .profile-section .profile-pic{width: 320px; max-height: 320px; margin: 0; padding: 0;}  
@@ -1129,7 +1133,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   
   .doctors-main p{ font-size: 15px; line-height: 20px;}
   .doctors-main .doctor-list .card{margin: 10px 0; border-radius: 10px;}
-  .doctors-main .doctor-list .card .card-img-top { border-radius: 10px;}
+  .doctors-main .doctor-list .card .thumb { border-radius: 10px;}
   .doctors-main .doctor-list .card .card-text{line-height: 20px; font-size: 14px; min-height: 50px;}
   .doctors-main .doctor-list .approved-doc .doctor-detail{border-radius: 10px;}
   .doctors-main .process-main{margin-bottom: 50px;}  

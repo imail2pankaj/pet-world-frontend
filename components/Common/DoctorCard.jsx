@@ -29,8 +29,10 @@ const DoctorCard = () => {
           </div>
       </div>
       
-        <Card>          
-        <Link href='/doctors/doctor'><Card.Img variant="top" src="/pic-9.jpg" /></Link>
+        <Card>
+          <div className='thumb'>
+            <Link href='/doctors/doctor'><Card.Img variant="top" src="/pic-9.jpg" /></Link>
+          </div>          
           <Card.Body>
           <Link href='/doctors/doctor'><Card.Title>Doctor's Name</Card.Title></Link>
             <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>                          

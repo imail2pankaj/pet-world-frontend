@@ -8,7 +8,9 @@ const CampaignCard = ({ campaign }) => {
   return (
     <div className='card-main'>
         <Card>
-        <Link href='/campaigns/Campaign'><Card.Img variant="top" src="/pic-1.jpg" /></Link>
+        <div className='thumb'>
+          <Link href='/campaigns/Campaign'><Card.Img variant="top" src="/pic-1.jpg" /></Link>
+        </div>
           <Card.Body>
           <Link href='/campaigns/Campaign'><Card.Title>Sed ut perspiciatis</Card.Title></Link>
           <div className='aproved-by'> 
