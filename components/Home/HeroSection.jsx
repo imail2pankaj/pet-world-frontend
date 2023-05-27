@@ -11,7 +11,7 @@ const HeroSection = () => {
             <h1 className='mb-3'>Foundation</h1>
             <img src={`/logo-en.png`} alt={"Logo"} />
             <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</h4>
-            <Link className='button-1' href='#!' role='button'>
+            <Link className='button-1' href='/auth/register' role='button'>
               <img src={`/subscribe-icon.png`} alt={"Subscribe"} /> Subscribe
             </Link>
             <div className='white-bg'>Help an animal friend</div>

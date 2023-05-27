@@ -19,7 +19,7 @@ const About = () => {
               <span className='bullet-point'>
                 <img src={`/bullet.png`} alt={""} /> Lorem ipsum consectetur adipiscing elit tempor.
               </span>
-              <Link className='button-1' href='#!' role='button'>
+              <Link className='button-1' href='/about-us' role='button'>
                 Read More
               </Link>
             </div>      

@@ -38,7 +38,7 @@ const DonationProcess = () => {
                 </h3>
                 <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.</p>            
               </div>          
-              <Link className='button-1' href='#!' role='button'>
+              <Link className='button-1' href='/auth/register' role='button'>
                 Read More
               </Link>
           </Col>          

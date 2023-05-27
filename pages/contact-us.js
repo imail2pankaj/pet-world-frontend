@@ -6,8 +6,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link'
 import { PageHeader, WhyVetChoosePetWorld } from '@/components/Common'
+import axiosInstance from '@/store/api/axiosInstance';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const ContactUs = () => {
+const ContactUs = ({appSettings}) => {
+  console.log(appSettings);
   return (
     <div className='inner-main'>
       <PageHeader banner={`/contact-bg.jpg`} title={"Contact us"} />
@@ -54,15 +57,15 @@ const ContactUs = () => {
           <div className='addres-phone'>
             <div className='email'><img src={`/email-icon.png`} alt={""} />
               <h3>Send us an email</h3>
-              <span>info@petworld.com</span>
+              <span>{appSettings?.contact?.email}</span>
             </div>
             <div className='email phone'><img src={`/phone-icon.png`} alt={""} />
               <h3>Got Question? Call us 24/7</h3>
-              <span>(0)123456789</span>
+              <span>{appSettings?.contact?.phone}</span>
             </div>
             <div className='email address'><img src={`/address-icon.png`} alt={""} />
               <h3>Our address</h3>
-              <span>A-1, Envanto HQ, Bulgaria.</span>
+              <span>{appSettings?.contact?.address}</span>
             </div>
           </div>
 
@@ -76,10 +79,10 @@ const ContactUs = () => {
           <Row className="justify-content-center">
             <div className='social'>
               <h4>You can follow us:</h4>
-              <Link href={'/'}><img src={`/fb-icon.png`} alt={"Facebook"} /></Link>
-              <Link href={'/'}><img src={`/tw-icon.png`} alt={"Twitter"} /></Link>
-              <Link href={'/'}><img src={`/in-icon.png`} alt={"linkedin"} /></Link>
-              <Link href={'/'}><img src={`/insta-icon.png`} alt={"Instagram"} /></Link>
+              <Link href={appSettings?.social_media?.facebook}><img src={`/fb-icon.png`} alt={"Facebook"} /></Link>
+              <Link href={appSettings?.social_media?.twitter}><img src={`/tw-icon.png`} alt={"Twitter"} /></Link>
+              <Link href={appSettings?.social_media?.linkedin}><img src={`/in-icon.png`} alt={"linkedin"} /></Link>
+              <Link href={appSettings?.social_media?.instagram}><img src={`/insta-icon.png`} alt={"Instagram"} /></Link>
             </div>
           </Row>
 
@@ -92,3 +95,18 @@ const ContactUs = () => {
 }
 
 export default ContactUs
+
+
+export async function getStaticProps({ locale }) {
+  const home = await axiosInstance.get('/');
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common'
+      ])),
+      appSettings: home?.data
+      // Will be passed to the page component as props
+    },
+    revalidate: 10,
+  }
+}

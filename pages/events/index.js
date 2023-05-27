@@ -110,7 +110,6 @@ const Events = ({ initialEvents }) => {
           </div>
         </div>
       </Container>
-
       <WhyVetChoosePetWorld />
     </div>
 

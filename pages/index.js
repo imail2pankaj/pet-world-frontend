@@ -45,6 +45,6 @@ export async function getStaticProps({ locale }) {
       appSettings: home?.data
       // Will be passed to the page component as props
     },
-    revalidate: 100,
+    revalidate: 10,
   }
 }
