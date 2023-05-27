@@ -19,19 +19,19 @@ const CampaignCard = ({ campaign }) => {
                 <Link href='/doctors/doctor'>
                   <img src={`/donor-pic.jpg`} alt={""} />
                 </Link>
-                <div className='do-name'>Doctor's name</div>
+                <div className='do-name'>Doctor&apos;s name</div>
               </div>
               <div className='doctor'>
                 <Link href='/doctors/doctor'>
                   <img src={`/donor-pic.jpg`} alt={""} />
                 </Link>
-                <div className='do-name'>Doctor's name</div>
+                <div className='do-name'>Doctor&apos;s name</div>
               </div>
               <div className='doctor'>
                 <Link href='/doctors/doctor'>
                   <img src={`/donor-pic.jpg`} alt={""} />
                 </Link>
-                <div className='do-name'>Doctor's name</div>
+                <div className='do-name'>Doctor&apos;s name</div>
               </div>
             </div>
             <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>              

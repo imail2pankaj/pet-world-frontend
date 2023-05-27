@@ -1,5 +1,6 @@
 import moment from 'moment';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
@@ -27,7 +28,7 @@ const EventModal = (props) => {
             <img src={`/uder-icon.png`} alt={""} /> <span>256 Participants</span>
           </div>
           <div className='button'>
-            <a className='button-1' href='/' role='button'>participate</a>
+            <Link className='button-1' href='/' role='button'>participate</Link>
           </div>
         </div>
       </Modal.Footer>

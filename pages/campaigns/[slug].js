@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { WhyVetChoosePetWorld } from '@/components/Common';
+import Link from 'next/link';
 
 const CampaignDetails = () => {
   return (
@@ -27,9 +28,9 @@ const CampaignDetails = () => {
             <Col sm={6} lg={6}>
               <div className='video'>
                 <img src={`/video-img.jpg`} alt={"Video"} />
-                <a className='play-button' href='#'>
+                <Link className='play-button' href='#'>
                   <img src={`/play-icon.png`} alt={"Play"} />
-                </a>
+                </Link>
               </div>
             </Col>
             <Col sm={6} lg={6}>
@@ -38,7 +39,7 @@ const CampaignDetails = () => {
                 <div className='thumb'><img src={`/pic-2.jpg`} alt={""} /></div>
                 <div className='thumb'><img src={`/pic-3.jpg`} alt={""} /></div>
                 <div className='thumb'><img src={`/pic-4.jpg`} alt={""} />
-                  <a href='#' className='overlay'>+12</a>
+                  <Link href='#' className='overlay'>+12</Link>
                 </div>
               </div>
             </Col>
@@ -46,8 +47,8 @@ const CampaignDetails = () => {
           <Row className='donorlist-disc'>
             <div className='donorlist'>
               <div className='buttons'>
-                <a href='#'>buttons</a>
-                <a href='#' className='share-btn'>Share</a>
+                <Link href='#'>buttons</Link>
+                <Link href='#' className='share-btn'>Share</Link>
               </div>
 
               <div className='score'>
@@ -112,16 +113,16 @@ const CampaignDetails = () => {
                   <div className='time'>Mar 15</div>
                 </li>
                 <li className='center'>
-                  <a href='#' className='more-list'>MORE</a>
+                  <Link href='#' className='more-list'>MORE</Link>
                 </li>
               </ul>
             </div>
             <div className='description'>
               <h3>Sed ut perspiciatis</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &apos;Content here, content here&apos;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &apos;lorem ipsum&apos; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
               <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at</p>
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &apos;Content here, content here&apos;, making it look like readable English. </p>
             </div>
           </Row>
         </Container>
@@ -162,7 +163,7 @@ const CampaignDetails = () => {
                 <img src={`/donor-pic.jpg`} alt={""} />
               </div>
               <h4>Lorem Ipsum is simply dummy</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown. </p>
               <div className='donate-time'>donate <span>$50</span>
                 <div className='time'>4 hours</div>
               </div>
@@ -172,7 +173,7 @@ const CampaignDetails = () => {
                 <img src={`/donor-pic.jpg`} alt={""} />
               </div>
               <h4>Lorem Ipsum is simply dummy</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown. </p>
               <div className='donate-time'>donate <span>$20</span>
                 <div className='time'>4 hours</div>
               </div>
@@ -182,7 +183,7 @@ const CampaignDetails = () => {
                 <img src={`/donor-pic.jpg`} alt={""} />
               </div>
               <h4>Lorem Ipsum is simply dummy</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown. </p>
               <div className='donate-time'>donate <span>$40</span>
                 <div className='time'>4 hours</div>
               </div>
@@ -192,7 +193,7 @@ const CampaignDetails = () => {
                 <img src={`/donor-pic.jpg`} alt={""} />
               </div>
               <h4>Lorem Ipsum is simply dummy</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown. </p>
               <div className='donate-time'>donate <span>$15</span>
                 <div className='time'>4 hours</div>
               </div>
@@ -202,7 +203,7 @@ const CampaignDetails = () => {
                 <img src={`/donor-pic.jpg`} alt={""} />
               </div>
               <h4>Lorem Ipsum is simply dummy</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown. </p>
               <div className='donate-time'>donate <span>$30</span>
                 <div className='time'>4 hours</div>
               </div>
@@ -212,13 +213,13 @@ const CampaignDetails = () => {
                 <img src={`/donor-pic.jpg`} alt={""} />
               </div>
               <h4>Lorem Ipsum is simply dummy</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown. </p>
               <div className='donate-time'>donate <span>$25</span>
                 <div className='time'>4 hours</div>
               </div>
             </div>
             <div className='more'>
-              <a href='#' className='more-list'>MORE</a>
+              <Link href='#' className='more-list'>MORE</Link>
             </div>
           </Container>
         </div>

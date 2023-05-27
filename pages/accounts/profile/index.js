@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { NextSeo } from 'next-seo'
 import { PrimarySubmit, ValidationError } from '@/components/Common'
 import { Controller, useForm } from 'react-hook-form'
-import { Button, Container, Form } from 'react-bootstrap'
+import { Alert, Button, Container, Form } from 'react-bootstrap'
 import Image from 'next/image'
 
 const defaultAvatar = '/default-avatar.png';

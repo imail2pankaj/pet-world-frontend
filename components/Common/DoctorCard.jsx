@@ -34,7 +34,7 @@ const DoctorCard = () => {
             <Link href='/doctors/doctor'><Card.Img variant="top" src="/pic-9.jpg" /></Link>
           </div>          
           <Card.Body>
-          <Link href='/doctors/doctor'><Card.Title>Doctor's Name</Card.Title></Link>
+          <Link href='/doctors/doctor'><Card.Title>Doctor&apos;s Name</Card.Title></Link>
             <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>                          
           </Card.Body>
         </Card>

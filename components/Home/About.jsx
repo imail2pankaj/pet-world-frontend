@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const About = () => {
@@ -18,9 +19,9 @@ const About = () => {
               <span className='bullet-point'>
                 <img src={`/bullet.png`} alt={""} /> Lorem ipsum consectetur adipiscing elit tempor.
               </span>
-              <a className='button-1' href='#!' role='button'>
+              <Link className='button-1' href='#!' role='button'>
                 Read More
-              </a>
+              </Link>
             </div>      
             <div className='about-pic'><img src={`/about-pic.png`} alt={"About Pic"} /></div>
     </div>
