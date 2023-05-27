@@ -1,49 +1,50 @@
 import Head from 'next/head'
 import { Container } from 'react-bootstrap'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import {  
+import {
   HeroSection,
   Statistics,
-  About,  
+  About,
   AboutDoctor,
   WhyChoose,
   RecentCampaigns,
   UpcomingEvents,
-  DonationProcess,  
+  DonationProcess,
 } from '@/components/Home';
+import { useEffect } from 'react';
+import axiosInstance from '@/store/api/axiosInstance';
+import { NextSeo } from 'next-seo';
 
-export default function Home() {
+export default function Home({appSettings}) {
   return (
     <>
-      <Head>
-        <title>Pet World</title>
-        <meta name="description" content="Pet World" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>        
-          <HeroSection />
-          <Container fluid="xxl">
-            <Statistics />
-            <About />
-            <AboutDoctor />                       
-          </Container>
-          <WhyChoose /> 
-          <RecentCampaigns />
-          <UpcomingEvents />
-          <DonationProcess />        
+      <NextSeo title={appSettings?.app?.title} />
+      <main>
+        <HeroSection />
+        <Container fluid="xxl">
+          <Statistics statistics={appSettings?.statistics} />
+          <About />
+          <AboutDoctor />
+        </Container>
+        <WhyChoose />
+        <RecentCampaigns />
+        <UpcomingEvents events={appSettings?.recentEvents} />
+        <DonationProcess />
       </main>
     </>
   )
 }
 
 export async function getStaticProps({ locale }) {
+  const home = await axiosInstance.get('/');
   return {
     props: {
       ...(await serverSideTranslations(locale, [
         'common'
       ])),
+      appSettings: home?.data
       // Will be passed to the page component as props
     },
+    revalidate: 100,
   }
 }

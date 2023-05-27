@@ -2,11 +2,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 // ** Reducers
-// import moderator from 'src/store/api/moderator'
+import home from '@/store/api/home'
 
 
 export const store = configureStore({
   reducer: {
+    home,
     // moderator,
     // doctor,
     // profile,

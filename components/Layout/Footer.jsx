@@ -8,7 +8,7 @@ import LanguageOption from '../Common/LanguageOption'
 import { useTranslation } from 'next-i18next'
 import { useAuth } from '@/hooks/useAuth';
 
-const Footer = () => {
+const Footer = ({ settings }) => {
   const { t } = useTranslation('common');
   const { isAuthenticated } = useAuth();
   return (
@@ -36,18 +36,18 @@ const Footer = () => {
           </Col>
           <Col>
             <h4>Get our app</h4>
-            <div className='play-store-btn'><Link href={'/'}><img src={`/app-store-img.png`} alt={"Apple Store"} /></Link></div>
-            <div className='play-store-btn'><Link href={'/'}><img src={`/g-play-img.png`} alt={"Google Play Store"} /></Link></div>
+            <div className='play-store-btn'><Link href={settings?.social_media?.ios_app || '/'}><img src={`/app-store-img.png`} alt={"Apple Store"} /></Link></div>
+            <div className='play-store-btn'><Link href={settings?.social_media?.google_app || '/'}><img src={`/g-play-img.png`} alt={"Google Play Store"} /></Link></div>
           </Col>
         </Row>
 
         <div className='copyright'>© PetWorld. {(new Date()).getFullYear()}</div>
         <div className='social'>
           Follow us:
-          <Link href={'/'}><img src={`/fb-icon.png`} alt={"Facebook"} /></Link>
-          <Link href={'/'}><img src={`/tw-icon.png`} alt={"Twitter"} /></Link>
-          <Link href={'/'}><img src={`/in-icon.png`} alt={"linkedin"} /></Link>
-          <Link href={'/'}><img src={`/insta-icon.png`} alt={"Instagram"} /></Link>
+          <Link href={settings?.social_media?.facebook || '/'}><img src={`/fb-icon.png`} alt={"Facebook"} /></Link>
+          <Link href={settings?.social_media?.twitter || '/'}><img src={`/tw-icon.png`} alt={"Twitter"} /></Link>
+          <Link href={settings?.social_media?.linkedin || '/'}><img src={`/in-icon.png`} alt={"linkedin"} /></Link>
+          <Link href={settings?.social_media?.instagram || '/'}><img src={`/insta-icon.png`} alt={"Instagram"} /></Link>
         </div>
 
       </Container>

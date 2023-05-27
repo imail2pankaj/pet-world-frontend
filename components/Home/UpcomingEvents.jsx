@@ -37,11 +37,14 @@ const Responsive = {
   }
 }
 
-const UpcomingEvents = () => {
+const UpcomingEvents = ({events}) => {
+
   const [modalShow, setModalShow] = useState(false);
+  const [eventDetails, setEventDetails] = useState(null);
+
   return (
     <div className='upcoming-events'>
-      <EventModal show={modalShow} onHide={() => setModalShow(false)} />
+      <EventModal show={modalShow} eventDetails={eventDetails} onHide={() => setModalShow(false)} />
       <div className='graphic-1'><img src={`/arrow.png`} alt={""} /></div>
       <div className='graphic-2'><img src={`/paw-2.png`} alt={""} /></div>
       <Container fluid="xxl">
@@ -53,9 +56,9 @@ const UpcomingEvents = () => {
         </Row>
         <Row>
           <OwlCarousel responsive={Responsive} nav={true} dots={true}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(item =>
-              <div className="item" key={item}>
-                <EventCard handelmodel={setModalShow} />
+            {events && events.map(event =>
+              <div className="item" key={event.id}>
+                <EventCard handleModal={setModalShow} handleEventDetails={setEventDetails} event={event} />
               </div>
             )}
           </OwlCarousel>

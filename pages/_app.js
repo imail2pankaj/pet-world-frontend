@@ -43,7 +43,7 @@ function App({ Component, pageProps }) {
               }}
             />
             <Guard authGuard={Component.authGuard ?? true} guestGuard={Component.guestGuard ?? false}>
-              <Layout>
+              <Layout settings={pageProps?.appSettings}>
                 <Component {...pageProps} />
               </Layout>
             </Guard>
