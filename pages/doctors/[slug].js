@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { CampaignCard, WhyVetChoosePetWorld } from '@/components/Common';
+import Link from 'next/link';
 
 const DoctorsProfile = () => {
   return (
@@ -41,15 +42,15 @@ const DoctorsProfile = () => {
                 <span>My name is</span>
                 Dr. Juli Doe
               </h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text when an unknown. </p>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text when an unknown. </p>
               <span className='bullet-point'>
-                <img src={`/bullet.png`} alt={""} /> Doctor's unique identification number
+                <img src={`/bullet.png`} alt={""} /> Doctor&apos;s unique identification number
               </span>
               <span className='bullet-point'>
-                <img src={`/bullet.png`} alt={""} /> Doctor’s Education qualification
+                <img src={`/bullet.png`} alt={""} /> Doctor&apos;s Education qualification
               </span>
               <span className='bullet-point'>
-                <img src={`/bullet.png`} alt={""} /> Doctor’s Specialties
+                <img src={`/bullet.png`} alt={""} /> Doctor&apos;s Specialties
               </span>
               <div className='score'>
                 <p>Launched campaigns :<br />
@@ -59,9 +60,9 @@ const DoctorsProfile = () => {
                   $25,000.83
                 </p>
               </div>
-              <a className='button-1' href='#!' role='button'>
+              <Link className='button-1' href='#!' role='button'>
                 Report
-              </a>
+              </Link>
             </div>
           </Row>
           <Row className="justify-content-center">
@@ -97,7 +98,7 @@ const DoctorsProfile = () => {
             <CampaignCard />
           </Row>
           <Row className="justify-content-center">
-            <a className='button-1' href='/campaigns' role='button'>See more</a>
+            <Link className='button-1' href='/campaigns' role='button'>See more</Link>
           </Row>
         </div>
 

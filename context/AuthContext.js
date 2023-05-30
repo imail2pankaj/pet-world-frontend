@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import axiosInstance from '@/store/api/axiosInstance';
 
 const storageTokenKeyName = 'accessToken';
 
@@ -34,21 +35,21 @@ const AuthProvider = ({ children }) => {
             "Content-Type": "application/json",
           }
         }).then(async response => {
-            setLoading(false)
-            setUser({ ...response.data.user })
+          setLoading(false)
+          setUser({ ...response.data.user })
         }).catch(() => {
-            localStorage.removeItem('userData')
-            localStorage.removeItem('refreshToken')
-            localStorage.removeItem('accessToken')
-            setUser(null)
-            setLoading(false)
+          localStorage.removeItem('userData')
+          localStorage.removeItem('refreshToken')
+          localStorage.removeItem('accessToken')
+          setUser(null)
+          setLoading(false)
 
-            // if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
+          // if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
 
-            router.replace('/login')
+          router.replace('/auth/login')
 
-            // }
-          })
+          // }
+        })
 
       } else {
         setLoading(false)
@@ -112,12 +113,32 @@ const AuthProvider = ({ children }) => {
       if (errorCallback) errorCallback(err)
     })
   }
+
+  const profileUpdate = (params, errorCallback) => {
+    axiosInstance.post(`/profile`, params).then(async response => {
+      if (errorCallback) errorCallback(response)
+    }).catch(err => {
+      if (errorCallback) errorCallback(err)
+    })
+  }
+
+  const getProfileData = async () => {
+    const storedToken = window.localStorage.getItem(storageTokenKeyName)
+    const response = await axiosInstance.get(`/admin/me`, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      }
+    });
+    return response
+  }
   const values = {
-    isAuthenticated: !!user, 
+    isAuthenticated: !!user,
     user,
     loading,
     setUser,
     setLoading,
+    profileUpdate,
+    getProfileData,
     login: handleLogin,
     register: handleRegister,
     validateResetPasswordToken,

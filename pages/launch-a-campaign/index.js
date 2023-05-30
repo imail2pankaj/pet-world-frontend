@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 import { PageHeader, WhyVetChoosePetWorld } from '@/components/Common';
+import Link from 'next/link';
 
 
 const LaunchACampaign = () => {
@@ -72,7 +73,7 @@ const LaunchACampaign = () => {
           </div>
 
           <div className="launch-campaign-btn">
-            <a className='button-1' href='#!' role='button'>Launch campaign</a>
+            <Link className='button-1' href='#!' role='button'>Launch campaign</Link>
           </div>
         </div>
 

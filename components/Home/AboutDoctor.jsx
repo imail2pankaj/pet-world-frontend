@@ -1,6 +1,7 @@
 import React from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Link from 'next/link';
 
 const AboutDoctor = () => {
   return (
@@ -18,9 +19,9 @@ const AboutDoctor = () => {
             </h2>
             <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia con sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.</p>
             <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia con sequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>            
-            <a className='button-1' href='#!' role='button'>
+            <Link className='button-1' href='/doctors' role='button'>
                Read More
-            </a>
+            </Link>
           </Col>          
         </Row>
     </div>

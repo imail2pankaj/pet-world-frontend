@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Pagination from 'react-bootstrap/Pagination';
 import { WhyVetChoosePetWorld, DoctorCard, PageHeader } from '@/components/Common';
+import Link from 'next/link';
 
 const Doctors = () => {
   return (
@@ -48,9 +49,9 @@ const Doctors = () => {
                 </div>
                 <div className='step'>
                   <p>
-                    <a className='next-process' href='#!' role='button'>
+                    <Link className='next-process' href='#!' role='button'>
                       Campaign process <img src={`/next-arow.png`} alt={"Next"} />
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </Col>
@@ -90,9 +91,9 @@ const Doctors = () => {
                 </div>
                 <div className='step'>
                   <p>
-                    <a className='next-process' href='#!' role='button'>
+                    <Link className='next-process' href='#!' role='button'>
                       <img className='previuse' src={`/next-arow.png`} alt={"Next"} /> Appointment process
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </Col>

@@ -1,27 +1,27 @@
 import React from 'react'
 
-const Statistics = () => {
+const Statistics = ({statistics}) => {
   return (
     <div className='statistic-main' style={{backgroundImage:`url(/statestic-bg.svg)`}}>
       <div className='pic'><img src={`/statestic-img.png`} alt={"Pic"} /></div>
         <ul className='divider' style={{backgroundImage:`url(/paw-1.png)`}}>
           <li>
-            <span>$13m+</span>
+            <span>{statistics?.donations}</span>
             Donation
             <div className='divider' style={{backgroundImage:`url(/divider.png)`}}></div>
           </li>          
           <li>
-            <span>100+</span>
+            <span>{statistics?.doctors}</span>
             Doctors
             <div className='divider' style={{backgroundImage:`url(/divider.png)`}}></div>
           </li>
           <li>
-            <span>185+</span>
+            <span>{statistics?.campaigns}</span>
             Campaigns
             <div className='divider' style={{backgroundImage:`url(/divider.png)`}}></div>
           </li>
           <li>
-            <span>15k+</span>
+            <span>{statistics?.donors}</span>
             Donors
             <div className='divider' style={{backgroundImage:`url(/divider.png)`}}></div>
           </li>

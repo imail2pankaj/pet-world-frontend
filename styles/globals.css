@@ -220,6 +220,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
  .event-card .card .attendees{ width: auto; position: absolute; top: 17px; right: 17px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;}
  .event-card .card .attendees span{font-weight: 600; font-size: 14px; line-height: 22px; letter-spacing: 0.02em; color: #9E0C0F;}
  .event-card .card .card-img-top{ border-radius:15px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);} 
+ .event-card .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
  .event-card .card .card-body{padding: 10px;} 
  .event-card .card .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
  .event-card .card .card-text{ font-size: 15px; line-height: 22px; color: #232323; min-height: 80px;}
@@ -603,7 +604,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .edit-profile .form{ width: 100%; display: inline-block;}
 .edit-profile .form .pro-pic{ width: 150px; display: inline-block; margin-right: 3%;}
 .edit-profile .form .pro-pic img{ width: 100%; height: 100%; display:block; border: 5px solid #fff; border-radius: 80px; filter: drop-shadow(0px 10px 20px rgba(183, 183, 183, 0.5));}
-.edit-profile .form input{ height: 60px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px; margin-bottom: 20px;}
+.edit-profile .form input, .edit-profile .form select{ height: 60px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px; margin-bottom: 20px;}
 .edit-profile .form textarea{ background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; resize: none;  font-size: 16px; padding: 15px 25px;}
 .edit-profile .form .btn{width: auto; background-color: #EDEDED; filter: drop-shadow(0px 0px 10px rgba(94, 94, 94, 0.5)); line-height: 40px; border-radius: 5px; color: black; font-weight: 400; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center; border: none; padding: 0 20px;}
 .edit-profile .form .btn:hover{background-color: #9E0C0F; filter: drop-shadow(0px 0px 10px rgba(158, 12, 15, 0.5)); color: white;}
@@ -1354,3 +1355,4 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .edit-profile .form .upload-btn{ width: 70%;}
   .edit-profile .form .btn-primary{ width: auto; font-size: 15px; line-height: 38px; border-radius: 5px; margin-top: 0; padding:5px 10%;}
 }
+.events-main .react-datepicker-wrapper{width:auto !important}
