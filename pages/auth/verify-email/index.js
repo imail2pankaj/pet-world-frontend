@@ -50,7 +50,7 @@ const VerifyEmail = () => {
                 <p>{verificationStatus.message}</p>
                 <div className="mb-3">
                   <div className="already mt-3">
-                    <Link href={`/login`}><b>Login</b></Link>
+                    <Link href={`/auth/login`}><b>Login</b></Link>
                   </div>
                 </div>
               </div>

@@ -30,7 +30,7 @@ const defaultValues = {
   username: '',
   profile_image: '',
   dob: '',
-  address: '',
+  location: '',
   gender: '',
 }
 
@@ -50,7 +50,8 @@ const Profile = () => {
       try {
 
         const data = await getProfileData();
-        const user = data.data.user;
+        const user = data.data;
+
         for (const key in defaultValues) {
           if (key === 'dob') {
             setValue(key, user[key] ? new Date(user[key]) : "");
@@ -106,11 +107,10 @@ const Profile = () => {
           });
         });
       } else {
-        // reset();
-        toast.success(err?.message);
+        toast.success(err?.data?.message);
         setServerResponse({
           variant: "success",
-          message: err?.message
+          message: err?.data?.message
         })
       }
       setIsLoading(false);

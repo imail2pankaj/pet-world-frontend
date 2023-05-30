@@ -15,6 +15,8 @@ import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Loader from '@/components/Common/Loader';
 import CustomPagination from '@/components/Common/CustomPagination';
+import { capitalize } from '@/core/utils/format';
+import { NextSeo } from 'next-seo';
 
 const Events = ({ initialEvents }) => {
   const [modalShow, setModalShow] = useState(false);
@@ -25,10 +27,18 @@ const Events = ({ initialEvents }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [dataPerPage] = useState(20);
   const [eventDetails, setEventDetails] = useState(null);
+  const [sortBy, setSortBy] = useState("Latest");
 
   const fetchEvents = async () => {
     setLoading(true)
-    axiosInstance.get('/events?' + (new URLSearchParams({ page: currentPage, per_page: dataPerPage,q: query, date: startDate ? moment(startDate).format('YYYY-MM-DD') : "" }))).
+    const params = {
+      sort: sortBy,
+      page: currentPage,
+      per_page: dataPerPage,
+      q: query,
+      date: startDate ? moment(startDate).format('YYYY-MM-DD') : ""
+    }
+    axiosInstance.get('/events?' + (new URLSearchParams(params))).
       then(response => {
         setLoading(false);
         setEvents(response.data || []);
@@ -40,7 +50,7 @@ const Events = ({ initialEvents }) => {
 
   useEffect(() => {
     fetchEvents()
-  }, [query, startDate, currentPage, dataPerPage])
+  }, [query, startDate, currentPage, dataPerPage, sortBy])
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -58,61 +68,64 @@ const Events = ({ initialEvents }) => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className='inner-main'>
-      <PageHeader banner={`/event-bg.jpg`} title={'Events'} />
-      <Container fluid="xxl">
-        <div className='doctors-main events-main'>
-          <Row>
-            <div className='filter-main'>
-              <Form>
-                <Form.Group className="search-field" controlId="formBasicEmail">
-                  <Form.Control type="text" onChange={handleChange} placeholder="Search Event" />
-                </Form.Group>
-                <Form.Group className="search-field date-pick" controlId="DatePicker">
-                  <DatePicker className='form-control' isClearable dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => handleDateChange(date)} />
-                </Form.Group>
-              </Form>
+    <>
+      <NextSeo title={'Events'} />
+      <div className='inner-main'>
+        <PageHeader banner={`/event-bg.jpg`} title={'Events'} />
+        <Container fluid="xxl">
+          <div className='doctors-main events-main'>
+            <Row>
+              <div className='filter-main'>
+                <Form>
+                  <Form.Group className="search-field" controlId="formBasicEmail">
+                    <Form.Control type="text" onChange={handleChange} placeholder="Search Event" />
+                  </Form.Group>
+                  <Form.Group className="search-field date-pick" controlId="DatePicker">
+                    <DatePicker className='form-control' isClearable dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => handleDateChange(date)} />
+                  </Form.Group>
+                </Form>
 
-              <div className='filter'>
-                <DropdownButton id="dropdown-item-button" title="Filter">
-                  <Dropdown.Item as="button">Option 1</Dropdown.Item>
-                  <Dropdown.Item as="button">Option 2</Dropdown.Item>
-                  <Dropdown.Item as="button">Option 3</Dropdown.Item>
-                </DropdownButton>
+                <div className='filter'>
+                  <DropdownButton id="dropdown-item-button" title={`Sort By:  ${capitalize(sortBy)}`}>
+                    <Dropdown.Item onClick={() => setSortBy('a-z')} as="button">A-Z</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSortBy('z-a')} as="button">Z-A</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSortBy('latest')} as="button">Latest</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSortBy('oldest')} as="button">Oldest</Dropdown.Item>
+                  </DropdownButton>
+                </div>
               </div>
-            </div>
-          </Row>
-
-          <div className='doctor-list'>
-            <Row xs={1} md={2} lg={3} xxl={4}>
-              {(!loading && events) && events.map(item =>
-                <Col key={item.id}>
-                  <EventCard handleModal={setModalShow} handleEventDetails={setEventDetails} event={item} />
-                </Col>
-              )}
             </Row>
-            <div className='d-block text-center'>
-              {loading && <Spinner />}
-              {!loading && events.length === 0 ? "No Events Found" : ""}
+
+            <div className='doctor-list'>
+              <Row xs={1} md={2} lg={3} xxl={4}>
+                {(!loading && events) && events.map(item =>
+                  <Col key={item.id}>
+                    <EventCard handleModal={setModalShow} handleEventDetails={setEventDetails} event={item} />
+                  </Col>
+                )}
+              </Row>
+              <div className='d-block text-center'>
+                {loading && <Spinner />}
+                {!loading && events.length === 0 ? "No Events Found" : ""}
+              </div>
+              {events.length ?
+                <Row>
+                  <CustomPagination
+                    dataPerPage={dataPerPage}
+                    totalData={events.length}
+                    paginate={paginate}
+                    currentPage={currentPage}
+                  />
+                </Row> : null}
+
+              <EventModal event_details={eventDetails} show={modalShow} onHide={() => setModalShow(false)} />
+
             </div>
-            {events.length ?
-              <Row>
-                <CustomPagination
-                  dataPerPage={dataPerPage}
-                  totalData={events.length}
-                  paginate={paginate}
-                  currentPage={currentPage}
-                />
-              </Row> : null}
-
-            <EventModal eventDetails={eventDetails} show={modalShow} onHide={() => setModalShow(false)} />
-
           </div>
-        </div>
-      </Container>
-      <WhyVetChoosePetWorld />
-    </div>
-
+        </Container>
+        <WhyVetChoosePetWorld />
+      </div>
+    </>
   )
 }
 

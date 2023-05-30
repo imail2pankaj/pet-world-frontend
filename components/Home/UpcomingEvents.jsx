@@ -13,6 +13,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import dynamic from "next/dynamic";
 import Link from 'next/link';
 import { EventCard, EventModal } from '../Common';
+import LoginPopup from '../Common/LoginPopup';
 
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
@@ -44,7 +45,7 @@ const UpcomingEvents = ({events}) => {
 
   return (
     <div className='upcoming-events'>
-      <EventModal show={modalShow} eventDetails={eventDetails} onHide={() => setModalShow(false)} />
+      <EventModal show={modalShow} event_details={eventDetails} onHide={() => setModalShow(false)} />
       <div className='graphic-1'><img src={`/arrow.png`} alt={""} /></div>
       <div className='graphic-2'><img src={`/paw-2.png`} alt={""} /></div>
       <Container fluid="xxl">
