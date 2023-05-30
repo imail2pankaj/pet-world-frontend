@@ -103,7 +103,7 @@ a, button{
 /*** Navigation ****/
 .main-nav{width: 100%; z-index: 10; padding: 14px 2%; transition: 0.3s;}
 .main-nav .navbar-brand{ width: 180px;}
-.main-nav .navbar-brand.home-logo{ display: none;}
+/* .main-nav .navbar-brand.home-logo{ display: none;} */
 .main-nav .navbar-brand img{ max-width: 100%; height: auto; display: block;}
 .main-nav .nav-link{ color: #232323; font-size: 15px; font-weight: 500; letter-spacing: 1px; margin: 0 15px; padding: 0 !important;}
 .main-nav .nav-link:hover, .main-nav .nav-link.act{ color: #9E0C0F; position: relative;}
@@ -275,6 +275,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .login-main .already{ background-color: #7EB65C; color: #ffffff; border-radius: 10px; line-height: 60px;}
 .login-main .already a{ color: #000000; text-decoration: underline;}
 .login-main .already a:hover{ color: #9E0C0F; text-decoration:none;}
+.login-main label{ color: #000000;}
 .login-main .form-check-input{width: 1.7em; height: 1.7em; margin-top: -0.1em; margin-right: 10px;}
 .login-main .form-check-input:focus{box-shadow: none;}
 .login-main .form-check-input:checked {  background-color: #7EB65C; border-color: #7EB65C;}
@@ -323,7 +324,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .doctors-main .doctor-list{ width: 100%; display: block; margin: 15px 0;}
 .doctors-main .doctor-list .card{ border-radius:20px; padding: 7px; margin: 15px 0;}
 .doctors-main .doctor-list .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
-.doctors-main .doctor-list .card .card-img-top{ width: 100%; height: auto; display: block;}
+.doctors-main .doctor-list .card .card-img-top{ width: 100%; height: auto; min-height: 100%; display: block;}
 .doctors-main .doctor-list .card .card-body{padding: 10px;}
 .doctors-main .doctor-list .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
 .doctors-main .doctor-list .card-text{ font-size: 15px; color: #232323; min-height: 90px;}
@@ -377,7 +378,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .doctors-profile .profile-section .addres-phone .email{ width: 350px; height: 90px; display: inline-block; border: 1px solid #7EB65C; background-color: white; border-radius: 10px; padding: 20px; margin: 0 15px;}
 .doctors-profile .profile-section .addres-phone .email img{ float: left; margin:4px 10px 0 0;}
 .doctors-profile .profile-section .addres-phone .email h3{ font-size: 20px; color: #232323; line-height: 22px; font-weight: 700; margin: 4px 0 0 0;}
-.doctors-profile .profile-section .addres-phone .email span{ font-size: 15px;}
+.doctors-profile .profile-section .addres-phone .email span{ font-size: 15px; color: #232323;}
 .doctors-profile .profile-section .addres-phone .phone{border: 1px solid #FF7F18;}
 .doctors-profile .profile-section .addres-phone .address{border: 1px solid #FD1D1D;}
 
@@ -388,7 +389,8 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .card-main .aproved-by .doctor .do-name{right: auto; left: -4px;}
 .card-main .aproved-by .doctor .do-name:before {right: auto; left: 10px; top: -9px;}
 .doctor-campaigns .card{ border-radius:20px; padding: 7px; display: block; margin-bottom:30px;}
-.doctor-campaigns .card .card-img-top{ width: 306px; margin-right: 10px; border-radius:20px; display: inline-block; vertical-align: top;} 
+.doctor-campaigns .card .thumb{ width: 306px; display: inline-block; vertical-align: top; margin-right: 10px; }
+.doctor-campaigns .card .card-img-top{ width: 100%; border-radius:20px; display: block;} 
 .doctor-campaigns .card .card-body{ width: 650px; display: inline-block;}
 .doctor-campaigns .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
 .doctor-campaigns .card-text{ font-size: 15px; color: #232323; min-height: 48px;}
@@ -419,7 +421,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .event-popup .modal-body button img{ width: 100%;}
 .event-popup .date-address{ width: 100%; display: block; font-size: 14px; line-height: 16px;}
 .event-popup .date-address img{ width:auto; display: inline-block; margin-right: 2px;}
-.event-popup .date-address .address{ min-width:170px; max-width: 260px; float: left; margin-top: 10px; line-height: 14px; position: relative; padding-left: 25px;}
+.event-popup .date-address .address{ min-width:170px; max-width: 260px; float: left; margin-top: 10px;  color: #232323; line-height: 14px; position: relative; padding-left: 25px;}
 .event-popup .date-address .address img{position: absolute; left: 0; top: -2px;}
 .event-popup .date-address .button{ float: right; margin-top: 20px;}
 .event-popup .date-address .button .button-1{ width: 170px; height: 44px; font-size: 16px; line-height: 42px; margin: 0; border-radius: 7px;}
@@ -997,7 +999,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .doctors-profile .profile-section .addres-phone .email{ width: 70%; position: relative; margin: 10px 0; padding: 10px 20px 10px 82px; height: 70px; text-align: left;}
   .doctors-profile .profile-section .addres-phone .email img{position: absolute; left: 20px;}
 
-  .doctor-campaigns .card .card-img-top{width: 40%;}
+  .doctor-campaigns .card .thumb{ width:40%;}  
   .doctor-campaigns .card .card-body { width: 58%; padding: 5px;}
   .doctor-campaigns .card-title{font-size: 18px;}
 
@@ -1314,7 +1316,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
   .doctor-campaigns{margin: 50px 0 60px; padding: 0 4%;}
   .doctor-campaigns h2.title{margin-bottom: 20px;}
-  .doctor-campaigns .card .card-img-top { width: 100%;}
+  .doctor-campaigns .card .thumb{ width: 100%;}  
   .doctor-campaigns .card .card-body{width: 100%; padding: 1rem 0.6rem;}
   .doctor-campaigns .card-title{ font-size: 20px;}
   .doctor-campaigns .card-text{ font-size: 15px;}
