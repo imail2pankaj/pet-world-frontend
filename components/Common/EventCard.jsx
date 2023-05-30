@@ -9,7 +9,7 @@ const EventCard = ({ handleModal, handleEventDetails , event }) => {
   return (
     <div className='event-card' style={{ cursor: "pointer" }}>
       <Card onClick={() => { handleModal(true); handleEventDetails(event) }}>
-        <div className='attendees'><span>55</span> Attendees</div>
+        <div className='attendees'><span>{event?.attendees}</span> Attendees</div>
         <div className='thumb'><Card.Img variant="top" src={image} /></div>
         <Card.Body>
           <Card.Title>{event?.title}</Card.Title>

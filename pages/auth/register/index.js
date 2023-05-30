@@ -10,6 +10,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
 import PrimarySubmit from '@/components/Common/PrimarySubmit';
+import { useRouter } from 'next/router';
 
 const schema = yup.object().shape({
   user_type_id: yup.string().required(),
@@ -35,6 +36,7 @@ const userTypes = [
 
 const Register = () => {
 
+  const router = useRouter();
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -69,6 +71,12 @@ const Register = () => {
             message: error[key][0]
           });
         });
+      } else if (err?.response?.data?.error) {
+        toast.error(err?.response?.data?.error ? err?.response?.data?.error : 'Something went wrong, please try again');
+        setServerResponse({
+          variant: "danger",
+          message: err?.response?.data?.error
+        })
       } else {
         reset();
         toast.success(err?.message);
@@ -76,6 +84,7 @@ const Register = () => {
           variant: "success",
           message: err?.message
         })
+        router.push('/auth/welcome')
       }
       setIsLoading(false);
     })

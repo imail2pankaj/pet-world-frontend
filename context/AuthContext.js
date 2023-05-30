@@ -115,7 +115,27 @@ const AuthProvider = ({ children }) => {
   }
 
   const profileUpdate = (params, errorCallback) => {
-    axiosInstance.post(`/profile`, params).then(async response => {
+    const storedToken = window.localStorage.getItem(storageTokenKeyName);
+    axiosInstance.put(`/profile`, params, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      }
+    }).then(async response => {
+      setUser({ ...response.data.user })
+      window.localStorage.setItem('userData', JSON.stringify(response.data.user))
+      if (errorCallback) errorCallback(response)
+    }).catch(err => {
+      if (errorCallback) errorCallback(err)
+    })
+  }
+
+  const changePassword = (params, errorCallback) => {
+    const storedToken = window.localStorage.getItem(storageTokenKeyName);
+    axiosInstance.put(`/profile/change-password`, params, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      }
+    }).then(async response => {
       if (errorCallback) errorCallback(response)
     }).catch(err => {
       if (errorCallback) errorCallback(err)
@@ -139,6 +159,7 @@ const AuthProvider = ({ children }) => {
     setLoading,
     profileUpdate,
     getProfileData,
+    changePassword,
     login: handleLogin,
     register: handleRegister,
     validateResetPasswordToken,
