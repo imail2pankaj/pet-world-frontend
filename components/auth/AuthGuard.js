@@ -38,9 +38,9 @@ console.log(auth.user,'AuthGuard')
     [router.route]
   )
 
-  if (auth.loading || auth.user === null) {
-    return fallback
-  }
+  // if (auth.loading || auth.user === null) {
+  //   return fallback
+  // }
 
   return <>{children}</>
 }
