@@ -17,9 +17,10 @@ const AuthGuard = props => {
       if (!router.isReady) {
         return
       }
-
+console.log(auth.user,'AuthGuard')
       if (auth.user !== null && window.localStorage.getItem('userData')) {
         if (router.asPath === '/auth/login' || router.asPath === '/auth/register') {
+          auth.setUser({...window.localStorage.getItem('userData')});
           router.replace({
             pathname: '/'
           })
@@ -37,9 +38,9 @@ const AuthGuard = props => {
     [router.route]
   )
 
-  // if (auth.loading || auth.user === null) {
-  //   return fallback
-  // }
+  if (auth.loading || auth.user === null) {
+    return fallback
+  }
 
   return <>{children}</>
 }

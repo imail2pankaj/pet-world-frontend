@@ -12,6 +12,25 @@ const EventModal = (props) => {
 
   const [modalShow, setModalShow] = useState(false);
 
+  const handleParticipate = async () => {
+
+  }
+  const participate = () => {
+    if (auth && auth.isAuthenticated) {
+      if (auth?.user?.participants?.includes(event_details?.id)) {
+        return (
+          <>
+            <button className='button-1' onClick={handleParticipate} role='button'>Yes</button>
+            <button className='button-1' onClick={handleParticipate} role='button'>No</button>
+          </>
+        )
+      } else {
+        return <button className='button-1' onClick={handleParticipate} role='button'>Participate</button>
+      }
+    } else {
+      return <button className='button-1' onClick={() => { setModalShow(true) }} role='button'>participate</button>
+    }
+  }
   return (
     <>
       <Modal {...props} dialogClassName="event-popup" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -31,17 +50,18 @@ const EventModal = (props) => {
                 <img src={`/address-icon2.png`} alt={event_details?.location} /> {event_details?.location}
               </div>
               <div className='address'>
-                <img src={`/calendar-icon2.png`} alt={moment(event_details?.event_date).format('DD/MM/YYYY')} /> <span>{moment(event_details?.event_date).format('DD/MM/YYYY')}</span>
+                <img src={`/calendar-icon2.png`} alt={moment(event_details?.event_date).format('DD/MM/YYYY')} /> <span>{moment(new Date(event_details?.event_date)).format('DD/MM/YYYY')}</span>
               </div>
               <div className='address'>
                 <img src={`/uder-icon.png`} alt={""} /> <span>{event_details?.participants} Participants</span>
               </div>
               <div className='button'>
-                {
+                {participate()}
+                {/* {
                   !auth.isAuthenticated ?
-                    <button className='button-1' href="#" onClick={() => { setModalShow(true) }} role='button'>participate</button> :
-                    <button className='button-1' role='button'>Participate</button>
-                }
+                    <button className='button-1' onClick={() => { setModalShow(true) }} role='button'>participate</button> :
+                    <button className='button-1' onClick={handleParticipate} role='button'>Participate</button>
+                } */}
               </div>
             </div>
           </Modal.Footer>

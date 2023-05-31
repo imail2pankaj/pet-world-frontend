@@ -1,15 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Pagination from 'react-bootstrap/Pagination';
 import { WhyVetChoosePetWorld, DoctorCard, PageHeader } from '@/components/Common';
 import Link from 'next/link';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import axiosInstance from '@/store/api/axiosInstance';
+import { capitalize } from '@/core/utils/format';
 
-const Doctors = () => {
+const Doctors = ({ initialDoctors }) => {
+
+  const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState('');
+  const [doctors, setDoctors] = useState([]);
+  const [sortBy, setSortBy] = useState("Latest");
+
+  const fetchDoctors = async () => {
+    setLoading(true)
+    const params = {
+      sort: sortBy,
+      // page: currentPage,
+      // per_page: dataPerPage,
+      q: query
+    }
+    axiosInstance.get('/doctors?' + (new URLSearchParams(params))).
+      then(response => {
+        setLoading(false);
+        setDoctors(response.data || []);
+      });
+  }
+  useEffect(() => {
+    setDoctors(initialDoctors);
+  }, [])
+
+  useEffect(() => {
+    fetchDoctors()
+  }, [query, sortBy])
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  }
+
   return (
     <div className='inner-main'>
       <PageHeader banner={`/inner-bg1.jpg`} title={"About Doctors"} />
@@ -103,15 +138,16 @@ const Doctors = () => {
             <div className='filter-main'>
               <Form>
                 <Form.Group className="search-field" controlId="formBasicEmail">
-                  <Form.Control type="email" placeholder="Search doctor" />
+                  <Form.Control type="text" onChange={handleChange} placeholder="Search Doctors" />
                 </Form.Group>
               </Form>
 
               <div className='filter'>
-                <DropdownButton id="dropdown-item-button" title="Filter">
-                  <Dropdown.Item as="button">Option 1</Dropdown.Item>
-                  <Dropdown.Item as="button">Option 2</Dropdown.Item>
-                  <Dropdown.Item as="button">Option 3</Dropdown.Item>
+                <DropdownButton id="dropdown-item-button" title={`Sort By:  ${capitalize(sortBy)}`}>
+                  <Dropdown.Item onClick={() => setSortBy('a-z')} as="button">A-Z</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('z-a')} as="button">Z-A</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('latest')} as="button">Latest</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('oldest')} as="button">Oldest</Dropdown.Item>
                 </DropdownButton>
               </div>
             </div>
@@ -119,12 +155,22 @@ const Doctors = () => {
 
           <div className='doctor-list'>
             <Row xs={1} md={2} lg={3} xxl={4}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(item =>
-                <Col key={item}>
-                  <DoctorCard />
+              {(!loading && doctors) && doctors.map(item =>
+                <Col key={item.id}>
+                  <DoctorCard doctor={item} />
                 </Col>
               )}
             </Row>
+            <div className='d-block text-center'>
+              {loading && <Spinner />}
+              {!loading && doctors.length === 0 ? "No doctors Found" : ""}
+            </div>
+            {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(item =>
+              <Col key={item}>
+                <DoctorCard />
+              </Col>
+            )}
+          </Row> */}
             <Row>
               <Pagination className="justify-content-center mt-4">
                 <Pagination.First />
@@ -140,11 +186,42 @@ const Doctors = () => {
             </Row>
           </div>
         </div>
-      </Container>
+      </Container >
 
       <WhyVetChoosePetWorld />
-    </div>
+    </div >
   )
 }
 
 export default Doctors
+
+
+
+export async function getStaticProps({ locale }) {
+  const doctors = await axiosInstance.get('doctors');
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common'
+      ])),
+      initialDoctors: doctors?.data || []
+      // Will be passed to the page component as props
+    },
+    revalidate: 100,
+  }
+}
+
+// export async function getStaticPaths() {
+//   const doctors = await axiosInstance.get('doctors');
+ 
+//   // Get the paths we want to pre-render based on posts
+//   const paths = doctors?.data.map((doctor) => ({
+//     params: { id: doctor.username },
+//   }));
+ 
+//   // We'll pre-render only these paths at build time.
+//   // { fallback: 'blocking' } will server-render pages
+//   // on-demand if the path doesn't exist.
+//   return { paths, fallback: 'blocking' };
+// }

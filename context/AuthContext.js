@@ -35,8 +35,8 @@ const AuthProvider = ({ children }) => {
             "Content-Type": "application/json",
           }
         }).then(async response => {
+          setUser({ ...response.data })
           setLoading(false)
-          setUser({ ...response.data.user })
         }).catch(() => {
           localStorage.removeItem('userData')
           localStorage.removeItem('refreshToken')

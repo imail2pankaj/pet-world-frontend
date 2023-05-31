@@ -37,6 +37,7 @@ export default function Home({appSettings}) {
 
 export async function getStaticProps({ locale }) {
   const home = await axiosInstance.get('/');
+  console.log(home?.data?.recentEvents);
   return {
     props: {
       ...(await serverSideTranslations(locale, [
