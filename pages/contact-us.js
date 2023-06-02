@@ -10,7 +10,7 @@ import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const ContactUs = ({appSettings}) => {
-  console.log(appSettings);
+
   return (
     <div className='inner-main'>
       <PageHeader banner={`/contact-bg.jpg`} title={"Contact us"} />

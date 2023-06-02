@@ -2,10 +2,12 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { CampaignCard, WhyVetChoosePetWorld } from '@/components/Common';
+import { CampaignCard, DoctorAppointed, WhyVetChoosePetWorld } from '@/components/Common';
 import Link from 'next/link';
+import axiosInstance from '@/store/api/axiosInstance';
 
-const DoctorsProfile = () => {
+const DoctorsProfile = ({ doctor }) => {
+
   return (
     <div className='doctors-profile'>
       <div className='profile-section'>
@@ -14,33 +16,13 @@ const DoctorsProfile = () => {
         <Container fluid="xxl">
           <Row className="justify-content-center">
             <div className='profile-pic'>
-              <img src={`/profile-pic.png`} alt={"Profile Picture"} />
-              <div className='approved-doc'>
-                <div className='icon'><img src={`/approved-doc-icon.png`} alt={"Aproved Doctor"} /></div>
-                <div className='doctor-detail'>
-                  <h4>Highest level of donors protection</h4>
-                  <span className='bullet-point'>
-                    <img src={`/bullet2.png`} alt={""} /> Member of Trust & Safety Club
-                  </span>
-                  <span className='bullet-point'>
-                    <img src={`/bullet2.png`} alt={""} /> Funds are raised only on PetWorld
-                  </span>
-                  <span className='bullet-point'>
-                    <img src={`/bullet2.png`} alt={""} /> Beneficiary is verified
-                  </span>
-                  <span className='bullet-point'>
-                    <img src={`/bullet2.png`} alt={""} /> Documentation is checked
-                  </span>
-                  <span className='bullet-point'>
-                    <img src={`/bullet2.png`} alt={""} /> Donations are protected by 128-bit encryption
-                  </span>
-                </div>
-              </div>
+              <img src={doctor?.profile_image ? doctor?.profile_image : `/profile-pic.png`} alt={"Profile Picture"} />
+              <DoctorAppointed />
             </div>
             <div className='profile-details'>
               <h2 className='title'>
                 <span>My name is</span>
-                Dr. Juli Doe
+                {doctor?.first_name} {doctor?.last_name}
               </h2>
               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text when an unknown. </p>
               <span className='bullet-point'>
@@ -69,15 +51,15 @@ const DoctorsProfile = () => {
             <div className='addres-phone'>
               <div className='email'><img src={`/email-icon.png`} alt={""} />
                 <h3>Email</h3>
-                <span>info@petworld.com</span>
+                <span>{doctor?.email}</span>
               </div>
               <div className='email phone'><img src={`/phone-icon.png`} alt={""} />
                 <h3>Call</h3>
-                <span>(0)123456789</span>
+                <span>{doctor?.phone}</span>
               </div>
               <div className='email address'><img src={`/address-icon.png`} alt={""} />
                 <h3>Address</h3>
-                <span>A-1, Envanto HQ, Bulgaria.</span>
+                <span>{doctor?.address}</span>
               </div>
             </div>
           </Row>
@@ -111,3 +93,12 @@ const DoctorsProfile = () => {
 }
 
 export default DoctorsProfile
+
+export async function getServerSideProps({ params }) {
+  // Call external API from here directly
+  const response = await axiosInstance.get(`/doctors/${params.slug}`);
+
+  return {
+    props: { doctor: response?.data }
+  }
+}

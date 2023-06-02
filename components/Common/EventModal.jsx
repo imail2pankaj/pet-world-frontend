@@ -1,27 +1,62 @@
 import moment from 'moment';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import LoginPopup from './LoginPopup';
 import { useAuth } from '@/hooks/useAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { attendEvent, getEvent, participateEvent } from '@/store/api/event';
 
 const EventModal = (props) => {
   const auth = useAuth();
   const { event_details } = props;
 
   const [modalShow, setModalShow] = useState(false);
+  const dispatch = useDispatch();
+
+  const store = useSelector(store => store.event);
+  useEffect(() => {
+    if (event_details?.id) {
+      dispatch(getEvent(event_details?.id))
+    }
+  }, [event_details?.id])
 
   const handleParticipate = async () => {
+    dispatch(participateEvent(event_details?.id)).then(response => {
 
+    }).catch(err => {
+
+    })
+  }
+
+  const handleAttendEvent = async (status) => {
+    dispatch(attendEvent(event_details?.id, status)).then(response => {
+
+    }).catch(err => {
+
+    })
   }
   const participate = () => {
     if (auth && auth.isAuthenticated) {
       if (auth?.user?.participants?.includes(event_details?.id)) {
         return (
           <>
-            <button className='button-1' onClick={handleParticipate} role='button'>Yes</button>
-            <button className='button-1' onClick={handleParticipate} role='button'>No</button>
+            Attend Event :
+            <button className='button-1' style={{ width: "80px" }} onClick={() => handleAttendEvent(2)} role='button'>Yes</button>
+            <button className='button-1' style={{ width: "80px" }} onClick={() => handleAttendEvent(1)} role='button'>No</button>
+          </>
+        )
+      } else if (auth?.user?.yes_attends?.includes(event_details?.id)) {
+        return (
+          <>
+            Attend Event : Yes
+          </>
+        )
+      } else if (auth?.user?.no_attends?.includes(event_details?.id)) {
+        return (
+          <>
+            Attend Event : No
           </>
         )
       } else {
@@ -42,6 +77,7 @@ const EventModal = (props) => {
               <img src={event_details?.event_image} alt={""} />
             </div>
             <h4>{event_details?.title}</h4>
+            {/* <p>{JSON.parse(store || "")}</p> */}
             <p>{event_details?.description}</p>
           </Modal.Body>
           <Modal.Footer>

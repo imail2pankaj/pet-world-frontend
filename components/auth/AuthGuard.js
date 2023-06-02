@@ -17,7 +17,7 @@ const AuthGuard = props => {
       if (!router.isReady) {
         return
       }
-console.log(auth.user,'AuthGuard')
+
       if (auth.user !== null && window.localStorage.getItem('userData')) {
         if (router.asPath === '/auth/login' || router.asPath === '/auth/register') {
           auth.setUser({...window.localStorage.getItem('userData')});
@@ -38,9 +38,9 @@ console.log(auth.user,'AuthGuard')
     [router.route]
   )
 
-  // if (auth.loading || auth.user === null) {
-  //   return fallback
-  // }
+  if (auth.loading) {
+    return fallback
+  }
 
   return <>{children}</>
 }

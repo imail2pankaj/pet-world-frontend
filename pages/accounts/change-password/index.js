@@ -52,7 +52,7 @@ const ChangePassword = () => {
     setServerResponse("");
 
     changePassword(data, (err) => {
-      console.log(err);
+
       if (err?.response?.data?.errors) {
         toast.error(err?.response?.data?.message ? err?.response?.data?.message : 'Something went wrong, please try again');
         Object.keys(err?.response?.data.errors).forEach((key) => {
