@@ -181,7 +181,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
   .recent-campaigns .owl-carousel{ padding: 15px 0;}
   .recent-campaigns .card{ border-radius:15px; padding: 7px; background-color: rgba(255, 255, 255, 0.8);}
-  .recent-campaigns .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
+  .recent-campaigns .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:15px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
   .recent-campaigns .card .card-img-top{ width: 100%; height: auto; min-height: 100%; display: block;} 
   .recent-campaigns .card .card-body{padding: 10px;}
   .recent-campaigns .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
@@ -220,7 +220,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
  .event-card .card{ border-radius:15px; padding: 7px; background-color: rgba(255, 255, 255, 0.8);}
  .event-card .card .attendees{ width: auto; position: absolute; top: 17px; right: 17px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;}
  .event-card .card .attendees span{font-weight: 600; font-size: 14px; line-height: 22px; letter-spacing: 0.02em; color: #9E0C0F;} 
- .event-card .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
+ .event-card .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:15px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
  .event-card .card .card-img-top{ width: 100%; height: auto; min-height: 100%; display: block;} 
  .event-card .card .card-body{padding: 10px;} 
  .event-card .card .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
@@ -354,19 +354,20 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .doctors-profile .profile-section .graphic-1 img{ width: 100%;}
 .doctors-profile .profile-section .graphic-2{position: absolute; right:15%; top: 10%; z-index: 0;}
 
-.doctors-profile .profile-section .profile-pic{ width: 400px; height: 400px; position: relative; display: inline-block; margin:2% 5% 0 0%;}
-.doctors-profile .profile-section .profile-pic img{ width: 100%; height: auto; display: block; border-radius: 50%; filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.23));}
-.doctors-profile .profile-section .profile-pic::before{ content: ""; width: 85%; height: 85%; position: absolute; left: 7%; top: 5%; z-index: 1; border-radius: 50%; border: 4px solid #FFFFFF;
+.doctors-profile .profile-section .profile-pic{ width: 400px; height: 400px; position: relative; display: inline-block; padding: 0; margin:2% 5% 0 0%;}
+.doctors-profile .profile-section .profile-pic .thumb{ width: 100%; height: 100%; position: relative;  overflow: hidden;  border-radius: 50%; filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.23));}
+.doctors-profile .profile-section .profile-pic img{ min-width: 100%; min-height:100%; min-width: 100%; max-height:100%; display: block; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.doctors-profile .profile-section .profile-pic::before{ content: ""; width: 90%; height: 90%; position: absolute; left: 5%; top: 5%; z-index: 1; border-radius: 50%; border: 4px solid #FFFFFF;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));}
 
-.doctors-profile .profile-section .profile-pic .approved-doc{ width: 40px; height: 40px; position:absolute; right: 3%; top: 0.6%; z-index: 5;}
+.doctors-profile .profile-section .profile-pic .approved-doc{ width: 40px; height: 40px; position:absolute; right:0; top: 0; z-index: 5;}
 .doctors-profile .profile-section .profile-pic .approved-doc .icon{width: 60px; height: 60px; position: absolute; right: 40px; top: 30px; z-index: 1;}
 .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail{ width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; background: rgba(0, 0, 0, 0.9); border-radius: 50%; z-index: 0; color: white; padding: 100px 20px 50px 40px; opacity: 0; visibility: hidden;}
-.doctors-profile .profile-section .profile-pic .approved-doc:hover{width: 94%; height: 94%; position:absolute; left: 3%; top: 0.6%;}
+.doctors-profile .profile-section .profile-pic .approved-doc:hover{width: 100%; height: 100%; position:absolute; left: 0; top: 0;}
 .doctors-profile .profile-section .profile-pic .approved-doc:hover .doctor-detail{ opacity: 1; transition: 0.3s; visibility: visible;}
 .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail h4{ font-size: 18px; font-weight: 600;}
 .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point{ display: block; font-size: 14px; font-weight: 500; padding:5px 0; position: relative; padding-left: 25px; letter-spacing: 1px;}
-.doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img{ width: 20px; height: auto; margin:2px 0px 0 0; position: absolute; left: 0;}
+.doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img{ width: 20px; height: 20px; min-width: inherit; min-height:inherit; min-width: inherit; max-height:inherit; margin:5px 0px 0 0; position: absolute; left: 0; transform: none; top: 0px;}
 
 .doctors-profile .profile-section .profile-details{ width: 550px; display: inline-block;}
 .doctors-profile .profile-section .profile-details .bullet-point{ display: block; font-size: 16px; font-weight: 600; padding:5px 0;}
@@ -377,7 +378,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .doctors-profile .profile-section .profile-details .button-1{ width: 100px; height: 36px; border-radius: 6px; font-size: 13px; line-height: 36px;}
 
 .doctors-profile .profile-section .addres-phone{ width: auto; display: block; margin-top: 50px;}
-.doctors-profile .profile-section .addres-phone .email{ width: 350px; height: 90px; display: inline-block; border: 1px solid #7EB65C; background-color: white; border-radius: 10px; padding: 20px; margin: 0 15px;}
+.doctors-profile .profile-section .addres-phone .email{ width: 350px; height: 90px; display: inline-block; border: 1px solid #7EB65C; background-color: white; border-radius: 10px; padding: 20px; margin: 0 15px; vertical-align: top;}
 .doctors-profile .profile-section .addres-phone .email img{ float: left; margin:4px 10px 0 0;}
 .doctors-profile .profile-section .addres-phone .email h3{ font-size: 20px; color: #232323; line-height: 22px; font-weight: 700; margin: 4px 0 0 0;}
 .doctors-profile .profile-section .addres-phone .email span{ font-size: 15px; color: #232323;}
@@ -603,7 +604,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 /*** Edit profile page ***/
 .edit-profile{ width: 100%; display: block; margin: 100px 0;}
 .edit-profile .form{ width: 100%; display: inline-block;}
-.edit-profile .form .pro-pic{ width: 150px; display: inline-block; margin-right: 3%;}
+.edit-profile .form .pro-pic{ width: 150px; height: 150px; display: inline-block; margin-right: 3%;}
 .edit-profile .form .pro-pic img{ width: 100%; height: 100%; display:block; border: 5px solid #fff; border-radius: 80px; filter: drop-shadow(0px 10px 20px rgba(183, 183, 183, 0.5));}
 .edit-profile .form input, .edit-profile .form select{ height: 60px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px; margin-bottom: 20px;}
 .edit-profile .form textarea{ background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; resize: none;  font-size: 16px; padding: 15px 25px;}
@@ -870,6 +871,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail{padding: 80px 50px 50px 50px;}
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail h4{ font-size: 17px;}
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point{ font-size: 13px; padding: 3px 0 3px 25px;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img { width: 18px; height: 18px; left: 0;}
   .doctors-profile .profile-section .profile-details{width: 440px;}
   .doctors-profile .profile-section .profile-details .score p{line-height: 32px; font-size: 18px;}
   .doctors-profile .profile-section .profile-details .score p.secound{font-size: 18px;}
@@ -995,8 +997,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .doctors-main .filter-main form{width: 300px;}
 
   .doctors-profile .profile-section .graphic-1 { width: 28%; bottom: 55%;}
-  .doctors-profile .profile-section .profile-pic{width: 320px; max-height: 320px; margin: 0; padding: 0;}  
-  .doctors-profile .profile-section .profile-pic::before{width: 90%; height:90%; left: 5%; top: 5%;}  
+  .doctors-profile .profile-section .profile-pic{width: 320px; max-height: 320px; margin: 0; padding: 0;}    
   .doctors-profile .profile-section .profile-pic .approved-doc:hover{width: 100%; left: 0; height: 100%; top: 0; }
 
   .doctors-profile .profile-section .profile-details { width:80%; }
@@ -1308,7 +1309,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail { padding: 50px 30px 40px 30px;}
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail h4 { font-size: 15px; margin-left: 10px;}  
   .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point { font-size: 12px; padding: 3px 0 3px 20px; letter-spacing: normal; line-height: 12px; margin: 5px 0;}
-  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img { width: 15px; margin: 0px 0px 0 0; left: 0;}
+  .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img { width: 15px; height: 15px; margin: 3px 0px 0 0; left: 0;}
 
   .doctors-profile .profile-section .profile-details {width: 96%;}
   .doctors-profile .profile-section .profile-details p{ font-size: 15px;}

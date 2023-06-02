@@ -16,7 +16,9 @@ const DoctorsProfile = ({ doctor }) => {
         <Container fluid="xxl">
           <Row className="justify-content-center">
             <div className='profile-pic'>
-              <img src={doctor?.profile_image ? doctor?.profile_image : `/profile-pic.png`} alt={"Profile Picture"} />
+              <div className='thumb'>
+                <img src={doctor?.profile_image ? doctor?.profile_image : `/profile-pic.png`} alt={"Profile Picture"} />
+              </div>
               <DoctorAppointed />
             </div>
             <div className='profile-details'>
