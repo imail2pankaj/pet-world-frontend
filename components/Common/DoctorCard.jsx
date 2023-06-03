@@ -15,7 +15,7 @@ const DoctorCard = ({doctor}) => {
             <Link href={`/doctors/${doctor.username}`}><Card.Img variant="top" src={doctor.profile_image} /></Link>
           </div>          
           <Card.Body>
-          <Link href={`/doctors/${doctor.username}`}><Card.Title>Dr. {doctor.first_name}{` `}{doctor.last_name}</Card.Title></Link>
+          <Link href={`/doctors/${doctor.username}`}><Card.Title>{doctor.first_name}{` `}{doctor.last_name}</Card.Title></Link>
             <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>                          
           </Card.Body>
         </Card>

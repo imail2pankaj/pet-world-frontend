@@ -13,13 +13,15 @@ import { useAuth } from '@/hooks/useAuth';
 import ReactDatePicker from 'react-datepicker';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
-
+import Cleave from 'cleave.js/react'
+import 'cleave.js/dist/addons/cleave-phone.us'
 const defaultAvatar = '/default-avatar.png';
 
 const schema = yup.object().shape({
   first_name: yup.string().required(),
   last_name: yup.string().required(),
-  email: yup.string().email().required()
+  email: yup.string().email().required(),
+  phone: yup.string().matches(/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/, 'Please enter valid phone number'),
 })
 
 const defaultValues = {
@@ -116,7 +118,6 @@ const Profile = () => {
       setIsLoading(false);
     })
   }
-
   const handleInputImageChange = file => {
     const reader = new FileReader()
     const { files } = file.target
@@ -146,7 +147,6 @@ const Profile = () => {
                   {serverResponse.message}
                 </Alert>}
                 <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
-
                   <Form.Group className='mb-5'>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                       <div className='pro-pic'>
@@ -231,11 +231,14 @@ const Profile = () => {
                     <Form.Group>
                       <Form.Label>Phone</Form.Label>
                       <Form.Control
-                        type="phone"
+                        className='form-control'
+                        type="tel"
                         label='Phone'
                         name="phone"
-                        placeholder="Enter phone"
-                        {...register("phone", { required: true })}
+                        placeholder='1 234 567 8900'
+                        maxLength={16}
+                        // value={}
+                        {...register("phone", { required: true, })}
                       />
                       <ValidationError errors={errors.phone} />
                     </Form.Group>

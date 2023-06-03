@@ -53,15 +53,15 @@ const DoctorsProfile = ({ doctor }) => {
             <div className='addres-phone'>
               <div className='email'><img src={`/email-icon.png`} alt={""} />
                 <h3>Email</h3>
-                <span>{doctor?.email}</span>
+                <span>{doctor?.email || "N/A"}</span>
               </div>
               <div className='email phone'><img src={`/phone-icon.png`} alt={""} />
                 <h3>Call</h3>
-                <span>{doctor?.phone}</span>
+                <span>{doctor?.phone || "N/A"}</span>
               </div>
               <div className='email address'><img src={`/address-icon.png`} alt={""} />
                 <h3>Address</h3>
-                <span>{doctor?.address}</span>
+                <span>{doctor?.address || "N/A"}</span>
               </div>
             </div>
           </Row>
