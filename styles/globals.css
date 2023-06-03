@@ -325,7 +325,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
 .doctors-main .doctor-list{ width: 100%; display: block; margin: 15px 0;}
 .doctors-main .doctor-list .card{ border-radius:20px; padding: 7px; margin: 15px 0;}
-.doctors-main .doctor-list .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
+.doctors-main .doctor-list .card .thumb{ width: 100%; height: 170px; position: relative; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
 .doctors-main .doctor-list .card .card-img-top{ width: 100%; height: auto; min-height: 100%; display: block;}
 .doctors-main .doctor-list .card .card-body{padding: 10px;}
 .doctors-main .doctor-list .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
@@ -334,8 +334,8 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .doctors-main .doctor-list .total-collection span{ color: #7EB65C; font-weight: 700;}
 .doctors-main .doctor-list .total-collection .progress{height: 7px; }
 .doctors-main .doctor-list .total-collection .progress .progress-bar{ background-color:#7EB65C;}
-
-
+.doctors-main .doctor-list .card .thumb .badge{ position: absolute; width: 100%; height: 100%; left: 0; top: 0; text-align: center;}
+.doctors-main .doctor-list .card .thumb .badge img{ width: auto; max-height: 100%; display: inline-block; opacity: 0.7;}
 
 .doctors-main .doctor-list .item{ position: relative;}
 .doctors-main .doctor-list .approved-doc{ width: 36px; height: 36px; position:absolute; right: 2%; top: 2%; z-index: 5;}
@@ -392,11 +392,13 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .card-main .aproved-by .doctor .do-name{right: auto; left: -4px;}
 .card-main .aproved-by .doctor .do-name:before {right: auto; left: 10px; top: -9px;}
 .doctor-campaigns .card{ border-radius:20px; padding: 7px; display: block; margin-bottom:30px;}
-.doctor-campaigns .card .thumb{ width: 306px; display: inline-block; vertical-align: top; margin-right: 10px; }
+.doctor-campaigns .card .thumb{ width: 306px; position: relative; display: inline-block; vertical-align: top; margin-right: 10px; }
+.doctor-campaigns .card .thumb .badge{ position: absolute; width: 100%; height: 100%; left: 0; top: 0; text-align: center;}
+.doctor-campaigns .card .thumb .badge img{ width: auto; max-height: 100%; display: inline-block; opacity: 0.7;}
 .doctor-campaigns .card .card-img-top{ width: 100%; border-radius:20px; display: block;} 
 .doctor-campaigns .card .card-body{ width: 650px; display: inline-block;}
 .doctor-campaigns .card-title{ font-size: 18px; font-weight: 700; color: #232323;}
-.doctor-campaigns .card-text{ font-size: 15px; color: #232323; min-height: 48px;}
+.doctor-campaigns .card-text{ font-size: 15px; color: #232323; min-height: 54px;}
 .doctor-campaigns .total-collection{ width: 300px; font-size: 18px; color: #232323; font-weight: 500; line-height: 36px;}
 .doctor-campaigns .total-collection span{ color: #7EB65C; font-weight: 700;}
 .doctor-campaigns .total-collection .progress{height: 7px; }
@@ -434,7 +436,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .campaigns-detail{ width: 100%; display: block; padding: 100px 0 0;}
 .campaigns-detail .title{ width: 100%; display: block; margin-bottom: 20px;}
 .campaigns-detail .title h2{ width: 50%; display: inline-block; font-size: 36px; font-weight: 700;}
-.campaigns-detail .title .total-collection{ min-width:400px; float: right; font-size: 26px; color: #232323; font-weight: 500; line-height: 50px;}
+.campaigns-detail .title .total-collection{ width:auto; float: right; font-size: 26px; color: #232323; font-weight: 500; line-height: 50px;}
 .campaigns-detail .title .total-collection span{ color: #7EB65C; font-weight: 700;}
 .campaigns-detail .title .total-collection .progress{height: 7px; }
 .campaigns-detail .title .total-collection .progress .progress-bar{ background-color:#7EB65C;}
@@ -455,13 +457,8 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .campaigns-detail .donorlist-disc .donorlist .buttons a.share-btn{background: #0096EB; margin-left: 8%;}
 .campaigns-detail .donorlist-disc .donorlist .buttons a:hover{ background-color: #9E0C0F;}
 
-.campaigns-detail .donorlist-disc ul{ width: 98%; display: block; list-style: none; padding: 0;}
+/* .campaigns-detail .donorlist-disc ul{ width: 98%; display: block; list-style: none; padding: 0;}
 .campaigns-detail .donorlist-disc ul li{ padding:15px; border-top: 1px solid #DBDBDB;}
-.campaigns-detail .donorlist-disc .score{ display: block; padding: 20px 40px 20px 20px;}
-.campaigns-detail .donorlist-disc .score .donors{ width: auto; text-align: center; display: inline-block;  font-size: 18px; color: #232323; font-weight: 600; text-transform: uppercase;}
-.campaigns-detail .donorlist-disc .score .donors span{ display: block; color: #9E0C0F; font-size: 24px; font-weight: 700;}
-.campaigns-detail .donorlist-disc .score .subscrib{ float: right;}
-
 .campaigns-detail .donorlist-disc ul li .thumb{ width: 60px; height: 60px; display: inline-block; border-radius: 50%; overflow: hidden; margin-right: 15px; vertical-align:top;}
 .campaigns-detail .donorlist-disc ul li .thumb img{ width: 100%; display: block;}
 .campaigns-detail .donorlist-disc ul li .donor-name{ width: auto; font-size: 16px; display: inline-block; line-height: 22px; margin-top: 8px;  color: #232323;}
@@ -470,19 +467,26 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .campaigns-detail .donorlist-disc ul li.center{ text-align: center;}
 .campaigns-detail .donorlist-disc ul li .more-list{ width: 80px; display: inline-block; position: relative; font-size: 14px; color: #232323; font-weight: 600; background-color: #EDEDED; border-radius: 5px; line-height: 34px; }
 .campaigns-detail .donorlist-disc ul li .more-list::after{ content: ""; width: 100%; height: 11px; position: absolute; left: 0; bottom: -5px; background-image: url('../public/more-arw.png'); background-repeat: no-repeat; background-position: center;}
-.campaigns-detail .donorlist-disc ul li .more-list:hover{ background-color: #9E0C0F; color: white;}
+.campaigns-detail .donorlist-disc ul li .more-list:hover{ background-color: #9E0C0F; color: white;} */
+
+.campaigns-detail .donorlist-disc .score{ display: block; padding: 20px 40px 20px 20px;}
+.campaigns-detail .donorlist-disc .score .donors{ width: auto; text-align: center; display: inline-block;  font-size: 18px; color: #232323; font-weight: 600; text-transform: uppercase;}
+.campaigns-detail .donorlist-disc .score .donors span{ display: block; color: #9E0C0F; font-size: 24px; font-weight: 700;}
+.campaigns-detail .donorlist-disc .score .subscrib{ float: right;}
 
 .campaigns-detail .donorlist-disc .description{ width: 50%; float: left; padding: 0 0 0 3%;}
 .campaigns-detail .donorlist-disc .description h3{ font-size: 24px; font-weight: 700;}
 .campaigns-detail .donorlist-disc .description p{ font-size: 16px; color: #232323; line-height: 24px;}
+.campaigns-detail .donorlist-disc .description .badge{ width: 40%; float: left;}
+.campaigns-detail .donorlist-disc .description .badge img{ max-width:100%; display: block;}
 
-.campaign-info{ width: 100%; display: block; background-color: #EDEDED; padding: 70px 0;}
+.campaign-info{ width: 100%; display: block; padding: 30px 0; border-top: 1px solid #DBDBDB;}
 .campaign-info h3{ font-size: 24px; font-weight: 700; margin-bottom: 10px;}
 .campaign-info ul{ width: 100%; display: block; list-style: none; padding: 0;}
-.campaign-info ul li{ width: 100%; padding:30px 0; display: block; font-size: 15px; color: #232323; }
-.campaign-info ul li .info-title{ width: 25%; max-width: 220px; float: left; font-weight: 700;}
+.campaign-info ul li{ width: 100%; padding-top:30px; float: left; font-size: 15px; color: #232323; }
+.campaign-info ul li .info-title{ width: 35%; max-width: 220px; float: left; font-weight: 700;}
 .campaign-info ul li .info-title img{ margin-right: 5px;}
-.campaign-info ul li .info-details {width:75%; float: left; font-weight: 500;}
+.campaign-info ul li .info-details {width:65%; float: left; font-weight: 500; line-height: normal;}
 
 .campaigns-detail .comments-main{ width: 100%; display: block; margin: 100px 0;}
 .campaigns-detail .comments-main h3{ font-size: 24px; font-weight: 700; margin-bottom: 20px;}
@@ -493,7 +497,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .campaigns-detail .comments-main .comment-box p{ font-size: 15px; color: #232323;}
 .campaigns-detail .comments-main .comment-box .donate-time{ width: auto; height: 100%; position: absolute; right: 20px; top: 0px; font-size: 15px; color:rgba(35, 35, 35, 0.8); text-align: right; line-height: 20px; padding: 20px 0 0 10px;}
 .campaigns-detail .comments-main .comment-box .donate-time span{ display: block; font-size: 22px; color: #232323; font-weight: 700;}
-.campaigns-detail .comments-main .comment-box .donate-time .time{ width: 100%; position: absolute; right: 0; bottom: 20px; font-size: 15px; color:rgba(35, 35, 35, 0.8); }
+.campaigns-detail .comments-main .comment-box .donate-time .time{ width: 100%; position: relative; right: 0; top: 0px; font-size: 15px; color:rgba(35, 35, 35, 0.8); }
 
 .campaigns-detail .comments-main .more{ width: 80%; display: block; text-align: center;}
 .campaigns-detail .comments-main .more-list{ width: 80px; display: inline-block; position: relative; font-size: 14px; color: #232323; font-weight: 600; background-color: #EDEDED; border-radius: 5px; line-height: 34px; }
@@ -718,7 +722,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
   .campaigns-detail .title{margin-bottom: 20px;}
   .campaigns-detail .title h2{font-size: 30px;}
-  .campaigns-detail .title .total-collection{min-width: 400px; font-size: 25px; line-height: 50px;}
+  .campaigns-detail .title .total-collection{font-size: 25px; line-height: 50px;}
 
   .campaigns-detail .donorlist-disc{margin: 70px 0;}
   .campaigns-detail .donorlist-disc .description h3{ font-size: 24px;}
@@ -883,7 +887,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .campaigns-detail .gallery .video{ border-radius: 15px;}  
   .campaigns-detail .gallery .img-gallery .thumb{border-radius: 15px;}
 
-  .campaigns-detail .title .total-collection{min-width: 350px; font-size: 22px; line-height: 48px;}
+  .campaigns-detail .title .total-collection{font-size: 22px; line-height: 48px;}
   .campaigns-detail .donorlist-disc .donorlist .buttons a{font-size: 18px; line-height: 50px; border-radius: 5px;}
 
   .campaigns-detail .donorlist-disc .score{padding: 15px 40px 15px 20px;}
@@ -895,6 +899,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
   .campaign-info{padding: 70px 0;}
   .campaign-info h3{font-size: 22px;}
+  .campaign-info ul li .info-details{ padding-left: 2%;}
   .campaigns-detail .title h2{font-size: 28px;}
   .campaigns-detail .comments-main h3{font-size: 22px;}
   .campaigns-detail .comments-main .comment-box h4{font-size: 17px; padding: 5px 0;}
@@ -1015,7 +1020,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
   .campaigns-detail{padding: 70px 0 0;}
   .campaigns-detail .title h2{font-size: 26px;}
-  .campaigns-detail .title .total-collection{min-width: 300px; font-size: 20px;}
+  .campaigns-detail .title .total-collection{font-size: 20px;}
   .campaigns-detail .gallery .video .play-button img{ width: 50px;}
   .campaigns-detail .gallery .img-gallery{  margin-right: -5%;}
   .campaigns-detail .gallery .img-gallery .thumb:last-child .overlay{font-size: 22px; padding-top: 22%;}
@@ -1025,6 +1030,8 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .campaigns-detail .comments-main .comment-box{width: 100%;}
 
   .campaign-info ul li{ font-size: 14px;}
+  .campaign-info ul li .info-title{ width: 100%; max-width: 100%; float: none;}  
+  .campaign-info ul li .info-details{ width: 100%; padding-left: 30px; float: none;}
   .campaigns-detail .comments-main .more{ width: 100%;}
 
   .events-main .filter-main form{ width:70%;}
@@ -1183,7 +1190,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .campaigns-detail .donorlist-disc .score {padding: 20px 20px 20px 20px;}
   .campaigns-detail .donorlist-disc .score .donors { font-size: 15px; }
   .campaigns-detail .donorlist-disc .score .donors span {  font-size: 22px;}
-  .campaigns-detail .donorlist-disc ul li{ padding: 10px 50px 10px 60px; position: relative;}
+  .campaigns-detail .donorlist-disc ul li{ padding: 10px 0px 10px 15px; position: relative;}
   .campaigns-detail .donorlist-disc ul li .thumb{ width: 50px; height: 50px; position: absolute; left: 0; margin-right: 0px;}
   .campaigns-detail .donorlist-disc ul li .donor-name { font-size: 14px; line-height:18px; margin-top: 5px;}
   .campaigns-detail .donorlist-disc ul li .time{ font-size: 12px; position: absolute; right:0;}
@@ -1196,10 +1203,9 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .campaign-info {padding: 40px 0;}
   .campaign-info h3 {font-size: 20px;}
   .campaign-info ul{ margin: 0;}
-  .campaign-info ul li {padding: 10px 10px;}
-  .campaign-info ul li .info-title{ width: 100%; max-width: 100%; float: none;}
+  .campaign-info ul li {padding: 10px 10px;}  
   .campaign-info ul li .info-title img{ width: 17px;}
-  .campaign-info ul li .info-details{ width: 100%; padding-left: 26px; float: none; font-size: 14px; line-height: normal;}
+  .campaign-info ul li .info-details{ padding-left: 26px; font-size: 14px; line-height: normal;}
 
   .campaigns-detail .comments-main{margin: 50px 0;}
   .campaigns-detail .comments-main h3 {font-size: 20px;}

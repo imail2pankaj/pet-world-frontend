@@ -40,7 +40,7 @@ const Campaigns = () => {
             <Row xs={1} md={2} lg={3} xxl={4}>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(item =>
                 <Col key={item}>
-                  <CampaignCard />
+                  <CampaignCard is_paid={item%2} />
                 </Col>
               )}
             </Row>
