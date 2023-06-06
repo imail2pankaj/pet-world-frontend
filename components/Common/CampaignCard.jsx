@@ -4,12 +4,14 @@ import Link from 'next/link';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import React from 'react'
 
-const CampaignCard = ({ campaign }) => {
+const CampaignCard = ({ campaign,is_paid=0 }) => {
   return (
     <div className='card-main'>
         <Card>
         <div className='thumb'>
-          <Link href='/campaigns/Campaign'><Card.Img variant="top" src="/pic-1.jpg" /></Link>
+          <Link href='/campaigns/Campaign'><Card.Img variant="top" src="/pic-1.jpg" />
+            <div className='badge'><img src={is_paid==0?`/not-approved-badge.png`:`/paid-badge.png` } alt={""} /></div>
+          </Link>          
         </div>
           <Card.Body>
           <Link href='/campaigns/Campaign'><Card.Title>Sed ut perspiciatis</Card.Title></Link>
