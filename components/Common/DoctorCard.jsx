@@ -3,23 +3,23 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import React from 'react'
 import { DoctorAppointed } from '.';
+import { defaultAvatar } from '@/core/utils/constants';
+import { truncate } from '@/core/utils/format';
 
 
-const DoctorCard = ({doctor}) => {
+const DoctorCard = ({ doctor }) => {
   return (
     <div className='item'>
-        {doctor?.appointed == 1 && <DoctorAppointed />}
-      
-        <Card>
-          <div className='thumb'>
-            <Link href={`/doctors/${doctor.username}`}><Card.Img variant="top" src={doctor.profile_image} /></Link>
-          </div>          
-          <Card.Body>
-          <Link href={`/doctors/${doctor.username}`}><Card.Title>{doctor.first_name}{` `}{doctor.last_name}</Card.Title></Link>
-            <Card.Text>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia...</Card.Text>                          
-          </Card.Body>
-        </Card>
-      
+      {doctor?.detail?.is_appointed == 1 && <DoctorAppointed />}
+      <Card>
+        <div className='thumb'>
+          <Link href={`/doctors/${doctor.username}`}><Card.Img variant="top" src={doctor.profile_image || defaultAvatar} /></Link>
+        </div>
+        <Card.Body>
+          <Link href={`/doctors/${doctor.username}`}><Card.Title>{doctor.first_name} {doctor.surname} {doctor.last_name}</Card.Title></Link>
+          <Card.Text>{truncate(doctor?.detail?.bio || "")}</Card.Text>
+        </Card.Body>
+      </Card>
     </div>
   )
 }

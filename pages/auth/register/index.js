@@ -24,6 +24,7 @@ const schema = yup.object().shape({
 const defaultValues = {
   user_type_id: "3",
   first_name: '',
+  surname: '',
   last_name: '',
   email: '',
   password: '',
@@ -138,6 +139,25 @@ const Register = () => {
                     )}
                   />
                   <ValidationError errors={errors.first_name} />
+                </Form.Group>
+                <Form.Group className="mb-4" controlId="input-surname">
+                  <Controller
+                    name='surname'
+                    control={control}
+                    rules={{ required: true }}
+                    autoFocus
+                    render={({ field: { value, onChange, ref } }) => (
+                      <Form.Control
+                        ref={ref}
+                        label='Surname'
+                        placeholder="Enter Surname"
+                        isInvalid={Boolean(errors.surname)}
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                  <ValidationError errors={errors.surname} />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="input-last-name">
                   <Controller

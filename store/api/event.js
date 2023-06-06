@@ -18,17 +18,21 @@ export const participateEvent = createAsyncThunk('appEvents/participateEvent', a
 
   const storedToken = window.localStorage.getItem('accessToken');
 
-  const response = await axiosInstance.get(`/events/${id}/participate`)
+  const response = await axiosInstance.get(`/events/${id}/participate`, {
+    headers: {
+      Authorization: `Bearer ${storedToken}`
+    }
+  })
 
   return response;
 })
 
 // ** Create Event
-export const attendEvent = createAsyncThunk('appEvents/attendEvent', async (id, status) => {
+export const attendEvent = createAsyncThunk('appEvents/attendEvent', async ({id, status}) => {
 
   const storedToken = window.localStorage.getItem('accessToken');
 
-  const response = await axiosInstance.get(`/events/${id}/attend/${status}`, {}, {
+  const response = await axiosInstance.get(`/events/${id}/attend/${status}`, {
     headers: {
       Authorization: `Bearer ${storedToken}`
     },
@@ -50,7 +54,7 @@ export const appEventSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getEvent.fulfilled]: (state, action) => {
-      state.eventData = action.payload
+      state.eventData = action?.payload?.data
     },
   }
 

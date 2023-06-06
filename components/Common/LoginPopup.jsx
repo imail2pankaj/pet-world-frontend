@@ -64,51 +64,53 @@ const LoginPopup = (props) => {
   }
   return (
     <div className='event-popup'>
-      <Button onClick={props.onHide}><img src={`/close.png`} alt={""} /></Button>
-      <div className='login-main'>
-        <h2>Login to <b>PetWorld</b></h2>
-        <div className="mb-3 mt-4 lg-3">
-          <div className="mb-3">
-            {serverResponse && <Alert variant={serverResponse.variant}>{serverResponse.message}</Alert>}
-            <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
-              <Form.Group className="mb-4" controlId="formBasicEmail">
-                <Controller
-                  name='email'
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field: { value, onChange } }) => (
-                    <Form.Control
-                      autoFocus
-                      label='Email'
-                      placeholder="Enter Email"
-                      value={value}
-                      onChange={onChange}
-                    />
-                  )}
-                />
-                <ValidationError errors={errors.email} />
-              </Form.Group>
-              <Form.Group className="mb-4" controlId="formBasicPassword">
-                <Controller
-                  name='password'
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field: { value, onChange } }) => (
-                    <Form.Control
-                      label='Password'
-                      placeholder="Enter Password"
-                      type='password'
-                      value={value}
-                      onChange={onChange}
-                    />
-                  )}
-                />
-                <ValidationError errors={errors.password} />
-              </Form.Group>
-              <div className="mb-5">
-                <PrimarySubmit isLoading={isLoading} text='Login' />
-              </div>
-            </Form>
+      <div className='modal-body'>
+        <Button onClick={props.onHide}><img src={`/close.png`} alt={""} /></Button>
+        <div className='login-main'>
+          <h2>Login to <b>PetWorld</b></h2>
+          <div className="mb-3 mt-4 lg-3">
+            <div className="mb-3">
+              {serverResponse && <Alert variant={serverResponse.variant}>{serverResponse.message}</Alert>}
+              <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+                <Form.Group className="mb-4" controlId="formBasicEmail">
+                  <Controller
+                    name='email'
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field: { value, onChange } }) => (
+                      <Form.Control
+                        autoFocus
+                        label='Email'
+                        placeholder="Enter Email"
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                  <ValidationError errors={errors.email} />
+                </Form.Group>
+                <Form.Group className="mb-4" controlId="formBasicPassword">
+                  <Controller
+                    name='password'
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field: { value, onChange } }) => (
+                      <Form.Control
+                        label='Password'
+                        placeholder="Enter Password"
+                        type='password'
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                  <ValidationError errors={errors.password} />
+                </Form.Group>
+                <div>
+                  <PrimarySubmit isLoading={isLoading} text='Login' />
+                </div>
+              </Form>
+            </div>
           </div>
         </div>
       </div>

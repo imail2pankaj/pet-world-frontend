@@ -1,8 +1,6 @@
 import moment from 'moment';
-import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Spinner } from 'react-bootstrap'
 import LoginPopup from './LoginPopup';
 import { useAuth } from '@/hooks/useAuth';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,9 +11,12 @@ const EventModal = (props) => {
   const { event_details } = props;
 
   const [modalShow, setModalShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
-  const store = useSelector(store => store.event);
+  const { eventData } = useSelector(store => store.event);
+
   useEffect(() => {
     if (event_details?.id) {
       dispatch(getEvent(event_details?.id))
@@ -23,44 +24,46 @@ const EventModal = (props) => {
   }, [event_details?.id])
 
   const handleParticipate = async () => {
-    dispatch(participateEvent(event_details?.id)).then(response => {
-
-    }).catch(err => {
-
+    setLoading(true);
+    dispatch(participateEvent(event_details?.id)).then(() => {
+      dispatch(getEvent(event_details?.id)).then(() => {
+        auth.authMe();
+        setLoading(false);
+      })
     })
   }
 
   const handleAttendEvent = async (status) => {
-    dispatch(attendEvent(event_details?.id, status)).then(response => {
-
-    }).catch(err => {
-
+    setLoading(true);
+    dispatch(attendEvent({ id: event_details?.id, status })).then(() => {
+      dispatch(getEvent(event_details?.id)).then(() => {
+        auth.authMe();
+        setLoading(false);
+      })
     })
   }
   const participate = () => {
     if (auth && auth.isAuthenticated) {
-      if (auth?.user?.participants?.includes(event_details?.id)) {
+      if (auth?.user?.participants?.includes(eventData?.id)) {
         return (
           <>
-            Attend Event :
-            <button className='button-1' style={{ width: "80px" }} onClick={() => handleAttendEvent(2)} role='button'>Yes</button>
-            <button className='button-1' style={{ width: "80px" }} onClick={() => handleAttendEvent(1)} role='button'>No</button>
+            Attend Event:
+            {
+              loading ? <Spinner /> : (
+                <>
+                  <button className='button-1' style={{ width: "80px" }} onClick={() => handleAttendEvent(2)} role='button'>Yes</button>
+                  <button className='button-1' style={{ width: "80px" }} onClick={() => handleAttendEvent(1)} role='button'>No</button>
+                </>
+              )
+            }
           </>
         )
-      } else if (auth?.user?.yes_attends?.includes(event_details?.id)) {
-        return (
-          <>
-            Attend Event : Yes
-          </>
-        )
-      } else if (auth?.user?.no_attends?.includes(event_details?.id)) {
-        return (
-          <>
-            Attend Event : No
-          </>
-        )
+      } else if (auth?.user?.yes_attends?.includes(eventData?.id)) {
+        return <>Attend : Yes</>
+      } else if (auth?.user?.no_attends?.includes(eventData?.id)) {
+        return <>Attend : No</>
       } else {
-        return <button className='button-1' onClick={handleParticipate} role='button'>Participate</button>
+        return loading ? <Spinner /> : (<button className='button-1' onClick={handleParticipate} role='button'>Participate</button>)
       }
     } else {
       return <button className='button-1' onClick={() => { setModalShow(true) }} role='button'>participate</button>
@@ -74,30 +77,24 @@ const EventModal = (props) => {
           <Modal.Body>
             <Button onClick={props.onHide}><img src={`/close.png`} alt={""} /></Button>
             <div className='thumb'>
-              <img src={event_details?.event_image} alt={""} />
+              <img src={eventData?.event_image} alt={""} />
             </div>
-            <h4>{event_details?.title}</h4>
-            {/* <p>{JSON.parse(store || "")}</p> */}
-            <p>{event_details?.description}</p>
+            <h4>{eventData?.title}</h4>
+            <p>{eventData?.description}</p>
           </Modal.Body>
           <Modal.Footer>
             <div className='date-address'>
               <div className='address'>
-                <img src={`/address-icon2.png`} alt={event_details?.location} /> {event_details?.location}
+                <img src={`/address-icon2.png`} alt={eventData?.location} /> {eventData?.location}
               </div>
               <div className='address'>
-                <img src={`/calendar-icon2.png`} alt={moment(event_details?.event_date).format('DD/MM/YYYY')} /> <span>{moment(new Date(event_details?.event_date)).format('DD/MM/YYYY')}</span>
+                <img src={`/calendar-icon2.png`} alt={moment(eventData?.event_date).format('DD/MM/YYYY')} /> <span>{moment(new Date(eventData?.event_date)).format('DD/MM/YYYY')}</span>
               </div>
               <div className='address'>
-                <img src={`/uder-icon.png`} alt={""} /> <span>{event_details?.participants} Participants</span>
+                <img src={`/uder-icon.png`} alt={""} /> <span>{eventData?.participants} Participants</span>
               </div>
               <div className='button'>
                 {participate()}
-                {/* {
-                  !auth.isAuthenticated ?
-                    <button className='button-1' onClick={() => { setModalShow(true) }} role='button'>participate</button> :
-                    <button className='button-1' onClick={handleParticipate} role='button'>Participate</button>
-                } */}
               </div>
             </div>
           </Modal.Footer>

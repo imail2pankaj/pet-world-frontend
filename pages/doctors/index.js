@@ -165,12 +165,6 @@ const Doctors = ({ initialDoctors }) => {
               {loading && <Spinner />}
               {!loading && doctors.length === 0 ? "No doctors Found" : ""}
             </div>
-            {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(item =>
-              <Col key={item}>
-                <DoctorCard />
-              </Col>
-            )}
-          </Row> */}
             <Row>
               <Pagination className="justify-content-center mt-4">
                 <Pagination.First />

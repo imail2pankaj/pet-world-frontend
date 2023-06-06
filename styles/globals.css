@@ -420,7 +420,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .event-popup .modal-body .thumb img{ width: 100%;}
 .event-popup .modal-body h4{ font-size: 24px; font-weight: 700; padding: 0 10px;}
 .event-popup .modal-body p{ font-size: 15px; color: #232323; padding: 0 10px;}
-.event-popup .modal-body button{ width: 38px; height: 38px; position: absolute; right: 8px; top: 8px; background-color: transparent; border: none; font-size: 0px; padding: 0; }
+.event-popup .modal-body button:not(.button-1){ width: 38px; height: 38px; position: absolute; right: 8px; top: 8px; background-color: transparent; border: none; font-size: 0px; padding: 0; }
 .event-popup .modal-body button img{ width: 100%;}
 .event-popup .date-address{ width: 100%; display: block; font-size: 14px; line-height: 16px;}
 .event-popup .date-address img{ width:auto; display: inline-block; margin-right: 2px;}

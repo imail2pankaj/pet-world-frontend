@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import { CampaignCard, DoctorAppointed, WhyVetChoosePetWorld } from '@/components/Common';
 import Link from 'next/link';
 import axiosInstance from '@/store/api/axiosInstance';
+import { defaultAvatar } from '@/core/utils/constants';
+import Image from 'next/image';
 
 const DoctorsProfile = ({ doctor }) => {
 
@@ -17,24 +19,24 @@ const DoctorsProfile = ({ doctor }) => {
           <Row className="justify-content-center">
             <div className='profile-pic'>
               <div className='thumb'>
-                <img src={doctor?.profile_image ? doctor?.profile_image : `/profile-pic.png`} alt={"Profile Picture"} />
+                <img src={doctor?.profile_image ? doctor?.profile_image : defaultAvatar} alt={"Profile Picture"} />
               </div>
-              <DoctorAppointed />
+              {doctor?.detail?.is_appointed == 1 && <DoctorAppointed />}
             </div>
             <div className='profile-details'>
               <h2 className='title'>
                 <span>My name is</span>
-                {doctor?.first_name} {doctor?.last_name}
+                {doctor?.first_name} {doctor?.surname} {doctor?.last_name}
               </h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text when an unknown. </p>
+              <p>{doctor?.detail?.bio}</p>
               <span className='bullet-point'>
-                <img src={`/bullet.png`} alt={""} /> Doctor&apos;s unique identification number
+                <img src={`/bullet.png`} alt={""} /> Unique identification number
               </span>
               <span className='bullet-point'>
-                <img src={`/bullet.png`} alt={""} /> Doctor&apos;s Education qualification
+                <img src={`/bullet.png`} alt={""} /> Education qualification: {doctor?.detail?.qualifications}
               </span>
               <span className='bullet-point'>
-                <img src={`/bullet.png`} alt={""} /> Doctor&apos;s Specialties
+                <img src={`/bullet.png`} alt={""} /> Specialties: {doctor?.detail?.specialities && doctor?.detail?.specialities.join(", ")}
               </span>
               <div className='score'>
                 <p>Launched campaigns :<br />
@@ -44,9 +46,17 @@ const DoctorsProfile = ({ doctor }) => {
                   $25,000.83
                 </p>
               </div>
-              <Link className='button-1' href='#!' role='button'>
-                Report
-              </Link>
+              <div className='d-flex align-items-center'>
+                <Link className='button-1' href='/' role='button'>
+                  Report
+                </Link>
+                <div className='ps-4 '>
+                  {doctor?.detail?.facebook && <Link href={doctor?.detail?.facebook}><Image className='me-2' src={'/fb-icon.png'} alt="facebook" width="30" height="30" /></Link>}
+                  {doctor?.detail?.instagram && <Link href={doctor?.detail?.instagram}><Image className='me-2' src={'/insta-icon.png'} alt="instagram" width="30" height="30" /></Link>}
+                  {doctor?.detail?.twitter && <Link href={doctor?.detail?.twitter}><Image className='me-2' src={'/tw-icon.png'} alt="twitter" width="30" height="30" /></Link>}
+                  {doctor?.detail?.linkedin && <Link href={doctor?.detail?.linkedin}><Image className='me-2' src={'/in-icon.png'} alt="linkedin" width="30" height="30" /></Link>}
+                </div>
+              </div>
             </div>
           </Row>
           <Row className="justify-content-center">
@@ -90,7 +100,7 @@ const DoctorsProfile = ({ doctor }) => {
 
       <WhyVetChoosePetWorld />
 
-    </div>
+    </div >
   )
 }
 

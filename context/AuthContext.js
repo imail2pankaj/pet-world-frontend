@@ -151,10 +151,31 @@ const AuthProvider = ({ children }) => {
     });
     return response
   }
+
+  const authMe = async () => {
+    const storedToken = window.localStorage.getItem(storageTokenKeyName)
+
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+          "Content-Type": "application/json",
+        }
+      }).then(async response => {
+        setUser({ ...response.data })
+      }).catch(() => {
+        localStorage.removeItem('userData')
+        localStorage.removeItem('refreshToken')
+        localStorage.removeItem('accessToken')
+        setUser(null)
+        router.replace('/auth/login')
+      })
+  }
+
   const values = {
     isAuthenticated: !!user,
     user,
     loading,
+    authMe,
     setUser,
     setLoading,
     profileUpdate,
