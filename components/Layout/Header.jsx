@@ -79,10 +79,10 @@ const Header = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/profile">Profile</Link>
-                {user.role === 'DOCTOR' && <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/about">Bio</Link>}
-                <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/change-password">Change Password</Link>
-                <Button onClick={logout} className='dropdown-item'>Logout</Button>
+                <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/profile">{t('Profile')}</Link>
+                {user.role === 'DOCTOR' && <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/about">{t('Bio')}</Link>}
+                <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/change-password">{t('Change Password')}</Link>
+                <Button onClick={logout} className='dropdown-item'>{t('Logout')}</Button>
               </Dropdown.Menu>
             </Dropdown> :
             <Link className='nav-link btn' onClick={toggleMenu} href="/auth/login">{t("My Account")}</Link>}

@@ -11,9 +11,12 @@ import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axiosInstance from '@/store/api/axiosInstance';
 import { capitalize } from '@/core/utils/format';
+import { useTranslation } from 'react-i18next';
+import { NextSeo } from 'next-seo';
 
 const Doctors = ({ initialDoctors }) => {
 
+  const { t } = useTranslation('common')
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [doctors, setDoctors] = useState([]);
@@ -47,6 +50,7 @@ const Doctors = ({ initialDoctors }) => {
 
   return (
     <div className='inner-main'>
+      <NextSeo title={'About Doctors'} />
       <PageHeader banner={`/inner-bg1.jpg`} title={"About Doctors"} />
       <Container fluid="xxl">
         <div className='doctors-main'>
@@ -55,7 +59,7 @@ const Doctors = ({ initialDoctors }) => {
               <Col sm={12} lg={6} className='pic'>
                 <img src={`/donation-pic.jpg`} alt={"Doctor"} />
               </Col>
-              <Col sm={12} lg={6} className='detail'>
+              {/* <Col sm={12} lg={6} className='detail'>
                 <h2 className='title'>
                   <span>Easy Appointment</span>
                   Process for doctors
@@ -89,8 +93,8 @@ const Doctors = ({ initialDoctors }) => {
                     </Link>
                   </p>
                 </div>
-              </Col>
-              <Col sm={12} lg={6} className='detail' style={{ 'display': 'none' }}>
+              </Col> */}
+              <Col sm={12} lg={6} className='detail' >
                 <h2 className='title'>
                   <span>Easy Campaign</span>
                   Process for doctors
@@ -124,13 +128,13 @@ const Doctors = ({ initialDoctors }) => {
                   </h3>
                   <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.</p>
                 </div>
-                <div className='step'>
+                {/* <div className='step'>
                   <p>
                     <Link className='next-process' href='#!' role='button'>
                       <img className='previuse' src={`/next-arow.png`} alt={"Next"} /> Appointment process
                     </Link>
                   </p>
-                </div>
+                </div> */}
               </Col>
             </div>
           </Row>
@@ -143,11 +147,11 @@ const Doctors = ({ initialDoctors }) => {
               </Form>
 
               <div className='filter'>
-                <DropdownButton id="dropdown-item-button" title={`Sort By:  ${capitalize(sortBy)}`}>
+                <DropdownButton id="dropdown-item-button" title={`Sort By:  ${t(capitalize(sortBy))}`}>
                   <Dropdown.Item onClick={() => setSortBy('a-z')} as="button">A-Z</Dropdown.Item>
                   <Dropdown.Item onClick={() => setSortBy('z-a')} as="button">Z-A</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setSortBy('latest')} as="button">Latest</Dropdown.Item>
-                  <Dropdown.Item onClick={() => setSortBy('oldest')} as="button">Oldest</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('latest')} as="button">{t("Latest")}</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('oldest')} as="button">{t("Oldest")}</Dropdown.Item>
                 </DropdownButton>
               </div>
             </div>
