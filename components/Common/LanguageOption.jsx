@@ -12,16 +12,22 @@ const LanguageOption = () => {
 
   const changeTo = router.locale === 'en' ? 'bg' : 'en'
 
+  const handleRoute = (locale) => router.replace(router.asPath, router.asPath, { locale: locale })
+
   return (
     <div className='flex gap-2 items-center'>
-      {/* <Link href="/" locale={changeTo}>
+      {/* <Link href={router.asPath} locale={changeTo}>
         <button>
           {t(changeTo, { changeTo }).toUpperCase()}
         </button>        
       </Link> */}
-      <Form.Select defaultValue="English">
-        <option>English</option>
-        <option>Bulgarian</option>
+      <Form.Select
+        defaultValue="English"
+        value={router.locale}
+        onChange={(e) => handleRoute(e.target.value)}
+      >
+        <option value={'en'}>English</option>
+        <option value={'bg'}>Bulgarian</option>
       </Form.Select>
     </div>
   )

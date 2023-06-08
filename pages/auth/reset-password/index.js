@@ -11,6 +11,8 @@ import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import PrimarySubmit from '@/components/Common/PrimarySubmit';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 
 const schema = yup.object().shape({
@@ -25,6 +27,7 @@ const defaultValues = {
 
 const ResetPassword = () => {
 
+  const { t } = useTranslation('common');
   const { query: { token } } = useRouter();
   const router = useRouter()
 
@@ -46,7 +49,7 @@ const ResetPassword = () => {
         if (resp?.status !== 200) {
           setTokenValid({
             status: "danger",
-            message: <Alert variant='danger' >Invalid reset password link. Try <Link href="/auth/forget-password">forget password</Link> again</Alert>
+            message: <Alert variant='danger' >{t("Invalid reset password link.")} {t("Try")} <Link href="/auth/forget-password">{t("Forgot Password")}</Link> {t("again")}</Alert>
           })
         } else if (resp?.status === 200) {
           setUserId(resp?.data?.data?.id);
@@ -91,10 +94,10 @@ const ResetPassword = () => {
   }
   return (
     <>
-      <NextSeo title='Reset Password' openGraph={{ title: "Reset Password" }} />
+      <NextSeo title={t('Reset Password')} openGraph={{ title: t("Reset Password") }} />
       <Container fluid="xxl">
         <div className='login-main'>
-          <h2>Reset Password</h2>
+          <h2>{t("Reset Password")}</h2>
           <div className="mb-3 mt-4 lg-3">
             <div className="mb-3">
               {(tokenValid && tokenValid?.status === 'danger') && tokenValid?.message}
@@ -110,7 +113,7 @@ const ResetPassword = () => {
                         autoFocus
                         type='password'
                         label='Password'
-                        placeholder="Enter Password"
+                        placeholder={t("Enter Password")}
                         value={value}
                         onChange={onChange}
                       />
@@ -127,7 +130,7 @@ const ResetPassword = () => {
                       <Form.Control
                         type='password'
                         label='confirm_password'
-                        placeholder="Enter Confirm Password"
+                        placeholder={t("Enter Confirm Password")}
                         value={value}
                         onChange={onChange}
                       />
@@ -136,11 +139,11 @@ const ResetPassword = () => {
                   <ValidationError errors={errors.confirm_password} />
                 </Form.Group>
                 <div className="mb-5">
-                  <PrimarySubmit isLoading={isLoading} text='Submit' />
+                  <PrimarySubmit isLoading={isLoading} text={t('Submit')} />
                 </div>
               </Form>)}
               <div className="already mt-3">
-                Already registered? {" "} <Link href={`/auth/login`}><b>Login</b></Link>
+                {t("Already Registered?")} {" "} <Link href={`/auth/login`}><b>{t('Login')}</b></Link>
               </div>
             </div>
           </div>
@@ -151,3 +154,15 @@ const ResetPassword = () => {
 }
 
 export default ResetPassword
+
+export async function getStaticProps({ locale }) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        ['common']
+      ])),
+    },
+    revalidate: 10,
+  }
+}

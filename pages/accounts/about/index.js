@@ -203,7 +203,6 @@ const AboutProfile = () => {
                         label='Facebook'
                         name="facebook"
                         placeholder='Enter Facebook url'
-                        maxLength={16}
                         {...register("facebook", { required: true, })}
                       />
                       <ValidationError errors={errors.facebook} />

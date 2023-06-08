@@ -121,8 +121,8 @@ const AuthProvider = ({ children }) => {
         Authorization: `Bearer ${storedToken}`,
       }
     }).then(async response => {
-      setUser({ ...response.data })
-      window.localStorage.setItem('userData', JSON.stringify(response.data))
+      setUser({ ...response.data.user })
+      window.localStorage.setItem('userData', JSON.stringify(response.data.user))
       if (errorCallback) errorCallback(response)
     }).catch(err => {
       if (errorCallback) errorCallback(err)

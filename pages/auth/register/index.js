@@ -11,9 +11,12 @@ import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
 import PrimarySubmit from '@/components/Common/PrimarySubmit';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const schema = yup.object().shape({
   user_type_id: yup.string().required(),
+  surname: yup.string().required(),
   first_name: yup.string().required(),
   last_name: yup.string().required(),
   email: yup.string().email().required(),
@@ -36,6 +39,8 @@ const userTypes = [
 ]
 
 const Register = () => {
+
+  const { t } = useTranslation("common");
 
   const router = useRouter();
   const auth = useAuth();
@@ -93,14 +98,14 @@ const Register = () => {
 
   return (
     <>
-      <NextSeo title='Registration' openGraph={{ title: "Registration" }} />
+      <NextSeo title={t('Registration')} openGraph={{ title: t('Registration') }} />
       <Container fluid="xxl">
         <div className='login-main'>
-          <h2>Sign up to <b>PetWorld</b></h2>
+          <h2>{t("Sign up to")} <b>PetWorld</b></h2>
           <div className="mb-3 mt-4 lg-3">
             <div className="mb-3">
               {serverResponse && <Alert key={serverResponse.variant} variant={serverResponse.variant}>
-                {serverResponse.message}
+                {t(serverResponse.message)}
               </Alert>}
               <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-4" controlId="user_type_id">
@@ -111,7 +116,7 @@ const Register = () => {
                       value={type.id}
                       name='user_type_id'
                       type={'radio'}
-                      label={type.name}
+                      label={t(type.name)}
                       id={`user_type_id-${type.id}`}
                       {...register("user_type_id", {
                         required: "Please select your user type"
@@ -131,7 +136,7 @@ const Register = () => {
                         autoFocus
                         ref={ref}
                         label='First Name'
-                        placeholder="Enter First Name"
+                        placeholder={t("Enter First Name")}
                         isInvalid={Boolean(errors.first_name)}
                         value={value}
                         onChange={onChange}
@@ -150,7 +155,7 @@ const Register = () => {
                       <Form.Control
                         ref={ref}
                         label='Surname'
-                        placeholder="Enter Surname"
+                        placeholder={t("Enter Surname")}
                         isInvalid={Boolean(errors.surname)}
                         value={value}
                         onChange={onChange}
@@ -167,7 +172,7 @@ const Register = () => {
                     render={({ field: { value, onChange } }) => (
                       <Form.Control
                         label='Last Name'
-                        placeholder="Enter Last Name"
+                        placeholder={t("Enter Last Name")}
                         value={value}
                         onChange={onChange}
                       />
@@ -184,7 +189,7 @@ const Register = () => {
                       <Form.Control
                         type="email"
                         label='Email'
-                        placeholder="Enter Email"
+                        placeholder={t("Enter Email")}
                         value={value}
                         onChange={onChange}
                       />
@@ -201,7 +206,7 @@ const Register = () => {
                     render={({ field: { value, onChange, onBlur } }) => (
                       <Form.Control
                         label='Password'
-                        placeholder="Enter Password"
+                        placeholder={t("Enter Password")}
                         type='password'
                         value={value}
                         onBlur={onBlur}
@@ -219,7 +224,7 @@ const Register = () => {
                     render={({ field: { value, onChange, onBlur } }) => (
                       <Form.Control
                         label='Confirm Password'
-                        placeholder="Enter Confirm Password"
+                        placeholder={t("Enter Confirm Password")}
                         type='password'
                         value={value}
                         onBlur={onBlur}
@@ -230,14 +235,14 @@ const Register = () => {
                   <ValidationError errors={errors.password_confirmation} />
                 </Form.Group>
                 <div className="mb-5">
-                  <PrimarySubmit isLoading={isLoading} text='Sign Up' />
+                  <PrimarySubmit isLoading={isLoading} text={t('Sign up')} />
                 </div>
               </Form>
               <Form.Group className="mb-4" controlId="formBasicCheckbox">
-                You agree with the <Link className='tc' href={`/pages/terms`}><b>Terms & Conditions</b></Link> and <Link className='tc' href={`/pages/privacy`}><b>Data policy</b></Link>.
+                {t("You agree with the")} <Link className='tc' href={`/pages/terms`}><b>{t("Terms & Conditions")}</b></Link> {t("and")} <Link className='tc' href={`/pages/privacy`}><b>{t("Data policy.")}</b></Link>
               </Form.Group>
               <div className="already mt-3">
-                Already registered?{" "} <Link href={`/auth/login`}><b>Login</b></Link>
+                {t("Already Registered?")}{" "} <Link href={`/auth/login`}><b>{t("Login")}</b></Link>
               </div>
             </div>
           </div>
@@ -247,6 +252,18 @@ const Register = () => {
   )
 }
 
-Register.getLayout = page => {page}
+Register.getLayout = page => { page }
 Register.guestGuard = true
 export default Register
+
+export async function getStaticProps({ locale }) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        ['common']
+      ])),
+    },
+    revalidate: 10,
+  }
+}

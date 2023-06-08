@@ -12,6 +12,7 @@ import { Provider } from 'react-redux'
 import "bootstrap/dist/css/bootstrap.min.css";
 import '@/styles/globals.css'
 import { DefaultSeo } from 'next-seo';
+import nextI18NextConfig from '../next-i18next.config.js'
 import GuestGuard from '@/components/auth/GuestGuard';
 import AuthGuard from '@/components/auth/AuthGuard';
 import Loader from '@/components/Common/Loader';
@@ -55,4 +56,4 @@ function App({ Component, pageProps }) {
   )
 }
 
-export default appWithTranslation(App);
+export default appWithTranslation(App, nextI18NextConfig);

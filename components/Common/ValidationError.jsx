@@ -1,7 +1,9 @@
 import React from 'react'
 import { capitalize } from '@/core/utils/format'
+import { useTranslation } from 'next-i18next'
 
 const ValidationError = ({ errors, id }) => {
+  const {t} = useTranslation('common');
   return <>
     {
       errors &&
@@ -10,7 +12,7 @@ const ValidationError = ({ errors, id }) => {
         className='text-start text-danger'
         id={id}
       >
-        {errors?.message ? capitalize(errors.message) : capitalize(errors)}
+        {t(errors?.message ? capitalize(errors.message) : capitalize(errors))}
       </div>
     }
   </>

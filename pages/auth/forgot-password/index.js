@@ -10,6 +10,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
 import PrimarySubmit from '@/components/Common/PrimarySubmit';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'react-i18next';
 
 
 const schema = yup.object().shape({
@@ -21,6 +23,8 @@ const defaultValues = {
 }
 
 const ForgotPassword = () => {
+
+  const { t } = useTranslation('common');
 
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState('')
@@ -61,10 +65,10 @@ const ForgotPassword = () => {
   }
   return (
     <>
-      <NextSeo title='Forgot Password' openGraph={{ title: "Forgot Password" }} />
+      <NextSeo title={t('Forgot Password')} openGraph={{ title: t("Forgot Password") }} />
       <Container fluid="xxl">
         <div className='login-main'>
-          <h2>Forgot Password</h2>
+          <h2>{t('Forgot Password')}</h2>
           <div className="mb-3 mt-4 lg-3">
             <div className="mb-3">
               {serverResponse && <Alert variant={serverResponse.variant}>{serverResponse.message}</Alert>}
@@ -78,7 +82,7 @@ const ForgotPassword = () => {
                       <Form.Control
                         autoFocus
                         label='Email'
-                        placeholder="Enter Email"
+                        placeholder={t("Enter Email")}
                         value={value}
                         onChange={onChange}
                       />
@@ -87,11 +91,11 @@ const ForgotPassword = () => {
                   <ValidationError errors={errors.email} />
                 </Form.Group>
                 <div className="mb-5">
-                  <PrimarySubmit isLoading={isLoading} text='Submit' />
+                  <PrimarySubmit isLoading={isLoading} text={t('Submit')} />
                 </div>
               </Form>
               <div className="already mt-3">
-                Already registered? {" "} <Link href={`/auth/login`}><b>Login</b></Link>
+                {t("Already Registered?")} {" "} <Link href={`/auth/login`}><b>{t("Login")}</b></Link>
               </div>
             </div>
           </div>
@@ -102,3 +106,15 @@ const ForgotPassword = () => {
 }
 
 export default ForgotPassword
+
+export async function getStaticProps({ locale }) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        ['common']
+      ])),
+    },
+    revalidate: 10,
+  }
+}

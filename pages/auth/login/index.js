@@ -11,6 +11,8 @@ import { toast } from 'react-hot-toast';
 import { NextSeo } from 'next-seo';
 import PrimarySubmit from '@/components/Common/PrimarySubmit';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
 const schema = yup.object().shape({
@@ -25,6 +27,7 @@ const defaultValues = {
 
 const Login = () => {
 
+  const { t } = useTranslation(['common']);
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -85,7 +88,7 @@ const Login = () => {
                       <Form.Control
                         autoFocus
                         label='Email'
-                        placeholder="Enter Email"
+                        placeholder={t("Enter Email")}
                         value={value}
                         onChange={onChange}
                       />
@@ -101,7 +104,7 @@ const Login = () => {
                     render={({ field: { value, onChange } }) => (
                       <Form.Control
                         label='Password'
-                        placeholder="Enter Password"
+                        placeholder={t("Enter Password")}
                         type='password'
                         value={value}
                         onChange={onChange}
@@ -111,14 +114,14 @@ const Login = () => {
                   <ValidationError errors={errors.password} />
                 </Form.Group>
                 <div className="mb-5">
-                  <PrimarySubmit isLoading={isLoading} text='Login' />
+                  <PrimarySubmit isLoading={isLoading} text={t("Login")} />
                 </div>
               </Form>
               <Form.Group className="mb-4" controlId="formBasicCheckbox">
-                <Link href={`/auth/forgot-password`}><b>Forgotten password?</b></Link>
+                <Link href={`/auth/forgot-password`}><b>{t("Forgotten password?")}</b></Link>
               </Form.Group>
               <div className="already mt-3">
-                Not registered?{" "} <Link href={`/auth/register`}><b>Sign up</b></Link>
+                {t("Not registered?")}{" "} <Link href={`/auth/register`}><b>{t("Sign up")}</b></Link>
               </div>
             </div>
           </div>
@@ -127,6 +130,18 @@ const Login = () => {
     </>
   )
 }
-Login.getLayout = page => {page}
+Login.getLayout = page => { page }
 Login.guestGuard = true
 export default Login
+
+export async function getStaticProps({ locale }) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        ['common']
+      ])),
+    },
+    revalidate: 10,
+  }
+}
