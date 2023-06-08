@@ -121,8 +121,8 @@ const AuthProvider = ({ children }) => {
         Authorization: `Bearer ${storedToken}`,
       }
     }).then(async response => {
-      setUser({ ...response.data.user })
-      window.localStorage.setItem('userData', JSON.stringify(response.data.user))
+      setUser({ ...response.data })
+      window.localStorage.setItem('userData', JSON.stringify(response.data))
       if (errorCallback) errorCallback(response)
     }).catch(err => {
       if (errorCallback) errorCallback(err)
@@ -144,7 +144,7 @@ const AuthProvider = ({ children }) => {
 
   const getProfileData = async () => {
     const storedToken = window.localStorage.getItem(storageTokenKeyName)
-    const response = await axiosInstance.get(`/admin/me`, {
+    const response = await axiosInstance.get(`/auth/me`, {
       headers: {
         Authorization: `Bearer ${storedToken}`,
       }
@@ -171,6 +171,32 @@ const AuthProvider = ({ children }) => {
       })
   }
 
+  const getAboutProfileData = async () => {
+    const storedToken = window.localStorage.getItem(storageTokenKeyName)
+    const response = await axiosInstance.get(`/profile/about-profile`, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      }
+    });
+    return response
+  }
+
+  const aboutProfileUpdate = (params, errorCallback) => {
+    const storedToken = window.localStorage.getItem(storageTokenKeyName);
+    axiosInstance.put(`/profile/about-profile`, params, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      }
+    }).then(async response => {
+      setUser({ ...response.data.user })
+      window.localStorage.setItem('userData', JSON.stringify(response.data.user))
+      if (errorCallback) errorCallback(response)
+    }).catch(err => {
+      if (errorCallback) errorCallback(err)
+    })
+  }
+
+
   const values = {
     isAuthenticated: !!user,
     user,
@@ -182,6 +208,8 @@ const AuthProvider = ({ children }) => {
     getProfileData,
     changePassword,
     login: handleLogin,
+    aboutProfileUpdate,
+    getAboutProfileData,
     register: handleRegister,
     validateResetPasswordToken,
     forgetPassword: handleForgetPassword,

@@ -19,6 +19,7 @@ const defaultAvatar = '/default-avatar.png';
 
 const schema = yup.object().shape({
   first_name: yup.string().required(),
+  surname: yup.string().required(),
   last_name: yup.string().required(),
   email: yup.string().email().required(),
   phone: yup.string().matches(/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/, 'Please enter valid phone number'),
@@ -26,6 +27,7 @@ const schema = yup.object().shape({
 
 const defaultValues = {
   first_name: '',
+  surname: '',
   last_name: '',
   email: '',
   phone: '',
@@ -168,7 +170,7 @@ const Profile = () => {
                     </div>
                     <ValidationError errors={errors.profile_image} />
                   </Form.Group>
-                  <Row xs={1} md={2}>
+                  <Row xs={1} md={3}>
                     <Form.Group>
                       <Form.Label>First Name</Form.Label>
                       <Form.Control
@@ -181,6 +183,17 @@ const Profile = () => {
                       <ValidationError errors={errors.first_name} />
                     </Form.Group>
                     <Form.Group>
+                      <Form.Label>Surname</Form.Label>
+                      <Form.Control
+                        name='surname'
+                        label='Surname'
+                        placeholder="Enter Surname"
+                        isInvalid={Boolean(errors.surname)}
+                        {...register('surname', { required: true, minLength: { value: 3 } })}
+                      />
+                      <ValidationError errors={errors.surname} />
+                    </Form.Group>
+                    <Form.Group>
                       <Form.Label>Last Name</Form.Label>
                       <Form.Control
                         name='last_name'
@@ -191,6 +204,8 @@ const Profile = () => {
                       />
                       <ValidationError errors={errors.last_name} />
                     </Form.Group>
+                  </Row>
+                  <Row xs={1} md={2}>
                     <Form.Group>
                       <Form.Label>Email</Form.Label>
                       <Form.Control
@@ -265,6 +280,8 @@ const Profile = () => {
                       </Form.Select>
                       <ValidationError errors={errors.location} />
                     </Form.Group>
+                  </Row>
+                  <Row>
                     <div className="mb-5">
                       <Button variant='primary' type='submit'>
                         {isLoading && <Spinner size='sm' className='me-2' />}

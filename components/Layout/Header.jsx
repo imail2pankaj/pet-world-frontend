@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Button, Dropdown, Nav } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
+import { defaultAvatar } from '@/core/utils/constants';
 
 const links = [
   { path: '/', name: 'Home' },
@@ -17,7 +18,6 @@ const links = [
   { path: '/about-us', name: 'About Us' },
   { path: '/contact-us', name: 'Contact Us' },
 ]
-const defaultAvatar = '/default-avatar.png';
 
 const Header = () => {
   const { t } = useTranslation('common')
@@ -80,6 +80,7 @@ const Header = () => {
 
               <Dropdown.Menu>
                 <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/profile">Profile</Link>
+                {user.role === 'DOCTOR' && <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/about">Bio</Link>}
                 <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/change-password">Change Password</Link>
                 <Button onClick={logout} className='dropdown-item'>Logout</Button>
               </Dropdown.Menu>
