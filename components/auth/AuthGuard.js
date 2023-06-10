@@ -26,7 +26,7 @@ const AuthGuard = props => {
           })
         }
       } else if (auth.user === null && !window.localStorage.getItem('userData')) {
-        if (router.asPath.search("accounts") >= 0) {
+        if (router.asPath.search("accounts") >= 0 || router.asPath.search("dashboard") >= 0) {
           router.replace({
             pathname: '/auth/login',
             query: { returnUrl: router.asPath }

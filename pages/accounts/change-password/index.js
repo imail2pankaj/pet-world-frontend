@@ -13,6 +13,8 @@ import { useAuth } from '@/hooks/useAuth';
 import ReactDatePicker from 'react-datepicker';
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 const defaultAvatar = '/default-avatar.png';
 
@@ -28,6 +30,8 @@ const defaultValues = {
   password_confirmation: ''
 }
 const ChangePassword = () => {
+
+  const { t } = useTranslation();
   const router = useRouter();
   const [serverResponse, setServerResponse] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -85,49 +89,49 @@ const ChangePassword = () => {
 
   return (
     <>
-      <NextSeo title='Change Password' openGraph={{ title: "Change Password" }} />
+      <NextSeo title={t('Change Password')} openGraph={{ title: t('Change Password') }} />
       <Container fluid="xxl">
         <div className='edit-profile'>
           <div className='form'>
-            <h2>Change <b>Password</b></h2>
+            <h2>{t("Change")} <b>{t("Password")}</b></h2>
             <div className="mb-3 mt-5 lg-3">
               <div className="mb-3">
                 {serverResponse && <Alert key={serverResponse.variant} variant={serverResponse.variant}>
-                  {serverResponse.message}
+                  {t(serverResponse.message)}
                 </Alert>}
                 <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
                   <Row xs={1} md={3}>
                     <Form.Group>
-                      <Form.Label>Old Password</Form.Label>
+                      <Form.Label>{t("Old Password")}</Form.Label>
                       <Form.Control
                         name='old_password'
                         type='password'
-                        label='Old Password'
-                        placeholder="Enter Old Password"
+                        label={t("Old Password")}
+                        placeholder={t("Enter Old Password")}
                         isInvalid={Boolean(errors.old_password)}
                         {...register('old_password', { required: true, minLength: { value: 8 } })}
                       />
                       <ValidationError errors={errors.old_password} />
                     </Form.Group>
                     <Form.Group>
-                      <Form.Label>Password</Form.Label>
+                      <Form.Label>{t("Password")}</Form.Label>
                       <Form.Control
                         name='password'
                         type='password'
-                        label='Password'
-                        placeholder="Enter Password"
+                        label={t('Password')}
+                        placeholder={t("Enter Password")}
                         isInvalid={Boolean(errors.password)}
                         {...register('password', { required: true, minLength: { value: 8 } })}
                       />
                       <ValidationError errors={errors.password} />
                     </Form.Group>
                     <Form.Group>
-                      <Form.Label>Confirmed Password</Form.Label>
+                      <Form.Label>{t('Confirm Password')}</Form.Label>
                       <Form.Control
                         type='password'
                         name='password_confirmation'
-                        label='Confirmed Password'
-                        placeholder="Enter Confirmed Password"
+                        label={t('Confirm Password')}
+                        placeholder={t("Enter Confirm Password")}
                         isInvalid={Boolean(errors.password_confirmation)}
                         {...register('password_confirmation', { required: true, minLength: { value: 8 } })}
                       />
@@ -136,7 +140,7 @@ const ChangePassword = () => {
                     <div className="mb-5">
                       <Button variant='primary' type='submit'>
                         {isLoading && <Spinner size='sm' className='me-2' />}
-                        Save
+                        {t("Save")}
                       </Button>
                     </div>
                   </Row>
@@ -151,3 +155,15 @@ const ChangePassword = () => {
 }
 
 export default ChangePassword
+
+export async function getStaticProps({ locale }) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common'
+      ])),
+    },
+    revalidate: 100,
+  }
+}

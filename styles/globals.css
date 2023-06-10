@@ -218,7 +218,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
  .upcoming-events .owl-carousel{ padding: 15px 0;}
  .event-card .card{ border-radius:15px; padding: 7px; background-color: rgba(255, 255, 255, 0.8);}
- .event-card .card .attendees{ width: auto; position: absolute; top: 17px; right: 17px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;}
+ .event-card .card .attendees{ width: auto; position: absolute; top: 17px; right: 17px; font-size: 12px; color: #000000; line-height: 22px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.41);  border-radius: 5px; padding:0px 10px;z-index: 1;}
  .event-card .card .attendees span{font-weight: 600; font-size: 14px; line-height: 22px; letter-spacing: 0.02em; color: #9E0C0F;} 
  .event-card .card .thumb{ width: 100%; height: 170px; overflow: hidden; border-radius:15px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
  .event-card .card .card-img-top{ width: 100%; height: auto; min-height: 100%; display: block;} 
@@ -278,9 +278,9 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .login-main .already a{ color: #000000; text-decoration: underline;}
 .login-main .already a:hover{ color: #9E0C0F; text-decoration:none;}
 .login-main label{ color: #000000;}
-.login-main .form-check-input{width: 1.7em; height: 1.7em; margin-top: -0.1em; margin-right: 10px;}
-.login-main .form-check-input:focus{box-shadow: none;}
-.login-main .form-check-input:checked {  background-color: #7EB65C; border-color: #7EB65C;}
+.login-main .form-check-input, .form-check-input{width: 1.7em; height: 1.7em; margin-top: -0.1em; margin-right: 10px;}
+.login-main .form-check-input:focus, .form-check-input:focus{box-shadow: none;}
+.login-main .form-check-input:checked, .form-check-input:checked {  background-color: #7EB65C; border-color: #7EB65C;}
 
 
 /*** Inner pages ***/
@@ -606,11 +606,11 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
 
 /*** Edit profile page ***/
-.edit-profile{ width: 100%; display: block; margin: 100px 0;}
+.edit-profile{ width: 100%; display: block; margin: 50px 0;}
 .edit-profile .form{ width: 100%; display: inline-block;}
 .edit-profile .form .pro-pic{ width: 150px; height: 150px; display: inline-block; margin-right: 3%;}
 .edit-profile .form .pro-pic img{ width: 100%; height: 100%; display:block; border: 5px solid #fff; border-radius: 80px; filter: drop-shadow(0px 10px 20px rgba(183, 183, 183, 0.5));}
-.edit-profile .form input, .edit-profile .form select{ height: 60px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px; margin-bottom: 20px;}
+.edit-profile .form input:not(.form-check-input), .edit-profile .form select{ height: 60px; background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; font-size: 16px; padding: 0 25px; margin-bottom: 20px;}
 .edit-profile .form textarea{ background: #FFFFFF; border: 1px solid rgba(35, 35, 35, 0.2); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15); border-radius: 10px; resize: none;  font-size: 16px; padding: 15px 25px;}
 .edit-profile .form .btn{width: auto; background-color: #EDEDED; filter: drop-shadow(0px 0px 10px rgba(94, 94, 94, 0.5)); line-height: 40px; border-radius: 5px; color: black; font-weight: 400; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center; border: none; padding: 0 20px;}
 .edit-profile .form .btn:hover{background-color: #9E0C0F; filter: drop-shadow(0px 0px 10px rgba(158, 12, 15, 0.5)); color: white;}
@@ -1376,3 +1376,4 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .rbt-input-wrapper input {margin-bottom:0 !important;height:50px !important;padding:0 10px !important}
 .rbt-input-multi {border: 1px solid rgba(35, 35, 35, 0.2);box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);}
 .rbt-token{color:#212529 !important;line-height: 2rem !important}
+.dropzone {flex: 1;display: flex;flex-direction: column;align-items: center;padding: 20px;border-width: 2px;border-radius: 2px;border-color: #eeeeee;border-style: dashed;background-color: #fafafa;color: #bdbdbd;outline: none;transition: border .24s ease-in-out;}
