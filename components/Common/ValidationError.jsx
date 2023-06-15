@@ -12,7 +12,7 @@ const ValidationError = ({ errors, id }) => {
         className='text-start text-danger'
         id={id}
       >
-        {t(errors?.message ? capitalize(errors.message) : capitalize(errors))}
+        {t(errors?.message ? capitalize(errors.message.replace("_", " ")) : capitalize(errors))}
       </div>
     }
   </>

@@ -14,11 +14,13 @@ import { toast } from 'react-hot-toast';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { animalGender, animalType, passportAvailable, petType, vaccinations } from '@/core/utils/constants';
-import { createPet } from '@/store/api/pet';
+import { createPet, getPet, updatePet } from '@/store/api/pet';
 import { useDispatch, useSelector } from 'react-redux';
 import Dropzone from "react-dropzone";
 import ProtectedLayout from '@/components/Layout/ProtectedLayout';
 import Link from 'next/link';
+import nextI18nextConfig from '@/next-i18next.config';
+import axiosInstance from '@/store/api/axiosInstance';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -41,15 +43,18 @@ const defaultValues = {
   passport_available: "0",
   vaccinations: "0",
   previous_diseases: "",
+  old_medias: "",
 }
 
 const PetCreate = () => {
 
   const { t } = useTranslation();
   const router = useRouter();
+  const { query: { id } } = router;
   const [serverResponse, setServerResponse] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [heroFiles, setHeroFiles] = useState([]);
+  const [uploadedHeroFiles, setUploadedHeroFiles] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -68,6 +73,19 @@ const PetCreate = () => {
     mode: 'onBlur',
     resolver: yupResolver(schema)
   })
+
+  useEffect(() => {
+    dispatch(getPet(id)).then((response) => {
+      const data = response?.payload?.data;
+      for (const key in defaultValues) {
+        if (key === 'old_medias') {
+          setUploadedHeroFiles(data['medias'])
+        } else {
+          setValue(key, data[key] ? data[key].toString() : "");
+        }
+      }
+    })
+  }, [dispatch, id])
 
   useEffect(() => {
     if (store?.error && isLoading) {
@@ -89,13 +107,14 @@ const PetCreate = () => {
       setIsLoading(false);
     } else if (store?.petData && isLoading) {
       reset();
-      toast.success("Pet Successfully Created");
+      toast.success(t("Pet Successfully Updated"));
       setServerResponse({
         variant: "success",
-        message: "Pet Successfully Created"
+        message: "Pet Successfully Updated"
       })
       setHeroFiles([]);
       setIsLoading(false);
+      router.replace("/dashboard/pets");
     }
   }, [dispatch, store])
 
@@ -114,16 +133,16 @@ const PetCreate = () => {
       formData.append("pet_images[]", file);
     })
 
-    dispatch(createPet(formData))
+    dispatch(updatePet({formData, id}))
   }
 
   return (
     <>
-      <ProtectedLayout title={t('Pet Create')} openGraph={{ title: t('Pet Create') }}>
+      <ProtectedLayout title={t('Pet Update')} openGraph={{ title: t('Pet Update') }}>
         <div className='edit-profile'>
           <div className='form'>
             <Row>
-              <Col><h2>{t("Pet")} <b>{t("Create")}</b></h2></Col>
+              <Col><h2>{t("Pet")} <b>{t("Update")}</b></h2></Col>
               <Col className='text-end'><Link href={'/dashboard/pets'}>{t("List")}</Link> </Col>
             </Row>
             <div className="mb-3 mt-5 lg-3">
@@ -149,6 +168,9 @@ const PetCreate = () => {
                   </Dropzone>
 
                   <div className='d-flex mb-4'>
+                    {
+                      uploadedHeroFiles?.map((file, index) => <Image style={{ objectFit: "contain", marginRight: 10 }} key={index} src={file.name} height={100} width={100} alt="test" />)
+                    }
                     {
                       heroFiles?.map((file, index) => <Image style={{ objectFit: "contain", marginRight: 10 }} key={index} src={file.preview} height={100} width={100} alt="test" />)
                     }
@@ -254,7 +276,7 @@ const PetCreate = () => {
                         <Form.Check
                           key={"key-" + type.value}
                           className='d-inline-block me-4'
-                          value={type.value}
+                          value={parseInt(type.value)}
                           name='passport_available'
                           type={'radio'}
                           label={t(type.name)}
@@ -316,14 +338,24 @@ const PetCreate = () => {
 
 export default PetCreate
 
-export async function getStaticProps({ locale }) {
+// export async function getStaticProps({ locale }) {
+
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale, [
+//         'common'
+//       ])),
+//     },
+//     revalidate: 100,
+//   }
+// }
+
+export async function getServerSideProps({ locale, query }) {
+  const { id } = query;
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
-        'common'
-      ])),
+      ...(await serverSideTranslations(locale || 'en', ['common'], nextI18nextConfig))
     },
-    revalidate: 100,
   }
 }

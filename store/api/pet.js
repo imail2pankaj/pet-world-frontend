@@ -2,6 +2,18 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axiosInstance from './axiosInstance';
 
 // ** Get Event
+export const fetchPets = createAsyncThunk('appPets/fetchPets', async (params) => {
+  const storedToken = window.localStorage.getItem('accessToken');
+
+  const response = await axiosInstance.get(`/pets?` + (new URLSearchParams(params)), {
+    headers: {
+      Authorization: `Bearer ${storedToken}`
+    }
+  })
+  return response;
+})
+
+// ** Get Event
 export const getPet = createAsyncThunk('appPets/getPet', async (id) => {
   const storedToken = window.localStorage.getItem('accessToken');
 
@@ -14,12 +26,34 @@ export const getPet = createAsyncThunk('appPets/getPet', async (id) => {
 })
 
 // ** Create Pet
-export const createPet = createAsyncThunk('appPets/createPet', async (data, {rejectWithValue}) => {
+export const createPet = createAsyncThunk('appPets/createPet', async (data, { rejectWithValue }) => {
 
   const storedToken = window.localStorage.getItem('accessToken');
   try {
-    
+
     const response = await axiosInstance.post(`/pets`, data, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+        'Content-Type': 'multipart/ form-data'
+      }
+    })
+    return response;
+  } catch (error) {
+    if (!error.response) {
+      throw error
+    }
+
+    return rejectWithValue(error.response.data)
+  }
+})
+
+// ** Create Pet
+export const updatePet = createAsyncThunk('appPets/updatePet', async ({ id, formData }, { rejectWithValue }) => {
+
+  const storedToken = window.localStorage.getItem('accessToken');
+  try {
+
+    const response = await axiosInstance.put(`/pets/${id}`, formData, {
       headers: {
         Authorization: `Bearer ${storedToken}`,
         'Content-Type': 'multipart/ form-data'
@@ -68,6 +102,17 @@ export const appPetSlice = createSlice({
     [createPet.rejected]: (state, action) => {
       state.petData = ""
       state.error = action?.payload
+    },
+    [updatePet.fulfilled]: (state, action) => {
+      state.error = ""
+      state.petData = action?.payload?.data
+    },
+    [updatePet.rejected]: (state, action) => {
+      state.petData = ""
+      state.error = action?.payload
+    },
+    [fetchPets.fulfilled]: (state, action) => {
+      state.data = action?.payload?.data?.data
     },
     [getPet.fulfilled]: (state, action) => {
       state.petData = action?.payload?.data

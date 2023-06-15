@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -9,10 +9,14 @@ const LanguageOption = () => {
   const router = useRouter();
 
   const { t } = useTranslation('common')
+  const [locale, setLocale] = useState('en')
 
   const changeTo = router.locale === 'en' ? 'bg' : 'en'
 
-  const handleRoute = (locale) => router.replace(router.asPath, router.asPath, { locale: locale })
+  const handleRoute = (locale) => {
+    setLocale(locale);
+    router.replace(router.asPath, router.asPath, { locale: locale })
+  }
 
   return (
     <div className='flex gap-2 items-center'>
@@ -22,8 +26,7 @@ const LanguageOption = () => {
         </button>        
       </Link> */}
       <Form.Select
-        defaultValue="English"
-        value={router.locale}
+        value={locale}
         onChange={(e) => handleRoute(e.target.value)}
       >
         <option value={'en'}>English</option>

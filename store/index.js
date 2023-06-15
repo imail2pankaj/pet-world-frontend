@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import home from '@/store/api/home'
 import event from '@/store/api/event'
 import pet from '@/store/api/pet'
+import campaign from '@/store/api/campaign'
 
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     home,
     event,
     pet,
+    campaign,
     // moderator,
     // doctor,
     // profile,

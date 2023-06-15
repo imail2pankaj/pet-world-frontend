@@ -6,6 +6,24 @@ export const petType = ['Cat', 'Dog', 'Fish', 'Bird']
 
 export const animalType = ['Domestic', 'Wild']
 
+export const campaignStatuses = [{ value: 0, name: 'In Active' }, { value: 1, name: 'Active' }]
+
+export const campaignStatus = {
+  0: "In Active",
+  1: "Active"
+};
+
 export const passportAvailable = [{ value: 0, name: 'Unknown' }, { value: 1, name: 'Yes' }, { value: 2, name: 'No' }]
 
+export const passportAvailability = {
+  0: "Unknown",
+  1: "Yes",
+  2: "No",
+};
+
 export const vaccinations = [{ value: 0, name: 'No' }, { value: 1, name: 'Yes' }]
+
+export const vaccination = {
+  0: 'No',
+  1: 'Yes'
+}
