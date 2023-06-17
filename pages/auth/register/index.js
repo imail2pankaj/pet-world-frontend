@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import { Alert, Button, Form } from "react-bootstrap";
 import * as yup from 'yup'
@@ -43,6 +43,7 @@ const Register = () => {
   const { t } = useTranslation("common");
 
   const router = useRouter();
+  const { query } = router;
   const auth = useAuth();
   const [serverResponse, setServerResponse] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -52,6 +53,7 @@ const Register = () => {
     register,
     setError,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors }
   } = useForm({
@@ -59,6 +61,15 @@ const Register = () => {
     mode: 'onBlur',
     resolver: yupResolver(schema)
   })
+
+  useEffect(() => {
+    if(query?.email) {
+      setValue('email', query?.email)
+      setValue('campaign_id', query?.campaign_id)
+      localStorage.setItem('email', query?.email)
+      localStorage.setItem('campaign_id', query?.campaign_id)
+    }
+  }, [router])
 
   const onSubmit = data => {
     setIsLoading(true);

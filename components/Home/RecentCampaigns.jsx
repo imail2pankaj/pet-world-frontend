@@ -37,7 +37,7 @@ const Responsive = {
   }
 }
 
-const RecentCampaigns = () => {
+const RecentCampaigns = ({campaigns}) => {
   return (
     <div className='recent-campaigns'>
       <div className='graphic-1'><img src={`/stars-img.png`} alt={""} /></div>
@@ -51,8 +51,8 @@ const RecentCampaigns = () => {
         </Row>
         <Row>
           <OwlCarousel responsive={Responsive} nav={true} dots={true} >
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(item => <div key={item} className="item">
-              <CampaignCard />
+            {campaigns.map((item, index) => <div key={item.id} className="item">
+              <CampaignCard campaign={item} is_paid={(index % 2) == 0} />
             </div>)}
           </OwlCarousel>
         </Row>

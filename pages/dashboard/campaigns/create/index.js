@@ -159,21 +159,21 @@ const DoctorCampaignCreate = () => {
     setIsLoading(true);
     setServerResponse("");
     console.log(data);
-    if(!data?.pet_owner_email) {
+    if(!data.pet_owner_email) {
       setError('pet_owner_email', {
         type:"manual",
         message: "Pet owner email field is required"
       })
       return false
     }
-    if(!data?.treatment) {
+    if(!data.treatment) {
       setError('treatment', {
         type:"manual",
         message: "Treatment field is required"
       })
       return false
     }
-    if(!data?.appointed_doctors) {
+    if(!data.appointed_doctors) {
       setError('appointed_doctors', {
         type:"manual",
         message: "Appointed doctors field is required"

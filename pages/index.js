@@ -27,8 +27,8 @@ export default function Home({appSettings}) {
           <AboutDoctor />
         </Container>
         <WhyChoose />
-        <RecentCampaigns />
-        <UpcomingEvents events={appSettings?.recentEvents} />
+        {appSettings?.campaigns?.length > 0 ? <RecentCampaigns campaigns={appSettings?.campaigns} /> : null}
+        {appSettings?.recentEvents?.length > 0 ? <UpcomingEvents events={appSettings?.recentEvents} /> : null}
         <DonationProcess />
       </main>
     </>
@@ -37,7 +37,6 @@ export default function Home({appSettings}) {
 
 export async function getStaticProps({ locale }) {
   const home = await axiosInstance.get('/');
-
   return {
     props: {
       ...(await serverSideTranslations(locale, [

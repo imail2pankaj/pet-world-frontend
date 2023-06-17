@@ -8,3 +8,5 @@ export { default as ValidationError } from './ValidationError';
 export { default as PrimarySubmit } from './PrimarySubmit';
 export { default as DoctorAppointed } from './DoctorAppointed';
 export { default as ConfirmDelete } from './ConfirmDelete';
+export { default as CustomTooltip } from './Tooltip';
+export { default as Avatar } from './Avatar';
