@@ -159,5 +159,15 @@
   "Pet owner email is a required field": "Pet owner email is a required field",
   "Pet owner email must be a valid email": "Pet owner email must be a valid email",
   "Description must be at least 50 characters": "Description must be at least 50 characters",
-  "Confirm Delete": "Confirm Delete"
+  "Confirm Delete": "Confirm Delete",
+  "Funds Required": "Funds Required",
+  "Share": "Share",
+  "Subscribe": "Subscribe",
+  "Donors": "Donors",
+  "Campaign Information": "Campaign Information",
+  "Category": "Category",
+  "Treatment": "Treatment",
+  "Campaign By": "Campaign By",
+  "Comments": "Comments",
+  "MORE": "MORE"
 }

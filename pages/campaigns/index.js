@@ -1,14 +1,52 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Pagination from 'react-bootstrap/Pagination';
 import { CampaignCard, WhyVetChoosePetWorld } from '@/components/Common';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'next-i18next';
+import { capitalize } from '@/core/utils/format';
+import axiosInstance from '@/store/api/axiosInstance';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
-const Campaigns = () => {
+const Campaigns = ({ initialCampaigns }) => {
+
+  const { t } = useTranslation('common')
+  const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState('');
+  const [campaigns, setCampaigns] = useState([]);
+  const [sortBy, setSortBy] = useState("Latest");
+
+  const fetchCampaigns = async () => {
+    setLoading(true)
+    const params = {
+      sort: sortBy,
+      // page: currentPage,
+      // per_page: dataPerPage,
+      q: query
+    }
+    axiosInstance.get('/campaigns-list?' + (new URLSearchParams(params))).
+      then(response => {
+        setLoading(false);
+        setCampaigns(response.data || []);
+      });
+  }
+  useEffect(() => {
+    setCampaigns(initialCampaigns);
+  }, [])
+
+  useEffect(() => {
+    fetchCampaigns()
+  }, [query, sortBy])
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  }
+
   return (
     <div className='inner-main'>
       {/* {campaigns.map(campaign => <CampaignCard campaign={campaign} key={campaign.id} />)} */}
@@ -22,29 +60,35 @@ const Campaigns = () => {
             <div className='filter-main'>
               <Form>
                 <Form.Group className="search-field" controlId="formBasicEmail">
-                  <Form.Control type="email" placeholder="Search Event" />
+                  <Form.Control type="text" onChange={handleChange} placeholder="Search Campaigns" />
                 </Form.Group>
               </Form>
 
               <div className='filter'>
-                <DropdownButton id="dropdown-item-button" title="Filter">
-                  <Dropdown.Item as="button">Option 1</Dropdown.Item>
-                  <Dropdown.Item as="button">Option 2</Dropdown.Item>
-                  <Dropdown.Item as="button">Option 3</Dropdown.Item>
+                <DropdownButton id="dropdown-item-button" title={`Sort By:  ${t(capitalize(sortBy))}`}>
+                  <Dropdown.Item onClick={() => setSortBy('a-z')} as="button">A-Z</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('z-a')} as="button">Z-A</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('latest')} as="button">{t("Latest")}</Dropdown.Item>
+                  <Dropdown.Item onClick={() => setSortBy('oldest')} as="button">{t("Oldest")}</Dropdown.Item>
                 </DropdownButton>
               </div>
             </div>
           </Row>
 
+
           <div className='doctor-list'>
             <Row xs={1} md={2} lg={3} xxl={4}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(item =>
-                <Col key={item}>
-                  <CampaignCard is_paid={item%2} />
+              {(!loading && campaigns) && campaigns.map((item, index) =>
+                <Col key={item.id}>
+                  <CampaignCard campaign={item} is_paid={(index + 1) % 2} />
                 </Col>
               )}
             </Row>
-            <Row>
+            <div className='d-block text-center'>
+              {loading && <Spinner />}
+              {!loading && campaigns.length === 0 ? "No campaigns Found" : ""}
+            </div>
+            {/* <Row>
               <Pagination className="justify-content-center mt-4">
                 <Pagination.First />
                 <Pagination.Prev />
@@ -56,8 +100,7 @@ const Campaigns = () => {
                 <Pagination.Next />
                 <Pagination.Last />
               </Pagination>
-            </Row>
-
+            </Row> */}
           </div>
         </div>
       </Container>
@@ -69,3 +112,21 @@ const Campaigns = () => {
 }
 
 export default Campaigns
+
+
+export async function getStaticProps({ locale }) {
+  const campaigns = await axiosInstance.get('campaigns-list');
+  // console.log(campaigns);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common'
+      ])),
+
+      initialCampaigns: campaigns?.data || []
+      // Will be passed to the page component as props
+    },
+    revalidate: 100,
+  }
+}

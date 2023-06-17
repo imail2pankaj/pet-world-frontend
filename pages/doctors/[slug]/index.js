@@ -93,26 +93,28 @@ const DoctorsProfile = ({ doctor }) => {
             </Row>
           </Container>
         </div>
+        {
+          doctor?.campaigns?.length ?
+            <Container fluid="xxl">
+              <div className='doctor-campaigns'>
+                <Row className="justify-content-md-center">
+                  <h2 className='title'>
+                    <span>My</span>
+                    Campaign
+                  </h2>
+                  {
+                    doctor?.campaigns?.map((campaign, index) => (
+                      <CampaignCard campaign={campaign} key={index} is_paid={(index % 2) / 0} />
+                    ))
+                  }
+                </Row>
+                <Row className="justify-content-center">
+                  <Link className='button-1' href='/campaigns' role='button'>See more</Link>
+                </Row>
+              </div>
 
-        <Container fluid="xxl">
-          <div className='doctor-campaigns'>
-            <Row className="justify-content-md-center">
-              <h2 className='title'>
-                <span>My</span>
-                Campaign
-              </h2>
-              <CampaignCard />
-              <CampaignCard />
-              <CampaignCard />
-              <CampaignCard />
-              <CampaignCard />
-            </Row>
-            <Row className="justify-content-center">
-              <Link className='button-1' href='/campaigns' role='button'>See more</Link>
-            </Row>
-          </div>
-
-        </Container>
+            </Container> : null
+        }
 
         <WhyVetChoosePetWorld />
 

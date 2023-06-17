@@ -158,5 +158,16 @@
   "Goal Сума трябва да бъде най-малко един": "Цел сума трябва да бъде най-малко един",
   "Pet owner email is a required field": "Имейлът на собственика на домашен любимец е задължително поле",
   "Pet owner email must be a valid email": "Имейлът на собственика на домашни любимци трябва да е валиден имейл",
-  "Description must be at least 50 characters": "Описанието трябва да бъде най-малко 50 знака"
+  "Description must be at least 50 characters": "Описанието трябва да бъде най-малко 50 знака",
+  "Confirm Delete": "Потвърдете изтриването",
+  "Funds Required": "Необходими средства",
+  "Share": "Споделяне",
+  "Subscribe": "Абонирайте се",
+  "Donors": "Дарители",
+  "Campaign Information": "Информация за кампанията",
+  "Category": "Категория",
+  "Treatment": "Лечение",
+  "Campaign By": "Кампания от",
+  "Comments": "Коментари",
+  "MORE":"ОЩЕ"
 }

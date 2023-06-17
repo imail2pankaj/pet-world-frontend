@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axiosInstance from '@/store/api/axiosInstance';
 import { capitalize } from '@/core/utils/format';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 
 const Doctors = ({ initialDoctors }) => {

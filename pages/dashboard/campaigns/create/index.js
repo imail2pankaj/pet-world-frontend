@@ -23,6 +23,7 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 import axiosInstance from '@/store/api/axiosInstance';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
+import moment from 'moment';
 
 const schema = yup.object().shape({
   title: yup.string().min(3).max(255).required(),
@@ -188,6 +189,8 @@ const DoctorCampaignCreate = () => {
           element.map((doctor) => {
             formData.append("appointed_doctors[]", doctor.id);
           })
+        } else if (key === 'start_date') {
+          formData.append(key, element ? moment(element).format("YYYY-MM-DD") : "");
         } else {
           formData.append(key, element);
         }
