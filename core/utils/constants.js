@@ -6,6 +6,14 @@ export const petType = ['Cat', 'Dog', 'Fish', 'Bird']
 
 export const animalType = ['Domestic', 'Wild']
 
+export const campaignApprovalStatuses = [{ value: "0", name: 'Pending Approval' }, { value: "1", name: 'Approved' }, { value: "2", name: 'Rejected' }]
+
+export const campaignApprovalStatus = {
+  0: "Pending Approval",
+  1: "Approved",
+  2: "Rejected",
+};
+
 export const campaignStatuses = [{ value: 0, name: 'In Active' }, { value: 1, name: 'Active' }]
 
 export const campaignStatus = {

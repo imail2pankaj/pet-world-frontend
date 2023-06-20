@@ -30,6 +30,7 @@ const schema = yup.object().shape({
 })
 
 const defaultValues = {
+  campaign_id: 0,
   name: '',
   location: '',
   breed: '',
@@ -96,6 +97,11 @@ const PetCreate = () => {
       })
       setHeroFiles([]);
       setIsLoading(false);
+      router.push('/dashboard/pets')
+    }
+
+    if(router?.query?.campaign_id){
+      setValue('campaign_id', router?.query?.campaign_id);
     }
   }, [dispatch, store])
 

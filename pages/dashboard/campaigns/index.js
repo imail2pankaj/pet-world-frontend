@@ -5,13 +5,14 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import ProtectedLayout from '@/components/Layout/ProtectedLayout'
 import { Badge, Button, Col, OverlayTrigger, Row, Table, Tooltip } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCampaigns } from '@/store/api/campaign'
+import { fetchCampaigns, sendEmailToAppointedDoctor, sendEmailToPetOwner } from '@/store/api/campaign'
 import { useEffect } from 'react'
 import { campaignStatus, defaultAvatar, passportAvailability, vaccination } from '@/core/utils/constants'
 import { BiCheck, BiEdit, BiMailSend, BiRepeat, BiSend, BiTrash } from "react-icons/bi";
 import { MdClose, MdPendingActions } from "react-icons/md";
-import { Avatar, ConfirmDelete, CustomTooltip } from '@/components/Common'
+import { Avatar, ConfirmDelete, CustomTooltip, DocumentVerificationStatus } from '@/components/Common'
 import Image from 'next/image'
+import { toast } from 'react-hot-toast'
 
 const DoctorCampaigns = () => {
 
@@ -39,23 +40,18 @@ const DoctorCampaigns = () => {
     setShow(true)
   }
 
-  const sendEmailToPetOwner = (campaignId) => {
+  const handleSendEmailToPetOwner = (cId) => {
+    dispatch(sendEmailToPetOwner(cId)).then(() => {
+      toast.success('Sent email to Pet Owner about the campaign status')
+    })
+  }
 
+  const handleSendEmailToAppointedDoctor = (cId, doctorId) => {
+    dispatch(sendEmailToAppointedDoctor({ cId, doctorId })).then(() => {
+      toast.success('Sent email to Appointed Doctor about the campaign status')
+    })
   }
-  const documentVerifiedStatus = (status) => {
-    let icon = '';
-    let message = 'Documents Pending Approval';
-    if (status == 0) {
-      icon = <MdPendingActions fontSize={25} />
-    } else if (status == 1) {
-      icon = <BiCheck fontSize={25} />
-      let message = 'Documents Approved';
-    } else if (status == 2) {
-      icon = <MdClose fontSize={25} />
-      let message = 'Documents Rejected';
-    }
-    return <CustomTooltip message={message}><span>{icon}</span></CustomTooltip>
-  }
+
   return (
     <>
       <ProtectedLayout title={t('Campaigns')} openGraph={{ title: t('Campaigns') }}>
@@ -88,7 +84,7 @@ const DoctorCampaigns = () => {
                             <td>
                               {item.pet_owner_email}
                               <CustomTooltip message="Send Email to Pet Owner">
-                                <Button variant='outline-danger' className='ms-2' size='sm' onClick={() => sendEmailToPetOwner(item.id)} ><BiMailSend /></Button>
+                                <Button variant='outline-danger' className='ms-2' size='sm' onClick={() => handleSendEmailToPetOwner(item.id)} ><BiMailSend /></Button>
                               </CustomTooltip>
                             </td>
                             <td><Badge variant="secondary">{item.pet_owner_participation}%</Badge></td>
@@ -111,17 +107,17 @@ const DoctorCampaigns = () => {
                               <p className='mb-0'><b>Documents Uploaded : </b>Yes</p>
                             </td>
                             <td colSpan={4}>
-                            <p className='mb-1'><b>Approval Requests: </b></p>
+                              <p className='mb-1'><b>Approval Requests: </b></p>
                               {item.campaign_approval.map(approval => (
                                 <p className='mb-1' key={approval.id}>
-                                  {documentVerifiedStatus(approval?.status)}
+                                  <DocumentVerificationStatus status={approval?.status} />
                                   <Link href={`/doctors/${approval?.doctor?.username}`}>
                                     <Avatar className={'ms-2 me-2'} src={approval?.doctor?.profile_image} height={25} width={25} alt={approval?.doctor?.surname} />
                                     {approval?.doctor?.first_name} {approval?.doctor?.surname}
                                   </Link>
                                   {approval?.status == 0 &&
                                     <CustomTooltip message="Send Email to Appointed Doctor">
-                                      <Button variant='outline-danger' className='ms-2' size='sm' onClick={() => sendEmailToPetOwner(item.id)} ><BiMailSend /></Button>
+                                      <Button variant='outline-danger' className='ms-2' size='sm' onClick={() => handleSendEmailToPetOwner(item.id)} ><BiMailSend /></Button>
                                     </CustomTooltip>}
                                 </p>
                               ))}

@@ -169,5 +169,22 @@
   "Treatment": "Лечение",
   "Campaign By": "Кампания от",
   "Comments": "Коментари",
-  "MORE":"ОЩЕ"
+  "MORE":"ОЩЕ",
+  "Pet Name": "Име на домашен любимец",
+  "Pet Details": "Подробности за домашни любимци",
+  "Upload": "Качване",
+  "Documents": "Документи",
+  "Document Upload": "Качване на документ",
+  "Campaign Unique ID": "Уникален идентификатор на кампанията",
+  "Campaign Created Date": "Дата на създаване на кампанията",
+  "Participation": "Участие",
+  "Campaign Details": "Подробности за кампанията",
+  "Documents Uploaded": "Качени документи",
+  "List": "Списък",
+  "Donations": "Дарения",
+  "Upload Documents for Campaign": "Качване на документи за кампания",
+  "Edit Pet": "Редактиране на домашен любимец",
+  "Delete Pet": "Изтриване на домашен любимец",
+  "Delete Campaign": "Изтриване на кампания",
+  "Edit Campaign": "Редактиране на кампания"
 }

@@ -56,7 +56,50 @@ export const updatePet = createAsyncThunk('appPets/updatePet', async ({ id, form
     const response = await axiosInstance.put(`/pets/${id}`, formData, {
       headers: {
         Authorization: `Bearer ${storedToken}`,
-        'Content-Type': 'multipart/ form-data'
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    return response;
+  } catch (error) {
+    if (!error.response) {
+      throw error
+    }
+
+    return rejectWithValue(error.response.data)
+  }
+})
+
+// ** Create Pet
+export const deleteCampaignImage = createAsyncThunk('appPets/deleteCampaignImage', async (id, { rejectWithValue }) => {
+
+  const storedToken = window.localStorage.getItem('accessToken');
+  try {
+
+    const response = await axiosInstance.delete(`/pets/${id}/campaign-documents`, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`
+      }
+    })
+    return response;
+  } catch (error) {
+    if (!error.response) {
+      throw error
+    }
+
+    return rejectWithValue(error.response.data)
+  }
+})
+
+// ** Create Pet
+export const uploadCampaignDocuments = createAsyncThunk('appPets/uploadCampaignDocuments', async ({ petId, campaignId, formData }, { rejectWithValue }) => {
+
+  const storedToken = window.localStorage.getItem('accessToken');
+  try {
+
+    const response = await axiosInstance.post(`/pets/${petId}/${campaignId}/campaign-documents`, formData, {
+      headers: {
+        'Content-Type': 'multipart/ form-data',
+        Authorization: `Bearer ${storedToken}`,
       }
     })
     return response;
@@ -100,6 +143,14 @@ export const appPetSlice = createSlice({
       state.petData = action?.payload?.data
     },
     [createPet.rejected]: (state, action) => {
+      state.petData = ""
+      state.error = action?.payload
+    },
+    [uploadCampaignDocuments.fulfilled]: (state, action) => {
+      state.error = ""
+      state.petData = action?.payload?.data
+    },
+    [uploadCampaignDocuments.rejected]: (state, action) => {
       state.petData = ""
       state.error = action?.payload
     },

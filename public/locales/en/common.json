@@ -169,5 +169,22 @@
   "Treatment": "Treatment",
   "Campaign By": "Campaign By",
   "Comments": "Comments",
-  "MORE": "MORE"
+  "MORE": "MORE",
+  "Pet Name": "Pet Name",
+  "Pet Details": "Pet Details",
+  "Upload": "Upload",
+  "Documents": "Documents",
+  "Document Upload": "Document Upload",
+  "Campaign Unique ID": "Campaign Unique ID",
+  "Campaign Created Date": "Campaign Created Date",
+  "Participation": "Participation",
+  "Campaign Details": "Campaign Details",
+  "Documents Uploaded": "Documents Uploaded",
+  "List": "List",
+  "Donations": "Donations",
+  "Upload Documents for Campaign": "Upload Documents for Campaign",
+  "Edit Pet": "Edit Pet",
+  "Delete Pet": "Delete Pet",
+  "Delete Campaign": "Delete Campaign",
+  "Edit Campaign": "Edit Campaign"
 }

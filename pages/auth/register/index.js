@@ -25,17 +25,18 @@ const schema = yup.object().shape({
 })
 
 const defaultValues = {
-  user_type_id: "3",
+  user_type_id: "4",
   first_name: '',
   surname: '',
   last_name: '',
   email: '',
   password: '',
-  password_confirmation: ''
+  password_confirmation: '',
+  campaign_id: '',
 }
 
 const userTypes = [
-  { id: "3", name: 'As a Donor' }, { id: "4", name: 'As a Doctor' }
+  { id: "4", name: 'As a Donor' }, { id: "3", name: 'As a Doctor' }
 ]
 
 const Register = () => {
@@ -68,6 +69,11 @@ const Register = () => {
       setValue('campaign_id', query?.campaign_id)
       localStorage.setItem('email', query?.email)
       localStorage.setItem('campaign_id', query?.campaign_id)
+    } else {
+      setValue('email', '')
+      setValue('campaign_id', '')
+      localStorage.removeItem('email')
+      localStorage.removeItem('campaign_id')
     }
   }, [router])
 

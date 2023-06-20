@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchPets } from '@/store/api/pet'
 import { useEffect } from 'react'
 import { passportAvailability, vaccination } from '@/core/utils/constants'
-import { BiEdit, BiTrash } from "react-icons/bi";
-import { ConfirmDelete } from '@/components/Common'
+import { BiEdit, BiFile, BiTrash } from "react-icons/bi";
+import { ConfirmDelete, CustomTooltip } from '@/components/Common'
 
 const Pets = () => {
   const { t } = useTranslation()
@@ -39,7 +39,7 @@ const Pets = () => {
   return (
     <>
       <ProtectedLayout title={t('Pets')} openGraph={{ title: t('Pets') }}>
-        <div className='edit-profile'>
+        <div className='inner-page'>
           <div className='form'>
             <Row>
               <Col><h2>{t("Pets")}</h2></Col>
@@ -51,7 +51,7 @@ const Pets = () => {
                   <thead>
                     <tr>
                       <th>{t("Name")}</th>
-                      <th>{t("Pet")}</th>
+                      <th>{t("Campaign")}</th>
                       <th>{t("Age")} / {t("Weight")}</th>
                       <th>{t("Breed")}</th>
                       <th>{t("Location")}</th>
@@ -64,21 +64,35 @@ const Pets = () => {
                     {
                       store?.data?.map(pet => (
                         <tr key={pet.id}>
-                          <td>{pet.name}</td>
-                          <td>{pet.pet_type} ({pet.animal_type})</td>
+                          <td>
+                            <p className='mb-0'>{pet.name}</p>
+                            <p className='mb-0'><b>Pet: </b>{pet.pet_type} ({pet.animal_type})</p>
+                          </td>
+                          <td>{pet?.campaign?.title ? pet?.campaign?.title : "N/A"}</td>
                           <td>{pet.age} / {pet.weight}</td>
                           <td>{pet.breed}</td>
                           <td>{pet.location}</td>
                           <td>{t(passportAvailability[pet.passport_available])}</td>
                           <td>{t(vaccination[pet.vaccinations])}</td>
                           <td>
-                            <Link href={`/dashboard/pets/edit/${pet.id}`} ><BiEdit /></Link> {` `}
-                            <Button onClick={() => handleClose(pet.id)} ><BiTrash /></Button>
+                            {/* {pet?.campaign?.documents?.length == 0 &&
+                              <> */}
+                                <CustomTooltip message={'Upload Documents for Campaign'}>
+                                  <Link className='btn btn-info btn-sm' href={`/dashboard/pets/campaign-documents/?petId=${pet?.id}`} ><BiFile /></Link>
+                                </CustomTooltip>{` `}
+                              {/* </>
+                            } */}
+                            <CustomTooltip message={'Edit Pet'}>
+                              <Link className='btn btn-secondary btn-sm' href={`/dashboard/pets/edit/${pet.id}`} ><BiEdit /></Link>
+                            </CustomTooltip> {` `}
+                            <CustomTooltip message={'Delete Pet'}>
+                              <Button variant='danger' size='sm' onClick={() => handleClose(pet.id)} ><BiTrash /></Button>
+                            </CustomTooltip>
                           </td>
                         </tr>
                       ))
                     }
-                    {store?.data?.length == 0 ? <tr><td colspan="8" className='text-center'>{t("No Record Found")}</td></tr> : null}
+                    {store?.data?.length == 0 ? <tr><td colSpan="8" className='text-center'>{t("No Record Found")}</td></tr> : null}
                   </tbody>
                 </Table>
                 <ConfirmDelete
