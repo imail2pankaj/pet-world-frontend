@@ -84,6 +84,7 @@ export const appCampaignRequestSlice = createSlice({
       state.data = action?.payload?.data?.data
     },
     [getCampaignRequest.fulfilled]: (state, action) => {
+      state.campaignRequestData = "";
       state.campaignRequestData = action?.payload?.data
     },
   }

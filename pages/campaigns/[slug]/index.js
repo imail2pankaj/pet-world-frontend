@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { WhyVetChoosePetWorld } from '@/components/Common';
+import { CampaignShare, WhyVetChoosePetWorld } from '@/components/Common';
 import Link from 'next/link';
 import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -12,14 +12,22 @@ import { BiCalendar, BiCategory, BiHeart } from 'react-icons/bi';
 import { TbStethoscope } from 'react-icons/tb';
 import { NextSeo } from 'next-seo';
 import Error from 'next/error';
+import { MdFacebook, MdOutlineVerifiedUser } from 'react-icons/md';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/router';
 
 const CampaignDetails = ({ campaign, notFound }) => {
 
   const { t } = useTranslation();
-  console.log(campaign, notFound);
-  if(notFound) {
+  const router = useRouter();
+
+  const { user } = useAuth();
+
+  if (notFound) {
     return <Error statusCode={404} />;
   }
+
+  const url = `${process.env.NEXT_PUBLIC_URL}${router?.asPath}`;
 
   let openGraph = { images: [] };
 
@@ -31,7 +39,11 @@ const CampaignDetails = ({ campaign, notFound }) => {
       // images: [{ url: campaign??.profile_image }]
     };
   }
-
+  const isApproved = (requests) => {
+    const totalRequests = requests.length;
+    const approvedRequests = requests.filter(request => request.status == 1);
+    return (approvedRequests.length !== totalRequests) && <div className='badge'><img src={`/not-approved-badge.png`} alt={""} /></div>
+  }
   return (
     <>
       <NextSeo
@@ -67,20 +79,17 @@ const CampaignDetails = ({ campaign, notFound }) => {
               <Col sm={6} lg={6}>
                 <div className='img-gallery'>
                   {campaign?.media?.map((media, index) => <div key={index} className='thumb'><img src={media.name} alt={""} /></div>)}
-                  {/* <div className='thumb'><img src={`/pic-1.jpg`} alt={""} /></div>
-                  <div className='thumb'><img src={`/pic-2.jpg`} alt={""} /></div>
-                  <div className='thumb'><img src={`/pic-3.jpg`} alt={""} /></div> */}
-                  <div className='thumb'><img src={`/pic-4.jpg`} alt={""} />
+                  {/* <div className='thumb'><img src={`/pic-4.jpg`} alt={""} />
                     <Link href='#' className='overlay'>+12</Link>
-                  </div>
+                  </div> */}
                 </div>
               </Col>
             </Row>
             <Row className='donorlist-disc'>
               <div className='donorlist'>
-                <div className='buttons'>
-                  <Link href='#'>{t("Subscribe")}</Link>
-                  <Link href='#' className='share-btn'>{t("Share")}</Link>
+                <div className='buttons' style={{display:"flex"}}>
+                  {user ? <Link href={`/campaigns/${campaign?.slug}/subscribe`}>{t("Subscribe")}</Link> : <Link href='/auth/login'>{t("Subscribe")}</Link>}
+                  <CampaignShare shareUrl={url} />
                 </div>
 
                 <div className='score'>
@@ -97,6 +106,10 @@ const CampaignDetails = ({ campaign, notFound }) => {
                 <div className='campaign-info'>
                   <h3>{t("Campaign Information")}</h3>
                   <ul>
+                    <li>
+                      <div className='info-title'><MdOutlineVerifiedUser fontSize={25} />  {t("Campaign Unique ID")}</div>
+                      <div className='info-details'>{campaign?.unique_id}</div>
+                    </li>
                     <li>
                       <div className='info-title'><BiCalendar fontSize={25} />  {t("Campaign Date")}</div>
                       <div className='info-details'>{campaign?.start_date ? campaign?.start_date : "N/A"}</div>
@@ -123,8 +136,8 @@ const CampaignDetails = ({ campaign, notFound }) => {
 
               </div>
               <div className='description'>
-                <h3>Sed ut perspiciatis</h3>
-                <div className='badge'><img src={`/not-approved-badge.png`} alt={""} /></div>
+                {/* <h3>Sed ut perspiciatis</h3> */}
+                {isApproved(campaign?.approval)}
                 <p>{campaign?.description}</p>
               </div>
             </Row>

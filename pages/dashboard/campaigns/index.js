@@ -13,6 +13,7 @@ import { MdClose, MdPendingActions } from "react-icons/md";
 import { Avatar, ConfirmDelete, CustomTooltip, DocumentVerificationStatus } from '@/components/Common'
 import Image from 'next/image'
 import { toast } from 'react-hot-toast'
+import { dateFormat } from '@/core/utils/format'
 
 const DoctorCampaigns = () => {
 
@@ -88,7 +89,7 @@ const DoctorCampaigns = () => {
                               </CustomTooltip>
                             </td>
                             <td><Badge variant="secondary">{item.pet_owner_participation}%</Badge></td>
-                            <td>{item.start_date ? item.start_date : "N/A"}</td>
+                            <td>{item.start_date ? dateFormat(item.start_date) : "N/A"}</td>
                             <td>€ {item.goal_amount}</td>
                             <td><Badge pill bg={item.status == 1 ? 'primary' : 'secondary'} >{campaignStatus[item.status]}</Badge></td>
                             <td>
@@ -103,11 +104,11 @@ const DoctorCampaigns = () => {
                           </tr>
                           <tr>
                             <td colSpan={3}>
-                              <p className='mb-0'><b>Pet Added : </b>{item.pet_id ? 'Yes' : 'No'}</p>
-                              <p className='mb-0'><b>Documents Uploaded : </b>Yes</p>
+                              <p className='mb-0'><b>{t("Pet Added")}: </b>{t(item.pet_id ? 'Yes' : 'No')}</p>
+                              <p className='mb-0'><b>{t("Documents Uploaded")} : </b>{t("Yes")}</p>
                             </td>
                             <td colSpan={4}>
-                              <p className='mb-1'><b>Approval Requests: </b></p>
+                              <p className='mb-1'><b>{t("Approval Requests")}: </b></p>
                               {item.campaign_approval.map(approval => (
                                 <p className='mb-1' key={approval.id}>
                                   <DocumentVerificationStatus status={approval?.status} />

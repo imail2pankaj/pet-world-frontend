@@ -453,8 +453,8 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .campaigns-detail .donorlist-disc{ margin: 50px 0 100px;}
 .campaigns-detail .donorlist-disc .donorlist{ width: 50%; float: left; padding: 0;}
 .campaigns-detail .donorlist-disc .donorlist .buttons{ width: 100%; display: block;}
-.campaigns-detail .donorlist-disc .donorlist .buttons a{width:45%; display: inline-block; border-radius: 10px; text-align: center; background: #7EB65C; font-size: 20px; color: #fff; font-weight: 600; line-height: 54px; text-transform: uppercase;}
-.campaigns-detail .donorlist-disc .donorlist .buttons a.share-btn{background: #0096EB; margin-left: 8%;}
+.campaigns-detail .donorlist-disc .donorlist .buttons a, .campaigns-detail .donorlist-disc .donorlist .buttons button{width:45%; display: inline-block; border-radius: 10px; text-align: center; background: #7EB65C; font-size: 20px; color: #fff; font-weight: 600; line-height: 54px; text-transform: uppercase;}
+.campaigns-detail .donorlist-disc .donorlist .buttons a.share-btn, .campaigns-detail .donorlist-disc .donorlist .buttons button.share-btn{background: #0096EB; margin-left: 8%;}
 .campaigns-detail .donorlist-disc .donorlist .buttons a:hover{ background-color: #9E0C0F;}
 
 /* .campaigns-detail .donorlist-disc ul{ width: 98%; display: block; list-style: none; padding: 0;}

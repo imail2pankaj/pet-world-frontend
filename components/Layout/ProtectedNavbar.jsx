@@ -12,7 +12,7 @@ function ProtectedNavbar() {
   const navigation = [
     { path: "/dashboard", name: 'Dashboard', for: "" },
     { path: "/dashboard/campaigns", name: 'Campaigns', for: "DOCTOR" },
-    { path: "/dashboard/campaign-requests", name: 'Campaigns Requests', for: "DOCTOR" },
+    { path: "/dashboard/campaign-requests", name: 'Campaign Requests', for: "DOCTOR" },
     { path: "/dashboard/donations", name: 'Donations', for: "DONOR" },
     { path: "/dashboard/pets", name: 'Pets', for: "DONOR" },
     { path: "/accounts/profile", name: 'Profile', for: "" },

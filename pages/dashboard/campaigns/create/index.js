@@ -70,7 +70,11 @@ const DoctorCampaignCreate = () => {
 
   const fetchAppointedDoctors = async (treatment) => {
     setSelectedDoctor([])
-    const data = await axiosInstance.get('/appointed-doctors?treatment=' + treatment);
+    const data = await axiosInstance.get('/appointed-doctors?treatment=' + treatment, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+      }
+    });
     if (!data?.data?.success) {
       setAppointedDoctors(data.data);
       setAllAppointedDoctors(data.data);
@@ -81,26 +85,39 @@ const DoctorCampaignCreate = () => {
   }
 
   const fetchPets = async (ownerEmail) => {
-    const data = await axiosInstance.get('/owners-pets?email=' + ownerEmail);
-    if (!data?.data?.success) {
-      setPets(data.data);
-      setValue("pet_id",data?.data[0].id);
-    } else {
+    try {
+      const data = await axiosInstance.get('/owners-pets?email=' + ownerEmail);
+      if (!data?.data?.success) {
+        setPets(data.data);
+        setValue("pet_id", data?.data[0].id);
+      } else {
+        setPets([]);
+        setValue("pet_id", "");
+      }
+    } catch (error) {
       setPets([]);
-      setValue("pet_id","");
+      setValue("pet_id", "");
     }
   }
 
   useEffect(() => {
 
     const fetchPetOwners = async () => {
-      const data = await axiosInstance.get('/pet-owners');
-      setPetOwners(data.data);
+      try {
+        const data = await axiosInstance.get('/pet-owners');
+        setPetOwners(data.data);
+      } catch (error) {
+        setPetOwners([]);
+      }
     }
 
     const fetchSpecialities = async () => {
-      const data = await axiosInstance.get('/specialities');
-      setSpecialities(data.data);
+      try {
+        const data = await axiosInstance.get('/specialities');
+        setSpecialities(data.data);
+      } catch (error) {
+        setSpecialities([]);
+      }
     }
     fetchSpecialities();
     fetchPetOwners();
@@ -159,23 +176,23 @@ const DoctorCampaignCreate = () => {
     setIsLoading(true);
     setServerResponse("");
     console.log(data);
-    if(!data.pet_owner_email) {
+    if (!data.pet_owner_email) {
       setError('pet_owner_email', {
-        type:"manual",
+        type: "manual",
         message: "Pet owner email field is required"
       })
       return false
     }
-    if(!data.treatment) {
+    if (!data.treatment) {
       setError('treatment', {
-        type:"manual",
+        type: "manual",
         message: "Treatment field is required"
       })
       return false
     }
-    if(!data.appointed_doctors) {
+    if (!data.appointed_doctors) {
       setError('appointed_doctors', {
-        type:"manual",
+        type: "manual",
         message: "Appointed doctors field is required"
       })
       return false

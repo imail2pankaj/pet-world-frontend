@@ -66,11 +66,15 @@ const ViewCampaignDocuments = () => {
 
     dispatch(updateCampaignRequest({ data, requestId: router?.query?.id })).then(() => {
       setIsLoading(false);
-      setServerResponse("Campaign request updated successfully");
+      setServerResponse({
+        variant: 'success',
+        message: "Campaign request updated successfully"
+      });
       toast.success("Campaign request updated successfully")
       router.push('/dashboard/campaign-requests');
     })
   }
+
 
   return (
     <ProtectedLayout title={t('Campaign Requests')} openGraph={{ title: t('Campaign Requests') }}>
@@ -79,107 +83,109 @@ const ViewCampaignDocuments = () => {
           <Row>
             <Col><h2>{t("Campaign Request")}</h2></Col>
           </Row>
-          <div className="mb-3 mt-5 lg-3">
-            <div className="mb-3">
-              <div className='mb-4'>
-                <h4>{t("Campaign Documents")}</h4>
-                <hr />
-                <Row sm={1} md={2}>
-                  <Carousel>
-                    {
-                      store?.campaignRequestData?.campaign?.documents?.map(document => (
-                        <Carousel.Item key={document.id}>
-                          <img
-                            className="d-block w-100"
-                            src={`${process.env.NEXT_PUBLIC_API_PUBLIC_URL}storage/campaign-documents/${document.name}`}
+          {store.campaignRequestData ?
+            <div className="mb-3 mt-5 lg-3">
+              <div className="mb-3">
+                <div className='mb-4'>
+                  <h4>{t("Campaign Documents")}</h4>
+                  <hr />
+                  <Row sm={1} md={2}>
+                    <Carousel>
+                      {
+                        store?.campaignRequestData?.campaign?.documents?.map(document => (
+                          <Carousel.Item key={document.id}>
+                            <img
+                              className="d-block w-100"
+                              src={`${process.env.NEXT_PUBLIC_API_PUBLIC_URL}storage/campaign-documents/${document.name}`}
+                            />
+                          </Carousel.Item>
+                        ))
+                      }
+                    </Carousel>
+                    <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+                      {serverResponse && <Alert key={serverResponse.variant} variant={serverResponse.variant}>
+                        {t(serverResponse.message)}
+                      </Alert>}
+                      <Form.Group controlId="campaignApprovalStatus" className='mb-4'>
+                        <Form.Label className='d-block mb-4'>{t('Campaign Approval Status')}</Form.Label>
+                        {campaignApprovalStatuses.map(type =>
+                          <Form.Check
+                            key={"keys-" + type.value}
+                            className='d-inline-block me-4'
+                            value={type.value}
+                            name='status'
+                            type={'radio'}
+                            label={t(type.name)}
+                            id={`status-${type.value}`}
+                            {...register("status")}
                           />
-                        </Carousel.Item>
-                      ))
-                    }
-                  </Carousel>
-                  <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
-                    {serverResponse && <Alert key={serverResponse.variant} variant={serverResponse.variant}>
-                      {t(serverResponse.message)}
-                    </Alert>}
-                    <Form.Group controlId="campaignApprovalStatus" className='mb-4'>
-                      <Form.Label className='d-block mb-4'>{t('Campaign Approval Status')}</Form.Label>
-                      {campaignApprovalStatuses.map(type =>
-                        <Form.Check
-                          key={"keys-" + type.value}
-                          className='d-inline-block me-4'
-                          value={`${type.value}`}
-                          name='status'
-                          type={'radio'}
-                          label={t(type.name)}
-                          id={`status-${type.value}`}
-                          {...register("status")}
+                        )}
+                        <ValidationError errors={errors.status} />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>{t("Notes")}</Form.Label>
+                        <Form.Control
+                          name='notes'
+                          type='text'
+                          multiple
+                          as="textarea"
+                          style={{ height: 220 }}
+                          label={t('notes')}
+                          placeholder={t("Enter Notes")}
+                          isInvalid={Boolean(errors.notes)}
+                          {...register('notes')}
                         />
-                      )}
-                      <ValidationError errors={errors.status} />
-                    </Form.Group>
-                    <Form.Group>
-                      <Form.Label>{t("Notes")}</Form.Label>
-                      <Form.Control
-                        name='notes'
-                        type='text'
-                        multiple
-                        as="textarea"
-                        style={{ height: 220 }}
-                        label={t('notes')}
-                        placeholder={t("Enter Notes")}
-                        isInvalid={Boolean(errors.notes)}
-                        {...register('notes')}
-                      />
-                      <ValidationError errors={errors.notes} />
-                    </Form.Group>
-                    <div className='edit-profile'>
-                      <div className='form'>
-                        <Button variant='primary' type='submit'>
-                          {isLoading && <Spinner size='sm' className='me-2' />}
-                          {t("Save")}
-                        </Button>
+                        <ValidationError errors={errors.notes} />
+                      </Form.Group>
+                      <div className='edit-profile'>
+                        <div className='form'>
+                          <Button variant='primary' type='submit'>
+                            {isLoading && <Spinner size='sm' className='me-2' />}
+                            {t("Save")}
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </Form>
-                </Row>
-              </div>
-              <div className='mb-4'>
-                <h4>{t("Pet Details")}</h4>
-                <hr />
-                <Row sm={1} md={3}>
-                  <p><b>{t("Pet Name")}: </b> {store?.campaignRequestData?.campaign?.pet?.name}</p>
-                  <p><b>{t("Pet Type")}: </b> {store?.campaignRequestData?.campaign?.pet?.pet_type}</p>
-                  <p><b>{t("Animal Type")}: </b> {store?.campaignRequestData?.campaign?.pet?.animal_type}</p>
-                  <p><b>{t("Breed")}: </b> {store?.campaignRequestData?.campaign?.pet?.breed}</p>
-                  <p><b>{t("Gender")}: </b> {store?.campaignRequestData?.campaign?.pet?.gender}</p>
-                  <p><b>{t("Age")}: </b> {store?.campaignRequestData?.campaign?.pet?.age}</p>
-                  <p><b>{t("Weight")}: </b> {store?.campaignRequestData?.campaign?.pet?.weight}</p>
-                  <p><b>{t("Location")}: </b> {store?.campaignRequestData?.campaign?.pet?.location}</p>
-                  <p><b>{t("Passport")}: </b> {passportAvailability[store?.campaignRequestData?.campaign?.pet?.passport_available]}</p>
-                  <p><b>{t("Vaccinations")}: </b> {vaccination[store?.campaignRequestData?.campaign?.pet?.vaccinations]}</p>
-                  <p><b>{t("Previous Diseases")}: </b> {store?.campaignRequestData?.campaign?.pet?.previous_diseases}</p>
-                </Row>
-              </div>
-              <div>
-                <h4>{t("Campaign Details")}</h4>
-                <hr />
-                <Row sm={1} md={3}>
-                  <p><b>{t("Campaign Unique ID")}: </b> {store?.campaignRequestData?.campaign?.unique_id}</p>
-                  <p><b>{t("Campaign")}: </b> {store?.campaignRequestData?.campaign?.title}</p>
-                  <p><b>{t("Campaign Date")}: </b> {dateFormat(store?.campaignRequestData?.campaign?.start_date)}</p>
-                  <p><b>{t("Goal Amount")}: </b> €{store?.campaignRequestData?.campaign?.goal_amount}</p>
-                  <p><b>{t("Treatment")}: </b> {store?.campaignRequestData?.campaign?.treatment}</p>
-                  <p><b>{t("Participation")}: </b> <Badge bg="primary">{store?.campaignRequestData?.campaign?.pet_owner_participation}%</Badge></p>
-                  <p><b>{t("Campaign Created Date")}: </b> {dateFormat(store?.campaignRequestData?.campaign?.created_at)}</p>
-                  <p><b>{t("Documents Uploaded")}: </b> {t(store?.campaignRequestData?.campaign?.documents?.length == 0 ? 'No' : 'Yes')}</p>
-                </Row>
-                <Row>
-                  <p><b>Description: </b></p>
-                  <p>{store?.campaignRequestData?.campaign?.description}</p>
-                </Row>
+                    </Form>
+                  </Row>
+                </div>
+                <div className='mb-4'>
+                  <h4>{t("Pet Details")}</h4>
+                  <hr />
+                  <Row sm={1} md={3}>
+                    <p><b>{t("Pet Name")}: </b> {store?.campaignRequestData?.campaign?.pet?.name}</p>
+                    <p><b>{t("Pet Type")}: </b> {store?.campaignRequestData?.campaign?.pet?.pet_type}</p>
+                    <p><b>{t("Animal Type")}: </b> {store?.campaignRequestData?.campaign?.pet?.animal_type}</p>
+                    <p><b>{t("Breed")}: </b> {store?.campaignRequestData?.campaign?.pet?.breed}</p>
+                    <p><b>{t("Gender")}: </b> {store?.campaignRequestData?.campaign?.pet?.gender}</p>
+                    <p><b>{t("Age")}: </b> {store?.campaignRequestData?.campaign?.pet?.age}</p>
+                    <p><b>{t("Weight")}: </b> {store?.campaignRequestData?.campaign?.pet?.weight}</p>
+                    <p><b>{t("Location")}: </b> {store?.campaignRequestData?.campaign?.pet?.location}</p>
+                    <p><b>{t("Passport")}: </b> {passportAvailability[store?.campaignRequestData?.campaign?.pet?.passport_available]}</p>
+                    <p><b>{t("Vaccinations")}: </b> {vaccination[store?.campaignRequestData?.campaign?.pet?.vaccinations]}</p>
+                    <p><b>{t("Previous Diseases")}: </b> {store?.campaignRequestData?.campaign?.pet?.previous_diseases}</p>
+                  </Row>
+                </div>
+                <div>
+                  <h4>{t("Campaign Details")}</h4>
+                  <hr />
+                  <Row sm={1} md={3}>
+                    <p><b>{t("Campaign Unique ID")}: </b> {store?.campaignRequestData?.campaign?.unique_id}</p>
+                    <p><b>{t("Campaign")}: </b> {store?.campaignRequestData?.campaign?.title}</p>
+                    <p><b>{t("Campaign Date")}: </b> {dateFormat(store?.campaignRequestData?.campaign?.start_date)}</p>
+                    <p><b>{t("Goal Amount")}: </b> €{store?.campaignRequestData?.campaign?.goal_amount}</p>
+                    <p><b>{t("Treatment")}: </b> {store?.campaignRequestData?.campaign?.treatment}</p>
+                    <p><b>{t("Participation")}: </b> <Badge bg="primary">{store?.campaignRequestData?.campaign?.pet_owner_participation}%</Badge></p>
+                    <p><b>{t("Campaign Created Date")}: </b> {dateFormat(store?.campaignRequestData?.campaign?.created_at)}</p>
+                    <p><b>{t("Documents Uploaded")}: </b> {t(store?.campaignRequestData?.campaign?.documents?.length == 0 ? 'No' : 'Yes')}</p>
+                  </Row>
+                  <Row>
+                    <p><b>{t("Description")}: </b></p>
+                    <p>{store?.campaignRequestData?.campaign?.description}</p>
+                  </Row>
+                </div>
               </div>
             </div>
-          </div>
+          : <Spinner />}
         </div>
       </div>
     </ProtectedLayout>
