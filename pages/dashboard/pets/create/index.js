@@ -97,7 +97,11 @@ const PetCreate = () => {
       })
       setHeroFiles([]);
       setIsLoading(false);
-      router.push('/dashboard/pets')
+      if(router?.query?.campaign_id){
+        router.push('/dashboard/pets/campaign-documents?petId=' + store?.petData?.id)
+      } else {
+        router.push('/dashboard/pets')
+      }
     }
 
     if(router?.query?.campaign_id){

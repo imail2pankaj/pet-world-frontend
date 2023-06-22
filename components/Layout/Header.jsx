@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Navbar from 'react-bootstrap/Navbar';
-import { Button, Dropdown, Nav } from 'react-bootstrap';
+import { Badge, Button, Dropdown, Nav } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import { defaultAvatar } from '@/core/utils/constants';
@@ -18,7 +18,17 @@ const links = [
   { path: '/about-us', name: 'About Us' },
   { path: '/contact-us', name: 'Contact Us' },
 ]
-
+const navigation = [
+  { path: "/dashboard", name: 'Dashboard', for: "" },
+  { path: "/dashboard/campaigns", name: 'Campaigns', for: "DOCTOR" },
+  { path: "/dashboard/campaign-requests", name: 'Campaign Requests', for: "DOCTOR" },
+  { path: "/dashboard/donations", name: 'Donations', for: "DONOR" },
+  { path: "/dashboard/pets", name: 'Pets', for: "DONOR" },
+  { path: "/dashboard/notifications", name: 'Notifications', for: "" },
+  { path: "/accounts/profile", name: 'Profile', for: "" },
+  { path: "/accounts/about", name: 'Bio', for: "DOCTOR" },
+  { path: "/accounts/change-password", name: 'Change Password', for: "" },
+];
 const Header = () => {
   const { t } = useTranslation('common')
   const router = useRouter();
@@ -74,15 +84,19 @@ const Header = () => {
           {isAuthenticated ?
             <Dropdown>
               <Dropdown.Toggle className='nav-link btn' variant='outlined' id="dropdown-basic">
-                <Image width={25} height={25} src={user?.profile_image ? `${user?.profile_image}` : defaultAvatar} className='me-2 rounded-circle' alt='Avatar' />
-                {t("My Account")}
+                <div className='d-inline-block'>
+                  <span style={{ position: 'relative' }}>
+                    {user?.notifications != 0 && <Badge className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"'>{user?.notifications}</Badge>}
+                    <Image width={25} height={25} src={user?.profile_image ? `${user?.profile_image}` : defaultAvatar} className='rounded-circle' alt='Avatar' />
+                  </span>
+                  <span className='ms-2'>
+                    {t("My Account")}
+                  </span>
+                </div>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/profile">{t('Profile')}</Link>
-                <Link className='dropdown-item' onClick={toggleMenu} href="/dashboard">{t('Dashboard')}</Link>
-                {user.role === 'DOCTOR' && <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/about">{t('Bio')}</Link>}
-                <Link className='dropdown-item' onClick={toggleMenu} href="/accounts/change-password">{t('Change Password')}</Link>
+                {navigation.map(nav => (nav.for === "" || (user && user?.role === nav.for)) && <Link key={nav.name} onClick={toggleMenu} className='dropdown-item' href={nav.path}>{t(nav.name)}</Link>)}
                 <Button onClick={logout} className='dropdown-item'>{t('Logout')}</Button>
               </Dropdown.Menu>
             </Dropdown> :

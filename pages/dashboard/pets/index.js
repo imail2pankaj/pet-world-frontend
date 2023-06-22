@@ -75,13 +75,13 @@ const Pets = () => {
                           <td>{t(passportAvailability[pet.passport_available])}</td>
                           <td>{t(vaccination[pet.vaccinations])}</td>
                           <td>
-                            {/* {pet?.campaign?.documents?.length == 0 &&
-                              <> */}
+                            {pet?.campaign &&
+                              <>
                                 <CustomTooltip message={'Upload Documents for Campaign'}>
                                   <Link className='btn btn-info btn-sm' href={`/dashboard/pets/campaign-documents/?petId=${pet?.id}`} ><BiFile /></Link>
                                 </CustomTooltip>{` `}
-                              {/* </>
-                            } */}
+                              </>
+                            }
                             <CustomTooltip message={'Edit Pet'}>
                               <Link className='btn btn-secondary btn-sm' href={`/dashboard/pets/edit/${pet.id}`} ><BiEdit /></Link>
                             </CustomTooltip> {` `}

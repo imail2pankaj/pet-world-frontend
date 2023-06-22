@@ -59,10 +59,10 @@ const CampaignUploads = () => {
       })
       setIsLoading(false);
     } else if (store?.petData && isLoading) {
-      toast.success("Pet Successfully Created");
+      toast.success("Documents successfully uploaded");
       setServerResponse({
         variant: "success",
-        message: "Pet Successfully Created"
+        message: "Documents successfully uploaded"
       })
       setHeroFiles([]);
       setUploadedHeroFiles([]);

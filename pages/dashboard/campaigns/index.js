@@ -9,7 +9,7 @@ import { fetchCampaigns, sendEmailToAppointedDoctor, sendEmailToPetOwner } from 
 import { useEffect } from 'react'
 import { campaignStatus, defaultAvatar, passportAvailability, vaccination } from '@/core/utils/constants'
 import { BiCheck, BiEdit, BiMailSend, BiRepeat, BiSend, BiTrash } from "react-icons/bi";
-import { MdClose, MdPendingActions } from "react-icons/md";
+import { MdClose, MdPendingActions, MdRemoveRedEye } from "react-icons/md";
 import { Avatar, ConfirmDelete, CustomTooltip, DocumentVerificationStatus } from '@/components/Common'
 import Image from 'next/image'
 import { toast } from 'react-hot-toast'
@@ -93,6 +93,10 @@ const DoctorCampaigns = () => {
                             <td>€ {item.goal_amount}</td>
                             <td><Badge pill bg={item.status == 1 ? 'primary' : 'secondary'} >{campaignStatus[item.status]}</Badge></td>
                             <td>
+                              <CustomTooltip message={'View Campaign'}>
+                                <Link href={`/dashboard/campaigns/view/${item.id}`} className='btn btn-secondary btn-sm'><MdRemoveRedEye /></Link>
+                              </CustomTooltip>
+                              {` `}
                               <CustomTooltip message={'Edit Campaign'}>
                                 <Link href={`/dashboard/campaigns/edit/${item.id}`} className='btn btn-secondary btn-sm'><BiEdit /></Link>
                               </CustomTooltip>
@@ -104,8 +108,8 @@ const DoctorCampaigns = () => {
                           </tr>
                           <tr>
                             <td colSpan={3}>
-                              <p className='mb-0'><b>{t("Pet Added")}: </b>{t(item.pet_id ? 'Yes' : 'No')}</p>
-                              <p className='mb-0'><b>{t("Documents Uploaded")} : </b>{t("Yes")}</p>
+                              <p className='mb-0'><b>{t("Pet Added")}: </b>{t(item.pet ? 'Yes' : 'No')}</p>
+                              <p className='mb-0'><b>{t("Documents Uploaded")} : </b>{t(item?.documents?.length ? 'Yes' : 'No')}</p>
                             </td>
                             <td colSpan={4}>
                               <p className='mb-1'><b>{t("Approval Requests")}: </b></p>

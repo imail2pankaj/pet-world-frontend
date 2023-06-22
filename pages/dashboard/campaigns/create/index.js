@@ -88,8 +88,9 @@ const DoctorCampaignCreate = () => {
     try {
       const data = await axiosInstance.get('/owners-pets?email=' + ownerEmail);
       if (!data?.data?.success) {
-        setPets(data.data);
-        setValue("pet_id", data?.data[0].id);
+        const newPets = [{id: 0, name:"No Pet"}].concat(data.data);
+        setPets(newPets);
+        setValue("pet_id", newPets[0]);
       } else {
         setPets([]);
         setValue("pet_id", "");
