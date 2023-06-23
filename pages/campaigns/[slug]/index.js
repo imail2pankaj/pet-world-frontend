@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -15,11 +15,14 @@ import Error from 'next/error';
 import { MdFacebook, MdOutlineVerifiedUser } from 'react-icons/md';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
+import { Button } from 'react-bootstrap';
+import { formatCurrency } from '@/core/utils/format';
 
 const CampaignDetails = ({ campaign, notFound }) => {
 
   const { t } = useTranslation();
   const router = useRouter();
+  const [showMore, setShowMore] = useState(false);
 
   const { user } = useAuth();
 
@@ -62,7 +65,7 @@ const CampaignDetails = ({ campaign, notFound }) => {
               <div className='title'>
                 <h2>{campaign?.title}</h2>
                 <div className='total-collection'>
-                  <span>{t("Funds Required")}</span> - €{campaign?.goal_amount}
+                  <span>{t("Funds Required")}</span> - {formatCurrency(campaign?.goal_amount)}
                   <ProgressBar now={60} />
                 </div>
               </div>
@@ -87,7 +90,7 @@ const CampaignDetails = ({ campaign, notFound }) => {
             </Row>
             <Row className='donorlist-disc'>
               <div className='donorlist'>
-                <div className='buttons' style={{display:"flex"}}>
+                <div className='buttons' style={{ display: "flex" }}>
                   {user ? <Link href={`/campaigns/${campaign?.slug}/subscribe`}>{t("Subscribe")}</Link> : <Link href='/auth/login'>{t("Subscribe")}</Link>}
                   <CampaignShare shareUrl={url} />
                 </div>
@@ -126,19 +129,13 @@ const CampaignDetails = ({ campaign, notFound }) => {
                       <div className='info-title'><TbStethoscope fontSize={25} /> {t("Campaign By")}</div>
                       <div className='info-details'><Link href={`/doctors/${campaign?.doctor?.username}`}>{campaign?.doctor?.first_name} {campaign?.doctor?.surname}</Link></div>
                     </li>
-                    {/* <li>
-                    <div className='info-title'><img src={`/home-icon.png`} alt={t("Category")} /> Institution</div>
-                    <div className='info-details'>Lorem Ipsum is simply of the printing and typesetting.</div>
-                  </li> */}
                   </ul>
                 </div>
-
-
               </div>
               <div className='description'>
-                {/* <h3>Sed ut perspiciatis</h3> */}
                 {isApproved(campaign?.approval)}
-                <p>{campaign?.description}</p>
+                <div className='d-inline' dangerouslySetInnerHTML={{ __html: showMore ? campaign?.description?.replace("\n", "<br/>") : campaign?.description?.replace("\n", "<br/>").substring(0,1200) }} />
+                <Button className='d-inline p-0 ms-2' variant="link" onClick={() => setShowMore(!showMore)}>{showMore ? "Show Less" : "Show More"}</Button>
               </div>
             </Row>
           </Container>
@@ -185,15 +182,4 @@ export async function getServerSideProps({ locale, params }) {
       campaign: response?.data
     }
   }
-  // try {
-
-  // } catch (error) {
-  //   return {
-  //     props: {
-  //       // campaign: response?.data,
-  //       notFound: true
-  //     }
-  //   }
-  // }
-
 }

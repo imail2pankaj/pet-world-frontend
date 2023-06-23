@@ -9,3 +9,13 @@ export const truncate = (string) => {
 export const dateFormat = (string) => {
   return moment(string).format("DD MMM, YYYY");
 }
+
+export const formatCurrency = (price, currency = 'EUR') => {
+  const pounds = Intl.NumberFormat('en-DE', {
+    style: 'currency',
+    currency: currency,
+    maximumSignificantDigits: 3,
+  });
+
+  return pounds.format(price);
+}
