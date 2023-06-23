@@ -112,8 +112,8 @@ const MyAccount = ({ handleToggleMenu, handleLogout }) => {
 
       <Dropdown.Menu>
         {privateNavigation.map(nav =>
-          (nav.for === "" || (user && user?.role === nav.for)) && <Fragment>
-            <Link key={nav.name} onClick={handleToggleMenu} className={`dropdown-item flex ${active === nav.path ? 'active' : ''}`} href={nav.path}>
+          (nav.for === "" || (user && user?.role === nav.for)) && <Fragment key={nav.name} >
+            <Link onClick={handleToggleMenu} className={`dropdown-item flex ${active === nav.path ? 'active' : ''}`} href={nav.path}>
               {t(nav.name)}
               {nav.path === '/dashboard/notifications' && <NotificationCounter className='ms-2' notifications={user?.notifications} />}
             </Link>
