@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import Navbar from 'react-bootstrap/Navbar';
 import { Badge, Button, Dropdown, Nav } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import { defaultAvatar } from '@/core/utils/constants';
+import privateNavigation from '@/core/utils/private-navigation';
 
 const links = [
   { path: '/', name: 'Home' },
@@ -18,17 +19,7 @@ const links = [
   { path: '/about-us', name: 'About Us' },
   { path: '/contact-us', name: 'Contact Us' },
 ]
-const navigation = [
-  { path: "/dashboard", name: 'Dashboard', for: "" },
-  { path: "/dashboard/campaigns", name: 'Campaigns', for: "DOCTOR" },
-  { path: "/dashboard/campaign-requests", name: 'Campaign Requests', for: "DOCTOR" },
-  { path: "/dashboard/donations", name: 'Donations', for: "DONOR" },
-  { path: "/dashboard/pets", name: 'Pets', for: "DONOR" },
-  { path: "/dashboard/notifications", name: 'Notifications', for: "" },
-  { path: "/accounts/profile", name: 'Profile', for: "" },
-  { path: "/accounts/about", name: 'Bio', for: "DOCTOR" },
-  { path: "/accounts/change-password", name: 'Change Password', for: "" },
-];
+
 const Header = () => {
   const { t } = useTranslation('common')
   const router = useRouter();
@@ -82,29 +73,55 @@ const Header = () => {
         </Nav>
         <Nav>
           {isAuthenticated ?
-            <Dropdown>
-              <Dropdown.Toggle className='nav-link btn' variant='outlined' id="dropdown-basic">
-                <div className='d-inline-block'>
-                  <span style={{ position: 'relative' }}>
-                    {user?.notifications != 0 && <Badge className='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"'>{user?.notifications}</Badge>}
-                    <Image width={25} height={25} src={user?.profile_image ? `${user?.profile_image}` : defaultAvatar} className='rounded-circle' alt='Avatar' />
-                  </span>
-                  <span className='ms-2'>
-                    {t("My Account")}
-                  </span>
-                </div>
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                {navigation.map(nav => (nav.for === "" || (user && user?.role === nav.for)) && <Link key={nav.name} onClick={toggleMenu} className='dropdown-item' href={nav.path}>{t(nav.name)}</Link>)}
-                <Button onClick={logout} className='dropdown-item'>{t('Logout')}</Button>
-              </Dropdown.Menu>
-            </Dropdown> :
-            <Link className='nav-link btn' onClick={toggleMenu} href="/auth/login">{t("My Account")}</Link>}
+            <MyAccount handleToggleMenu={toggleMenu} handleLogout={logout} /> :
+            <Link className='nav-link btn' onClick={toggleMenu} href="/auth/login">{t("My Account")}</Link>
+          }
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   )
 }
+const NotificationCounter = ({ notifications, className = '' }) => {
+  return notifications != 0 && <Badge className={`${className} badge rounded-pill bg-primary`}>{notifications}</Badge>
+}
 
+const MyAccount = ({ handleToggleMenu, handleLogout }) => {
+
+  const { t } = useTranslation('common')
+  const [active, setActive] = useState('')
+  const router = useRouter();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    setActive(router.asPath);
+  }, [router])
+
+  return (
+    <Dropdown className="my-account-dropdown">
+      <Dropdown.Toggle className='nav-link btn' variant='outlined' id="my-account-dropdown">
+        <div className='d-inline-block'>
+          <span style={{ position: 'relative' }}>
+            <NotificationCounter notifications={user?.notifications} className={'position-absolute top-0 start-100 translate-middle'} />
+            <Image width={25} height={25} src={user?.profile_image ? `${user?.profile_image}` : defaultAvatar} className='rounded-circle' alt='Avatar' />
+          </span>
+          <span className='ms-2'>
+            {t(user?.first_name)}
+          </span>
+        </div>
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        {privateNavigation.map(nav =>
+          (nav.for === "" || (user && user?.role === nav.for)) && <Fragment>
+            <Link key={nav.name} onClick={handleToggleMenu} className={`dropdown-item flex ${active === nav.path ? 'active' : ''}`} href={nav.path}>
+              {t(nav.name)}
+              {nav.path === '/dashboard/notifications' && <NotificationCounter className='ms-2' notifications={user?.notifications} />}
+            </Link>
+          </Fragment>
+        )}
+        <Button onClick={handleLogout} className='dropdown-item'>{t('Logout')}</Button>
+      </Dropdown.Menu>
+    </Dropdown>
+  )
+}
 export default Header

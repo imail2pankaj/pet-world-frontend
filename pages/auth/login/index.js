@@ -62,7 +62,7 @@ const Login = () => {
           router.replace(response?.data?.returnUrl)
         } else {
           const returnUrl = router.query.returnUrl
-          const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/accounts/profile'
+          const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/dashboard'
           router.replace(redirectURL)
         }
         setServerResponse({

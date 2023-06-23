@@ -16,7 +16,7 @@ import { BiTrash } from 'react-icons/bi'
 const CampaignRequests = () => {
 
   const { t } = useTranslation()
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const dispatch = useDispatch()
   const [notificationId, setNotificationId] = useState(null);
   const [show, setShow] = useState(false);
@@ -24,19 +24,25 @@ const CampaignRequests = () => {
   const store = useSelector(state => state.notification);
   // console.log(store);
   function list() {
-    
+
     dispatch(fetchNotifications({
       q: "",
       limit: 10,
       column: 'id',
       sort: 'desc',
-    }))
+    })).then(() => {
+      const getUser = {
+        ...user,
+        notifications: 0
+      }
+      setUser(getUser);
+    })
   }
   useEffect(() => {
     list();
   }, [dispatch])
 
-  
+
   const handleClose = (notificationId) => {
     setNotificationId(notificationId);
     setShow(true)
@@ -66,7 +72,7 @@ const CampaignRequests = () => {
                     {
                       store?.data?.map(item => (
                         <Fragment key={item.id}>
-                          <tr>
+                          <tr style={{ background: (item?.is_read === "0" || item?.is_read === 0) ? "#EEE" : "#FFF" }}>
                             <td>{item?.id}</td>
                             <td>{item?.description}</td>
                             <td>{item?.type}</td>
