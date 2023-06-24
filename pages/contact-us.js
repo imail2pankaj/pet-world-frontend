@@ -97,7 +97,7 @@ const ContactUs = ({appSettings}) => {
 export default ContactUs
 
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const home = await axiosInstance.get('/');
   return {
     props: {
