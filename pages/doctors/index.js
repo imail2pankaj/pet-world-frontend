@@ -14,7 +14,7 @@ import { capitalize } from '@/core/utils/format';
 import { useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 
-const Doctors = ({ initialDoctors }) => {
+const Doctors = () => {
 
   const { t } = useTranslation('common')
   const [loading, setLoading] = useState(false);
@@ -36,9 +36,10 @@ const Doctors = ({ initialDoctors }) => {
         setDoctors(response.data || []);
       });
   }
-  useEffect(() => {
-    setDoctors(initialDoctors);
-  }, [])
+
+  // useEffect(() => {
+  //   setDoctors(initialDoctors);
+  // }, [])
 
   useEffect(() => {
     fetchDoctors()
@@ -196,14 +197,14 @@ export default Doctors
 
 
 export async function getStaticProps({ locale }) {
-  const doctors = await axiosInstance.get('doctors');
+  // const doctors = await axiosInstance.get('doctors');
 
   return {
     props: {
       ...(await serverSideTranslations(locale, [
         'common'
       ])),
-      initialDoctors: doctors?.data || []
+      // initialDoctors: doctors?.data || []
       // Will be passed to the page component as props
     },
     revalidate: 100,

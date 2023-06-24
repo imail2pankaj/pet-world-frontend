@@ -13,7 +13,7 @@ import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 
-const Campaigns = ({ initialCampaigns }) => {
+const Campaigns = () => {
 
   const { t } = useTranslation('common')
   const [loading, setLoading] = useState(false);
@@ -35,9 +35,9 @@ const Campaigns = ({ initialCampaigns }) => {
         setCampaigns(response.data || []);
       });
   }
-  useEffect(() => {
-    setCampaigns(initialCampaigns);
-  }, [])
+  // useEffect(() => {
+  //   setCampaigns(initialCampaigns);
+  // }, [])
 
   useEffect(() => {
     fetchCampaigns()
@@ -115,7 +115,7 @@ export default Campaigns
 
 
 export async function getStaticProps({ locale }) {
-  const campaigns = await axiosInstance.get('campaigns-list');
+  // const campaigns = await axiosInstance.get('campaigns-list');
   // console.log(campaigns);
 
   return {
@@ -124,7 +124,7 @@ export async function getStaticProps({ locale }) {
         'common'
       ])),
 
-      initialCampaigns: campaigns?.data || []
+      // initialCampaigns: campaigns?.data || []
       // Will be passed to the page component as props
     },
     revalidate: 100,

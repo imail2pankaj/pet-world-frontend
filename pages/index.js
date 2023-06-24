@@ -35,7 +35,7 @@ export default function Home({ appSettings }) {
   )
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const home = await axiosInstance.get('/');
   return {
     props: {
