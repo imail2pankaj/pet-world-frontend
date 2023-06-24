@@ -3,13 +3,9 @@ import axiosInstance from './axiosInstance';
 
 // ** Get Campaigns
 export const fetchNotifications = createAsyncThunk('appNotifications/fetchNotifications', async (params) => {
-  const storedToken = window.localStorage.getItem('accessToken');
 
-  const response = await axiosInstance.get(`/notifications?` + (new URLSearchParams(params)), {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/notifications?` + (new URLSearchParams(params)))
+
   return response;
 })
 
@@ -17,14 +13,10 @@ export const fetchNotifications = createAsyncThunk('appNotifications/fetchNotifi
 // ** Create Pet
 export const deleteNotification = createAsyncThunk('appPets/deleteNotification', async (id, { rejectWithValue }) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
   try {
 
-    const response = await axiosInstance.delete(`/notifications/${id}`, {
-      headers: {
-        Authorization: `Bearer ${storedToken}`
-      }
-    })
+    const response = await axiosInstance.delete(`/notifications/${id}`)
+
     return response;
   } catch (error) {
     if (!error.response) {

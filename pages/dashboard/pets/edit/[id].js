@@ -23,12 +23,14 @@ import nextI18nextConfig from '@/next-i18next.config';
 import axiosInstance from '@/store/api/axiosInstance';
 
 const schema = yup.object().shape({
-  name: yup.string().required(),
-  location: yup.string().required(),
+  name: yup.string().max(64).required(),
+  location: yup.string().max(64).required(),
   gender: yup.string().required(),
   pet_type: yup.string().required(),
   animal_type: yup.string().required(),
-  age: yup.string().required()
+  age: yup.number().max(200).required(),
+  weight: yup.number().max(1000),
+  previous_diseases: yup.string().max(255),
 })
 
 const defaultValues = {

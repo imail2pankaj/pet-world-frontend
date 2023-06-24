@@ -3,37 +3,27 @@ import axiosInstance from './axiosInstance';
 
 // ** Get Campaigns
 export const fetchCampaignRequests = createAsyncThunk('appCampaignRequests/fetchCampaignRequests', async (params) => {
-  const storedToken = window.localStorage.getItem('accessToken');
 
-  const response = await axiosInstance.get(`/campaign-requests?` + (new URLSearchParams(params)), {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/campaign-requests?` + (new URLSearchParams(params)))
+
   return response;
 })
 
 // ** Get Campaign
 export const getCampaignRequest = createAsyncThunk('appCampaignRequests/getCampaignRequest', async (id) => {
-  const storedToken = window.localStorage.getItem('accessToken');
 
-  const response = await axiosInstance.get(`/campaign-requests/${id}`, {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/campaign-requests/${id}`)
+
   return response;
 })
 
 // ** Create Campaign
 export const createCampaignRequest = createAsyncThunk('appCampaignRequests/createCampaignRequest', async (data, { rejectWithValue }) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
   try {
 
     const response = await axiosInstance.post(`/campaign-requests`, data, {
       headers: {
-        Authorization: `Bearer ${storedToken}`,
         'Content-Type': 'multipart/form-data'
       }
     })
@@ -50,14 +40,10 @@ export const createCampaignRequest = createAsyncThunk('appCampaignRequests/creat
 // ** Create Campaign
 export const updateCampaignRequest = createAsyncThunk('appCampaignRequests/updateCampaignRequest', async ({ requestId, data }, { rejectWithValue }) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
   try {
 
-    const response = await axiosInstance.put(`/campaign-requests/${requestId}`, data, {
-      headers: {
-        Authorization: `Bearer ${storedToken}`
-      }
-    })
+    const response = await axiosInstance.put(`/campaign-requests/${requestId}`, data)
+
     return response;
   } catch (error) {
     if (!error.response) {

@@ -3,38 +3,28 @@ import axiosInstance from './axiosInstance';
 
 // ** Get Event
 export const fetchPets = createAsyncThunk('appPets/fetchPets', async (params) => {
-  const storedToken = window.localStorage.getItem('accessToken');
 
-  const response = await axiosInstance.get(`/pets?` + (new URLSearchParams(params)), {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/pets?` + (new URLSearchParams(params)))
+
   return response;
 })
 
 // ** Get Event
 export const getPet = createAsyncThunk('appPets/getPet', async (id) => {
-  const storedToken = window.localStorage.getItem('accessToken');
 
-  const response = await axiosInstance.get(`/pets/${id}`, {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/pets/${id}`)
+
   return response;
 })
 
 // ** Create Pet
 export const createPet = createAsyncThunk('appPets/createPet', async (data, { rejectWithValue }) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
   try {
 
     const response = await axiosInstance.post(`/pets`, data, {
       headers: {
-        Authorization: `Bearer ${storedToken}`,
-        'Content-Type': 'multipart/ form-data'
+        'Content-Type': 'multipart/form-data'
       }
     })
     return response;
@@ -50,12 +40,10 @@ export const createPet = createAsyncThunk('appPets/createPet', async (data, { re
 // ** Create Pet
 export const updatePet = createAsyncThunk('appPets/updatePet', async ({ id, formData }, { rejectWithValue }) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
   try {
 
-    const response = await axiosInstance.put(`/pets/${id}`, formData, {
+    const response = await axiosInstance.post(`/pets/${id}`, formData, {
       headers: {
-        Authorization: `Bearer ${storedToken}`,
         'Content-Type': 'multipart/form-data'
       }
     })
@@ -72,14 +60,10 @@ export const updatePet = createAsyncThunk('appPets/updatePet', async ({ id, form
 // ** Create Pet
 export const deleteCampaignImage = createAsyncThunk('appPets/deleteCampaignImage', async (id, { rejectWithValue }) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
   try {
 
-    const response = await axiosInstance.delete(`/pets/${id}/campaign-documents`, {
-      headers: {
-        Authorization: `Bearer ${storedToken}`
-      }
-    })
+    const response = await axiosInstance.delete(`/pets/${id}/campaign-documents`)
+
     return response;
   } catch (error) {
     if (!error.response) {
@@ -93,13 +77,11 @@ export const deleteCampaignImage = createAsyncThunk('appPets/deleteCampaignImage
 // ** Create Pet
 export const uploadCampaignDocuments = createAsyncThunk('appPets/uploadCampaignDocuments', async ({ petId, campaignId, formData }, { rejectWithValue }) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
   try {
 
     const response = await axiosInstance.post(`/pets/${petId}/${campaignId}/campaign-documents`, formData, {
       headers: {
-        'Content-Type': 'multipart/ form-data',
-        Authorization: `Bearer ${storedToken}`,
+        'Content-Type': 'multipart/form-data',
       }
     })
     return response;
@@ -111,20 +93,6 @@ export const uploadCampaignDocuments = createAsyncThunk('appPets/uploadCampaignD
     return rejectWithValue(error.response.data)
   }
 })
-
-// // ** Create Event
-// export const attendEvent = createAsyncThunk('appEvents/attendEvent', async ({id, status}) => {
-
-//   const storedToken = window.localStorage.getItem('accessToken');
-
-//   const response = await axiosInstance.get(`/events/${id}/attend/${status}`, {
-//     headers: {
-//       Authorization: `Bearer ${storedToken}`
-//     },
-//   })
-
-//   return response;
-// })
 
 export const appPetSlice = createSlice({
   name: 'appSlice',

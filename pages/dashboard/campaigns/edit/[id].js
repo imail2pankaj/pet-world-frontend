@@ -4,32 +4,32 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { NextSeo } from 'next-seo'
-import { InnerNavbar, PrimarySubmit, ValidationError } from '@/components/Common'
-import { Controller, useForm } from 'react-hook-form'
+import { ValidationError } from '@/components/Common'
+import { useForm } from 'react-hook-form'
 import { Alert, Badge, Button, Container, Form, FormControl, FormGroup, Spinner } from 'react-bootstrap'
-import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { animalGender, animalType, campaignStatuses, passportAvailable, petType, vaccinations } from '@/core/utils/constants';
+import { campaignStatuses } from '@/core/utils/constants';
 import { createPet, getCampaign, updateCampaign } from '@/store/api/campaign';
 import { useDispatch, useSelector } from 'react-redux';
-import Dropzone from "react-dropzone";
 import ProtectedLayout from '@/components/Layout/ProtectedLayout';
 import Link from 'next/link';
 import nextI18nextConfig from '@/next-i18next.config';
 import axiosInstance from '@/store/api/axiosInstance';
 import ReactDatePicker from 'react-datepicker';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
+import moment from 'moment';
 
 const schema = yup.object().shape({
-  name: yup.string().required(),
-  location: yup.string().required(),
-  gender: yup.string().required(),
-  pet_type: yup.string().required(),
-  animal_type: yup.string().required(),
-  age: yup.string().required()
+  title: yup.string().min(3).max(255).required(),
+  description: yup.string().min(50).required(),
+  goal_amount: yup.number().min(1, 'Goal amount should be at-least one').max(100000).required(),
+  status: yup.string().required(),
+  pet_owner_email: yup.string().email().required(),
 })
 
 const defaultValues = {
@@ -38,10 +38,12 @@ const defaultValues = {
   start_date: '',
   description: '',
   status: 0,
-  email: '',
-  weight: 0,
   pet_owner_email: '',
   pet_owner_participation: 0,
+  treatment: '',
+  appointed_doctors: '',
+  old_appointed_doctors: '',
+  pet_id: '',
 }
 
 const PetCreate = () => {
@@ -52,11 +54,77 @@ const PetCreate = () => {
   const [serverResponse, setServerResponse] = useState("")
   const [selectDate, setSelectDate] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [selected, setSelected] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState([]);
+  const [oldSelectedDoctor, setOldSelectedDoctor] = useState([]);
   const [participation, setParticipation] = useState(defaultValues.pet_owner_participation)
+  const [selectedPetOwner, setSelectedPetOwner] = useState([]);
+  const [petOwners, setPetOwners] = useState([]);
+  const [specialities, setSpecialities] = useState([]);
+  const [appointedDoctors, setAppointedDoctors] = useState([])
+  const [allAppointedDoctors, setAllAppointedDoctors] = useState([]);
+  const [pets, setPets] = useState([]);
 
   const dispatch = useDispatch();
 
   const store = useSelector(state => state.campaign);
+
+  const fetchAppointedDoctors = async (treatment) => {
+    setSelectedDoctor([])
+    const data = await axiosInstance.get('/appointed-doctors?treatment=' + treatment);
+    if (!data?.data?.success) {
+      setAppointedDoctors(data.data);
+      setAllAppointedDoctors(data.data);
+    } else {
+      setAppointedDoctors([]);
+      setAllAppointedDoctors([]);
+    }
+  }
+
+  const fetchPets = async (ownerEmail, edit = "") => {
+    try {
+      const data = await axiosInstance.get('/owners-pets?email=' + ownerEmail);
+      if (!data?.data?.success) {
+        const newPets = [{ id: 0, name: "No Pet" }].concat(data.data);
+        setPets(newPets);
+        if (!edit) {
+          setValue("pet_id", newPets[0]);
+        }
+      } else {
+        setPets([]);
+        if (!edit) {
+          setValue("pet_id", "");
+        }
+      }
+    } catch (error) {
+      setPets([]);
+      setValue("pet_id", "");
+    }
+  }
+
+  useEffect(() => {
+
+    const fetchPetOwners = async () => {
+      try {
+        const data = await axiosInstance.get('/pet-owners');
+        setPetOwners(data.data);
+      } catch (error) {
+        setPetOwners([]);
+      }
+    }
+
+    const fetchSpecialities = async () => {
+      try {
+        const data = await axiosInstance.get('/specialities');
+        setSpecialities(data.data);
+      } catch (error) {
+        setSpecialities([]);
+      }
+    }
+    fetchSpecialities();
+    fetchPetOwners();
+
+  }, [])
 
   const {
     control,
@@ -76,9 +144,45 @@ const PetCreate = () => {
     dispatch(getCampaign(id)).then((response) => {
       const data = response?.payload?.data;
       for (const key in defaultValues) {
-        if(key === 'pet_owner_participation') {
+        if (key === 'pet_owner_participation') {
           setParticipation(data[key]);
           setValue(key, data[key] ? data[key].toString() : "");
+        } else if (key === 'pet_owner_email') {
+          fetchPets(data[key], 'edit').then(() => {
+            const petOwner = [{
+              label: data[key],
+              id: 0
+            }]
+            setSelectedPetOwner(petOwner);
+            setValue(key, data[key] ? data[key].toString() : "");
+            setValue("pet_id", data['pet_id']);
+          })
+        } else if (key === 'pet_id') {
+          console.log(data[key]);
+          setValue("pet_id", data[key].toString());
+        } else if (key === 'start_date') {
+          setValue(key, data[key]);
+          setSelectDate(new Date(data[key]));
+        } else if (key === 'treatment') {
+          fetchAppointedDoctors(data[key]).then(() => {
+            setSelected([data[key]])
+            setValue('treatment', data[key]);
+            if (data?.approval) {
+              const editSelected = [];
+              data?.approval?.map(req => {
+                editSelected.push({
+                  id: req.doctor.id,
+                  email: req.doctor.email,
+                  first_name: req.doctor.first_name,
+                  surname: req.doctor.surname,
+                })
+              })
+              setSelectedDoctor(editSelected)
+              setOldSelectedDoctor(editSelected)
+              setValue("appointed_doctors", editSelected);
+              setValue("old_appointed_doctors", editSelected);
+            }
+          })
         } else {
           setValue(key, data[key] ? data[key].toString() : "");
         }
@@ -104,14 +208,13 @@ const PetCreate = () => {
         });
       }
       setIsLoading(false);
-    } else if (store?.petData && isLoading) {
+    } else if (store?.campaignData && isLoading) {
       reset();
       toast.success(t("Campaign Successfully Updated"));
       setServerResponse({
         variant: "success",
         message: "Campaign Successfully Updated"
       })
-      setHeroFiles([]);
       setIsLoading(false);
       router.replace("/dashboard/campaigns");
     }
@@ -120,16 +223,50 @@ const PetCreate = () => {
   const onSubmit = data => {
     setIsLoading(true);
     setServerResponse("");
+// console.log(data);
+    if (!data.pet_owner_email) {
+      setError('pet_owner_email', {
+        type: "manual",
+        message: "Pet owner email field is required"
+      })
+      return false
+    }
+    if (!data.treatment) {
+      setError('treatment', {
+        type: "manual",
+        message: "Treatment field is required"
+      })
+      return false
+    }
+    if (!data.appointed_doctors) {
+      setError('appointed_doctors', {
+        type: "manual",
+        message: "Appointed doctors field is required"
+      })
+      return false
+    }
 
     const formData = new FormData();
     for (const key in data) {
-      if (Object.hasOwnProperty.call(data, key)) {
+      // if (Object.hasOwnProperty.call(data, key)) {
         const element = data[key];
-        formData.append(key, element);
-      }
+        if (key === 'appointed_doctors') {
+          element.map((doctor) => {
+            formData.append("appointed_doctors[]", doctor.id);
+          })
+        } else if (key === 'old_appointed_doctors') {
+          element.map((doctor) => {
+            formData.append("old_appointed_doctors[]", doctor.id);
+          })
+        } else if (key === 'start_date') {
+          formData.append(key, element ? moment(element).format("YYYY-MM-DD") : "");
+        } else {
+          formData.append(key, element);
+        }
+      // }
     }
 
-    dispatch(updateCampaign({formData, id}))
+    dispatch(updateCampaign({ formData, id }))
   }
 
   return (
@@ -195,7 +332,7 @@ const PetCreate = () => {
                         type='text'
                         multiple
                         as="textarea"
-                        style={{height:220}}
+                        style={{ height: 220 }}
                         label={t('Description')}
                         placeholder={t("Enter Description")}
                         isInvalid={Boolean(errors.description)}
@@ -207,21 +344,45 @@ const PetCreate = () => {
                   <Row xs={1} md={3}>
                     <Form.Group>
                       <Form.Label>{t("Pet Owner Email")}</Form.Label>
-                      <Form.Control
+                      <Typeahead
                         name='pet_owner_email'
-                        type='email'
-                        label={t('Pet Owner Email')}
-                        placeholder={t("Enter Pet Owner Email")}
-                        isInvalid={Boolean(errors.pet_owner_email)}
-                        {...register('pet_owner_email', { required: true })}
+                        id='pet_owner_email'
+                        onChange={(selections) => {
+                          if (selections) {
+                            setSelectedPetOwner(selections)
+                            if (selections[0]?.customOption) {
+                              setValue('pet_owner_email', selections[0].label);
+                              fetchPets(selections[0].label);
+                            } else {
+                              setValue('pet_owner_email', selections[0]);
+                              fetchPets(selections[0]);
+                            }
+                          }
+                        }}
+                        options={petOwners}
+                        placeholder="Select Pet Owner Email..."
+                        selected={selectedPetOwner}
+                        allowNew
+                        newSelectionPrefix="Add New: "
                       />
                       <ValidationError errors={errors.pet_owner_email} />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>{t('Pet')}</Form.Label>
+                      <Form.Select
+                        defaultValue={0}
+                        className='form-control'
+                        name='pet_id'
+                        {...register("pet_id", { required: true })}>
+                        {pets.map(pet => <option value={pet.id} key={pet.id}>{t(pet.name)}</option>)}
+                      </Form.Select>
+                      <ValidationError errors={errors.pet_id} />
                     </Form.Group>
                     <Form.Group>
                       <Form.Label>{t("Pet Owner Participation")} <Badge bg="secondary">{`${participation}%`}</Badge></Form.Label>
                       <Form.Range
                         name='pet_owner_participation'
-                        min="0" max="50" 
+                        min="0" max="50"
                         defaultValue={participation}
                         onInput={(e) => setParticipation(e.target.value)}
                         label={t('pet_owner_participation')}
@@ -229,6 +390,52 @@ const PetCreate = () => {
                         {...register('pet_owner_participation', { required: true })}
                       />
                       <ValidationError errors={errors.pet_owner_participation} />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>Treatments</Form.Label>
+                      <Typeahead
+                        name='treatment'
+                        id='treatment'
+                        onChange={(selections) => {
+                          setSelected(selections)
+                          setValue('treatment', selections[0]);
+                          fetchAppointedDoctors(selections);
+                        }}
+                        options={specialities}
+                        placeholder="Select Treatments..."
+                        selected={selected}
+                      />
+                      <ValidationError errors={errors.treatment} />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>
+                        Appointed Doctors
+                      </Form.Label>
+                      <Typeahead
+                        name='appointed_doctors'
+                        id='appointed_doctors'
+                        labelKey="first_name"
+                        multiple
+                        onChange={(selections) => {
+                          setSelectedDoctor(selections)
+                          setValue('appointed_doctors', selections);
+                          if (selections.length >= 3) {
+                            setAppointedDoctors(selectedDoctor);
+                          } else {
+                            setAppointedDoctors(allAppointedDoctors);
+                          }
+                        }}
+                        options={appointedDoctors}
+                        placeholder="Select Appointed Doctors..."
+                        selected={selectedDoctor}
+                        renderMenuItemChildren={(option) => (
+                          <>
+                            <b className='d-block'>{option.email} </b>
+                            <span>{option.first_name} {option.surname} </span>
+                          </>
+                        )}
+                      />
+                      <ValidationError errors={errors.appointed_doctors} />
                     </Form.Group>
                     <Form.Group>
                       <Form.Label>{t('Status')}</Form.Label>

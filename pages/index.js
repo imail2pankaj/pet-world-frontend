@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 import axiosInstance from '@/store/api/axiosInstance';
 import { NextSeo } from 'next-seo';
 
-export default function Home({appSettings}) {
+export default function Home({ appSettings }) {
   return (
     <>
       <NextSeo title={appSettings?.app?.title} />

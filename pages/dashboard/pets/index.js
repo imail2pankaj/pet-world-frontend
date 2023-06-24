@@ -85,9 +85,11 @@ const Pets = () => {
                             <CustomTooltip message={'Edit Pet'}>
                               <Link className='btn btn-secondary btn-sm' href={`/dashboard/pets/edit/${pet.id}`} ><BiEdit /></Link>
                             </CustomTooltip> {` `}
-                            <CustomTooltip message={'Delete Pet'}>
-                              <Button variant='danger' size='sm' onClick={() => handleClose(pet.id)} ><BiTrash /></Button>
-                            </CustomTooltip>
+                            {!pet?.campaign &&
+                              <CustomTooltip message={'Delete Pet'}>
+                                <Button variant='danger' size='sm' onClick={() => handleClose(pet.id)} ><BiTrash /></Button>
+                              </CustomTooltip>
+                            }
                           </td>
                         </tr>
                       ))

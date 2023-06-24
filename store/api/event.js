@@ -3,26 +3,16 @@ import axiosInstance from './axiosInstance';
 
 // ** Get Event
 export const getEvent = createAsyncThunk('appEvents/getEvent', async (id, { getState, dispatch }) => {
-  const storedToken = window.localStorage.getItem('accessToken');
+  
+  const response = await axiosInstance.get(`/events/${id}`)
 
-  const response = await axiosInstance.get(`/events/${id}`, {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    }
-  })
   return response;
 })
 
 // ** Create Event
 export const participateEvent = createAsyncThunk('appEvents/participateEvent', async (id) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
-
-  const response = await axiosInstance.get(`/events/${id}/participate`, {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/events/${id}/participate`)
 
   return response;
 })
@@ -30,13 +20,7 @@ export const participateEvent = createAsyncThunk('appEvents/participateEvent', a
 // ** Create Event
 export const attendEvent = createAsyncThunk('appEvents/attendEvent', async ({id, status}) => {
 
-  const storedToken = window.localStorage.getItem('accessToken');
-
-  const response = await axiosInstance.get(`/events/${id}/attend/${status}`, {
-    headers: {
-      Authorization: `Bearer ${storedToken}`
-    },
-  })
+  const response = await axiosInstance.get(`/events/${id}/attend/${status}`)
 
   return response;
 })

@@ -137,7 +137,7 @@ const DoctorCampaignCreate = () => {
     formState: { errors }
   } = useForm({
     defaultValues,
-    mode: 'onBlur',
+    mode: 'onChange',
     resolver: yupResolver(schema)
   })
 
@@ -378,6 +378,7 @@ const DoctorCampaignCreate = () => {
                         labelKey="first_name"
                         multiple
                         onChange={(selections) => {
+                          console.log(selections);
                           setSelectedDoctor(selections)
                           setValue('appointed_doctors', selections);
                           if (selections.length >= 3) {

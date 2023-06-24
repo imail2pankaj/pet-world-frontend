@@ -44,12 +44,10 @@ const AuthProvider = ({ children }) => {
           setUser(null)
           setLoading(false)
 
-          // if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
           if (router.asPath !== '/') {
             router.replace('/auth/login')
           }
 
-          // }
         })
 
       } else {

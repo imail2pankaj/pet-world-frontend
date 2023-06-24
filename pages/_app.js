@@ -48,7 +48,7 @@ function App({ Component, pageProps }) {
                 <Component {...pageProps} />
               </Layout>
             </Guard>
-              <Toaster position={'top-right'} toastOptions={{ className: 'react-hot-toast' }} />
+            <Toaster position={'top-right'} toastOptions={{ className: 'react-hot-toast' }} />
           </AuthProvider>
         </ThemeProvider>
       </Provider>

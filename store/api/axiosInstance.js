@@ -1,37 +1,52 @@
+import { getToken, setToken } from "@/core/utils/functions";
 import axios from "axios";
 
-const setHeader = () => {
-
-  const token = localStorage.getItem('accessToken');
-
-  const headers = { "Content-Type": "application/json" }
-
-  if (token) {
-    headers.Authorization = `Bearer ${token}`
-  }
-
-  return headers;
-}
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   // timeout: 10000,
-  headers: { "Content-Type": "application/json" }
+  headers: {
+    "Content-type": "application/json",
+  },
+  // withCredentials: true,
 });
 
-axios.interceptors.request.use(function (config) {
+axiosInstance.interceptors.request.use(function (config) {
+  const token = getToken();
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
   return config;
 }, function (error) {
   return Promise.reject(error);
-});
+}); 
 
 // Add a response interceptor
-axios.interceptors.response.use(function (response) {
+axiosInstance.interceptors.response.use(function (response) {
   return response;
-}, function (error) {
-  // console.log(error?.response,'response')
-  // if (error?.response?.status === 401) {
-  //   window.location.replace("/auth/login");
-  // }
-  return Promise.reject(error);
+}, async (err) => {
+  const originalConfig = err.config;
+
+  if (originalConfig.url !== "/auth/login" && err.response) {
+    // Access Token was expired
+    if (err.response.status === 401 && !originalConfig._retry) {
+      originalConfig._retry = true;
+
+      try {
+        const rs = await axiosInstance.post("/auth/refresh", {
+          refreshToken: getToken(),
+        });
+
+        const { accessToken } = rs?.data?.authorization?.token;
+        setToken(accessToken);
+        axiosInstance.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+        return axiosInstance(originalConfig);
+      } catch (_error) {
+        return Promise.reject(_error);
+      }
+    }
+  }
+  return Promise.reject(err);
 });
 export default axiosInstance
