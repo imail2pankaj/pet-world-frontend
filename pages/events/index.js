@@ -18,7 +18,7 @@ import CustomPagination from '@/components/Common/CustomPagination';
 import { capitalize } from '@/core/utils/format';
 import { NextSeo } from 'next-seo';
 
-const Events = ({ initialEvents }) => {
+const Events = () => {
   const [modalShow, setModalShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
@@ -44,9 +44,9 @@ const Events = ({ initialEvents }) => {
         setEvents(response.data || []);
       });
   }
-  useEffect(() => {
-    setEvents(initialEvents);
-  }, [])
+  // useEffect(() => {
+  //   setEvents(initialEvents);
+  // }, [])
 
   useEffect(() => {
     fetchEvents()
@@ -133,14 +133,15 @@ export default Events
 
 
 export async function getStaticProps({ locale }) {
-  const events = await axiosInstance.get('events');
+  // const events = await axiosInstance.get('events');
 
   return {
     props: {
       ...(await serverSideTranslations(locale, [
         'common'
       ])),
-      initialEvents: events?.data
+      // initialEvents: []
+      // initialEvents: events?.data
       // Will be passed to the page component as props
     },
     revalidate: 100,
