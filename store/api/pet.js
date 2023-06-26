@@ -4,7 +4,14 @@ import axiosInstance from './axiosInstance';
 // ** Get Event
 export const fetchPets = createAsyncThunk('appPets/fetchPets', async (params) => {
 
-  const response = await axiosInstance.get(`/pets?` + (new URLSearchParams(params)))
+  const accessToken = localStorage.getItem("accessToken");
+
+  const response = await axiosInstance.get(`/pets?` + (new URLSearchParams(params)), {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
 
   return response;
 })
@@ -12,7 +19,14 @@ export const fetchPets = createAsyncThunk('appPets/fetchPets', async (params) =>
 // ** Get Event
 export const getPet = createAsyncThunk('appPets/getPet', async (id) => {
 
-  const response = await axiosInstance.get(`/pets/${id}`)
+  const accessToken = localStorage.getItem("accessToken");
+
+  const response = await axiosInstance.get(`/pets/${id}`, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${accessToken}`
+    }
+  })
 
   return response;
 })
@@ -21,10 +35,12 @@ export const getPet = createAsyncThunk('appPets/getPet', async (id) => {
 export const createPet = createAsyncThunk('appPets/createPet', async (data, { rejectWithValue }) => {
 
   try {
+    const accessToken = localStorage.getItem("accessToken");
 
     const response = await axiosInstance.post(`/pets`, data, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${accessToken}`
       }
     })
     return response;
@@ -41,10 +57,11 @@ export const createPet = createAsyncThunk('appPets/createPet', async (data, { re
 export const updatePet = createAsyncThunk('appPets/updatePet', async ({ id, formData }, { rejectWithValue }) => {
 
   try {
-
+    const accessToken = localStorage.getItem("accessToken");
     const response = await axiosInstance.post(`/pets/${id}`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${accessToken}`
       }
     })
     return response;
@@ -61,8 +78,12 @@ export const updatePet = createAsyncThunk('appPets/updatePet', async ({ id, form
 export const deleteCampaignImage = createAsyncThunk('appPets/deleteCampaignImage', async (id, { rejectWithValue }) => {
 
   try {
-
-    const response = await axiosInstance.delete(`/pets/${id}/campaign-documents`)
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await axiosInstance.delete(`/pets/${id}/campaign-documents`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
 
     return response;
   } catch (error) {
@@ -78,10 +99,11 @@ export const deleteCampaignImage = createAsyncThunk('appPets/deleteCampaignImage
 export const uploadCampaignDocuments = createAsyncThunk('appPets/uploadCampaignDocuments', async ({ petId, campaignId, formData }, { rejectWithValue }) => {
 
   try {
-
+    const accessToken = localStorage.getItem("accessToken");
     const response = await axiosInstance.post(`/pets/${petId}/${campaignId}/campaign-documents`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${accessToken}`
       }
     })
     return response;

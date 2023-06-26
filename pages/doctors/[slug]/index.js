@@ -8,6 +8,7 @@ import axiosInstance from '@/store/api/axiosInstance';
 import { defaultAvatar } from '@/core/utils/constants';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
+import axios from 'axios';
 
 const DoctorsProfile = ({ doctor }) => {
   let openGraph = { images: [] };
@@ -127,7 +128,7 @@ export default DoctorsProfile
 
 export async function getServerSideProps({ params }) {
   // Call external API from here directly
-  const response = await axiosInstance.get(`/doctors/${params.slug}`);
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/doctors/${params.slug}`);
 
   return {
     props: { doctor: response?.data }

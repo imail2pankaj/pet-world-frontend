@@ -14,6 +14,7 @@ import {
 import { useEffect } from 'react';
 import axiosInstance from '@/store/api/axiosInstance';
 import { NextSeo } from 'next-seo';
+import axios from 'axios';
 
 export default function Home({ appSettings }) {
   return (
@@ -36,7 +37,7 @@ export default function Home({ appSettings }) {
 }
 
 export async function getServerSideProps({ locale }) {
-  const home = await axiosInstance.get('/');
+  const home = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/`);
   return {
     props: {
       ...(await serverSideTranslations(locale, [
@@ -45,6 +46,6 @@ export async function getServerSideProps({ locale }) {
       appSettings: home?.data
       // Will be passed to the page component as props
     },
-    revalidate: 10,
+    // revalidate: 10,
   }
 }

@@ -17,6 +17,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
 import { formatCurrency } from '@/core/utils/format';
+import axios from 'axios';
 
 const CampaignDetails = ({ campaign, notFound }) => {
 
@@ -173,7 +174,7 @@ const CampaignDetails = ({ campaign, notFound }) => {
 export default CampaignDetails
 
 export async function getServerSideProps({ locale, params }) {
-  const response = await axiosInstance.get(`/campaigns/${params.slug}/details`);
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${params.slug}/details`);
   return {
     props: {
       ...(await serverSideTranslations(locale, [
