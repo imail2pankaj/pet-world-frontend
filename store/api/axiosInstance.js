@@ -11,10 +11,10 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(function (config) {
-  // const token = getToken();
-  // if (token) {
-  //   config.headers["Authorization"] = `Bearer ${token}`;
-  // }
+  const token = getToken();
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
   return config;
 }, function (error) {
   return Promise.reject(error);
@@ -24,29 +24,29 @@ axiosInstance.interceptors.request.use(function (config) {
 axiosInstance.interceptors.response.use(function (response) {
   return response;
 }, async (err) => {
-  // const originalConfig = err.config;
+  const originalConfig = err.config;
 
-  // if (originalConfig.url !== "/auth/login" && err.response) {
-  //   // Access Token was expired
-  //   if (err.response.status === 401 && !originalConfig._retry) {
-  //     originalConfig._retry = true;
+  if (originalConfig.url !== "/auth/login" && err.response) {
+    // Access Token was expired
+    if (err.response.status === 401 && !originalConfig._retry) {
+      originalConfig._retry = true;
 
-  //     try {
-  //       const rs = await axiosInstance.post("/auth/refresh", {
-  //         refreshToken: getToken(),
-  //       });
+      try {
+        const rs = await axiosInstance.post("/auth/refresh", {
+          refreshToken: getToken(),
+        });
 
-  //       const { accessToken } = rs?.data?.authorization?.token;
-  //       setToken(accessToken);
-  //       axiosInstance.defaults.headers.common[
-  //         "Authorization"
-  //       ] = `Bearer ${accessToken}`;
-  //       return axiosInstance(originalConfig);
-  //     } catch (_error) {
-  //       return Promise.reject(_error);
-  //     }
-  //   }
-  // }
+        const { accessToken } = rs?.data?.authorization?.token;
+        setToken(accessToken);
+        axiosInstance.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+        return axiosInstance(originalConfig);
+      } catch (_error) {
+        return Promise.reject(_error);
+      }
+    }
+  }
   return Promise.reject(err);
 });
 export default axiosInstance

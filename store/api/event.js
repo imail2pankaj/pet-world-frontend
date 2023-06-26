@@ -12,13 +12,7 @@ export const getEvent = createAsyncThunk('appEvents/getEvent', async (id, { getS
 // ** Create Event
 export const participateEvent = createAsyncThunk('appEvents/participateEvent', async (id) => {
 
-  const accessToken = localStorage.getItem("accessToken");
-
-  const response = await axiosInstance.get(`/events/${id}/participate`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/events/${id}/participate`)
 
   return response;
 })
@@ -26,13 +20,7 @@ export const participateEvent = createAsyncThunk('appEvents/participateEvent', a
 // ** Create Event
 export const attendEvent = createAsyncThunk('appEvents/attendEvent', async ({id, status}) => {
 
-  const accessToken = localStorage.getItem("accessToken");
-
-  const response = await axiosInstance.get(`/events/${id}/attend/${status}`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/events/${id}/attend/${status}`)
 
   return response;
 })

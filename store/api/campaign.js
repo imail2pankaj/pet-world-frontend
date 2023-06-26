@@ -4,27 +4,14 @@ import axiosInstance from './axiosInstance';
 // ** Get Campaigns
 export const fetchCampaigns = createAsyncThunk('appCampaigns/fetchCampaigns', async (params) => {
 
-  const accessToken = localStorage.getItem("accessToken");
-
-  const response = await axiosInstance.get(`/campaigns?` + (new URLSearchParams(params)), {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  })
-
+  const response = await axiosInstance.get(`/campaigns?` + (new URLSearchParams(params)))
   return response;
 })
 
 // ** Get Campaign
 export const getCampaign = createAsyncThunk('appCampaigns/getCampaign', async (id) => {
 
-  const accessToken = localStorage.getItem("accessToken");
-
-  const response = await axiosInstance.get(`/campaigns/${id}`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/campaigns/${id}`)
 
   return response;
 })
@@ -32,13 +19,7 @@ export const getCampaign = createAsyncThunk('appCampaigns/getCampaign', async (i
 // ** Get Campaign
 export const sendEmailToPetOwner = createAsyncThunk('appCampaigns/sendEmailToPetOwner', async (id) => {
 
-  const accessToken = localStorage.getItem("accessToken");
-
-  const response = await axiosInstance.get(`/campaigns/${id}/send-email-pet-owner`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    }
-  })
+  const response = await axiosInstance.get(`/campaigns/${id}/send-email-pet-owner`)
 
   return response;
 })
@@ -46,13 +27,7 @@ export const sendEmailToPetOwner = createAsyncThunk('appCampaigns/sendEmailToPet
 // ** Get Campaign
 export const sendEmailToAppointedDoctor = createAsyncThunk('appCampaigns/sendEmailToAppointedDoctor', async ({ cId, doctorId }) => {
 
-  const accessToken = localStorage.getItem("accessToken");
-
-  const response = await axiosInstance.get(`/campaigns/${cId}/${doctorId}/send-email-doctor`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  })
+  const response = await axiosInstance.get(`/campaigns/${cId}/${doctorId}/send-email-doctor`)
 
   return response;
 })
@@ -60,13 +35,12 @@ export const sendEmailToAppointedDoctor = createAsyncThunk('appCampaigns/sendEma
 // ** Create Campaign
 export const createCampaign = createAsyncThunk('appCampaigns/createCampaign', async (data, { rejectWithValue }) => {
 
+  const storedToken = window.localStorage.getItem('accessToken');
   try {
-    const accessToken = localStorage.getItem("accessToken");
 
     const response = await axiosInstance.post(`/campaigns`, data, {
       headers: {
-        'Content-Type': 'multipart/ form-data',
-        Authorization: `Bearer ${accessToken}`
+        'Content-Type': 'multipart/ form-data'
       }
     })
     return response;
@@ -83,11 +57,10 @@ export const createCampaign = createAsyncThunk('appCampaigns/createCampaign', as
 export const updateCampaign = createAsyncThunk('appCampaigns/updateCampaign', async ({ id, formData }, { rejectWithValue }) => {
 
   try {
-    const accessToken = localStorage.getItem("accessToken");
+
     const response = await axiosInstance.post(`/campaigns/${id}`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${accessToken}`
+        'Content-Type': 'multipart/form-data'
       }
     })
     return response;
