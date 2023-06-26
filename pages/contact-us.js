@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { PageHeader, WhyVetChoosePetWorld } from '@/components/Common'
 import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import axios from 'axios';
 
 const ContactUs = ({appSettings}) => {
 
@@ -98,7 +99,7 @@ export default ContactUs
 
 
 export async function getServerSideProps({ locale }) {
-  const home = await axiosInstance.get('/');
+  const home = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}`);
   return {
     props: {
       ...(await serverSideTranslations(locale, [
@@ -106,7 +107,6 @@ export async function getServerSideProps({ locale }) {
       ])),
       appSettings: home?.data
       // Will be passed to the page component as props
-    },
-    revalidate: 10,
+    }
   }
 }
