@@ -239,6 +239,8 @@ const Profile = () => {
                       <Form.Label>{t('Date of Birth')}</Form.Label>
                       <ReactDatePicker
                         name='dob'
+                        showYearDropdown
+                        showMonthDropdown
                         className='form-control'
                         placeholder={t('Select Date of Birth')}
                         dateFormat="dd/MM/yyyy"
