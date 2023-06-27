@@ -170,7 +170,7 @@ const Doctors = () => {
               {loading && <Spinner />}
               {!loading && doctors.length === 0 ? "No doctors Found" : ""}
             </div>
-            <Row>
+            {/* <Row>
               <Pagination className="justify-content-center mt-4">
                 <Pagination.First />
                 <Pagination.Prev />
@@ -182,7 +182,7 @@ const Doctors = () => {
                 <Pagination.Next />
                 <Pagination.Last />
               </Pagination>
-            </Row>
+            </Row> */}
           </div>
         </div>
       </Container >

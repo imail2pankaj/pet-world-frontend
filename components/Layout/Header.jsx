@@ -13,7 +13,7 @@ const links = [
   { path: '/', name: 'Home' },
   { path: '/statistics', name: 'Statistics' },
   { path: '/doctors', name: 'Doctors' },
-  { path: '/become-a-donator', name: 'Become a Donator' },
+  { path: '/become-a-subscriber', name: 'Become a Subscriber' },
   { path: '/campaigns', name: 'Campaigns' },
   { path: '/events', name: 'Events' },
   { path: '/about-us', name: 'About Us' },

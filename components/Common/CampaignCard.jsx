@@ -20,7 +20,7 @@ const CampaignCard = ({ campaign, is_paid = 0 }) => {
         <Card.Body>
           <Link href={`/campaigns/${campaign?.slug}`}><Card.Title>{campaign?.title}</Card.Title></Link>
           <div className='aproved-by'>
-            <span>Voted by :</span>
+            <span>Reviewed by :</span>
             {
               campaign?.approval?.map(approval => (
                 <div key={approval.id} className='doctor'>
@@ -33,7 +33,7 @@ const CampaignCard = ({ campaign, is_paid = 0 }) => {
             }
           </div>
           <Card.Text>{campaign?.short_description}</Card.Text>
-
+          <p style={{color:"#7EB65C", fontSize:"14px", fontWeight:"bold"}}>Self Participation: {campaign?.pet_owner_participation}%</p>
           <div className='total-collection'>
             <span>€25,000.83 raised</span> of {formatCurrency(campaign?.goal_amount)}
             <ProgressBar now={60} />

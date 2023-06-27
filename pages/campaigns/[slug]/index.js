@@ -97,14 +97,14 @@ const CampaignDetails = ({ campaign, notFound }) => {
                 </div>
 
                 <div className='score'>
-                  <div className='donors'>
+                  {/* <div className='donors'>
                     <span>2,000</span>
                     {t("Donors")}
                   </div>
                   <div className='donors subscrib'>
                     <span>100</span>
                     {t("Subscriptions")}
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className='campaign-info'>
@@ -135,7 +135,9 @@ const CampaignDetails = ({ campaign, notFound }) => {
               </div>
               <div className='description'>
                 {isApproved(campaign?.approval)}
-                <div className='d-inline' dangerouslySetInnerHTML={{ __html: showMore ? campaign?.description?.replace("\n", "<br/>") : campaign?.description?.replace("\n", "<br/>").substring(0,1200) }} />
+                <div className='d-inline' >
+                <p dangerouslySetInnerHTML={{ __html: showMore ? campaign?.description?.replace("\n", "<br/>") : campaign?.description?.replace("\n", "<br/>").substring(0,1200) }} />
+                </div>
                 <Button className='d-inline p-0 ms-2' variant="link" onClick={() => setShowMore(!showMore)}>{showMore ? "Show Less" : "Show More"}</Button>
               </div>
             </Row>
