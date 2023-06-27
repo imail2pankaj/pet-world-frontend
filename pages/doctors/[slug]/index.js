@@ -22,11 +22,12 @@ const DoctorsProfile = ({ doctor }) => {
     };
   }
   if(doctor) {
-    console.log(
-      // doctor?.detail?.specialities?.length > 0 ? doctor?.detail?.specialities.join(", ") : "N/A",
-      doctor?.detail?.specialities?.length,
-      doctor?.detail?.specialities
-    )
+    // console.log(
+    //   doctor?.detail?.specialities?.length > 0 ? doctor?.detail?.specialities.join(", ") : "N/A",
+    //   doctor?.detail?.specialities?.length,
+    //   typeof doctor?.detail?.specialities
+    // )
+    console.log(typeof doctor?.detail?.specialities === 'string' ? JSON.parse(doctor?.detail?.specialities) : doctor?.detail?.specialities);
   }
   return (
     <>
@@ -60,7 +61,7 @@ const DoctorsProfile = ({ doctor }) => {
                   <img src={`/bullet.png`} alt={""} /> Education qualification: {doctor?.detail?.qualifications}
                 </span>
                 <span className='bullet-point'>
-                  {/* <img src={`/bullet.png`} alt={""} /> Specialties: {doctor?.detail?.specialities?.length > 0 ? (doctor?.detail?.specialities).join(", ") : "N/A"} */}
+                  <img src={`/bullet.png`} alt={""} /> Specialties: {doctor?.detail?.specialities ? (typeof doctor?.detail?.specialities === 'string' ? JSON.parse(doctor?.detail?.specialities) : doctor?.detail?.specialities).join(', ') : "N/A"}
                 </span>
                 <div className='score'>
                   <p>Launched campaigns :<br />
