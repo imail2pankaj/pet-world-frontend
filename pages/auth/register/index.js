@@ -16,9 +16,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const schema = yup.object().shape({
   user_type_id: yup.string().required(),
-  surname: yup.string().required(),
+  surname: yup.string("").required("Enger surname is a required field"),
   first_name: yup.string().required(),
-  last_name: yup.string().required(),
+  // last_name: yup.string().required("Middle name is a required field"), /** This is the middle name now */
   email: yup.string().email().required(),
   password: yup.string().min(8).required(),
   password_confirmation: yup.string().min(8, "Password length should be at least 8 characters").required().oneOf([yup.ref("password")], "Passwords do not match")
@@ -162,6 +162,22 @@ const Register = () => {
                   />
                   <ValidationError errors={errors.first_name} />
                 </Form.Group>
+                <Form.Group className="mb-4" controlId="input-last-name">
+                  <Controller
+                    name='last_name'
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field: { value, onChange } }) => (
+                      <Form.Control
+                        label='Middle Name'
+                        placeholder={t("Enter Middle Name")}
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                  <ValidationError errors={errors.last_name} />
+                </Form.Group>
                 <Form.Group className="mb-4" controlId="input-surname">
                   <Controller
                     name='surname'
@@ -172,7 +188,7 @@ const Register = () => {
                       <Form.Control
                         ref={ref}
                         label='Surname'
-                        placeholder={t("Enter Surname")}
+                        placeholder={t("Enter Enger Surname")}
                         isInvalid={Boolean(errors.surname)}
                         value={value}
                         onChange={onChange}
@@ -180,22 +196,6 @@ const Register = () => {
                     )}
                   />
                   <ValidationError errors={errors.surname} />
-                </Form.Group>
-                <Form.Group className="mb-4" controlId="input-last-name">
-                  <Controller
-                    name='last_name'
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field: { value, onChange } }) => (
-                      <Form.Control
-                        label='Last Name'
-                        placeholder={t("Enter Last Name")}
-                        value={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
-                  <ValidationError errors={errors.last_name} />
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="input-email">
                   <Controller

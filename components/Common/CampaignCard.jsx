@@ -36,6 +36,7 @@ const CampaignCard = ({ campaign, is_paid = 0 }) => {
           <p style={{color:"#7EB65C", fontSize:"14px", fontWeight:"bold"}}>Self Participation: {campaign?.pet_owner_participation}%</p>
           <div className='total-collection'>
             <span>€25,000.83 raised</span> of {formatCurrency(campaign?.goal_amount)}
+            <span>Fund required</span> {formatCurrency(campaign?.goal_amount)}
             <ProgressBar now={60} />
           </div>
         </Card.Body>

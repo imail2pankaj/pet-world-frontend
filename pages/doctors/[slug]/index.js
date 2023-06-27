@@ -60,7 +60,7 @@ const DoctorsProfile = ({ doctor }) => {
                   <img src={`/bullet.png`} alt={""} /> Education qualification: {doctor?.detail?.qualifications}
                 </span>
                 <span className='bullet-point'>
-                  <img src={`/bullet.png`} alt={""} /> Specialties: {doctor?.detail?.specialities?.length > 0 ? (doctor?.detail?.specialities).join(", ") : "N/A"}
+                  {/* <img src={`/bullet.png`} alt={""} /> Specialties: {doctor?.detail?.specialities?.length > 0 ? (doctor?.detail?.specialities).join(", ") : "N/A"} */}
                 </span>
                 <div className='score'>
                   <p>Launched campaigns :<br />
