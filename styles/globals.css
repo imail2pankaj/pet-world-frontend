@@ -370,10 +370,10 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .doctors-profile .profile-section .profile-pic .approved-doc .doctor-detail .bullet-point img{ width: 20px; height: 20px; min-width: inherit; min-height:inherit; min-width: inherit; max-height:inherit; margin:5px 0px 0 0; position: absolute; left: 0; transform: none; top: 0px;}
 
 .doctors-profile .profile-section .profile-details{ width: 550px; display: inline-block;}
-.doctors-profile .profile-section .profile-details .bullet-point{ display: block; font-size: 16px; font-weight: 600; padding:5px 0;}
+.doctors-profile .profile-section .profile-details .bullet-point{ display: block; font-size: 16px; font-weight: 600; padding:5px 0;color: #232323;}
 .doctors-profile .profile-section .profile-details .bullet-point img{ width: 25px; height: 25px; margin:0 8px 0 0;}
 .doctors-profile .profile-section .profile-details .score{ width:100%; display:block; background: rgba(126, 182, 92, 0.6); padding: 10px 20px; border-radius: 10px; margin: 20px 0;}
-.doctors-profile .profile-section .profile-details .score p{ width: auto; display: inline-block; margin:0; line-height: 36px;  font-size: 20px; }
+.doctors-profile .profile-section .profile-details .score p{ width: auto; display: inline-block; margin:0; line-height: 36px;  font-size: 20px;color: #232323; }
 .doctors-profile .profile-section .profile-details .score p.secound{ color: #9E0C0F; font-size: 20px; font-weight: 700; padding-left: 20px; }
 .doctors-profile .profile-section .profile-details .button-1{ width: 100px; height: 36px; border-radius: 6px; font-size: 13px; line-height: 36px;}
 

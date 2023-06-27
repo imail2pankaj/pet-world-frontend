@@ -21,6 +21,13 @@ const DoctorsProfile = ({ doctor }) => {
       images: [{ url: doctor?.profile_image }]
     };
   }
+  if(doctor) {
+    console.log(
+      doctor?.detail?.specialities?.length > 0 ? (doctor?.detail?.specialities || []).join(", ") : "N/A",
+      doctor?.detail?.specialities?.length,
+      doctor?.detail?.specialities
+    )
+  }
   return (
     <>
       <NextSeo
@@ -53,7 +60,7 @@ const DoctorsProfile = ({ doctor }) => {
                   <img src={`/bullet.png`} alt={""} /> Education qualification: {doctor?.detail?.qualifications}
                 </span>
                 <span className='bullet-point'>
-                  <img src={`/bullet.png`} alt={""} /> Specialties: {doctor?.detail?.specialities.length > 0 ? doctor?.detail?.specialities.join(", ") : "N/A"}
+                  <img src={`/bullet.png`} alt={""} /> Specialties: {doctor?.detail?.specialities?.length > 0 ? (doctor?.detail?.specialities || []).join(", ") : "N/A"}
                 </span>
                 <div className='score'>
                   <p>Launched campaigns :<br />
