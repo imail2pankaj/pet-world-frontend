@@ -23,7 +23,7 @@ const DoctorsProfile = ({ doctor }) => {
   }
   if(doctor) {
     console.log(
-      doctor?.detail?.specialities?.length > 0 ? (doctor?.detail?.specialities).join(", ") : "N/A",
+      doctor?.detail?.specialities?.length > 0 ? doctor?.detail?.specialities.join(", ") : "N/A",
       doctor?.detail?.specialities?.length,
       doctor?.detail?.specialities
     )
