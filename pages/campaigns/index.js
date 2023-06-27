@@ -12,11 +12,15 @@ import { capitalize } from '@/core/utils/format';
 import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+const approvalStatus = [{id:"", name:"All Approval"},{id:"1", name:"Approved"}, {id:"2", name:"Not Approved"}];
+const paymentStatus = [{id:"", name:"All Payments"},{id:"1", name:"Paid"}, {id:"2", name:"Not Paid"}];
 
 const Campaigns = () => {
 
   const { t } = useTranslation('common')
   const [loading, setLoading] = useState(false);
+  const [payments, setPayments] = useState('');
+  const [approvals, setApprovals] = useState('');
   const [query, setQuery] = useState('');
   const [campaigns, setCampaigns] = useState([]);
   const [sortBy, setSortBy] = useState("Latest");
@@ -27,6 +31,8 @@ const Campaigns = () => {
       sort: sortBy,
       // page: currentPage,
       // per_page: dataPerPage,
+      payments: payments,
+      approvals: approvals,
       q: query
     }
     axiosInstance.get('/campaigns-list?' + (new URLSearchParams(params))).
@@ -41,7 +47,7 @@ const Campaigns = () => {
 
   useEffect(() => {
     fetchCampaigns()
-  }, [query, sortBy])
+  }, [query, sortBy, approvals, payments])
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -58,9 +64,21 @@ const Campaigns = () => {
         <div className='doctors-main'>
           <Row>
             <div className='filter-main'>
-              <Form>
-                <Form.Group className="search-field" controlId="formBasicEmail">
-                  <Form.Control type="text" onChange={handleChange} placeholder="Search Campaigns" />
+              <Form style={{width:"auto"}}>
+                <Form.Group className="search-field d-flex" controlId="formBasicEmail">
+                  <Form.Control type="text" className='me-4' onChange={(e) =>setQuery(e.target.value)}  placeholder="Search Campaigns" />
+                  <Form.Select
+                    onChange={(e) =>setApprovals(e.target.value)}
+                    defaultValue={""}
+                    className='form-control me-4'>
+                    {approvalStatus.map(approval => <option value={approval.id} key={approval.id}>{t(approval.name)}</option>)}
+                  </Form.Select>
+                  <Form.Select
+                    onChange={(e) =>setPayments(e.target.value)}
+                    defaultValue={""}
+                    className='form-control'>
+                    {paymentStatus.map(payment => <option value={payment.id} key={payment.id}>{t(payment.name)}</option>)}
+                  </Form.Select>
                 </Form.Group>
               </Form>
 

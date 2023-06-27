@@ -54,9 +54,9 @@ const DoctorsProfile = ({ doctor }) => {
                   {doctor?.first_name} {doctor?.surname} {doctor?.last_name}
                 </h2>
                 <p>{doctor?.detail?.bio}</p>
-                <span className='bullet-point'>
+                {/* <span className='bullet-point'>
                   <img src={`/bullet.png`} alt={""} /> Unique identification number
-                </span>
+                </span> */}
                 <span className='bullet-point'>
                   <img src={`/bullet.png`} alt={""} /> Education qualification: {doctor?.detail?.qualifications}
                 </span>

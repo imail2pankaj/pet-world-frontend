@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { CampaignShare, WhyVetChoosePetWorld } from '@/components/Common';
+import { Avatar, CampaignShare, WhyVetChoosePetWorld } from '@/components/Common';
 import Link from 'next/link';
 import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { BiCalendar, BiCategory, BiHeart } from 'react-icons/bi';
+import { BiCalendar, BiCategory, BiHeart, BiUserCircle } from 'react-icons/bi';
 import { TbStethoscope } from 'react-icons/tb';
 import { NextSeo } from 'next-seo';
 import Error from 'next/error';
@@ -18,12 +18,18 @@ import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
 import { formatCurrency } from '@/core/utils/format';
 import axios from 'axios';
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import CampaignGallery from '@/components/Common/CampaignGallery';
 
 const CampaignDetails = ({ campaign, notFound }) => {
 
   const { t } = useTranslation();
   const router = useRouter();
   const [showMore, setShowMore] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [slides, setSlides] = useState([]);
 
   const { user } = useAuth();
 
@@ -43,11 +49,26 @@ const CampaignDetails = ({ campaign, notFound }) => {
       // images: [{ url: campaign??.profile_image }]
     };
   }
+
+  useEffect(() => {
+    setSlides(campaign?.media?.map(image => image?.name));
+  }, [router])
+
   const isApproved = (requests) => {
     const totalRequests = requests.length;
     const approvedRequests = requests.filter(request => request.status == 1);
     return (approvedRequests.length !== totalRequests) && <div className='badge'><img src={`/not-approved-badge.png`} alt={""} /></div>
   }
+
+  const reviewedBy = campaign?.approval?.map(approval => (
+    (approval?.status === 1 || approval?.status === "1") ? <div key={approval.id} className='doctor'>
+      <Link href={`/doctors/${approval?.doctor?.username}`} className={'mb-2'}>
+        <Avatar src={approval?.doctor?.profile_image} height={40} width={40} alt={approval?.doctor?.username} className={'me-2'} />
+        {approval?.doctor?.first_name} {approval?.doctor?.surname}
+      </Link><br />
+    </div> : null
+  ))
+
   return (
     <>
       <NextSeo
@@ -72,21 +93,34 @@ const CampaignDetails = ({ campaign, notFound }) => {
               </div>
             </Row>
             <Row className='gallery'>
-              <Col sm={6} lg={6}>
+              {/* <Col sm={6} lg={6}>
                 <div className='video'>
                   <img src={`/video-img.jpg`} alt={"Video"} />
                   <Link className='play-button' href='#'>
                     <img src={`/play-icon.png`} alt={"Play"} />
                   </Link>
                 </div>
-              </Col>
-              <Col sm={6} lg={6}>
+              </Col> */}
+              <Col sm={12} lg={12}>
                 <div className='img-gallery'>
-                  {campaign?.media?.map((media, index) => <div key={index} className='thumb'><img src={media.name} alt={""} /></div>)}
+                  {campaign?.media?.map((media, index) => (
+                    index < 4 ?
+                      <div key={index} className='thumb' onClick={() => {setOpen(true); setSlideIndex(index)}}>
+                        <img src={media.name} alt={media.name} />
+                        {(campaign?.media.length > 4 && index === 3) ? <div className='overlay'>+{campaign?.media.length - 4}</div> : null}
+                      </div> : null)
+                  )}
                   {/* <div className='thumb'><img src={`/pic-4.jpg`} alt={""} />
                     <Link href='#' className='overlay'>+12</Link>
                   </div> */}
                 </div>
+                {campaign?.media && <Lightbox
+                  index={slideIndex}
+                  open={open}
+                  close={() => setOpen(false)}
+                  slides={slides}
+                  render={{ slide: CampaignGallery }}
+                />}
               </Col>
             </Row>
             <Row className='donorlist-disc'>
@@ -130,13 +164,19 @@ const CampaignDetails = ({ campaign, notFound }) => {
                       <div className='info-title'><TbStethoscope fontSize={25} /> {t("Campaign By")}</div>
                       <div className='info-details'><Link href={`/doctors/${campaign?.doctor?.username}`}>{campaign?.doctor?.first_name} {campaign?.doctor?.surname}</Link></div>
                     </li>
+                    <li>
+                      <div className='info-title'><BiUserCircle fontSize={25} /> {t("Reviewed By")}</div>
+                      <div className='info-details'>
+                        {reviewedBy}
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </div>
               <div className='description'>
                 {isApproved(campaign?.approval)}
                 <div className='d-inline' >
-                <p dangerouslySetInnerHTML={{ __html: showMore ? campaign?.description?.replace("\n", "<br/>") : campaign?.description?.replace("\n", "<br/>").substring(0,1200) }} />
+                  <p dangerouslySetInnerHTML={{ __html: showMore ? campaign?.description?.replace("\n", "<br/>") : campaign?.description?.replace("\n", "<br/>").substring(0, 1200) }} />
                 </div>
                 <Button className='d-inline p-0 ms-2' variant="link" onClick={() => setShowMore(!showMore)}>{showMore ? "Show Less" : "Show More"}</Button>
               </div>
@@ -145,7 +185,7 @@ const CampaignDetails = ({ campaign, notFound }) => {
 
           <div className='comments-main'>
             <Container fluid="xxl">
-              <h3>Comments (851)</h3>
+              <h3>Comments (5)</h3>
               {
                 [1, 2, 3, 4, 5].map(item => (
                   <div key={item} className='comment-box'>
