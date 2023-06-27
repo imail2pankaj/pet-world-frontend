@@ -33,6 +33,10 @@ const CampaignDetails = ({ campaign, notFound }) => {
 
   const { user } = useAuth();
 
+  useEffect(() => {
+    setSlides(campaign?.media?.map(image => image?.name));
+  }, [router])
+
   if (notFound) {
     return <Error statusCode={404} />;
   }
@@ -49,10 +53,6 @@ const CampaignDetails = ({ campaign, notFound }) => {
       // images: [{ url: campaign??.profile_image }]
     };
   }
-
-  useEffect(() => {
-    setSlides(campaign?.media?.map(image => image?.name));
-  }, [router])
 
   const isApproved = (requests) => {
     const totalRequests = requests.length;
