@@ -26,7 +26,7 @@ import moment from 'moment';
 
 const schema = yup.object().shape({
   title: yup.string().min(3).max(255).required(),
-  description: yup.string().min(50).required(),
+  description: yup.string().min(200).required(),
   goal_amount: yup.number().min(1, 'Goal amount should be at-least one').max(100000).required(),
   status: yup.string().required(),
   pet_owner_email: yup.string().email().required(),

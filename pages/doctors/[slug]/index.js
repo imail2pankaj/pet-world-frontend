@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { CampaignCard, DoctorAppointed, WhyVetChoosePetWorld } from '@/components/Common';
+import { CampaignCard, DoctorAppointed, ReportDoctorModal, WhyVetChoosePetWorld } from '@/components/Common';
 import Link from 'next/link';
 import axiosInstance from '@/store/api/axiosInstance';
 import { defaultAvatar } from '@/core/utils/constants';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { useAuth } from '@/hooks/useAuth';
 
 const DoctorsProfile = ({ doctor }) => {
+
+  const [modalShow, setModalShow] = useState(false);
+  const { user, isAuthenticated } = useAuth();
+
   let openGraph = { images: [] };
 
   if (doctor) {
@@ -21,7 +27,7 @@ const DoctorsProfile = ({ doctor }) => {
       images: [{ url: doctor?.profile_image }]
     };
   }
-  if(doctor) {
+  if (doctor) {
     // console.log(
     //   doctor?.detail?.specialities?.length > 0 ? doctor?.detail?.specialities.join(", ") : "N/A",
     //   doctor?.detail?.specialities?.length,
@@ -72,9 +78,12 @@ const DoctorsProfile = ({ doctor }) => {
                   </p>
                 </div>
                 <div className='d-flex align-items-center'>
-                  <Link className='button-1' href='/' role='button'>
-                    Report
-                  </Link>
+                  {
+                    user?.reports?.includes(doctor?.id) ?
+                      <Button className='button-1' role='button'>Reported</Button> :
+                      <Button onClick={() => setModalShow(true)} className='button-1' role='button'>Report</Button>
+                  }
+                  <ReportDoctorModal doctor={doctor} show={modalShow} onHide={() => setModalShow(false)} />
                   <div className='ps-4 '>
                     {doctor?.detail?.facebook && <Link href={doctor?.detail?.facebook}><Image className='me-2' src={'/fb-icon.png'} alt="facebook" width="30" height="30" /></Link>}
                     {doctor?.detail?.instagram && <Link href={doctor?.detail?.instagram}><Image className='me-2' src={'/insta-icon.png'} alt="instagram" width="30" height="30" /></Link>}

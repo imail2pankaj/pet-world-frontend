@@ -87,6 +87,11 @@ const AuthProvider = ({ children }) => {
     router.push('/auth/login')
   }
 
+  const setUserData = (userData) => {
+    setUser(userData)
+    window.localStorage.setItem('userData', userData);
+  }
+
   const handleForgetPassword = (params, errorCallback) => {
     axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/forget-password`, params)
       .then(async response => {
@@ -203,6 +208,7 @@ const AuthProvider = ({ children }) => {
     authMe,
     setUser,
     setLoading,
+    setUserData,
     profileUpdate,
     getProfileData,
     changePassword,
