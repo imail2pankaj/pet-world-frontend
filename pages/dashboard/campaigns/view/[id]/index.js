@@ -11,6 +11,7 @@ import { dateFormat } from '@/core/utils/format'
 import Carousel from 'react-bootstrap/Carousel';
 import { DocumentVerificationStatus } from '@/components/Common'
 import { getCampaign } from '@/store/api/campaign'
+import Link from 'next/link'
 
 const ViewCampaignDocuments = () => {
 
@@ -32,6 +33,7 @@ const ViewCampaignDocuments = () => {
         <div className='form'>
           <Row>
             <Col><h2>{t("Campaign")} - {store?.campaignData?.title}</h2></Col>
+            <Col className='text-end'><Link href={'/dashboard/campaigns'} className='btn btn-danger'>{t("List")}</Link> </Col>
           </Row>
           {store.campaignData ?
             <div className="mb-3 mt-5 lg-3">

@@ -51,7 +51,7 @@ const Dashboard = () => {
                       <Card.Body className="d-flex justify-content-between align-items-center">
                         <Card.Title className=' mb-0'>
                           <h5 className="mb-0 me-2">{item.stat}</h5>
-                          <small>{item.title}</small>
+                          <small><p className='mb-0'>{item.title}</p></small>
                         </Card.Title>
                         <div className="card-icon">
                           <Badge variant={item.variant} className={`rounded-pill p-2 bg-${item.variant}`}>

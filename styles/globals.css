@@ -98,6 +98,7 @@ a:hover {color:#9E0C0F;}
 a, button{
   transition: 0.3s;
 }
+p, h1, h2, h3, h4, h5, h6{color: #232323;}
 .btn:first-child:active{ background-color: #7EB65C; color: white; filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));}
 
 /*** Navigation ****/
@@ -253,9 +254,9 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 /*** Footer ***/
 .footer-main{height: 550px; background-image: url('../public/footer-bg.jpg'); background-repeat: repeat-x; background-position: center top; background-size: auto 100%;}
 .footer-main .top-row{ padding: 130px 0;}
-.footer-main .col-lg-4{text-align: center; padding-right: 10%;}
+.footer-main .col-lg-4{color: #232323;text-align: center; padding-right: 10%;}
 .footer-main .col h4{ font-size: 20px; font-weight: 700; margin-bottom: 20px;}
-.footer-main .col a{ font-size: 15px; font-weight: 600; display: inline-block; margin: 7px 0;}
+.footer-main .col a{ color: #232323;font-size: 15px; font-weight: 600; display: inline-block; margin: 7px 0;}
 .footer-main .col a:hover{ color: #9E0C0F;}
 .footer-main .play-store-btn{ width: 100%; height: 60px; display: block; margin-bottom: 20px; background: #FFFFFF; border: 1px solid #232323; border-radius: 50px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));}
 .footer-main .play-store-btn a{ display: block; padding: 5px 0 0 20px;}
@@ -325,7 +326,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 
 .doctors-main .doctor-list{ width: 100%; display: block; margin: 15px 0;}
 .doctors-main .doctor-list .card{ border-radius:20px; padding: 7px; margin: 15px 0;}
-.doctors-main .doctor-list .card .thumb{ width: 100%; height: 170px; position: relative; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
+.doctors-main .doctor-list .card .thumb{ width: 100%; height: 240px; position: relative; overflow: hidden; border-radius:20px; box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);}
 .doctors-main .doctor-list .card .card-img-top{ width: 100%; height: auto; min-height: 100%; display: block;}
 .doctors-main .doctor-list .card .card-body{padding: 10px;}
 .doctors-main .doctor-list .card-title{ font-size: 18px; font-weight: 700; color: #232323;min-height: 40px;}
@@ -377,6 +378,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .doctors-profile .profile-section .profile-details .score p{ width: auto; display: inline-block; margin:0; line-height: 36px;  font-size: 20px;color: #232323; }
 .doctors-profile .profile-section .profile-details .score p.secound{ color: #9E0C0F; font-size: 20px; font-weight: 700; padding-left: 20px; }
 .doctors-profile .profile-section .profile-details .button-1{ width: 100px; height: 36px; border-radius: 6px; font-size: 13px; line-height: 36px;}
+.doctors-profile .profile-section .profile-details .button-1.link{ line-height: 24px; border:none}
 
 .doctors-profile .profile-section .addres-phone{ width: auto; display: block; margin-top: 50px;}
 .doctors-profile .profile-section .addres-phone .email{ width: 350px; height: 90px; display: inline-block; border: 1px solid #7EB65C; background-color: white; border-radius: 10px; padding: 20px; margin: 0 15px; vertical-align: top;}

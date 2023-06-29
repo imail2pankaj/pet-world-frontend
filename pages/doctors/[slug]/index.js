@@ -80,8 +80,8 @@ const DoctorsProfile = ({ doctor }) => {
                 <div className='d-flex align-items-center'>
                   {
                     user?.reports?.includes(doctor?.id) ?
-                      <Button className='button-1' role='button'>Reported</Button> :
-                      <Button onClick={() => setModalShow(true)} className='button-1' role='button'>Report</Button>
+                      <Button className='button-1 link' role='button'>Reported</Button> :
+                      <Button onClick={() => setModalShow(true)} className='button-1 link' role='button'>Report</Button>
                   }
                   <ReportDoctorModal doctor={doctor} show={modalShow} onHide={() => setModalShow(false)} />
                   <div className='ps-4 '>
@@ -105,7 +105,7 @@ const DoctorsProfile = ({ doctor }) => {
                 </div>
                 <div className='email address'><img src={`/address-icon.png`} alt={""} />
                   <h3>Address</h3>
-                  <span>{doctor?.address || "N/A"}</span>
+                  <span>{doctor?.location || "N/A"}</span>
                 </div>
               </div>
             </Row>

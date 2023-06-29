@@ -225,7 +225,7 @@ const DoctorCampaignCreate = () => {
           <div className='form'>
             <Row>
               <Col><h2>{t("Campaign")} <b>{t("Create")}</b></h2></Col>
-              <Col className='text-end'><Link href={'/dashboard/campaigns'}>{t("List")}</Link> </Col>
+              <Col className='text-end'><Link className='btn btn-danger' href={'/dashboard/campaigns'}>{t("List")}</Link> </Col>
             </Row>
             <div className="mb-3 mt-5 lg-3">
               <div className="mb-3">

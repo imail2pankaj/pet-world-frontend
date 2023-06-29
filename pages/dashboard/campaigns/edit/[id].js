@@ -160,7 +160,7 @@ const PetCreate = () => {
         } else if (key === 'pet_id') {
           console.log(data[key]);
           setValue("pet_id", data[key].toString());
-        } else if (key === 'start_date') {
+        } else if (key === 'start_date' && data[key]) {
           setValue(key, data[key]);
           setSelectDate(new Date(data[key]));
         } else if (key === 'treatment') {
@@ -276,7 +276,7 @@ const PetCreate = () => {
           <div className='form'>
             <Row>
               <Col><h2>{t("Campaign")} <b>{t("Edit")}</b></h2></Col>
-              <Col className='text-end'><Link href={'/dashboard/campaigns'}>{t("List")}</Link> </Col>
+              <Col className='text-end'><Link href={'/dashboard/campaigns'} className='btn btn-danger'>{t("List")}</Link> </Col>
             </Row>
             <div className="mb-3 mt-5 lg-3">
               <div className="mb-3">

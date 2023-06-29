@@ -32,13 +32,14 @@ const defaultValues = {
 }
 
 const AboutProfile = () => {
+  const { user } = useAuth()
   const router = useRouter();
   const [serverResponse, setServerResponse] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [selected, setSelected] = useState([]);
   const [specialities, setSpecialities] = useState([]);
   const [allSpecialities, setAllSpecialities] = useState([]);
-  const { getAboutProfileData, aboutProfileUpdate } = useAuth();
+  const { getAboutProfileData, aboutProfileUpdate, requestDoctorAppointed } = useAuth();
 
   useEffect(() => {
 
@@ -123,14 +124,27 @@ const AboutProfile = () => {
       setIsLoading(false);
     })
   }
-
+  const handleAppointed = (e) => {
+    if (e.target.checked) {
+      requestDoctorAppointed((err) => {
+        if (err?.response?.data?.error) {
+        } else {
+          toast.success(err?.data?.message);
+          setServerResponse({
+            variant: "success",
+            message: err?.data?.message
+          })
+        }
+      })
+    }
+  }
   return (
     <>
-      <NextSeo title='About Profile Update' openGraph={{ title: "About Profile Update" }} />
+      <NextSeo title='Bio Update' openGraph={{ title: "Bio Update" }} />
       <Container fluid="xxl">
         <div className='edit-profile'>
           <div className='form'>
-            <h2>About Profile <b>Update</b></h2>
+            <h2>Bio <b>Update</b></h2>
             <div className="mb-3 mt-5 lg-3">
               <div className="mb-3">
                 {serverResponse && <Alert key={serverResponse.variant} variant={serverResponse.variant}>
@@ -240,9 +254,18 @@ const AboutProfile = () => {
                       />
                       <ValidationError errors={errors.linkedin} />
                     </Form.Group>
+                    {!parseInt(user?.detail?.is_appointed) && <Form.Group>
+                      <Form.Label></Form.Label>
+                      <Form.Check
+                        onChange={handleAppointed}
+                        type="switch"
+                        id="custom-switch"
+                        label={'Request to get Appointed'}
+                      />
+                    </Form.Group>}
                   </Row>
                   <Row>
-                    <div className="mb-5">
+                    <div className="mt-3 mb-5">
                       <Button variant='primary' type='submit'>
                         {isLoading && <Spinner size='sm' className='me-2' />}
                         Save

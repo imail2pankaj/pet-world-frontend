@@ -60,7 +60,7 @@ const DoctorCampaigns = () => {
           <div className='form'>
             <Row>
               <Col><h2>{t("Campaigns")}</h2></Col>
-              <Col className='text-end'><Link href={'/dashboard/campaigns/create'}>{t("Create")}</Link> </Col>
+              <Col className='text-end'><Link href={'/dashboard/campaigns/create'} className='btn btn-danger'>{t("Create")}</Link> </Col>
             </Row>
             <div className="mb-3 mt-5 lg-3">
               <div className="mb-3">

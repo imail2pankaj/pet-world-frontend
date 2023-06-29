@@ -32,16 +32,16 @@ axiosInstance.interceptors.response.use(function (response) {
       originalConfig._retry = true;
 
       try {
-        const rs = await axiosInstance.post("/auth/refresh", {
-          refreshToken: getToken(),
-        });
+        // const rs = await axiosInstance.post("/auth/refresh", {
+        //   refreshToken: getToken(),
+        // });
 
-        const { accessToken } = rs?.data?.authorization?.token;
-        setToken(accessToken);
-        axiosInstance.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken}`;
-        return axiosInstance(originalConfig);
+        // const { accessToken } = rs?.data?.authorization?.token;
+        // setToken(accessToken);
+        // axiosInstance.defaults.headers.common[
+        //   "Authorization"
+        // ] = `Bearer ${accessToken}`;
+        // return axiosInstance(originalConfig);
       } catch (_error) {
         return Promise.reject(_error);
       }

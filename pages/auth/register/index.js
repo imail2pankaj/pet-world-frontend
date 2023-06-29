@@ -16,7 +16,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const schema = yup.object().shape({
   user_type_id: yup.string().required(),
-  surname: yup.string("").required("Enger surname is a required field"),
+  surname: yup.string().required(),
   first_name: yup.string().required(),
   // last_name: yup.string().required("Middle name is a required field"), /** This is the middle name now */
   email: yup.string().email().required(),
@@ -188,7 +188,7 @@ const Register = () => {
                       <Form.Control
                         ref={ref}
                         label='Surname'
-                        placeholder={t("Enter Enger Surname")}
+                        placeholder={t("Enter Surname")}
                         isInvalid={Boolean(errors.surname)}
                         value={value}
                         onChange={onChange}

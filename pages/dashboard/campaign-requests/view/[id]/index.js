@@ -16,6 +16,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { ValidationError } from '@/components/Common'
 import { toast } from 'react-hot-toast'
+import Link from 'next/link'
 
 const defaultValues = {
   status: "0",
@@ -82,6 +83,7 @@ const ViewCampaignDocuments = () => {
         <div className='form'>
           <Row>
             <Col><h2>{t("Campaign Request")}</h2></Col>
+            <Col className='text-end'><Link className='btn btn-danger' href={'/dashboard/campaign-requests'}>{t("List")}</Link> </Col>
           </Row>
           {store.campaignRequestData ?
             <div className="mb-3 mt-5 lg-3">

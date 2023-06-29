@@ -133,6 +133,19 @@ const AuthProvider = ({ children }) => {
     })
   }
 
+  const requestDoctorAppointed = (errorCallback) => {
+    const storedToken = window.localStorage.getItem(storageTokenKeyName);
+    axiosInstance.get(`/profile/request-appointed`, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      }
+    }).then(async response => {
+      if (errorCallback) errorCallback(response)
+    }).catch(err => {
+      if (errorCallback) errorCallback(err)
+    })
+  }
+
   const changePassword = (params, errorCallback) => {
     const storedToken = window.localStorage.getItem(storageTokenKeyName);
     axiosInstance.put(`/profile/change-password`, params, {
@@ -213,8 +226,10 @@ const AuthProvider = ({ children }) => {
     getProfileData,
     changePassword,
     login: handleLogin,
+    
     aboutProfileUpdate,
     getAboutProfileData,
+    requestDoctorAppointed,
     register: handleRegister,
     validateResetPasswordToken,
     forgetPassword: handleForgetPassword,

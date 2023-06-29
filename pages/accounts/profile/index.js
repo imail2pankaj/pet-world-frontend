@@ -288,7 +288,7 @@ const Profile = () => {
                     </Form.Group>
                   </Row>
                   <Row>
-                    <div className="mb-5">
+                    <div className="mt-3 mb-5">
                       <Button variant='primary' type='submit'>
                         {isLoading && <Spinner size='sm' className='me-2' />}
                         {t('Save')}
