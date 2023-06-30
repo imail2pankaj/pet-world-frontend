@@ -247,7 +247,7 @@ const PetCreate = () => {
                       <ValidationError errors={errors.age} />
                     </Form.Group>
                     <Form.Group>
-                      <Form.Label>{t("Weight")}</Form.Label>
+                      <Form.Label>{t("Weight (in KG)")}</Form.Label>
                       <Form.Control
                         name='weight'
                         type='number'

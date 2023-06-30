@@ -379,8 +379,9 @@ const DoctorCampaignCreate = () => {
                       <ValidationError errors={errors.treatment} />
                     </Form.Group>
                     <Form.Group>
-                      <Form.Label>
+                      <Form.Label className='d-block'>
                         Appointed Doctors
+                        {/* <Button variant='link' className='p-0 float-end'>Select Randomly</Button> */}
                       </Form.Label>
                       <Typeahead
                         name='appointed_doctors'
@@ -388,7 +389,6 @@ const DoctorCampaignCreate = () => {
                         labelKey="first_name"
                         multiple
                         onChange={(selections) => {
-                          console.log(selections);
                           setSelectedDoctor(selections)
                           setValue('appointed_doctors', selections);
                           if (selections.length >= 3) {

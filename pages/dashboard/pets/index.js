@@ -69,7 +69,7 @@ const Pets = () => {
                             <p className='mb-0'><b>Pet: </b>{pet.pet_type} ({pet.animal_type})</p>
                           </td>
                           <td>{pet?.campaign?.title ? pet?.campaign?.title : "N/A"}</td>
-                          <td>{pet.age} / {pet.weight}</td>
+                          <td>{pet.age} / {`${pet.weight} KG`}</td>
                           <td>{pet.breed}</td>
                           <td>{pet.location}</td>
                           <td>{t(passportAvailability[pet.passport_available])}</td>
