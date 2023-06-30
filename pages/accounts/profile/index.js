@@ -17,6 +17,7 @@ import Cleave from 'cleave.js/react'
 import 'cleave.js/dist/addons/cleave-phone.us'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import ProtectedLayout from '@/components/Layout/ProtectedLayout';
 const defaultAvatar = '/default-avatar.png';
 
 const schema = yup.object().shape({
@@ -142,8 +143,7 @@ const Profile = () => {
 
   return (
     <>
-      <NextSeo title={t('Profile Update')} openGraph={{ title: t('Profile Update') }} />
-      <Container fluid="xxl">
+      <ProtectedLayout title={t('Profile Update')} openGraph={{ title: t('Profile Update') }} >
         <div className='edit-profile'>
           <div className='form'>
             <h2>{t("Profile")} <b>{t("Update")}</b></h2>
@@ -300,7 +300,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      </Container >
+      </ProtectedLayout>
     </>
   )
 }

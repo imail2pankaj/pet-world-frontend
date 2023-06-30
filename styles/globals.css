@@ -98,7 +98,7 @@ a:hover {color:#9E0C0F;}
 a, button{
   transition: 0.3s;
 }
-p, h1, h2, h3, h4, h5, h6, .form-label{color: #232323;}
+p, h1, h2, h3, h4, h5, h6, .form-label, .form-check-label{color: #232323;}
 .btn:first-child:active{ background-color: #7EB65C; color: white; filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));}
 
 /*** Navigation ****/

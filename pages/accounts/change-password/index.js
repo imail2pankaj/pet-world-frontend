@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-hot-toast';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import ProtectedLayout from '@/components/Layout/ProtectedLayout';
 
 const defaultAvatar = '/default-avatar.png';
 
@@ -89,8 +90,7 @@ const ChangePassword = () => {
 
   return (
     <>
-      <NextSeo title={t('Change Password')} openGraph={{ title: t('Change Password') }} />
-      <Container fluid="xxl">
+      <ProtectedLayout title={t('Change Password')} openGraph={{ title: t('Change Password') }} >
         <div className='edit-profile'>
           <div className='form'>
             <h2>{t("Change")} <b>{t("Password")}</b></h2>
@@ -149,7 +149,7 @@ const ChangePassword = () => {
             </div>
           </div>
         </div>
-      </Container >
+      </ProtectedLayout >
     </>
   )
 }

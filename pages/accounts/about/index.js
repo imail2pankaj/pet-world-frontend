@@ -14,6 +14,8 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
 import axiosInstance from '@/store/api/axiosInstance';
+import ProtectedLayout from '@/components/Layout/ProtectedLayout';
+import { useTranslation } from 'next-i18next';
 
 
 const schema = yup.object().shape({
@@ -32,6 +34,7 @@ const defaultValues = {
 }
 
 const AboutProfile = () => {
+  const {t} = useTranslation();
   const { user } = useAuth()
   const router = useRouter();
   const [serverResponse, setServerResponse] = useState("")
@@ -140,8 +143,7 @@ const AboutProfile = () => {
   }
   return (
     <>
-      <NextSeo title='Bio Update' openGraph={{ title: "Bio Update" }} />
-      <Container fluid="xxl">
+      <ProtectedLayout title={t('Bio Update')} openGraph={{ title: t('Bio Update') }} >
         <div className='edit-profile'>
           <div className='form'>
             <h2>Bio <b>Update</b></h2>
@@ -254,7 +256,7 @@ const AboutProfile = () => {
                       />
                       <ValidationError errors={errors.linkedin} />
                     </Form.Group>
-                    {parseInt(user?.detail?.is_appointed) && <Form.Group>
+                    {!parseInt(user?.detail?.is_appointed) && <Form.Group>
                       <Form.Label></Form.Label>
                       <Form.Check
                         onChange={handleAppointed}
@@ -277,7 +279,7 @@ const AboutProfile = () => {
             </div>
           </div>
         </div>
-      </Container >
+      </ProtectedLayout>
     </>
   )
 }

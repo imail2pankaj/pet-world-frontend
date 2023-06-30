@@ -119,6 +119,7 @@ const PetCreate = () => {
         type:"manually",
         message:"Please select at-least one pet image",
       })
+      setIsLoading(false);
       return false
     }
     const formData = new FormData();
