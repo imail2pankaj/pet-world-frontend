@@ -82,6 +82,8 @@ const PetCreate = () => {
       for (const key in defaultValues) {
         if (key === 'old_medias') {
           setUploadedHeroFiles(data['medias'])
+        } else if (key === 'vaccinations' || key === "passport_available" || key === "status") {
+          setValue(key, data[key].toString());
         } else {
           setValue(key, data[key] ? data[key].toString() : "");
         }
@@ -131,11 +133,12 @@ const PetCreate = () => {
         formData.append(key, element);
       }
     }
-    heroFiles.map((file) => {
-      formData.append("pet_images[]", file);
-    })
-
-    dispatch(updatePet({formData, id}))
+    if (heroFiles.length) {
+      heroFiles.map((file) => {
+        formData.append("pet_images[]", file);
+      })
+    }
+    dispatch(updatePet({ formData, id }))
   }
 
   return (
@@ -145,7 +148,7 @@ const PetCreate = () => {
           <div className='form'>
             <Row>
               <Col><h2>{t("Pet")} <b>{t("Update")}</b></h2></Col>
-              <Col className='text-end'><Link href={'/dashboard/pets'}>{t("List")}</Link> </Col>
+              <Col className='text-end'><Link href={'/dashboard/pets'} className='btn btn-danger'>{t("List")}</Link> </Col>
             </Row>
             <div className="mb-3 mt-5 lg-3">
               <div className="mb-3">

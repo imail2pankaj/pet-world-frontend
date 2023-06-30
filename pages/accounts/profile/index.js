@@ -22,7 +22,7 @@ const defaultAvatar = '/default-avatar.png';
 const schema = yup.object().shape({
   first_name: yup.string().required(),
   surname: yup.string().required(),
-  last_name: yup.string().required(),
+  // last_name: yup.string().required(),
   email: yup.string().email().required(),
   phone: yup.string().matches(/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/, 'Please enter valid phone number'),
 })
@@ -198,11 +198,11 @@ const Profile = () => {
                       <ValidationError errors={errors.surname} />
                     </Form.Group>
                     <Form.Group>
-                      <Form.Label>{t('Last Name')}</Form.Label>
+                      <Form.Label>{t('Middle Name')}</Form.Label>
                       <Form.Control
                         name='last_name'
-                        label={t('Last Name')}
-                        placeholder={t('Enter Last Name')}
+                        label={t('Middle Name')}
+                        placeholder={t('Enter Middle Name')}
                         isInvalid={Boolean(errors.last_name)}
                         {...register('last_name', { required: true, minLength: { value: 3 } })}
                       />

@@ -99,14 +99,14 @@ const PetCreate = () => {
       })
       setHeroFiles([]);
       setIsLoading(false);
-      if(router?.query?.campaign_id){
+      if (router?.query?.campaign_id) {
         router.push('/dashboard/pets/campaign-documents?petId=' + store?.petData?.id)
       } else {
         router.push('/dashboard/pets')
       }
     }
 
-    if(router?.query?.campaign_id){
+    if (router?.query?.campaign_id) {
       setValue('campaign_id', router?.query?.campaign_id);
     }
   }, [dispatch, store])
@@ -114,7 +114,13 @@ const PetCreate = () => {
   const onSubmit = data => {
     setIsLoading(true);
     setServerResponse("");
-
+    if(heroFiles.length === 0) {
+      setError("pet_images", {
+        type:"manually",
+        message:"Please select at-least one pet image",
+      })
+      return false
+    }
     const formData = new FormData();
     for (const key in data) {
       if (Object.hasOwnProperty.call(data, key)) {
@@ -122,10 +128,11 @@ const PetCreate = () => {
         formData.append(key, element);
       }
     }
-    heroFiles.map((file) => {
-      formData.append("pet_images[]", file);
-    })
-
+    if (heroFiles.length) {
+      heroFiles.map((file) => {
+        formData.append("pet_images[]", file);
+      })
+    }
     dispatch(createPet(formData))
   }
 
@@ -136,7 +143,7 @@ const PetCreate = () => {
           <div className='form'>
             <Row>
               <Col><h2>{t("Pet")} <b>{t("Create")}</b></h2></Col>
-              <Col className='text-end'><Link href={'/dashboard/pets'}>{t("List")}</Link> </Col>
+              <Col className='text-end'><Link href={'/dashboard/pets'} className='btn btn-danger'>{t("List")}</Link> </Col>
             </Row>
             <div className="mb-3 mt-5 lg-3">
               <div className="mb-3">
@@ -159,6 +166,7 @@ const PetCreate = () => {
                       </div>
                     )}
                   </Dropzone>
+                  <ValidationError errors={errors?.pet_images} />
 
                   <div className='d-flex mb-4'>
                     {

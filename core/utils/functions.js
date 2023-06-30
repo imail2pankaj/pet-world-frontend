@@ -17,3 +17,8 @@ export const removeToken = () => {
     return window.localStorage.removeItem(tokenName);
   }
 }
+
+export const noPets = (petList = []) => {
+  const newPets = [{ id: 0, name: "No Pet" }].concat(petList);
+  return newPets
+}

@@ -23,10 +23,11 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
 import moment from 'moment';
+import { noPets } from '@/core/utils/functions';
 
 const schema = yup.object().shape({
   title: yup.string().min(3).max(255).required(),
-  description: yup.string().min(200).required(),
+  description: yup.string().min(20).required(),
   goal_amount: yup.number().min(1, 'Goal amount should be at-least one').max(100000).required(),
   status: yup.string().required(),
   pet_owner_email: yup.string().email().required(),
@@ -43,7 +44,7 @@ const defaultValues = {
   treatment: '',
   appointed_doctors: '',
   old_appointed_doctors: '',
-  pet_id: '',
+  pet_id: 0,
 }
 
 const PetCreate = () => {
@@ -63,7 +64,7 @@ const PetCreate = () => {
   const [specialities, setSpecialities] = useState([]);
   const [appointedDoctors, setAppointedDoctors] = useState([])
   const [allAppointedDoctors, setAllAppointedDoctors] = useState([]);
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState(noPets());
 
   const dispatch = useDispatch();
 
@@ -85,20 +86,19 @@ const PetCreate = () => {
     try {
       const data = await axiosInstance.get('/owners-pets?email=' + ownerEmail);
       if (!data?.data?.success) {
-        const newPets = [{ id: 0, name: "No Pet" }].concat(data.data);
-        setPets(newPets);
+        setPets(noPets(data.data));
         if (!edit) {
           setValue("pet_id", newPets[0]);
         }
       } else {
-        setPets([]);
+        setPets(noPets());
         if (!edit) {
-          setValue("pet_id", "");
+          setValue("pet_id", 0);
         }
       }
     } catch (error) {
-      setPets([]);
-      setValue("pet_id", "");
+      setPets(noPets());
+      setValue("pet_id", 0);
     }
   }
 

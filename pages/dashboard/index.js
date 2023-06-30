@@ -46,7 +46,7 @@ const Dashboard = () => {
             <Row sm={2} md={4}>
               {stats.map((item, index) =>
                 <Col key={index}>
-                  <Link href={item.link}>
+                  <Link className='mb-4' href={item.link}>
                     <Card>
                       <Card.Body className="d-flex justify-content-between align-items-center">
                         <Card.Title className=' mb-0'>

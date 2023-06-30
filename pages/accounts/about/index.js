@@ -254,7 +254,7 @@ const AboutProfile = () => {
                       />
                       <ValidationError errors={errors.linkedin} />
                     </Form.Group>
-                    {!parseInt(user?.detail?.is_appointed) && <Form.Group>
+                    {parseInt(user?.detail?.is_appointed) && <Form.Group>
                       <Form.Label></Form.Label>
                       <Form.Check
                         onChange={handleAppointed}

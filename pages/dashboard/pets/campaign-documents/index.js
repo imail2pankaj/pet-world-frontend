@@ -91,7 +91,7 @@ const CampaignUploads = () => {
         <div className='form'>
           <Row>
             <Col><h2>{t("Upload")} <b>{t("Documents")}</b></h2></Col>
-            <Col className='text-end'><Link href={'/dashboard/pets'}>{t("List")}</Link> </Col>
+            <Col className='text-end'><Link href={'/dashboard/pets'} className='btn btn-danger'>{t("List")}</Link> </Col>
           </Row>
           <div className="mb-3 mt-5 lg-3">
             <div className="mb-3">
