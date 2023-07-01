@@ -26,8 +26,8 @@ const schema = yup.object().shape({
   gender: yup.string().required(),
   pet_type: yup.string().required(),
   animal_type: yup.string().required(),
-  age: yup.number().max(200).required(),
-  weight: yup.number().max(1000),
+  age: yup.number().min(0).max(200).required(),
+  weight: yup.number().min(0).max(1000),
   previous_diseases: yup.string().max(255),
 })
 
