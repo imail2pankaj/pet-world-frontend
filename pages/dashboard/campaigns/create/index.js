@@ -225,34 +225,34 @@ const DoctorCampaignCreate = () => {
     dispatch(createCampaign(formData))
   }
 
-  const handleSelectRandomly = async () => {
-    const array = selectedDoctor;
-    console.log(selectedDoctor.length, 'selectedDoctor.length');
-    if (selectedDoctor.length <= 3) {
-      setSelectedDoctor([]);
-      for (const doctor of appointedDoctors) {
-        // appointedDoctors.forEach(async doctor => {
-        const findDoc = selectedDoctor.find(doc => doctor.id == doc.id);
-        console.log(!findDoc, selectedDoctor.length);
-        console.log('------------------------------------------')
-        // console.log(!findDoc && selectedDoctor.length < 3);
-        if (!findDoc) {
-          if (selectedDoctor.length < 3) {
-            array.push(doctor);
-            setSelectedDoctor((selectedDoctor) => [...selectedDoctor, ...[doctor]]);
-            console.log(selectedDoctor, '--------------');
-          } else {
-            return false;
-          }
-        }
-      };
+  // const handleSelectRandomly = async () => {
+  //   const array = selectedDoctor;
+  //   console.log(selectedDoctor.length, 'selectedDoctor.length');
+  //   if (selectedDoctor.length <= 3) {
+  //     setSelectedDoctor([]);
+  //     for (const doctor of appointedDoctors) {
+  //       // appointedDoctors.forEach(async doctor => {
+  //       const findDoc = selectedDoctor.find(doc => doctor.id == doc.id);
+  //       console.log(!findDoc, selectedDoctor.length);
+  //       console.log('------------------------------------------')
+  //       // console.log(!findDoc && selectedDoctor.length < 3);
+  //       if (!findDoc) {
+  //         if (selectedDoctor.length < 3) {
+  //           array.push(doctor);
+  //           setSelectedDoctor((selectedDoctor) => [...selectedDoctor, ...[doctor]]);
+  //           console.log(selectedDoctor, '--------------');
+  //         } else {
+  //           return false;
+  //         }
+  //       }
+  //     };
 
-      // setSelectedDoctor(array);
-      // console.log(array);
-      refAppointedDoctors.current.focus();
-      refAppointedDoctors.current.blur();
-    }
-  }
+  //     // setSelectedDoctor(array);
+  //     // console.log(array);
+  //     refAppointedDoctors.current.focus();
+  //     refAppointedDoctors.current.blur();
+  //   }
+  // }
 
   return (
     <>
