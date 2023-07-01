@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { createRef, useCallback, useEffect, useState } from 'react'
 import "react-datepicker/dist/react-datepicker.css";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -66,6 +66,8 @@ const DoctorCampaignCreate = () => {
   const [appointedDoctors, setAppointedDoctors] = useState([])
   const [allAppointedDoctors, setAllAppointedDoctors] = useState([]);
   const [pets, setPets] = useState(noPets());
+  const refAppointedDoctors = createRef("")
+  const submitButton = createRef("")
 
   const dispatch = useDispatch();
 
@@ -91,7 +93,7 @@ const DoctorCampaignCreate = () => {
       if (!data?.data?.success) {
         const newPets = noPets(data.data);
         setPets(newPets);
-        setValue("pet_id", newPets[0]);
+        setValue("pet_id", newPets[0].id);
       } else {
         setPets(noPets());
         setValue("pet_id", 0);
@@ -192,22 +194,26 @@ const DoctorCampaignCreate = () => {
       })
       return false
     }
-    if (!data.appointed_doctors) {
-      setError('appointed_doctors', {
-        type: "manual",
-        message: "Appointed doctors field is required"
-      })
-      return false
-    }
+    // if (!data.appointed_doctors) {
+    //   setError('appointed_doctors', {
+    //     type: "manual",
+    //     message: "Appointed doctors field is required"
+    //   })
+    //   return false
+    // }
 
     const formData = new FormData();
     for (const key in data) {
       if (Object.hasOwnProperty.call(data, key)) {
         const element = data[key];
         if (key === 'appointed_doctors') {
-          element.map((doctor) => {
-            formData.append("appointed_doctors[]", doctor.id);
-          })
+          if (data.appointed_doctors) {
+            element.map((doctor) => {
+              formData.append("appointed_doctors[]", doctor.id);
+            })
+          } else {
+            formData.append("appointed_doctors", "");
+          }
         } else if (key === 'start_date') {
           formData.append(key, element ? moment(element).format("YYYY-MM-DD") : "");
         } else {
@@ -217,6 +223,35 @@ const DoctorCampaignCreate = () => {
     }
 
     dispatch(createCampaign(formData))
+  }
+
+  const handleSelectRandomly = async () => {
+    const array = selectedDoctor;
+    console.log(selectedDoctor.length, 'selectedDoctor.length');
+    if (selectedDoctor.length <= 3) {
+      setSelectedDoctor([]);
+      for (const doctor of appointedDoctors) {
+        // appointedDoctors.forEach(async doctor => {
+        const findDoc = selectedDoctor.find(doc => doctor.id == doc.id);
+        console.log(!findDoc, selectedDoctor.length);
+        console.log('------------------------------------------')
+        // console.log(!findDoc && selectedDoctor.length < 3);
+        if (!findDoc) {
+          if (selectedDoctor.length < 3) {
+            array.push(doctor);
+            setSelectedDoctor((selectedDoctor) => [...selectedDoctor, ...[doctor]]);
+            console.log(selectedDoctor, '--------------');
+          } else {
+            return false;
+          }
+        }
+      };
+
+      // setSelectedDoctor(array);
+      // console.log(array);
+      refAppointedDoctors.current.focus();
+      refAppointedDoctors.current.blur();
+    }
   }
 
   return (
@@ -370,7 +405,14 @@ const DoctorCampaignCreate = () => {
                         onChange={(selections) => {
                           setSelected(selections)
                           setValue('treatment', selections[0]);
-                          fetchAppointedDoctors(selections);
+                          console.log(selections);
+                          if (selections.length) {
+                            fetchAppointedDoctors(selections);
+                          } else {
+                            setAppointedDoctors([]);
+                            setSelectedDoctor([])
+                            setValue('appointed_doctors', "");
+                          }
                         }}
                         options={specialities}
                         placeholder="Select Treatments..."
@@ -381,15 +423,19 @@ const DoctorCampaignCreate = () => {
                     <Form.Group>
                       <Form.Label className='d-block'>
                         Appointed Doctors
-                        {/* <Button variant='link' className='p-0 float-end'>Select Randomly</Button> */}
+                        {/* {selected && selectedDoctor.length < 3 ?
+                          <Button variant='link' onClick={handleSelectRandomly} className='p-0 float-end'>Select Randomly</Button> : null
+                        } */}
                       </Form.Label>
                       <Typeahead
+                        ref={refAppointedDoctors}
                         name='appointed_doctors'
                         id='appointed_doctors'
                         labelKey="first_name"
                         multiple
                         onChange={(selections) => {
                           setSelectedDoctor(selections)
+                          console.log(selectedDoctor)
                           setValue('appointed_doctors', selections);
                           if (selections.length >= 3) {
                             setAppointedDoctors(selectedDoctor);
@@ -421,10 +467,10 @@ const DoctorCampaignCreate = () => {
                       <ValidationError errors={errors.status} />
                     </Form.Group>
                   </Row>
-
+                  {/* {JSON.stringify(selectedDoctor)} */}
                   <Row xs={1} md={3}>
                     <div className="mb-5">
-                      <Button variant='primary' type='submit'>
+                      <Button variant='primary' ref={submitButton} type='submit'>
                         {isLoading && <Spinner size='sm' className='me-2' />}
                         {t("Save")}
                       </Button>

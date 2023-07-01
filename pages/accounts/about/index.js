@@ -19,7 +19,7 @@ import { useTranslation } from 'next-i18next';
 
 
 const schema = yup.object().shape({
-  bio: yup.string().max(255).required(),
+  bio: yup.string().max(200).required(),
   qualifications: yup.string().required()
 })
 
