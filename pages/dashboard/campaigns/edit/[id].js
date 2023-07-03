@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { createRef, useCallback, useEffect, useState } from 'react'
 import "react-datepicker/dist/react-datepicker.css";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -65,6 +65,7 @@ const PetCreate = () => {
   const [appointedDoctors, setAppointedDoctors] = useState([])
   const [allAppointedDoctors, setAllAppointedDoctors] = useState([]);
   const [pets, setPets] = useState(noPets());
+  const refAppointedDoctors = createRef("")
 
   const dispatch = useDispatch();
 
@@ -88,7 +89,7 @@ const PetCreate = () => {
       if (!data?.data?.success) {
         setPets(noPets(data.data));
         if (!edit) {
-          setValue("pet_id", newPets[0]);
+          setValue("pet_id", newPets[0].id);
         }
       } else {
         setPets(noPets());
@@ -158,7 +159,6 @@ const PetCreate = () => {
             setValue("pet_id", data['pet_id']);
           })
         } else if (key === 'pet_id') {
-          console.log(data[key]);
           setValue("pet_id", data[key].toString());
         } else if (key === 'start_date' && data[key]) {
           setValue(key, data[key]);
@@ -223,7 +223,7 @@ const PetCreate = () => {
   const onSubmit = data => {
     setIsLoading(true);
     setServerResponse("");
-// console.log(data);
+    // console.log(data);
     if (!data.pet_owner_email) {
       setError('pet_owner_email', {
         type: "manual",
@@ -238,37 +238,68 @@ const PetCreate = () => {
       })
       return false
     }
-    if (!data.appointed_doctors) {
-      setError('appointed_doctors', {
-        type: "manual",
-        message: "Appointed doctors field is required"
-      })
-      return false
-    }
+    // if (!data.appointed_doctors) {
+    //   setError('appointed_doctors', {
+    //     type: "manual",
+    //     message: "Appointed doctors field is required"
+    //   })
+    //   return false
+    // }
 
     const formData = new FormData();
     for (const key in data) {
       // if (Object.hasOwnProperty.call(data, key)) {
-        const element = data[key];
-        if (key === 'appointed_doctors') {
+      const element = data[key];
+      if (key === 'appointed_doctors') {
+        if (data.appointed_doctors) {
           element.map((doctor) => {
             formData.append("appointed_doctors[]", doctor.id);
           })
-        } else if (key === 'old_appointed_doctors') {
+        } else {
+          formData.append("appointed_doctors", "");
+        }
+      } else if (key === 'old_appointed_doctors') {
+        if (data.old_appointed_doctors) {
           element.map((doctor) => {
             formData.append("old_appointed_doctors[]", doctor.id);
           })
-        } else if (key === 'start_date') {
-          formData.append(key, element ? moment(element).format("YYYY-MM-DD") : "");
         } else {
-          formData.append(key, element);
+          formData.append("old_appointed_doctors", "");
         }
+      } else if (key === 'start_date') {
+        formData.append(key, element ? moment(element).format("YYYY-MM-DD") : "");
+      } else {
+        formData.append(key, element);
+      }
       // }
     }
 
     dispatch(updateCampaign({ formData, id }))
   }
 
+  const handleSelectRandomly = async () => {
+    const array = selectedDoctor;
+
+    if (selectedDoctor.length <= 3) {
+      setSelectedDoctor(prev => [...[], ...[]]);
+
+      for (const doctor of appointedDoctors) {
+        const findDoc = selectedDoctor.find(doc => doctor.id == doc.id);
+        if (!findDoc && selectedDoctor.length < 3) {
+          if (selectedDoctor.length < 3) {
+            array.push(doctor);
+          } else {
+            return false;
+          }
+        }
+      };
+      setSelectedDoctor((selectedDoctor) => [...[], ...array]);
+      setValue('appointed_doctors', array);
+
+      refAppointedDoctors.current.focus();
+      refAppointedDoctors.current.blur();
+    }
+  }
   return (
     <>
       <ProtectedLayout title={t('Campaign Edit')} openGraph={{ title: t('Campaign Edit') }}>
@@ -408,14 +439,23 @@ const PetCreate = () => {
                       <ValidationError errors={errors.treatment} />
                     </Form.Group>
                     <Form.Group>
-                      <Form.Label>
+                      <Form.Label className='d-block'>
                         Appointed Doctors
+                        {selected && selectedDoctor.length < 3 ? <Button variant='link' onClick={handleSelectRandomly} className='p-0 float-end'>Select Randomly</Button> : null}
                       </Form.Label>
                       <Typeahead
+                        ref={refAppointedDoctors}
                         name='appointed_doctors'
                         id='appointed_doctors'
                         labelKey="first_name"
                         multiple
+                        onFocus={() => {
+                          if (selectedDoctor.length >= 3) {
+                            setAppointedDoctors(selectedDoctor);
+                          } else {
+                            setAppointedDoctors(allAppointedDoctors);
+                          }
+                        }}
                         onChange={(selections) => {
                           setSelectedDoctor(selections)
                           setValue('appointed_doctors', selections);

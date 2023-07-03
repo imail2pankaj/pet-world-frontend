@@ -73,11 +73,7 @@ const DoctorCampaignCreate = () => {
 
   const fetchAppointedDoctors = async (treatment) => {
     setSelectedDoctor([])
-    const data = await axiosInstance.get('/appointed-doctors?treatment=' + treatment, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-      }
-    });
+    const data = await axiosInstance.get('/appointed-doctors?treatment=' + treatment);
     if (!data?.data?.success) {
       setAppointedDoctors(data.data);
       setAllAppointedDoctors(data.data);
@@ -225,34 +221,29 @@ const DoctorCampaignCreate = () => {
     dispatch(createCampaign(formData))
   }
 
-  // const handleSelectRandomly = async () => {
-  //   const array = selectedDoctor;
-  //   console.log(selectedDoctor.length, 'selectedDoctor.length');
-  //   if (selectedDoctor.length <= 3) {
-  //     setSelectedDoctor([]);
-  //     for (const doctor of appointedDoctors) {
-  //       // appointedDoctors.forEach(async doctor => {
-  //       const findDoc = selectedDoctor.find(doc => doctor.id == doc.id);
-  //       console.log(!findDoc, selectedDoctor.length);
-  //       console.log('------------------------------------------')
-  //       // console.log(!findDoc && selectedDoctor.length < 3);
-  //       if (!findDoc) {
-  //         if (selectedDoctor.length < 3) {
-  //           array.push(doctor);
-  //           setSelectedDoctor((selectedDoctor) => [...selectedDoctor, ...[doctor]]);
-  //           console.log(selectedDoctor, '--------------');
-  //         } else {
-  //           return false;
-  //         }
-  //       }
-  //     };
+  const handleSelectRandomly = async () => {
+    const array = selectedDoctor;
 
-  //     // setSelectedDoctor(array);
-  //     // console.log(array);
-  //     refAppointedDoctors.current.focus();
-  //     refAppointedDoctors.current.blur();
-  //   }
-  // }
+    if (selectedDoctor.length <= 3) {
+      setSelectedDoctor(prev => [...[], ...[]]);
+
+      for (const doctor of appointedDoctors) {
+        const findDoc = selectedDoctor.find(doc => doctor.id == doc.id);
+        if (!findDoc && selectedDoctor.length < 3) {
+          if (selectedDoctor.length < 3) {
+            array.push(doctor);
+          } else {
+            return false;
+          }
+        }
+      };
+      setSelectedDoctor((selectedDoctor) => [...[], ...array]);
+      setValue('appointed_doctors', array);
+
+      refAppointedDoctors.current.focus();
+      refAppointedDoctors.current.blur();
+    }
+  }
 
   return (
     <>
@@ -423,9 +414,7 @@ const DoctorCampaignCreate = () => {
                     <Form.Group>
                       <Form.Label className='d-block'>
                         Appointed Doctors
-                        {/* {selected && selectedDoctor.length < 3 ?
-                          <Button variant='link' onClick={handleSelectRandomly} className='p-0 float-end'>Select Randomly</Button> : null
-                        } */}
+                        {selected && selectedDoctor.length < 3 ? <Button variant='link' onClick={handleSelectRandomly} className='p-0 float-end'>Select Randomly</Button> : null}
                       </Form.Label>
                       <Typeahead
                         ref={refAppointedDoctors}
@@ -433,9 +422,15 @@ const DoctorCampaignCreate = () => {
                         id='appointed_doctors'
                         labelKey="first_name"
                         multiple
+                        onFocus={() => {
+                          if (selectedDoctor.length >= 3) {
+                            setAppointedDoctors(selectedDoctor);
+                          } else {
+                            setAppointedDoctors(allAppointedDoctors);
+                          }
+                        }}
                         onChange={(selections) => {
                           setSelectedDoctor(selections)
-                          console.log(selectedDoctor)
                           setValue('appointed_doctors', selections);
                           if (selections.length >= 3) {
                             setAppointedDoctors(selectedDoctor);
