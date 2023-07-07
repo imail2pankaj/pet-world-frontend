@@ -473,7 +473,7 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .campaigns-detail .donorlist-disc ul li .more-list::after{ content: ""; width: 100%; height: 11px; position: absolute; left: 0; bottom: -5px; background-image: url('../public/more-arw.png'); background-repeat: no-repeat; background-position: center;}
 .campaigns-detail .donorlist-disc ul li .more-list:hover{ background-color: #9E0C0F; color: white;} */
 
-.campaigns-detail .donorlist-disc .score{ display: block; padding: 20px 40px 20px 20px;}
+.campaigns-detail .donorlist-disc .score{ display: block; padding: 10px 40px 10px 20px;}
 .campaigns-detail .donorlist-disc .score .donors{ width: auto; text-align: center; display: inline-block;  font-size: 18px; color: #232323; font-weight: 600; text-transform: uppercase;}
 .campaigns-detail .donorlist-disc .score .donors span{ display: block; color: #9E0C0F; font-size: 24px; font-weight: 700;}
 .campaigns-detail .donorlist-disc .score .subscrib{ float: right;}
@@ -484,10 +484,10 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .campaigns-detail .donorlist-disc .description .badge{ width: 40%; float: left;}
 .campaigns-detail .donorlist-disc .description .badge img{ max-width:100%; display: block;}
 
-.campaign-info{ width: 100%; display: block; padding: 30px 0; border-top: 1px solid #DBDBDB;}
+.campaign-info{ width: 100%; display: block; padding: 20px 0; border-top: 1px solid #DBDBDB;}
 .campaign-info h3{ font-size: 24px; font-weight: 700; margin-bottom: 10px;}
 .campaign-info ul{ width: 100%; display: block; list-style: none; padding: 0;}
-.campaign-info ul li{ width: 100%; padding-top:30px; float: left; font-size: 15px; color: #232323; }
+.campaign-info ul li{ width: 100%; padding-top:20px; float: left; font-size: 15px; color: #232323; }
 .campaign-info ul li .info-title{ width: 35%; max-width: 220px; float: left; font-weight: 700;}
 .campaign-info ul li .info-title img{ margin-right: 5px;}
 .campaign-info ul li .info-details {width:65%; float: left; font-weight: 500; line-height: normal;}
@@ -621,6 +621,13 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
 .edit-profile .form .btn-primary{ width: auto; display: inline-block; background-color: #9E0C0F; filter: drop-shadow(0px 10px 20px rgba(158, 12, 15, 0.5)); line-height: 58px; border-radius: 10px; color: white; font-weight: 600; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: 0.3s; text-align: center; border: none; margin-top: 10px;  padding:0px 10%;}
 .edit-profile .form .btn-primary:hover{background-color: #7EB65C; color: white; filter: drop-shadow(0px 10px 20px rgba(126, 182, 92, 0.5));}
 
+/*** Subscribe Now page ***/
+.subscribe-now {}
+.subscribe-now .amount-wapper{position: relative; }
+.subscribe-now .amount-wapper .currency{    font-size: 66px;font-weight: 500;line-height: 66px;left: 28px;display: flex;align-items: center;top: 0;height: 100%;position: absolute;}
+.subscribe-now .amount-wapper .subscription-amount{background-color: #EEE;border: 1px solid #dedede;height: 108px;font-size: 66px;font-weight: 500;line-height: 66px;padding: 0 20px 0 85px;border-radius: 6px;padding-right: 125px;padding-left: 63px;width: 100%; text-align: right;outline: none;-moz-appearance: textfield}
+.subscribe-now .amount-wapper .subscription-amount::-webkit-outer-spin-button,.subscribe-now .amount-wapper .subscription-amount::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
+.subscribe-now .amount-wapper .amount-suffix{font-size: 66px;font-weight: 500;line-height: 66px;right: 28px; display: flex;align-items: center; top: 0; height: 100%; position: absolute;}
 
 @media only screen and (max-width: 1600px) {
   .doctors-profile .profile-section .graphic-1{width: 20%; bottom: 10%;}
@@ -1376,6 +1383,13 @@ h2.title span{ display: block; font-size: 18px; color: #9E0C0F; text-transform: 
   .edit-profile .form .pro-pic{margin-right: 5%;}
   .edit-profile .form .upload-btn{ width: 70%;}
   .edit-profile .form .btn-primary{ width: auto; font-size: 15px; line-height: 38px; border-radius: 5px; margin-top: 0; padding:5px 10%;}
+
+/*** Subscribe Now page ***/
+.subscribe-now {}
+.subscribe-now .amount-wapper{position: relative;}
+.subscribe-now .amount-wapper .currency{font-size: 50px;line-height: 50px;left: 20px;}
+.subscribe-now .amount-wapper .subscription-amount{height: 90px;font-size: 50px;line-height: 50px;padding-right: 100px;padding-left: 63px;}
+.subscribe-now .amount-wapper .amount-suffix{font-size: 50px;line-height: 50px;right: 20px;}
 }
 .events-main .react-datepicker-wrapper{width:auto !important}
 .rbt-input-wrapper input {margin-bottom:0 !important;height:50px !important;padding:0 10px !important}

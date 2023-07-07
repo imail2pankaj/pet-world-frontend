@@ -9,7 +9,7 @@ const CustomTooltip = ({ children, message, position = 'top' }) => {
       placement={position}
       overlay={
         <Tooltip id={`tooltip-${position}`}>
-          {t(message)}
+          <span dangerouslySetInnerHTML={{ __html: t(message) }} />
         </Tooltip>
       }
     >

@@ -8,7 +8,7 @@ import Link from 'next/link';
 import axiosInstance from '@/store/api/axiosInstance';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { BiCalendar, BiCategory, BiHeart, BiUserCircle } from 'react-icons/bi';
+import { BiCalendar, BiCategory, BiHeart, BiUserCheck, BiUserCircle } from 'react-icons/bi';
 import { TbStethoscope } from 'react-icons/tb';
 import { NextSeo } from 'next-seo';
 import Error from 'next/error';
@@ -57,11 +57,11 @@ const CampaignDetails = ({ campaign, notFound }) => {
   const isApproved = (requests) => {
     const totalRequests = requests.length;
     const approvedRequests = requests.filter(request => request.status == 1);
-    return (approvedRequests.length !== totalRequests) && <div className='badge'><img src={`/not-approved-badge.png`} alt={""} /></div>
+    return (approvedRequests.length !== totalRequests)
   }
 
   const reviewedBy = campaign?.approval?.map(approval => (
-    (approval?.status === 1 || approval?.status === "1") ? <div key={approval.id} className='doctor'>
+    (parseInt(approval?.status) === 1) ? <div key={approval.id} className='doctor'>
       <Link href={`/doctors/${approval?.doctor?.username}`} className={'mb-2'}>
         <Avatar src={approval?.doctor?.profile_image} height={40} width={40} alt={approval?.doctor?.username} className={'me-2'} />
         {approval?.doctor?.first_name} {approval?.doctor?.surname}
@@ -105,7 +105,7 @@ const CampaignDetails = ({ campaign, notFound }) => {
                 <div className='img-gallery'>
                   {campaign?.media?.map((media, index) => (
                     index < 4 ?
-                      <div key={index} className='thumb' onClick={() => {setOpen(true); setSlideIndex(index)}}>
+                      <div key={index} className='thumb' onClick={() => { setOpen(true); setSlideIndex(index) }}>
                         <img src={media.name} alt={media.name} />
                         {(campaign?.media.length > 4 && index === 3) ? <div className='overlay'>+{campaign?.media.length - 4}</div> : null}
                       </div> : null)
@@ -144,6 +144,18 @@ const CampaignDetails = ({ campaign, notFound }) => {
                 <div className='campaign-info'>
                   <h3>{t("Campaign Information")}</h3>
                   <ul>
+                    <li className='d-flex align-items-center'>
+                      <div className='info-title'><TbStethoscope fontSize={25} /> {t("Campaign By")}</div>
+                      <div className='info-details'>
+                        <Link className='d-flex' href={`/doctors/${campaign?.doctor?.username}`}>
+                          <Avatar src={campaign?.doctor?.profile_image} height={45} width={45} className={'rounded-circle me-2 border border-dark'} alt={campaign?.doctor?.first_name} />
+                          <div>
+                            <b>{campaign?.doctor?.first_name} {campaign?.doctor?.surname}</b>
+                            <p className='mb-0 text-black-50' style={{ fontSize: 11 }}>{campaign?.doctor?.detail?.bio?.substring(0, 110)}...</p>
+                          </div>
+                        </Link>
+                      </div>
+                    </li>
                     <li>
                       <div className='info-title'><MdOutlineVerifiedUser fontSize={25} />  {t("Campaign Unique ID")}</div>
                       <div className='info-details'>{campaign?.unique_id}</div>
@@ -153,16 +165,16 @@ const CampaignDetails = ({ campaign, notFound }) => {
                       <div className='info-details'>{campaign?.start_date ? campaign?.start_date : "N/A"}</div>
                     </li>
                     <li>
+                      <div className='info-title'><BiUserCheck fontSize={25} /> {t("Pet Owner (%)")}</div>
+                      <div className='info-details'>{campaign?.pet_owner_participation}%</div>
+                    </li>
+                    <li>
                       <div className='info-title'><BiCategory fontSize={25} /> {t("Category")}</div>
                       <div className='info-details'>{campaign?.category}</div>
                     </li>
                     <li>
                       <div className='info-title'><BiHeart fontSize={25} /> {t("Treatment")}</div>
                       <div className='info-details'>{campaign?.treatment}</div>
-                    </li>
-                    <li>
-                      <div className='info-title'><TbStethoscope fontSize={25} /> {t("Campaign By")}</div>
-                      <div className='info-details'><Link href={`/doctors/${campaign?.doctor?.username}`}>{campaign?.doctor?.first_name} {campaign?.doctor?.surname}</Link></div>
                     </li>
                     <li>
                       <div className='info-title'><BiUserCircle fontSize={25} /> {t("Reviewed By")}</div>
@@ -174,11 +186,13 @@ const CampaignDetails = ({ campaign, notFound }) => {
                 </div>
               </div>
               <div className='description'>
-                {isApproved(campaign?.approval)}
+                {isApproved(campaign?.approval) && <div className='badge'><img src={`/not-approved-badge.png`} alt={""} /></div>}
                 <div className='d-inline' >
                   <p dangerouslySetInnerHTML={{ __html: showMore ? campaign?.description?.replace("\n", "<br/>") : campaign?.description?.replace("\n", "<br/>").substring(0, 1200) }} />
                 </div>
-                <Button className='d-inline p-0 ms-2' variant="link" onClick={() => setShowMore(!showMore)}>{showMore ? "Show Less" : "Show More"}</Button>
+                {(campaign?.description).length > 1200 ? 
+                  <Button className='d-inline p-0 ms-2' variant="link" onClick={() => setShowMore(!showMore)}>{showMore ? "Show Less" : "Show More"}</Button> : null
+                }
               </div>
             </Row>
           </Container>

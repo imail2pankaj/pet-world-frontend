@@ -87,7 +87,8 @@ const PetCreate = () => {
     try {
       const data = await axiosInstance.get('/owners-pets?email=' + ownerEmail);
       if (!data?.data?.success) {
-        setPets(noPets(data.data));
+        const newPets = noPets(data.data);
+        setPets(newPets);
         if (!edit) {
           setValue("pet_id", newPets[0].id);
         }
