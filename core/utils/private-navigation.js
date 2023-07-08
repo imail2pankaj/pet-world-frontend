@@ -15,9 +15,9 @@ const privateNavigation = [
     for: "DOCTOR"
   },
   {
-    path: "/dashboard/donations",
-    name: 'Donations',
-    for: "DONOR"
+    path: "/dashboard/subscriptions",
+    name: 'Subscriptions',
+    for: ""
   },
   {
     path: "/dashboard/pets",

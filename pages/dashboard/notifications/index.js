@@ -13,7 +13,7 @@ import moment from 'moment'
 import { useAuth } from '@/hooks/useAuth'
 import { BiTrash } from 'react-icons/bi'
 
-const CampaignRequests = () => {
+const Notifications = () => {
 
   const { t } = useTranslation()
   const { user, setUser } = useAuth();
@@ -125,7 +125,7 @@ const notificationLine = (user, data) => {
   return link
 }
 
-export default CampaignRequests
+export default Notifications
 
 export async function getStaticProps({ locale }) {
 

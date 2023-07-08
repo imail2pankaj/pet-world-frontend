@@ -126,7 +126,7 @@ const CampaignDetails = ({ campaign, notFound }) => {
             <Row className='donorlist-disc'>
               <div className='donorlist'>
                 <div className='buttons' style={{ display: "flex" }}>
-                  {user ? <Link href={`/campaigns/${campaign?.slug}/subscribe`}>{t("Subscribe")}</Link> : <Link href='/auth/login'>{t("Subscribe")}</Link>}
+                  {user ? <Link href={`/campaigns/${campaign?.slug}/subscribe`}>{t("Subscribe")}</Link> : <Link href={`/auth/login?returnUrl=${router?.asPath}/subscribe`}>{t("Subscribe")}</Link>}
                   <CampaignShare shareUrl={url} />
                 </div>
 

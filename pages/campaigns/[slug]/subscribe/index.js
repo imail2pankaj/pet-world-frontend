@@ -1,26 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
 import * as yup from 'yup'
 import { NextSeo } from 'next-seo';
-import { Button, Col, Container, Form, Row, Tooltip } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row, Spinner, Tooltip } from 'react-bootstrap';
 import { CampaignCard, CustomTooltip, ValidationError } from '@/components/Common';
 import { RxQuestionMarkCircled } from 'react-icons/rx';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Cleave from 'cleave.js/react';
-
+import { useDispatch } from 'react-redux';
+import { subscribe } from '@/store/api/subscription';
+import { error } from 'jquery';
+import { toast } from 'react-hot-toast';
 
 const defaultValues = {
   donate_amount: 0,
+  card_holder_name: "",
+  expiry_date: "",
+  cvc: "",
+  campaign_id: 0
 }
 
 const Subscribe = ({ campaign, notFound }) => {
 
   const { t } = useTranslation();
   const router = useRouter();
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
 
   let openGraph = { images: [] };
 
@@ -29,14 +38,28 @@ const Subscribe = ({ campaign, notFound }) => {
       ...campaign,
       title: `${campaign?.title}`,
       description: campaign?.short_description,
+
       // images: [{ url: campaign??.profile_image }]
     };
   }
+
   const requiredAmount = parseInt(campaign?.pet_owner_participation) ? (campaign?.goal_amount - ((campaign?.goal_amount * campaign?.pet_owner_participation) / 100)) : campaign?.goal_amount;
-  // console.log(requiredAmount);
+
   const schema = yup.object().shape({
-    donate_amount: yup.number("Please valid amount").min(1).max(requiredAmount).required(),
+    donate_amount: yup.number("Please valid amount").integer().min(1).max(requiredAmount).required(),
+    card_holder_name: yup.string().min(1).max(255).required(),
+    credit_card_number: yup.string().required(),
+    expiry_date: yup.string().required(),
+    cvc: yup.string().required(),
   })
+
+  useEffect(() => {
+
+    if (campaign) {
+      setValue("campaign_id", campaign?.id);
+    }
+
+  }, [campaign])
 
   const {
     control,
@@ -51,7 +74,18 @@ const Subscribe = ({ campaign, notFound }) => {
     mode: 'onBlur',
     resolver: yupResolver(schema)
   })
-  const onSubmit = data => { }
+
+  const onSubmit = data => {
+    setLoading(true);
+    dispatch(subscribe(data)).then(response => {
+      setLoading(false);
+      toast.success(`You have successfully subscribed for the ${campaign?.title} campaign.`)
+      reset();
+      router.push("/dashboard");
+    }).catch(error => {
+      setLoading(false);
+    });
+  }
 
   return (
     <>
@@ -72,8 +106,10 @@ const Subscribe = ({ campaign, notFound }) => {
                 <h2>Subscribe for {campaign?.title}</h2>
               </div>
               <Row xs={12} md={6}>
-                <Col sm={12} md={4}>
-                  <CampaignCard campaign={campaign} />
+                <Col sm={12} md={4} className='doctors-main m-0'>
+                  <div className='doctor-list m-0'>
+                    <CampaignCard campaign={campaign} />
+                  </div>
                 </Col>
                 <Col sm={12} md={8}>
                   <Form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
@@ -91,53 +127,93 @@ const Subscribe = ({ campaign, notFound }) => {
                     <ValidationError errors={errors.donate_amount} />
                     <div className='mt-2'>
                       You will be subscribed for monthly donations. {` `}
-                      <CustomTooltip message='Donate monthly to <u>until the end of the campaign</u> to ensure quick fund raising. You can unsubscribe at any time.'><span><RxQuestionMarkCircled fontSize={25} /></span></CustomTooltip>
+                      <CustomTooltip message='Donate monthly to until the end of the campaign to ensure quick fund raising. You can unsubscribe at any time.'><span><RxQuestionMarkCircled fontSize={25} /></span></CustomTooltip>
+
+                      <p className='mt-4'>PetWorld Foundation is free for the campaign (0%) and relies entirely on your generosity to sustain and grow.</p>
+
+                      <p className='mt-4'>I would like to donate for PetWorld Foundation</p>
+
                     </div>
                     <div className='form' >
-                      {/* <Cleave className='form-control' placeholder="Enter credit card number" options={{ creditCard: true, onCreditCardTypeChanged: onCreditCardTypeChanged }}
-                        onChange={onCreditCardChange} /> */}
-
                       <div id="form-credit-card" className="row mt-4">
                         <div className="col-12 col-md-8 col-xl-12">
                           <div className="mb-3">
-                            <label className="form-label w-100" for="creditCardMask">Card Number</label>
+                            <label className="form-label w-100" htmlFor="creditCardMask">Card Number</label>
                             <div className="input-group input-group-merge">
-                              {/* <input type="text" id="creditCardMask" name="creditCardMask" className="form-control credit-card-mask" placeholder="1356 3215 6548 7898" aria-describedby="creditCardMask2" /> */}
-                              <Cleave className='form-control' placeholder="Enter credit card number" options={{ creditCard: true }} />
+                              <Cleave
+                                name='credit_card_number'
+                                className='form-control'
+                                placeholder="Enter credit card number"
+                                onChange={(e) => {
+                                  setValue('credit_card_number', e.target.rawValue)
+                                }}
+                                options={{
+                                  creditCard: true,
+                                }}
+                              // {...register('credit_card_number', { required: true })}
+                              />
                             </div>
+                            <ValidationError errors={errors.credit_card_number} />
                           </div>
                           <div className="row">
                             <div className="col-12 col-md-6">
                               <div className="mb-3">
-                                <label className="form-label" for="collapsible-payment-name">Name</label>
-                                <input type="text" id="collapsible-payment-name" className="form-control" placeholder="John Doe" />
+                                <label className="form-label" htmlFor="collapsible-payment-name">Card Holder Name</label>
+                                <Form.Control
+                                  type='text'
+                                  name='card_holder_name'
+                                  placeholder='Enter Card Holder Name'
+                                  {...register('card_holder_name', { required: true })}
+                                />
+                                <ValidationError errors={errors.card_holder_name} />
                               </div>
                             </div>
                             <div className="col-6 col-md-3">
                               <div className="mb-3">
-                                <label className="form-label" for="collapsible-payment-expiry-date">Exp. Date</label>
-                                {/* <input type="text" id="collapsible-payment-expiry-date" className="form-control expiry-date-mask" placeholder="MM/YY" /> */}
-                                <Cleave className='form-control' placeholder="MM/YY" options={{ date: true, delimiter: '/', datePattern: ['m', 'y'] }} />
+                                <label className="form-label" htmlFor="collapsible-payment-expiry-date">Exp. Date</label>
+                                <Cleave
+                                  className='form-control'
+                                  placeholder="MM/YY"
+                                  name='expiry_date'
+                                  onChange={e => {
+                                    setValue("expiry_date", e.target.value)
+                                  }}
+                                  options={{ date: true, delimiter: '/', datePattern: ['m', 'y'] }}
+                                // {...register('expiry_date', { required: true })}
+                                />
+                                <ValidationError errors={errors.expiry_date} />
                               </div>
                             </div>
                             <div className="col-6 col-md-3">
                               <div className="mb-3">
-                                <label className="form-label" for="collapsible-payment-cvv">CVV Code</label>
+                                <label className="form-label" htmlFor="collapsible-payment-cvv">CVV Code</label>
                                 <div className="input-group input-group-merge">
-                                  <Cleave className='form-control' placeholder="654" maxLength="3" options={{ numeral: true, numeralPositiveOnly: true }} />
+                                  <Cleave
+                                    className='form-control'
+                                    placeholder="654"
+                                    maxLength="3"
+                                    name='cvc'
+                                    onChange={e => {
+                                      setValue("cvc", e.target.value)
+                                    }}
+                                    options={{ numeral: true, numeralPositiveOnly: true }}
+                                  // {...register('cvc', { required: true })}
+                                  />
                                 </div>
+                                <ValidationError errors={errors.cvc} />
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <Row>
-                    <div className="mt-3 mb-5">
-                      <Button variant='primary' type='submit'>
-                        Save
-                      </Button>
-                    </div>
-                  </Row>
+                        <div className="mt-3 mb-5">
+                          <Button variant='primary' disabled={loading} type='submit'>
+                            {loading && <Spinner />} {` `}
+                            Subscribe
+                          </Button>
+                        </div>
+                      </Row>
                     </div>
                   </Form>
                 </Col>
