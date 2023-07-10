@@ -9,11 +9,13 @@ import { useEffect } from 'react'
 import { MdRemoveRedEye } from "react-icons/md";
 import { CustomTooltip, DocumentVerificationStatus } from '@/components/Common'
 import { fetchCampaignRequests } from '@/store/api/campaign-request'
+import { useRouter } from 'next/router'
 
 const CampaignRequests = () => {
 
   const { t } = useTranslation()
   const dispatch = useDispatch()
+  const router = useRouter();
 
   const store = useSelector(state => state.campaignRequest);
 
@@ -23,6 +25,7 @@ const CampaignRequests = () => {
       limit: 10,
       column: 'id',
       sort: 'desc',
+      status: router?.query?.status
     }))
   }
   useEffect(() => {
